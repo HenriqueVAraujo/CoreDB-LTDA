@@ -61,7 +61,7 @@ export default function ResultsSection() {
               <div className="bg-gradient-to-r from-[#0B1C2D] to-[#1DAEFF] p-6">
                 <div className="flex items-center gap-3">
                   <TrendingUp className="w-6 h-6 text-white" />
-                  <h3 className="text-lg font-bold text-white">
+                  <h3 className="text-lg font-bold text-white drop-shadow-sm">
                     {caseItem.industry}
                   </h3>
                 </div>
