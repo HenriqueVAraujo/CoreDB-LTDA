@@ -17,6 +17,8 @@ function Router() {
       <Route path={ROUTES.SERVICE_TOTVS} component={ConsultoriaTOTVS} />
       <Route path={ROUTES.SERVICE_CUSTOM} component={DesenvolvimentoCustomizacoes} />
       <Route path={ROUTES.SERVICE_DBA} component={DBA} />
+      <Route path={ROUTES.PRIVACY} component={PrivacyPolicy} />
+      <Route path={ROUTES.TERMS} component={TermsOfUse} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

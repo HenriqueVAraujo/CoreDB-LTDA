@@ -6,6 +6,8 @@ export const ROUTES = {
   SERVICE_CUSTOM: '/servicos/desenvolvimento-customizacoes',
   SERVICE_DBA: '/servicos/dba',
   CONTACT: '/contato',
+  PRIVACY: '/politica-de-privacidade',
+  TERMS: '/termos-de-uso',
 };
 
 export const getWhatsAppLink = (message: string) =>
