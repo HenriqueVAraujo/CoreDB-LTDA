@@ -102,8 +102,8 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-white/5 text-[11px] text-white/30 uppercase tracking-widest">
           <p>© {currentYear} COREDB — Belo Horizonte / MG</p>
           <div className="flex items-center gap-6">
-            <a href="#" className="hover:text-white transition-colors">Privacidade</a>
-            <a href="#" className="hover:text-white transition-colors">Termos</a>
+            <a href="/politica-de-privacidade" className="hover:text-white transition-colors">Privacidade</a>
+            <a href="/termos-de-uso" className="hover:text-white transition-colors">Termos</a>
           </div>
         </div>
       </div>
