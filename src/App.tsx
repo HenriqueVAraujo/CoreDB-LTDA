@@ -9,6 +9,9 @@ import { ROUTES } from "./routes";
 import ConsultoriaTOTVS from "./pages/servicos/consultoria-totvs";
 import DesenvolvimentoCustomizacoes from "./pages/servicos/desenvolvimento-customizacoes";
 import DBA from "./pages/servicos/dba";
+import PrivacyPolicy from "./pages/politica-de-privacidade"; // Certifique-se de que o nome do arquivo está correto
+import TermsOfUse from "./pages/termos-de-uso";
+import { ROUTES } from "./routes";
 
 function Router() {
   return (
