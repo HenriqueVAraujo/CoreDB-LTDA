@@ -89,7 +89,7 @@ export default function Footer() {
         <div className="text-[10px] md:text-xs text-white/40 leading-relaxed text-center md:text-left mb-8 space-y-2">
           <p><strong>COREDB LTDA.</strong> Todos os direitos Reservados.</p>
           <p>
-            Protheus, RM, Datasul, Fluig e TOTVS® são produtos e marcas registradas de propriedade da TOTVS® S.A. 
+            Protheus, RM, Fluig e TOTVS® são produtos e marcas registradas de propriedade da TOTVS® S.A. 
             Logotipos TOTVS® e Microsiga são de propriedade da TOTVS® S.A.
           </p>
           <p className="font-medium text-white/50">
