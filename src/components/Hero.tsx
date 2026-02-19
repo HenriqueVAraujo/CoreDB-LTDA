@@ -3,7 +3,7 @@ export default function Hero() {
     const url =
       'https://wa.me/553191873435?text=' +
       encodeURIComponent(
-        'Olá, preciso de um diagnóstico técnico para meu ambiente TOTVS (Protheus/RM/Fluig). Estamos enfrentando problemas de performance ou instabilidade no banco de dados.'
+        'Olá, preciso de um diagnóstico técnico para meu ambiente TOTVS (Protheus, RM, Datasul ou Fluig). Estamos enfrentando problemas de performance ou instabilidade no banco de dados.'
       );
     window.open(url, '_blank');
   };
@@ -21,7 +21,7 @@ export default function Hero() {
         className="container mx-auto px-4 flex flex-col items-center md:items-start max-w-4xl animate-hero-fadein"
         style={{ color: '#fff', zIndex: 1 }}
       >
-        {/* HEADLINE PRINCIPAL */}
+        {/* HEADLINE */}
         <h1
           className="text-center md:text-left text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-6"
           style={{ textShadow: '0 2px 8px rgba(11,28,45,0.12)' }}
@@ -38,7 +38,8 @@ export default function Hero() {
           style={{ color: 'rgba(255,255,255,0.85)' }}
         >
           Especialistas em diagnóstico profundo, tuning de banco de dados e
-          estabilidade operacional para Protheus, RM, Fluig, SQL Server e Oracle.
+          estabilidade operacional para Protheus, RM, Datasul, Fluig,
+          SQL Server e Oracle.
         </h2>
 
         {/* FRASE DE IMPACTO */}
@@ -51,7 +52,7 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* PROVA TÉCNICA RÁPIDA */}
+        {/* PROVA TÉCNICA */}
         <div
           className="text-sm md:text-base mb-8 text-center md:text-left"
           style={{ color: 'rgba(255,255,255,0.65)' }}
