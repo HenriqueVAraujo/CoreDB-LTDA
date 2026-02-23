@@ -1,6 +1,4 @@
-import { Shield, Zap, Database, Search, ArrowRight, Gauge, Briefcase, ChevronRight } from 'lucide-react';
-import { Link } from 'wouter';
-import Header from '../../components/Header';
+import { Shield, Zap, Database, ArrowRight, Gauge } from 'lucide-react';
 
 export default function ConsultoriaTOTVS() {
   const handleCTAClick = () => {
@@ -59,11 +57,10 @@ export default function ConsultoriaTOTVS() {
   ];
 
   return (
-    <>
-      <Header />
+    <main className="min-h-screen bg-white">
       
       {/* Hero Section */}
-      <section className="relative bg-[#0B1C2D] min-h-[85vh] flex items-center py-24">
+      <section className="relative bg-[#0B1C2D] min-h-[80vh] flex items-center py-20">
         <div className="container mx-auto px-4 max-w-5xl text-white">
           <span className="text-[var(--coredb-cyan)] font-bold tracking-widest uppercase text-sm mb-4 inline-block">
             Consultoria de Elite para Protheus, RM e Fluig
@@ -109,7 +106,7 @@ export default function ConsultoriaTOTVS() {
       </section>
 
       {/* Diferenciais Section */}
-      <section className="relative py-20 md:py-32 bg-white">
+      <section className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mb-20">
             <h2 
@@ -149,10 +146,10 @@ export default function ConsultoriaTOTVS() {
       </section>
 
       {/* Methodology Section */}
-      <section className="relative py-20 md:py-32 bg-[#F9FAFB]">
+      <section className="py-20 md:py-32 bg-[#F9FAFB]">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl font-bold text-[var(--coredb-dark)] mb-6 italic">A Jornada para a Estabilidade</h2>
+            <h2 className="text-4xl font-bold text-[var(--coredb-dark)] mb-6">A Jornada para a Estabilidade</h2>
             <div className="h-1.5 w-24 bg-[var(--coredb-cyan)] mx-auto rounded-full" />
           </div>
 
@@ -173,9 +170,9 @@ export default function ConsultoriaTOTVS() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-24 bg-[var(--coredb-dark)] text-white text-center">
+      <section className="py-24 bg-[#0B1C2D] text-white text-center">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto bg-gradient-to-br from-[#0B1C2D] to-[#152a3d] p-12 rounded-3xl border border-white/5 shadow-2xl">
+          <div className="max-w-4xl mx-auto p-12 rounded-3xl border border-white/5 bg-gradient-to-br from-[#0B1C2D] to-[#152a3d] shadow-2xl">
             <h2 className="text-3xl md:text-5xl font-bold mb-8">Pare de perder tempo com lentidões inexplicáveis.</h2>
             <p className="text-white/60 text-lg mb-10 max-w-2xl mx-auto">
               Nossa equipe técnica está pronta para realizar um health check inicial do seu ambiente e propor soluções definitivas.
@@ -186,11 +183,11 @@ export default function ConsultoriaTOTVS() {
               style={{ background: 'var(--coredb-cyan)', color: 'var(--coredb-dark)' }}
             >
               Falar com Engenheiro de Consultoria
-              <ArrowRight className="w-5 h-5 transition-transform" />
+              <ArrowRight className="w-5 h-5" />
             </button>
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }
