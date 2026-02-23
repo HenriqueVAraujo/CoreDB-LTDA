@@ -9,61 +9,73 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const data = req.body;
 
+    // Mapeamento de tradução: mantém o código limpo e o e-mail em PT-BR
+    const traducoes: { [key: string]: string } = {
+      // Porte da Empresa
+      small: "Até 100 colaboradores",
+      medium: "100 a 500 colaboradores",
+      large: "Acima de 500 colaboradores",
+      // Cenário Atual
+      instability: "Instabilidade ou lentidão recorrente",
+      monitoring: "Falta de monitoramento estruturado",
+      project: "Projeto crítico em andamento",
+      database: "Revisão completa de banco de dados",
+      support: "Sustentação especializada contínua",
+      // Nível de Urgência
+      planning: "Planejamento estratégico (30+ dias)",
+      short: "Necessidade no curto prazo (até 30 dias)",
+      immediate: "Situação crítica / ação imediata",
+    };
+
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
-      // Ajuste automático: porta 465 usa secure true, outras (como 587) usam false
-      secure: process.env.SMTP_PORT === "465", 
+      host: "smtp.zoho.com",
+      port: 465,
+      secure: true, 
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
-      // Adicionado para garantir compatibilidade com servidores mais rígidos
-      tls: {
-        rejectUnauthorized: false
-      },
-      connectionTimeout: 10000, // 10 segundos de limite
     });
 
     const priority =
-      data.urgency === "immediate"
-        ? "🚨 LEAD CRÍTICO"
-        : data.urgency === "short"
-        ? "⚡ LEAD ESTRATÉGICO"
-        : "Novo Lead";
+      data.urgency === "immediate" ? "🚨 CRÍTICO" : 
+      data.urgency === "short" ? "⚡ ESTRATÉGICO" : "Novo Lead";
 
     await transporter.sendMail({
-      from: `"CoreDB Site" <${process.env.SMTP_USER}>`,
+      from: process.env.SMTP_USER,
       to: process.env.RECEIVER_EMAIL,
-      subject: `${priority} - ${data.company || "Empresa não informada"}`,
+      replyTo: data.email,
+      subject: `${priority} - ${data.company || "Lead Site"}`,
       html: `
-        <div style="font-family: sans-serif; color: #333; padding: 20px; border: 1px solid #eee;">
-          <h2 style="color: #0B1C2D;">Novo Lead Recebido pelo Site</h2>
-          <hr/>
+        <div style="font-family: sans-serif; color: #333; line-height: 1.6; max-width: 600px; border: 1px solid #e0e0e0; padding: 20px; border-radius: 10px;">
+          <h2 style="color: #0B1C2D; border-bottom: 2px solid #1DAEFF; padding-bottom: 10px;">Novo Lead Recebido</h2>
+          
           <p><strong>Nome:</strong> ${data.name}</p>
-          <p><strong>Email:</strong> ${data.email}</p>
+          <p><strong>E-mail:</strong> ${data.email}</p>
           <p><strong>Telefone:</strong> ${data.phone}</p>
           <p><strong>Empresa:</strong> ${data.company}</p>
-          <p><strong>Porte:</strong> ${data.companySize}</p>
-          <p><strong>Cenário:</strong> ${data.environment}</p>
-          <p><strong>Urgência:</strong> ${data.urgency}</p>
-          <br/>
-          <p><strong>Mensagem:</strong></p>
-          <div style="background: #f4f4f4; padding: 15px; border-radius: 5px;">
-            ${data.message || "Nenhuma mensagem enviada."}
+          
+          <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-top: 20px;">
+            <p style="margin: 5px 0;"><strong>Porte:</strong> ${traducoes[data.companySize] || data.companySize}</p>
+            <p style="margin: 5px 0;"><strong>Cenário:</strong> ${traducoes[data.environment] || data.environment}</p>
+            <p style="margin: 5px 0;"><strong>Urgência:</strong> ${traducoes[data.urgency] || data.urgency}</p>
           </div>
+
+          <p style="margin-top: 20px;"><strong>Mensagem:</strong></p>
+          <div style="background: #ffffff; border-left: 4px solid #1DAEFF; padding: 10px 15px; font-style: italic;">
+            ${data.message || "Sem mensagem adicional."}
+          </div>
+          
+          <p style="font-size: 12px; color: #888; margin-top: 30px; text-align: center; border-top: 1px solid #eee; padding-top: 10px;">
+            Este e-mail foi gerado automaticamente pelo formulário do site CoreDB.
+          </p>
         </div>
       `,
     });
 
     return res.status(200).json({ success: true });
   } catch (error: any) {
-    // Esse log é vital: ele aparecerá na aba "Logs" da Vercel em vermelho
-    console.error("ERRO NO ENVIO DE EMAIL:", error.message);
-    return res.status(500).json({ 
-      success: false, 
-      error: "Falha técnica no envio",
-      details: error.message 
-    });
+    console.error("ERRO ZOHO SMTP:", error.message);
+    return res.status(500).json({ success: false, error: error.message });
   }
 }
