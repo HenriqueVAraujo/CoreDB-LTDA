@@ -1,4 +1,4 @@
-import { Mail, Phone } from 'lucide-react';
+import { Mail, Phone, Linkedin, Instagram } from 'lucide-react';
 import Logo from './Logo';
 import { ROUTES } from '../routes';
 
@@ -8,15 +8,14 @@ export default function Footer() {
   const handleFooterNav = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <footer className="bg-[#0B1C2D] text-white">
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          
           {/* Brand */}
           <div className="flex flex-col items-center md:items-start gap-4">
             <Logo variant="footer" className="w-32 h-auto" />
@@ -49,11 +48,12 @@ export default function Footer() {
 
           {/* Services */}
           <div className="flex flex-col items-center md:items-start">
-            <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">Especialidades</h4>
+            <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">Serviços</h4>
             <ul className="space-y-3 text-sm text-center md:text-left">
-              <li><a href={ROUTES.SERVICE_TOTVS} className="text-white/60 hover:text-[#1DAEFF] transition-colors">Consultoria TOTVS®</a></li>
-              <li><a href={ROUTES.SERVICE_CUSTOM} className="text-white/60 hover:text-[#1DAEFF] transition-colors">Desenvolvimento ADVPL/TL++</a></li>
-              <li><a href={ROUTES.SERVICE_DBA} className="text-white/60 hover:text-[#1DAEFF] transition-colors">Gestão de Dados & DBA</a></li>
+              <li><a href={ROUTES.SERVICE_TOTVS} className="text-white/60 hover:text-[#1DAEFF] transition-colors">Especialidades TOTVS</a></li>
+              <li><a href={ROUTES.SERVICE_CUSTOM} className="text-white/60 hover:text-[#1DAEFF] transition-colors">Desenvolvimento e Customizações</a></li>
+              <li><a href={ROUTES.SERVICE_DBA} className="text-white/60 hover:text-[#1DAEFF] transition-colors">Administração de Banco de Dados</a></li>
+              <li><a href={ROUTES.SERVICE_AMS} className="text-white/60 hover:text-[#1DAEFF] transition-colors">Suporte AMS e Governança</a></li>
             </ul>
           </div>
 
@@ -78,6 +78,16 @@ export default function Footer() {
                 </div>
                 <span className="text-sm text-white/60 group-hover:text-white transition-colors">(31) 99187-3435</span>
               </a>
+
+              {/* Redes sociais */}
+              <div className="flex gap-3 mt-2 justify-center md:justify-start">
+                <a href="https://linkedin.com/company/coredb" target="_blank" rel="noopener noreferrer" className="hover:text-[#1DAEFF] transition-colors">
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a href="https://instagram.com/coredb" target="_blank" rel="noopener noreferrer" className="hover:text-[#1DAEFF] transition-colors">
+                  <Instagram className="w-5 h-5" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -85,7 +95,7 @@ export default function Footer() {
         {/* Divider */}
         <div className="h-px bg-white/5 my-8" />
 
-        {/* Texto Jurídico - Estilo CRM Services */}
+        {/* Texto Jurídico */}
         <div className="text-[10px] md:text-xs text-white/40 leading-relaxed text-center md:text-left mb-8 space-y-2">
           <p><strong>COREDB LTDA.</strong> Todos os direitos Reservados.</p>
           <p>
@@ -100,7 +110,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-white/5 text-[11px] text-white/30 uppercase tracking-widest">
-          <p>© {currentYear} COREDB — Belo Horizonte / MG</p>
+          <p>© {currentYear} COREDB</p>
           <div className="flex items-center gap-6">
             <a href={ROUTES.PRIVACY} className="hover:text-white transition-colors">Privacidade</a>
             <a href={ROUTES.TERMS} className="hover:text-white transition-colors">Termos</a>

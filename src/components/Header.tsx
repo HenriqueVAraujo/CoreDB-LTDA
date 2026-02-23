@@ -9,10 +9,10 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'Sobre', href: '#about' },
-    { label: 'Serviços', href: '#services' },
     { label: 'Metodologia', href: '#methodology' },
+    { label: 'Serviços', href: '#services' },
     { label: 'Resultados', href: '#results' },
+    { label: 'Sobre', href: '#about' },
     { label: 'Contato', href: '#contact' }
   ];
 
@@ -34,7 +34,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#E5E7EB]">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#E5E7EB]/50">
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -60,7 +60,7 @@ export default function Header() {
                 key={link.label}
                 href={link.href}
                 onClick={e => handleNav(e, link.href)}
-                className="text-[#4B5563] hover:text-[#1DAEFF] font-medium transition-colors text-sm"
+                className="text-[#4B5563] hover:text-[var(--coredb-cyan)] font-medium transition-colors text-sm"
               >
                 {link.label}
               </a>
@@ -73,7 +73,7 @@ export default function Header() {
               href="https://wa.me/553191873435?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20diagn%C3%B3stico%20t%C3%A9cnico%20com%20a%20CoreDB."
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2 bg-[#0B1C2D] text-white font-semibold rounded-lg hover:bg-[#1DAEFF] hover:text-[#0B1C2D] transition-all text-sm"
+              className="px-6 py-2 bg-[var(--coredb-dark)] text-white font-semibold rounded-lg hover:bg-[var(--coredb-cyan)] hover:text-[var(--coredb-dark)] transition-all text-sm"
             >
               Agendar diagnóstico
             </a>
@@ -100,7 +100,7 @@ export default function Header() {
                 key={link.label}
                 href={link.href}
                 onClick={e => handleNav(e, link.href)}
-                className="block px-4 py-2 text-[#4B5563] hover:bg-[#F5F7FA] hover:text-[#1DAEFF] rounded-lg transition-colors font-medium"
+                className="block px-4 py-2 text-[#4B5563] hover:bg-[#F5F7FA] hover:text-[var(--coredb-cyan)] rounded-lg transition-colors font-medium"
               >
                 {link.label}
               </a>
@@ -109,7 +109,7 @@ export default function Header() {
               href="https://wa.me/553191873435?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20diagn%C3%B3stico%20t%C3%A9cnico%20com%20a%20CoreDB."
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full px-4 py-3 bg-[#0B1C2D] text-white font-semibold rounded-lg hover:bg-[#1DAEFF] hover:text-[#0B1C2D] transition-all mt-4"
+              className="w-full px-4 py-3 bg-[var(--coredb-dark)] text-white font-semibold rounded-lg hover:bg-[var(--coredb-cyan)] hover:text-[var(--coredb-dark)] transition-all mt-4"
               onClick={() => setIsMenuOpen(false)}
             >
               Agendar diagnóstico

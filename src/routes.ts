@@ -5,6 +5,7 @@ export const ROUTES = {
   SERVICE_TOTVS: '/servicos/consultoria-totvs',
   SERVICE_CUSTOM: '/servicos/desenvolvimento-customizacoes',
   SERVICE_DBA: '/servicos/dba',
+  SERVICE_AMS: '/servicos/suporte-ams',
   CONTACT: '/contato',
   PRIVACY: '/politica-de-privacidade',
   TERMS: '/termos-de-uso',

@@ -1,25 +1,36 @@
-import { useState } from 'react';
-import { Mail, Phone, Building2, MessageSquare, Send } from 'lucide-react';
+import { useState } from "react";
+import { Mail, Phone, Building2, Send, ShieldCheck } from "lucide-react";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    need: 'performance',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    companySize: "",
+    environment: "",
+    urgency: "",
+    message: "",
   });
 
+  const [leadType, setLeadType] = useState<"standard" | "strategic" | "critical">("standard");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
+
+    // Classificação automática do lead
+    if (name === "urgency") {
+      if (value === "immediate") setLeadType("critical");
+      else if (value === "short") setLeadType("strategic");
+      else setLeadType("standard");
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -27,230 +38,214 @@ export default function ContactForm() {
     setIsSubmitting(true);
 
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setSubmitStatus('success');
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      setSubmitStatus("success");
+
       setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        need: 'performance',
-        message: ''
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        companySize: "",
+        environment: "",
+        urgency: "",
+        message: "",
       });
-      setTimeout(() => setSubmitStatus('idle'), 3000);
-    } catch (error) {
-      setSubmitStatus('error');
-      setTimeout(() => setSubmitStatus('idle'), 3000);
+
+      setTimeout(() => setSubmitStatus("idle"), 4000);
+    } catch {
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <section id="contact" className="relative py-20 md:py-32 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E0F7FF] border border-[#1DAEFF] mb-6">
-              <span className="text-xs font-semibold text-[#0B5A7D] uppercase tracking-wider">
-                Contato
-              </span>
-            </div>
-            
-            <h2 className="text-4xl md:text-5xl font-bold text-[#0B1C2D] mb-6">
-              Vamos Conversar Sobre Seu Ambiente?
-            </h2>
-            
-            <p className="text-lg text-[#4B5563] leading-relaxed">
-              Preencha o formulário e retornaremos com um diagnóstico gratuito para entender sua realidade e indicar o melhor caminho em TOTVS e Banco de Dados.
-            </p>
+    <section id="contact" className="py-28 bg-[#F9FAFB]">
+      <div className="container mx-auto px-4 max-w-6xl">
+
+        {/* Header */}
+        <div className="mb-20 max-w-3xl">
+          <span className="text-[var(--coredb-cyan)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
+            Avaliação Técnica
+          </span>
+
+          <h2 className="text-4xl md:text-5xl font-bold text-[var(--coredb-dark)] mb-8">
+            Inicie Sua Análise Estratégica de Ambiente
+          </h2>
+
+          <p className="text-lg text-gray-600 leading-relaxed">
+            Nossa equipe realizará uma avaliação preliminar do seu ambiente TOTVS e banco de dados
+            para identificar riscos, gargalos e oportunidades de otimização.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+
+          {/* FORM */}
+          <div className="lg:col-span-2 bg-white p-10 rounded-2xl border border-gray-200 shadow-sm">
+            <form onSubmit={handleSubmit} className="space-y-8">
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Input label="Nome Completo" name="name" value={formData.name} onChange={handleChange} />
+                <Input label="E-mail Corporativo" name="email" value={formData.email} onChange={handleChange} type="email" />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Input label="Telefone" name="phone" value={formData.phone} onChange={handleChange} />
+                <Input label="Empresa" name="company" value={formData.company} onChange={handleChange} />
+              </div>
+
+              {/* Porte da empresa */}
+              <Select
+                label="Porte da Empresa"
+                name="companySize"
+                value={formData.companySize}
+                onChange={handleChange}
+                options={[
+                  { value: "small", label: "Até 100 colaboradores" },
+                  { value: "medium", label: "100 a 500 colaboradores" },
+                  { value: "large", label: "Acima de 500 colaboradores" },
+                ]}
+              />
+
+              {/* Cenário */}
+              <Select
+                label="Cenário Atual do Ambiente"
+                name="environment"
+                value={formData.environment}
+                onChange={handleChange}
+                options={[
+                  { value: "instability", label: "Instabilidade ou lentidão recorrente" },
+                  { value: "monitoring", label: "Falta de monitoramento estruturado" },
+                  { value: "project", label: "Projeto crítico em andamento" },
+                  { value: "database", label: "Revisão completa de banco de dados" },
+                  { value: "support", label: "Sustentação especializada contínua" },
+                ]}
+              />
+
+              {/* Urgência */}
+              <Select
+                label="Nível de Urgência"
+                name="urgency"
+                value={formData.urgency}
+                onChange={handleChange}
+                options={[
+                  { value: "planning", label: "Planejamento estratégico (30+ dias)" },
+                  { value: "short", label: "Necessidade no curto prazo (até 30 dias)" },
+                  { value: "immediate", label: "Situação crítica / ação imediata" },
+                ]}
+              />
+
+              <div>
+                <label className="block text-sm font-semibold text-[var(--coredb-dark)] mb-2">
+                  Descreva Brevemente o Cenário
+                </label>
+                <textarea
+                  name="message"
+                  rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[var(--coredb-cyan)] focus:ring-2 focus:ring-[var(--coredb-cyan)]/20 transition resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full py-5 bg-[var(--coredb-dark)] text-white font-semibold rounded-xl hover:bg-[var(--coredb-cyan)] hover:text-[var(--coredb-dark)] transition-all flex items-center justify-center gap-3"
+              >
+                {isSubmitting ? "Processando Avaliação..." : "Solicitar Análise Técnica"}
+                <Send className="w-5 h-5" />
+              </button>
+
+              <p className="text-xs text-gray-500 text-center">
+                Retorno técnico em até 24 horas úteis.
+              </p>
+
+              {submitStatus === "success" && (
+                <div className="p-4 bg-green-50 border border-green-200 text-green-700 rounded-xl">
+                  Solicitação recebida com sucesso. Nossa equipe técnica retornará em breve.
+                </div>
+              )}
+
+            </form>
           </div>
 
-          {/* Form Container */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Form */}
-            <div className="lg:col-span-2">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Name */}
-                <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-[#0B1C2D] mb-2">
-                    Nome completo
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-[#E5E7EB] focus:border-[#1DAEFF] focus:outline-none focus:ring-2 focus:ring-[#1DAEFF]/20 transition-all"
-                    placeholder="Seu nome"
-                  />
-                </div>
+          {/* SIDE PANEL */}
+          <div className="space-y-8">
 
-                {/* Email */}
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-[#0B1C2D] mb-2">
-                    E-mail corporativo
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-[#E5E7EB] focus:border-[#1DAEFF] focus:outline-none focus:ring-2 focus:ring-[#1DAEFF]/20 transition-all"
-                    placeholder="seu.email@empresa.com"
-                  />
-                </div>
-
-                {/* Phone */}
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-semibold text-[#0B1C2D] mb-2">
-                    Telefone
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-[#E5E7EB] focus:border-[#1DAEFF] focus:outline-none focus:ring-2 focus:ring-[#1DAEFF]/20 transition-all"
-                    placeholder="(11) 99999-9999"
-                  />
-                </div>
-
-                {/* Company */}
-                <div>
-                  <label htmlFor="company" className="block text-sm font-semibold text-[#0B1C2D] mb-2">
-                    Empresa
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-[#E5E7EB] focus:border-[#1DAEFF] focus:outline-none focus:ring-2 focus:ring-[#1DAEFF]/20 transition-all"
-                    placeholder="Nome da sua empresa"
-                  />
-                </div>
-
-                {/* Need */}
-                <div>
-                  <label htmlFor="need" className="block text-sm font-semibold text-[#0B1C2D] mb-2">
-                    Principal necessidade
-                  </label>
-                  <select
-                    id="need"
-                    name="need"
-                    value={formData.need}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-[#E5E7EB] focus:border-[#1DAEFF] focus:outline-none focus:ring-2 focus:ring-[#1DAEFF]/20 transition-all bg-white"
-                  >
-                    <option value="performance">Problemas de performance ou lentidão</option>
-                    <option value="protheus">Projetos em TOTVS Protheus</option>
-                    <option value="rm">Projetos em TOTVS RM</option>
-                    <option value="fluig">Projetos em Fluig / automação de processos</option>
-                    <option value="dba">Otimização ou suporte de Banco de Dados</option>
-                    <option value="allocation">Alocação de analista remoto</option>
-                    <option value="other">Outro</option>
-                  </select>
-                </div>
-
-                {/* Message */}
-                <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-[#0B1C2D] mb-2">
-                    Conte-nos um pouco mais
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className="w-full px-4 py-3 rounded-lg border border-[#E5E7EB] focus:border-[#1DAEFF] focus:outline-none focus:ring-2 focus:ring-[#1DAEFF]/20 transition-all resize-none"
-                    placeholder="Descreva o cenário atual, desafios e prazos desejados..."
-                  />
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-4 bg-[#0B1C2D] text-white font-bold rounded-lg hover:bg-[#1DAEFF] hover:text-[#0B1C2D] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      Enviando...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5" />
-                      Solicitar contato da CoreDB
-                    </>
-                  )}
-                </button>
-
-                {/* Status Messages */}
-                {submitStatus === 'success' && (
-                  <div className="p-4 rounded-lg bg-[#E0F7FF] border border-[#1DAEFF] text-[#0B5A7D]">
-                    Mensagem enviada com sucesso! Nossa equipe retornará em breve.
-                  </div>
-                )}
-                {submitStatus === 'error' && (
-                  <div className="p-4 rounded-lg bg-red-50 border border-red-200 text-red-700">
-                    Erro ao enviar mensagem. Por favor, tente novamente.
-                  </div>
-                )}
-              </form>
+            <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+              <h3 className="font-semibold text-[var(--coredb-dark)] mb-6 flex items-center gap-2">
+                <ShieldCheck className="w-5 h-5 text-[var(--coredb-cyan)]" />
+                Processo de Avaliação
+              </h3>
+              <ul className="space-y-3 text-sm text-gray-600">
+                <li>• Análise preliminar do cenário informado</li>
+                <li>• Identificação de riscos técnicos</li>
+                <li>• Recomendação estruturada de próximos passos</li>
+              </ul>
             </div>
 
-            {/* Contact Info */}
-            <div className="space-y-8">
-              {/* Info Card 1 */}
-              <div className="bg-[#F5F7FA] rounded-lg p-6 border border-[#E5E7EB]">
-                <div className="flex items-center gap-3 mb-4">
-                  <Mail className="w-6 h-6 text-[#1DAEFF]" />
-                  <h3 className="font-bold text-[#0B1C2D]">E-mail</h3>
-                </div>
-                <p className="text-[#4B5563] text-sm">
-                  comercial@coredb.com.br
-                </p>
-              </div>
-
-              {/* Info Card 2 */}
-              <div className="bg-[#F5F7FA] rounded-lg p-6 border border-[#E5E7EB]">
-                <div className="flex items-center gap-3 mb-4">
-                  <Phone className="w-6 h-6 text-[#1DAEFF]" />
-                  <h3 className="font-bold text-[#0B1C2D]">WhatsApp</h3>
-                </div>
-                <p className="text-[#4B5563] text-sm">
-                  <a href="https://wa.me/553191873435" target="_blank" rel="noopener noreferrer" className="hover:text-[#1DAEFF] transition-colors">(31) 99187-3435</a>
-                </p>
-              </div>
-
-              {/* Info Card 3 */}
-              <div className="bg-gradient-to-br from-[#0B1C2D] to-[#1DAEFF] rounded-lg p-6 text-white">
-                <div className="flex items-center gap-3 mb-4">
-                  <Building2 className="w-6 h-6" />
-                  <h3 className="font-bold">Diagnóstico Gratuito</h3>
-                </div>
-                <p className="text-white/90 text-sm">
-                  Sem custo. Sem compromisso. Apenas uma conversa honesta sobre sua realidade técnica.
-                </p>
-              </div>
+            <div className="bg-gradient-to-br from-[#0B1C2D] to-[#1DAEFF] rounded-2xl p-8 text-white">
+              <h3 className="font-semibold mb-4">Contato Direto</h3>
+              <p className="text-sm mb-3 flex items-center gap-2">
+                <Mail className="w-4 h-4" />
+                comercial@coredb.com.br
+              </p>
+              <p className="text-sm flex items-center gap-2">
+                <Phone className="w-4 h-4" />
+                (31) 99187-3435
+              </p>
             </div>
+
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+/* COMPONENTES AUXILIARES */
+
+function Input({ label, name, value, onChange, type = "text" }: any) {
+  return (
+    <div>
+      <label className="block text-sm font-semibold text-[var(--coredb-dark)] mb-2">
+        {label}
+      </label>
+      <input
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+        required
+        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[var(--coredb-cyan)] focus:ring-2 focus:ring-[var(--coredb-cyan)]/20 transition"
+      />
+    </div>
+  );
+}
+
+function Select({ label, name, value, onChange, options }: any) {
+  return (
+    <div>
+      <label className="block text-sm font-semibold text-[var(--coredb-dark)] mb-2">
+        {label}
+      </label>
+      <select
+        name={name}
+        value={value}
+        onChange={onChange}
+        required
+        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[var(--coredb-cyan)] focus:ring-2 focus:ring-[var(--coredb-cyan)]/20 transition bg-white"
+      >
+        <option value="">Selecione uma opção</option>
+        {options.map((opt: any) => (
+          <option key={opt.value} value={opt.value}>
+            {opt.label}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 }

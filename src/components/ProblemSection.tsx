@@ -5,67 +5,64 @@ export default function ProblemSection() {
     {
       icon: TrendingDown,
       title: 'Lentidão Operacional',
-      description: 'Processamentos que deveriam levar minutos tomam horas, impactando faturamento e tomada de decisão.'
+      description:
+        'Processamentos que deveriam levar minutos tomam horas, impactando faturamento, fechamento contábil e tomada de decisão.'
     },
     {
       icon: AlertCircle,
       title: 'Falhas Recorrentes',
-      description: 'Travamentos, timeouts e erros em rotinas críticas causam retrabalho e perda de produtividade.'
+      description:
+        'Erros em rotinas críticas, travamentos e timeouts geram retrabalho, insegurança operacional e dependência reativa de suporte.'
     },
     {
       icon: Lock,
-      title: 'Riscos em Banco de Dados',
-      description: 'Falta de monitoramento, backups inadequados e ausência de planos de recuperação comprometem continuidade.'
+      title: 'Riscos no Banco de Dados',
+      description:
+        'Backups inadequados, ausência de monitoramento contínuo e falta de plano de recuperação colocam a continuidade do negócio em risco.'
     },
     {
       icon: Zap,
-      title: 'Impacto no Negócio',
-      description: 'Cada minuto de indisponibilidade representa prejuízo financeiro, perda de confiança e risco de conformidade.'
+      title: 'Impacto Financeiro Direto',
+      description:
+        'Cada minuto de indisponibilidade representa prejuízo financeiro, risco contratual e perda de confiança interna e externa.'
     }
   ];
 
   return (
-    <section className="relative py-20 md:py-32 bg-[#F5F7FA]">
-      {/* Subtle Background Pattern */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#1DAEFF] opacity-5 rounded-full blur-3xl" />
-      </div>
+    <section className="py-24 lg:py-32 bg-[#F9FAFB]">
+      <div className="container mx-auto px-4 max-w-5xl">
 
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E5E7EB] mb-6">
-            <span className="text-xs font-semibold text-[#0B5A7D] uppercase tracking-wider">
-              Desafios do Mercado
-            </span>
-          </div>
-          
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0B1C2D] mb-6">
-            O Desafio das Operações Críticas
-          </h2>
-          
-          <p className="text-lg text-[#4B5563] leading-relaxed">
-            Quando o ERP falha, o negócio para. Empresas que dependem de TOTVS para operações críticas enfrentam desafios recorrentes que impactam diretamente o resultado.
-          </p>
-        </div>
+        {/* Overline */}
+        <span className="text-[var(--coredb-cyan)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
+          Risco Operacional
+        </span>
 
-        {/* Problems Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Headline */}
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#0B1C2D] mb-8">
+          Seu ERP sustenta o negócio. <br className="hidden md:block" />
+          Mas ele está verdadeiramente blindado?
+        </h2>
+
+        {/* Subheadline */}
+        <p className="text-lg md:text-xl text-[#4B5563] max-w-3xl leading-relaxed mb-16">
+          Empresas que dependem de ambientes TOTVS para faturar, operar e fechar o mês
+          convivem com riscos invisíveis que raramente são tratados de forma estruturada.
+          O problema não é o ERP. É a ausência de governança técnica contínua.
+        </p>
+
+        {/* Grid de Problemas */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {problems.map((problem, index) => {
             const Icon = problem.icon;
             return (
               <div
                 key={index}
-                className="group bg-white rounded-lg p-8 border border-[#E5E7EB] hover:border-[#1DAEFF] hover:shadow-lg transition-all duration-300 hover:translate-y-[-4px]"
+                className="bg-white border border-[#E5E7EB] rounded-xl p-8 transition-all duration-300 hover:border-[var(--coredb-cyan)]/40"
               >
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-[#E0F7FF] group-hover:bg-[#1DAEFF] transition-colors">
-                      <Icon className="w-6 h-6 text-[#0B5A7D] group-hover:text-white transition-colors" />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-[#0B1C2D] mb-2">
+                <div className="flex items-start gap-5">
+                  <Icon className="w-7 h-7 text-[var(--coredb-cyan)] shrink-0 mt-1" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-[#0B1C2D] mb-3">
                       {problem.title}
                     </h3>
                     <p className="text-[#4B5563] leading-relaxed">
@@ -78,14 +75,19 @@ export default function ProblemSection() {
           })}
         </div>
 
-        {/* Key Message */}
-        <div className="mt-16 pt-16 border-t border-[#E5E7EB]">
-          <div className="max-w-3xl mx-auto bg-gradient-to-r from-[#0B1C2D] to-[#1DAEFF] rounded-lg p-8 text-white text-center">
-            <p className="text-xl font-semibold">
-              Não é suficiente ter um ERP. É preciso ter um ERP que roda com <span className="text-[#E0F7FF]">velocidade, segurança e disponibilidade máximas</span>.
+        {/* Bloco de Conclusão Estratégica */}
+        <div className="mt-20 pt-12 border-t border-[#E5E7EB]">
+          <div className="max-w-3xl">
+            <p className="text-2xl font-semibold text-[#0B1C2D] leading-relaxed">
+              Ter um ERP não é suficiente.
+            </p>
+            <p className="text-lg text-[#4B5563] mt-4 leading-relaxed">
+              Ele precisa operar com previsibilidade, disponibilidade e responsabilidade técnica formal.
+              Sem estrutura contínua, o risco permanece — apenas invisível.
             </p>
           </div>
         </div>
+
       </div>
     </section>
   );

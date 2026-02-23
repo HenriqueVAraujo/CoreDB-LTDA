@@ -1,133 +1,126 @@
-import { TrendingUp } from 'lucide-react';
+import { TrendingUp } from "lucide-react";
 
 export default function ResultsSection() {
   const cases = [
     {
-      industry: 'Manufatura',
-      challenge: 'Lentidão crítica em processamento de pedidos, impactando faturamento diário. Processamento que deveria levar 30 minutos levava 4 horas.',
-      action: 'Diagnóstico profundo identificou queries mal otimizadas e índices ausentes. Implementamos otimização estrutural em banco de dados e tuning de Protheus.',
-      result: 'Redução de 87% no tempo de processamento',
-      impact: '+R$ 2.5M em faturamento anual recuperado'
+      industry: "Manufatura",
+      challenge:
+        "Processamento crítico de pedidos apresentando lentidão severa, impactando diretamente o faturamento diário.",
+      action:
+        "Diagnóstico técnico identificou queries não otimizadas e ausência de índices estratégicos. Foi realizado tuning estrutural no banco de dados e ajustes no Protheus.",
+      result: "Redução de 87% no tempo de processamento",
+      impact: "Recuperação estimada de R$ 2,5M/ano em capacidade operacional",
     },
     {
-      industry: 'Distribuição',
-      challenge: 'Falhas recorrentes em rotinas de sincronização de estoque entre Protheus e sistemas externos, causando inconsistências operacionais.',
-      action: 'Redesenho completo da arquitetura de integrações, implementação de monitoramento em tempo real e rotinas de recuperação automática.',
-      result: 'Redução de 95% em falhas de sincronização',
-      impact: '99.8% de disponibilidade operacional'
+      industry: "Distribuição",
+      challenge:
+        "Falhas recorrentes na sincronização de estoque entre ERP e sistemas externos, gerando inconsistências operacionais.",
+      action:
+        "Redesenho da arquitetura de integrações com monitoramento contínuo e rotinas automáticas de recuperação.",
+      result: "Redução de 95% nas falhas de sincronização",
+      impact: "Disponibilidade operacional estabilizada em 99,8%",
     },
     {
-      industry: 'Serviços',
-      challenge: 'Ausência de monitoramento de banco de dados, riscos de perda de dados e impossibilidade de recuperação rápida em caso de falha.',
-      action: 'Implementação de plano de backup estruturado, monitoramento contínuo e plano de recuperação de desastres (DR).',
-      result: 'Monitoramento 24/7 com alertas automáticos',
-      impact: 'RTO reduzido de 24h para 2h'
-    }
+      industry: "Serviços",
+      challenge:
+        "Ausência de plano estruturado de backup e recuperação de desastres, com alto risco de indisponibilidade prolongada.",
+      action:
+        "Implementação de política formal de backup, monitoramento contínuo e plano de Disaster Recovery (DR).",
+      result: "Monitoramento ativo 24/7 com alertas automáticos",
+      impact: "RTO reduzido de 24h para 2h",
+    },
   ];
 
   return (
-    <section className="relative py-20 md:py-32 bg-[#F5F7FA]">
-      {/* Background Accent */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#1DAEFF] rounded-full blur-3xl" />
-      </div>
+    <section className="py-24 lg:py-32 bg-gray-50">
+      <div className="container mx-auto px-4 max-w-6xl">
 
-      <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E5E7EB] mb-6">
-            <span className="text-xs font-semibold text-[#0B5A7D] uppercase tracking-wider">
-              Resultados
-            </span>
-          </div>
-          
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0B1C2D] mb-6">
-            Impacto Real em Operações Críticas
+        <div className="mb-20 max-w-3xl">
+          <span className="text-[var(--coredb-cyan)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
+            Resultados Técnicos
+          </span>
+
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--coredb-dark)] mb-8">
+            Impacto Mensurável em Operações Críticas
           </h2>
-          
-          <p className="text-lg text-[#4B5563] leading-relaxed">
-            Conheça como a CoreDB transformou desafios técnicos em resultados mensuráveis para empresas que não aceitam risco operacional.
+
+          <p className="text-lg md:text-xl text-[#4B5563] leading-relaxed">
+            Exemplos de intervenções técnicas estruturadas que resultaram em
+            ganho operacional, redução de risco e aumento de previsibilidade.
           </p>
         </div>
 
-        {/* Cases Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {cases.map((caseItem, index) => (
             <div
               key={index}
-              className="group bg-white rounded-lg overflow-hidden border border-[#E5E7EB] hover:border-[#1DAEFF] transition-all duration-300 hover:shadow-lg"
+              className="bg-white rounded-xl border border-gray-200 p-8"
             >
-              {/* Header */}
-              <div className="bg-gradient-to-r from-[#0B1C2D] to-[#1DAEFF] p-6">
-                <div className="flex items-center gap-3">
-                  <TrendingUp className="w-6 h-6 text-white" />
-                  <h3 className="text-lg font-bold !text-white drop-shadow-sm">
-                    {caseItem.industry}
-                  </h3>
-                </div>
+              {/* Industry */}
+              <div className="flex items-center gap-3 mb-6">
+                <TrendingUp className="w-5 h-5 text-[var(--coredb-cyan)]" />
+                <h3 className="text-lg font-semibold text-[var(--coredb-dark)]">
+                  {caseItem.industry}
+                </h3>
               </div>
 
-              {/* Content */}
-              <div className="p-6 space-y-4">
-                {/* Challenge */}
-                <div>
-                  <p className="text-xs font-semibold text-[#0B5A7D] uppercase tracking-wider mb-2">
-                    Desafio
-                  </p>
-                  <p className="text-sm text-[#4B5563]">
-                    {caseItem.challenge}
-                  </p>
-                </div>
+              {/* Challenge */}
+              <div className="mb-6">
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">
+                  Contexto Técnico
+                </p>
+                <p className="text-sm text-[#4B5563] leading-relaxed">
+                  {caseItem.challenge}
+                </p>
+              </div>
 
-                {/* Divider */}
-                <div className="h-px bg-[#E5E7EB]" />
+              {/* Action */}
+              <div className="mb-6">
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">
+                  Intervenção
+                </p>
+                <p className="text-sm text-[#4B5563] leading-relaxed">
+                  {caseItem.action}
+                </p>
+              </div>
 
-                {/* Action */}
-                <div>
-                  <p className="text-xs font-semibold text-[#0B5A7D] uppercase tracking-wider mb-2">
-                    Atuação CoreDB
-                  </p>
-                  <p className="text-sm text-[#4B5563]">
-                    {caseItem.action}
-                  </p>
-                </div>
-
-                {/* Divider */}
-                <div className="h-px bg-[#E5E7EB]" />
-
-                {/* Results */}
-                <div className="bg-[#E0F7FF] rounded-lg p-4">
-                  <p className="text-xs font-semibold text-[#0B5A7D] uppercase tracking-wider mb-2">
-                    Resultado
-                  </p>
-                  <p className="text-sm font-bold text-[#0B1C2D] mb-2">
-                    {caseItem.result}
-                  </p>
-                  <p className="text-xs text-[#0B5A7D]">
-                    {caseItem.impact}
-                  </p>
-                </div>
+              {/* Result */}
+              <div className="border-t border-gray-200 pt-6">
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">
+                  Resultado Obtido
+                </p>
+                <p className="text-sm font-semibold text-[var(--coredb-dark)] mb-1">
+                  {caseItem.result}
+                </p>
+                <p className="text-xs text-gray-600">
+                  {caseItem.impact}
+                </p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Bottom Message */}
-        <div className="mt-16 pt-16 border-t border-[#E5E7EB]">
-          <div className="max-w-2xl mx-auto text-center">
-            <p className="text-lg text-[#4B5563] mb-8">
-              Estes são exemplos reais de como a CoreDB transforma desafios técnicos em <span className="font-bold text-[#0B1C2D]">vantagem competitiva</span>.
+        {/* Bottom CTA */}
+        <div className="mt-24 pt-16 border-t border-gray-200">
+          <div className="max-w-2xl">
+            <p className="text-lg text-[#4B5563] mb-8 leading-relaxed">
+              Resultados obtidos a partir de diagnóstico técnico estruturado e
+              aplicação de metodologia de governança operacional.
             </p>
-              <a
-                href="https://wa.me/553191873435?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20diagn%C3%B3stico%20t%C3%A9cnico%20com%20a%20CoreDB."
+
+            <a
+              href="https://wa.me/553191873435?text=Olá, gostaria de agendar um diagnóstico técnico."
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary inline-flex items-center justify-center gap-2"
+              className="inline-flex items-center justify-center bg-[var(--coredb-cyan)] text-white px-8 py-4 rounded-md font-semibold hover:opacity-90 transition"
             >
-              Agendar diagnóstico técnico
+              Solicitar Diagnóstico Técnico
             </a>
           </div>
         </div>
+
       </div>
     </section>
   );
