@@ -13,14 +13,6 @@ export default function ServicesSection() {
       path: ROUTES.SERVICE_TOTVS,
     },
     {
-      icon: Code,
-      title: "Desenvolvimento e Customizações",
-      subtitle: "ADVPL, TLPP e Integrações",
-      description:
-        "Implementação técnica controlada de customizações, pontos de entrada e integrações para evolução segura do ERP.",
-      path: ROUTES.SERVICE_CUSTOM,
-    },
-    {
       icon: Database,
       title: "Administração de Banco de Dados",
       subtitle: "SQL Server e Oracle",
@@ -35,6 +27,14 @@ export default function ServicesSection() {
       description:
         "Central de serviços estruturada com controle de criticidade, indicadores de atendimento e SLA formalizado.",
       path: ROUTES.SERVICE_AMS,
+    },
+     {
+      icon: Code,
+      title: "Desenvolvimento e Customizações",
+      subtitle: "ADVPL, TLPP e Integrações",
+      description:
+        "Implementação técnica controlada de customizações, pontos de entrada e integrações para evolução segura do ERP.",
+      path: ROUTES.SERVICE_CUSTOM,
     },
   ];
 
