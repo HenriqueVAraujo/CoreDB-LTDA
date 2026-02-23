@@ -1,11 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import nodemailer from "nodemailer";
 
-export default async function handler(
-  req: VercelRequest,
-  res: VercelResponse
-) {
-  // 1. Bloqueia métodos que não sejam POST
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Método não permitido" });
   }
@@ -13,18 +9,22 @@ export default async function handler(
   try {
     const data = req.body;
 
-    // 2. Configuração do Transmissor (SMTP)
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT),
-      secure: process.env.SMTP_PORT === "465", // True para 465, False para 587
+      // Ajuste automático: porta 465 usa secure true, outras (como 587) usam false
+      secure: process.env.SMTP_PORT === "465", 
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
+      // Adicionado para garantir compatibilidade com servidores mais rígidos
+      tls: {
+        rejectUnauthorized: false
+      },
+      connectionTimeout: 10000, // 10 segundos de limite
     });
 
-    // 3. Lógica de Prioridade (Lead Scoring)
     const priority =
       data.urgency === "immediate"
         ? "🚨 LEAD CRÍTICO"
@@ -32,14 +32,13 @@ export default async function handler(
         ? "⚡ LEAD ESTRATÉGICO"
         : "Novo Lead";
 
-    // 4. Envio do E-mail
     await transporter.sendMail({
       from: `"CoreDB Site" <${process.env.SMTP_USER}>`,
       to: process.env.RECEIVER_EMAIL,
       subject: `${priority} - ${data.company || "Empresa não informada"}`,
       html: `
-        <div style="font-family: sans-serif; color: #333;">
-          <h2>Novo Lead Recebido pelo Site</h2>
+        <div style="font-family: sans-serif; color: #333; padding: 20px; border: 1px solid #eee;">
+          <h2 style="color: #0B1C2D;">Novo Lead Recebido pelo Site</h2>
           <hr/>
           <p><strong>Nome:</strong> ${data.name}</p>
           <p><strong>Email:</strong> ${data.email}</p>
@@ -50,8 +49,8 @@ export default async function handler(
           <p><strong>Urgência:</strong> ${data.urgency}</p>
           <br/>
           <p><strong>Mensagem:</strong></p>
-          <div style="background: #f4f4f4; pading: 15px; border-radius: 5px;">
-            ${data.message}
+          <div style="background: #f4f4f4; padding: 15px; border-radius: 5px;">
+            ${data.message || "Nenhuma mensagem enviada."}
           </div>
         </div>
       `,
@@ -59,8 +58,12 @@ export default async function handler(
 
     return res.status(200).json({ success: true });
   } catch (error: any) {
-    // Log detalhado que aparecerá no painel da Vercel
+    // Esse log é vital: ele aparecerá na aba "Logs" da Vercel em vermelho
     console.error("ERRO NO ENVIO DE EMAIL:", error.message);
-    return res.status(500).json({ success: false, error: error.message });
+    return res.status(500).json({ 
+      success: false, 
+      error: "Falha técnica no envio",
+      details: error.message 
+    });
   }
 }
