@@ -3,7 +3,7 @@ export default function Hero() {
     const url =
       'https://wa.me/553191873435?text=' +
       encodeURIComponent(
-        'Olá, preciso de um diagnóstico técnico para meu ambiente TOTVS (Protheus, RM, Datasul ou Fluig). Estamos enfrentando problemas de performance ou instabilidade no banco de dados.'
+        'Olá, gostaria de conversar sobre sustentação estratégica e continuidade operacional para meu ambiente TOTVS.'
       );
     window.open(url, '_blank');
   };
@@ -16,82 +16,50 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative bg-[#0B1C2D] min-h-[65vh] flex items-center py-12 md:py-24">
-      <div
-        className="container mx-auto px-4 flex flex-col items-center md:items-start max-w-4xl animate-hero-fadein"
-        style={{ color: '#fff', zIndex: 1 }}
-      >
+    <section className="relative bg-[#0B1C2D] min-h-[75vh] flex items-center py-24">
+      <div className="container mx-auto px-4 max-w-4xl text-white">
+
         {/* HEADLINE */}
-        <h1
-          className="text-center md:text-left text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-6"
-          style={{ textShadow: '0 2px 8px rgba(11,28,45,0.12)' }}
-        >
-          ERP lento? Banco travando?<br className="hidden md:block" />
-          <span style={{ color: '#1DAEFF' }}>
-            Restauramos a performance do seu ambiente TOTVS.
-          </span>
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+          Continuidade operacional para ambientes TOTVS e tecnologia crítica.
         </h1>
 
         {/* SUBHEADLINE */}
-        <h2
-          className="text-center md:text-left text-lg md:text-2xl font-light mb-6 max-w-3xl"
-          style={{ color: 'rgba(255,255,255,0.85)' }}
-        >
-          Especialistas em diagnóstico profundo, tuning de banco de dados e
-          estabilidade operacional para Protheus, RM, Datasul, Fluig,
-          SQL Server e Oracle.
-        </h2>
+        <p className="text-lg md:text-xl text-white/80 mb-8 max-w-3xl">
+          Sustentação estratégica, governança técnica e acompanhamento contínuo
+          para Protheus, RM, Datasul, Fluig, bancos de dados e gestão estruturada com GLPI.
+          Atuamos como parceiros de longo prazo, garantindo estabilidade,
+          previsibilidade e evolução constante da sua operação.
+        </p>
 
-        {/* FRASE DE IMPACTO */}
-        <div className="flex flex-col md:flex-row md:items-center gap-4 w-full mb-6">
-          <span
-            className="block text-base md:text-lg font-medium border-l-4 pl-4 py-1"
-            style={{ color: 'rgba(255,255,255,0.75)', borderColor: '#1DAEFF' }}
-          >
-            Performance. Estabilidade. Segurança. Continuidade operacional.
-          </span>
-        </div>
-
-        {/* PROVA TÉCNICA */}
-        <div
-          className="text-sm md:text-base mb-8 text-center md:text-left"
-          style={{ color: 'rgba(255,255,255,0.65)' }}
-        >
-          +100 ambientes analisados • Redução média de 30% em tempo de processamento •
-          Diagnóstico técnico em até 48h
+        {/* PROVA */}
+        <div className="text-sm text-white/60 mb-10">
+          Ambientes críticos exigem especialistas • Sustentação com responsabilidade técnica • Compromisso contínuo com sua operação
         </div>
 
         {/* BOTÕES */}
-        <div className="flex flex-col sm:flex-row gap-4 w-full">
+        <div className="flex flex-col sm:flex-row gap-4">
           <button
             onClick={handleCTAClick}
-            className="w-full sm:w-auto font-bold rounded-lg px-8 py-4 text-base md:text-lg shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#1DAEFF] focus:ring-offset-2"
+            className="font-bold rounded-lg px-8 py-4 text-lg shadow-lg transition-all duration-300 hover:scale-[1.02]"
             style={{ background: '#1DAEFF', color: '#0B1C2D' }}
           >
-            Solicitar diagnóstico do meu ERP
+            Falar com especialista
           </button>
 
           <button
-            type="button"
             onClick={handleMethodologyClick}
-            className="w-full sm:w-auto font-semibold rounded-lg px-8 py-4 text-base md:text-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#1DAEFF] focus:ring-offset-2 border"
+            className="font-semibold rounded-lg px-8 py-4 text-lg border transition-all duration-300 hover:scale-[1.02]"
             style={{
               background: 'transparent',
               borderColor: '#1DAEFF',
               color: '#1DAEFF'
             }}
-            onMouseOver={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = '#1DAEFF';
-              (e.currentTarget as HTMLButtonElement).style.color = '#0B1C2D';
-            }}
-            onMouseOut={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = 'transparent';
-              (e.currentTarget as HTMLButtonElement).style.color = '#1DAEFF';
-            }}
           >
-            Entender a metodologia
+            Conhecer nossa abordagem
           </button>
         </div>
+
       </div>
     </section>
   );
