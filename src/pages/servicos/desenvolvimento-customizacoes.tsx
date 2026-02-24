@@ -10,7 +10,7 @@ export default function DesenvolvimentoCustomizacoes() {
     window.open(url, '_blank');
   };
 
-  const features = [
+  const diferenciais = [
     {
       icon: Share2,
       title: 'Integrações Inteligentes',
@@ -33,7 +33,7 @@ export default function DesenvolvimentoCustomizacoes() {
     }
   ];
 
-  const methodology = [
+  const metodologia = [
     {
       step: '1',
       title: 'Imersão Técnica',
@@ -41,7 +41,7 @@ export default function DesenvolvimentoCustomizacoes() {
     },
     {
       step: '2',
-      title: 'Coding & Best Practices',
+      title: 'Desenvolvimento e Boas Práticas',
       description: 'Desenvolvimento focado em escalabilidade, com código limpo, documentado e fácil de manter.'
     },
     {
@@ -51,7 +51,7 @@ export default function DesenvolvimentoCustomizacoes() {
     },
     {
       step: '4',
-      title: 'Go-Live Assistido',
+      title: 'Acompanhamento de Go-Live',
       description: 'Acompanhamento em tempo real durante a virada de chave, garantindo o sucesso imediato da solução.'
     }
   ];
@@ -59,11 +59,11 @@ export default function DesenvolvimentoCustomizacoes() {
   return (
     <main className="min-h-screen bg-white">
       
-      {/* Hero Section */}
+      {/* Seção Hero */}
       <section className="relative bg-[#0B1C2D] min-h-[80vh] flex items-center py-20">
         <div className="container mx-auto px-4 max-w-5xl text-white">
           <span className="text-[var(--coredb-cyan)] font-bold tracking-widest uppercase text-sm mb-4 inline-block">
-            Software Engineering for TOTVS Ecosystem
+            Engenharia de Software para o Ecossistema TOTVS
           </span>
 
           <h1 
@@ -89,12 +89,12 @@ export default function DesenvolvimentoCustomizacoes() {
             
             <div className="flex items-center gap-6 px-4 border-l border-white/10">
               <div className="text-center">
-                <p className="text-2xl font-bold text-white">Clean</p>
-                <p className="text-xs text-white/40 uppercase tracking-widest">Code Design</p>
+                <p className="text-2xl font-bold text-white">Código</p>
+                <p className="text-xs text-white/40 uppercase tracking-widest">Limpo e Seguro</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl font-bold text-white">Fast</p>
-                <p className="text-xs text-white/40 uppercase tracking-widest">Integrations</p>
+                <p className="text-2xl font-bold text-white">Alta</p>
+                <p className="text-xs text-white/40 uppercase tracking-widest">Integração</p>
               </div>
             </div>
           </div>
@@ -105,7 +105,7 @@ export default function DesenvolvimentoCustomizacoes() {
         </div>
       </section>
 
-      {/* Diferenciais Section */}
+      {/* Seção de Diferenciais */}
       <section className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mb-20">
@@ -122,8 +122,8 @@ export default function DesenvolvimentoCustomizacoes() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => {
-              const Icon = feature.icon;
+            {diferenciais.map((item, index) => {
+              const Icon = item.icon;
               return (
                 <div
                   key={index}
@@ -133,10 +133,10 @@ export default function DesenvolvimentoCustomizacoes() {
                     <Icon className="w-7 h-7 text-[var(--coredb-cyan)] group-hover:text-[var(--coredb-dark)] transition-colors" />
                   </div>
                   <h3 className="text-xl font-bold text-[var(--coredb-dark)] mb-4 tracking-tight">
-                    {feature.title}
+                    {item.title}
                   </h3>
                   <p className="text-[#6B7280] leading-relaxed text-sm">
-                    {feature.description}
+                    {item.description}
                   </p>
                 </div>
               );
@@ -145,16 +145,16 @@ export default function DesenvolvimentoCustomizacoes() {
         </div>
       </section>
 
-      {/* Methodology Section */}
+      {/* Seção de Metodologia */}
       <section className="py-20 md:py-32 bg-[#F9FAFB]">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl font-bold text-[var(--coredb-dark)] mb-6italic">Ciclo de Desenvolvimento Ágil</h2>
+            <h2 className="text-4xl font-bold text-[var(--coredb-dark)] mb-6">Ciclo de Desenvolvimento Ágil</h2>
             <div className="h-1.5 w-24 bg-[var(--coredb-cyan)] mx-auto rounded-full" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-            {methodology.map((item, index) => (
+            {metodologia.map((item, index) => (
               <div key={index} className="relative">
                 <div className="text-8xl font-black text-[var(--coredb-cyan)]/10 absolute -top-8 -left-4 select-none">
                   {item.step}
@@ -169,7 +169,7 @@ export default function DesenvolvimentoCustomizacoes() {
         </div>
       </section>
 
-      {/* Bottom CTA */}
+      {/* Rodapé CTA */}
       <section className="py-24 bg-[#0B1C2D] text-white text-center">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto p-12 rounded-3xl border border-white/5 bg-gradient-to-br from-[#0B1C2D] to-[#152a3d] shadow-2xl">
