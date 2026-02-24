@@ -1,5 +1,4 @@
 import { Shield, Clock, BarChart3, ArrowRight, CheckCircle2, Headphones } from 'lucide-react';
-import { Link } from 'wouter';
 
 export default function SupportAMS() {
   const handleCTAClick = () => {
@@ -103,12 +102,6 @@ export default function SupportAMS() {
             >
               Contratar Sustentação AMS
             </button>
-            <Link 
-              href="/" 
-              className="flex items-center justify-center font-semibold text-white/40 hover:text-white transition-all duration-300"
-            >
-              Voltar para Home
-            </Link>
           </div>
         </div>
 
