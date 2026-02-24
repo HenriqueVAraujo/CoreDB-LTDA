@@ -78,16 +78,6 @@ export default function Footer() {
                 </div>
                 <span className="text-sm text-white/60 group-hover:text-white transition-colors">(31) 99187-3435</span>
               </a>
-
-              {/* Redes sociais */}
-              <div className="flex gap-3 mt-2 justify-center md:justify-start">
-                <a href="https://linkedin.com/in/coredb-consultoria-83319236b" target="_blank" rel="noopener noreferrer" className="hover:text-[#1DAEFF] transition-colors">
-                  <Linkedin className="w-5 h-5" />
-                </a>
-                <a href="https://instagram.com/coredb_" target="_blank" rel="noopener noreferrer" className="hover:text-[#1DAEFF] transition-colors">
-                  <Instagram className="w-5 h-5" />
-                </a>
-              </div>
             </div>
           </div>
         </div>
