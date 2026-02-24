@@ -94,10 +94,11 @@ export default function SupportAMS() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-6 mt-12">
+          {/* Botões - Única Ação (WhatsApp) */}
+          <div className="mt-12">
             <button
               onClick={handleCTAClick}
-              className="font-bold rounded-lg px-10 py-5 text-lg shadow-lg transition-all duration-300 hover:scale-105"
+              className="w-full sm:w-auto font-bold rounded-lg px-10 py-5 text-lg shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
               style={{ background: 'var(--coredb-cyan)', color: 'var(--coredb-dark)' }}
             >
               Contratar Sustentação AMS
