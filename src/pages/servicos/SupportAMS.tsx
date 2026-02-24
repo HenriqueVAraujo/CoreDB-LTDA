@@ -1,4 +1,4 @@
-import { Shield, Clock, BarChart3, Users, ArrowRight, CheckCircle2, Headphones } from 'lucide-react';
+import { Shield, Clock, BarChart3, ArrowRight, CheckCircle2, Headphones } from 'lucide-react';
 import { Link } from 'wouter';
 
 export default function SupportAMS() {
@@ -103,8 +103,11 @@ export default function SupportAMS() {
             >
               Contratar Sustentação AMS
             </button>
-            <Link href="/" className="flex items-center justify-center text-white/50 hover:text-white transition-colors px-6">
-              Voltar para a Home
+            <Link 
+              href="/" 
+              className="flex items-center justify-center font-semibold text-white/40 hover:text-white transition-all duration-300"
+            >
+              Voltar para Home
             </Link>
           </div>
         </div>
@@ -118,11 +121,14 @@ export default function SupportAMS() {
       <section className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-[var(--coredb-dark)] mb-6">
+            <h2 
+              className="text-4xl md:text-5xl font-bold text-[var(--coredb-dark)] mb-6"
+              style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
+            >
               Por que nosso AMS <br />
               <span className="text-[var(--coredb-cyan)]">é referência no mercado.</span>
             </h2>
-            <p className="text-lg text-[#4B5563]">
+            <p className="text-lg text-[#4B5563] leading-relaxed">
               Transformamos chamados técnicos em inteligência de negócio. Nossa meta é reduzir o número de problemas, e não apenas respondê-los.
             </p>
           </div>
@@ -133,9 +139,9 @@ export default function SupportAMS() {
               return (
                 <div key={index} className="group bg-[#F8FAFC] rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300">
                   <div className="w-12 h-12 rounded-xl bg-[var(--coredb-cyan)]/10 flex items-center justify-center mb-6 group-hover:bg-[var(--coredb-cyan)] transition-colors">
-                    <Icon className="w-6 h-6 text-[var(--coredb-cyan)] group-hover:text-white" />
+                    <Icon className="w-6 h-6 text-[var(--coredb-cyan)] group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-xl font-bold text-[var(--coredb-dark)] mb-3">{item.title}</h3>
+                  <h3 className="text-xl font-bold text-[var(--coredb-dark)] mb-3 tracking-tight">{item.title}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">{item.description}</p>
                 </div>
               );
@@ -144,17 +150,21 @@ export default function SupportAMS() {
         </div>
       </section>
 
-      {/* Como Funciona */}
+      {/* Metodologia Section */}
       <section className="py-20 md:py-32 bg-[#F9FAFB]">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-[var(--coredb-dark)] mb-16">Metodologia de Atendimento</h2>
+          <div className="max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-[var(--coredb-dark)] mb-6">Metodologia de Atendimento</h2>
+            <div className="h-1.5 w-24 bg-[var(--coredb-cyan)] mx-auto rounded-full" />
+          </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {metodologia.map((item, index) => (
-              <div key={index} className="relative p-8 bg-white rounded-2xl shadow-sm border border-gray-100">
+              <div key={index} className="relative p-8 bg-white rounded-2xl shadow-sm border border-gray-100 hover:border-[var(--coredb-cyan)]/30 transition-colors">
                 <span className="absolute -top-4 left-1/2 -translate-x-1/2 w-10 h-10 bg-[var(--coredb-cyan)] text-[var(--coredb-dark)] font-bold flex items-center justify-center rounded-full shadow-lg">
                   {item.step}
                 </span>
-                <h3 className="text-lg font-bold mt-4 mb-3">{item.title}</h3>
+                <h3 className="text-lg font-bold mt-4 mb-3 text-[var(--coredb-dark)]">{item.title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{item.description}</p>
               </div>
             ))}
