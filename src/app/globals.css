@@ -112,11 +112,13 @@ body {
   color: var(--foreground);
   line-height: 1.6;
   overflow-x: hidden;
+  font-family: var(--font-roboto), 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
+  font-family: var(--font-source-sans), sans-serif;
 }
 
 h1 { font-size: 3rem; letter-spacing: -0.02em; }

@@ -2,14 +2,15 @@ import type { Metadata } from 'next'
 import DBAView from '@/views/servicos/dba'
 
 export const metadata: Metadata = {
-  title: 'DBA SQL Server e Oracle — Gestão de Banco de Dados | CoreDB',
+  title: 'DBA SQL Server e Oracle em Belo Horizonte — Banco de Dados TOTVS | CoreDB',
   description:
-    'Administração profissional de SQL Server e Oracle. Health Check, SQL Tuning, Disaster Recovery e monitoramento 24/7 para ambientes críticos. Consultoria DBA com base em BH, atendimento nacional.',
+    'DBA SQL Server e Oracle em Belo Horizonte (BH) para ambientes TOTVS críticos. Health Check, SQL Tuning, Disaster Recovery e monitoramento 24/7. Atendimento remoto em todo o Brasil.',
   keywords: [
-    'DBA SQL Server',
-    'DBA Oracle',
-    'administração banco de dados',
-    'DBA TOTVS',
+    'DBA SQL Server Belo Horizonte',
+    'DBA Oracle BH',
+    'DBA banco de dados TOTVS',
+    'administração banco de dados BH',
+    'DBA TOTVS remoto',
     'health check banco de dados',
     'SQL tuning',
     'disaster recovery',
@@ -18,9 +19,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: '/servicos/dba' },
   openGraph: {
-    title: 'DBA SQL Server e Oracle — Gestão de Banco de Dados | CoreDB',
+    title: 'DBA SQL Server e Oracle em Belo Horizonte — Banco de Dados TOTVS | CoreDB',
     description:
-      'Gestão especializada de SQL Server e Oracle. Health Check, tuning, Disaster Recovery e monitoramento 24/7. Atendimento nacional.',
+      'DBA especializado em SQL Server e Oracle para TOTVS em BH. Health Check, SQL Tuning, Disaster Recovery e monitoramento 24/7. Atendimento nacional.',
     url: '/servicos/dba',
   },
 }
@@ -30,13 +31,22 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Administração de Banco de Dados — DBA SQL Server e Oracle',
   description:
-    'Gestão profissional de bancos de dados SQL Server e Oracle. Health Check, SQL Tuning avançado, Disaster Recovery, segurança e monitoramento 24/7.',
+    'Gestão profissional de SQL Server e Oracle com base em Belo Horizonte, MG. Health Check, SQL Tuning avançado, Disaster Recovery, segurança e monitoramento 24/7. Atendimento remoto nacional.',
   provider: {
-    '@type': 'Organization',
-    name: 'CoreDB',
+    '@type': 'LocalBusiness',
+    name: 'CoreDB LTDA',
     url: 'https://www.coredb.com.br',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Belo Horizonte',
+      addressRegion: 'MG',
+      addressCountry: 'BR',
+    },
   },
-  areaServed: { '@type': 'Country', name: 'Brasil' },
+  areaServed: [
+    { '@type': 'Country', name: 'Brasil' },
+    { '@type': 'City', name: 'Belo Horizonte' },
+  ],
   serviceType: 'Administração de Banco de Dados',
 }
 

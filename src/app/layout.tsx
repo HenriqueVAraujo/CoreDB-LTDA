@@ -58,7 +58,7 @@ export const metadata: Metadata = {
       'Consultoria especializada em ERP TOTVS e Banco de Dados. Missão crítica, performance e SLA contratual. Atendemos todo o Brasil.',
     images: [
       {
-        url: '/images/og-default.png',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
         alt: 'CoreDB — Consultoria TOTVS e DBA',
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     title: 'CoreDB | Consultoria TOTVS e DBA',
     description:
       'Especialistas em ERP TOTVS e Banco de Dados. Missão crítica, SLA contratual, atendimento nacional.',
-    images: ['/images/og-default.png'],
+    images: ['/opengraph-image'],
   },
   alternates: {
     canonical: '/',

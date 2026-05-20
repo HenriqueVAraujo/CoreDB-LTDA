@@ -1,41 +1,46 @@
-import { GitBranch, ShieldCheck, BarChart3 } from "lucide-react";
+'use client'
+
+import { Activity, FileText, BarChart3 } from "lucide-react";
 
 export default function GuaranteeSection() {
   const guarantees = [
     {
-      icon: GitBranch,
-      title: "Modelo de Entrega Estruturado",
+      icon: Activity,
+      label: "Zabbix",
+      title: "Monitoramento Proativo 24/7",
       description:
-        "Ciclos técnicos organizados com planejamento formal, validação documentada e evolução controlada do ambiente.",
+        "Infraestrutura de monitoramento enterprise via Zabbix configurada para seus servidores TOTVS e banco de dados. Alertas chegam antes do seu usuário perceber qualquer instabilidade.",
       features: [
-        "Ciclos planejados",
-        "Validação técnica formal",
-        "Controle de mudanças",
-        "Evolução incremental estruturada",
+        "Alertas de CPU, memória e disco em tempo real",
+        "Monitoramento de processos críticos do ERP",
+        "Histórico de incidentes e tendências de capacidade",
+        "Escalada automática por nível de criticidade",
       ],
     },
     {
-      icon: ShieldCheck,
-      title: "SLA Contratual Formalizado",
+      icon: FileText,
+      label: "GLPI",
+      title: "Gestão Formal de Chamados",
       description:
-        "Definição clara de níveis de criticidade, tempos de resposta garantidos e métricas objetivas de desempenho.",
+        "Governança via GLPI com rastreabilidade completa de cada atendimento. Nada fica em e-mail ou WhatsApp — cada chamado tem histórico, prazo e responsável definido em contrato.",
       features: [
-        "SLA crítico definido em contrato",
-        "Indicadores mensuráveis",
-        "Segurança jurídica",
-        "Cláusulas de responsabilidade",
+        "SLA crítico definido e auditável em contrato",
+        "Histórico completo de interações e resoluções",
+        "Classificação por urgência e impacto operacional",
+        "Relatórios mensais de volume e tendências",
       ],
     },
     {
       icon: BarChart3,
-      title: "Governança e Transparência",
+      label: "Grafana",
+      title: "Dashboards de SLA em Tempo Real",
       description:
-        "Acompanhamento contínuo por indicadores operacionais e acesso integral ao histórico técnico da operação.",
+        "Visibilidade total da operação via dashboards Grafana. Métricas de desempenho do banco, tempo de resposta do ERP e indicadores de SLA — disponíveis para você a qualquer momento.",
       features: [
-        "Indicadores operacionais",
-        "Histórico completo de chamados",
-        "Relatórios periódicos",
-        "Visibilidade total da operação",
+        "KPIs operacionais do ambiente TOTVS",
+        "Performance de banco de dados em tempo real",
+        "Indicadores de cumprimento de SLA mensal",
+        "Base para planejamento de capacidade e crescimento",
       ],
     },
   ];
@@ -44,50 +49,49 @@ export default function GuaranteeSection() {
     <section className="py-24 lg:py-32 bg-[var(--coredb-dark)] text-white">
       <div className="container mx-auto px-4 max-w-6xl">
 
-        {/* Header */}
         <div className="mb-20 max-w-3xl">
           <span className="text-[var(--coredb-cyan)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
-            Compromissos Operacionais
+            Infraestrutura de Sustentação
           </span>
 
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8">
-            Garantia Estruturada em Contrato
+            Não vendemos suporte. <br />
+            <span className="text-[var(--coredb-cyan)]">Entregamos blindagem operacional.</span>
           </h2>
 
           <p className="text-lg md:text-xl text-white/70 leading-relaxed">
-            Nossa atuação é formalizada por métricas claras, níveis de serviço
-            definidos e governança contínua da operação.
+            Enquanto a maioria apaga incêndios, a CoreDB opera com stack de monitoramento enterprise
+            para antecipar e prevenir qualquer instabilidade no seu ambiente TOTVS.
           </p>
         </div>
 
-        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {guarantees.map((guarantee, index) => {
             const Icon = guarantee.icon;
-
             return (
               <div
                 key={index}
                 className="flex flex-col h-full bg-white/5 rounded-xl p-8 border border-white/10 hover:border-[var(--coredb-cyan)]/40 transition-all duration-300"
               >
-                {/* Icon */}
-                <div className="mb-6">
-                  <Icon className="w-7 h-7 text-[var(--coredb-cyan)]" />
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-lg bg-[var(--coredb-cyan)]/10 flex items-center justify-center">
+                    <Icon className="w-5 h-5 text-[var(--coredb-cyan)]" />
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-widest text-[var(--coredb-cyan)]">
+                    {guarantee.label}
+                  </span>
                 </div>
 
-                {/* Content */}
-                <h3 className="text-lg font-semibold mb-4">
-                  {guarantee.title}
-                </h3>
+                <h3 className="text-lg font-semibold mb-4">{guarantee.title}</h3>
 
                 <p className="text-white/70 text-sm leading-relaxed mb-6">
                   {guarantee.description}
                 </p>
 
-                <div className="space-y-3 text-sm text-white/70">
+                <div className="space-y-3 text-sm text-white/60 mt-auto">
                   {guarantee.features.map((feature, idx) => (
                     <div key={idx} className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--coredb-cyan)] mt-2" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--coredb-cyan)] mt-2 shrink-0" />
                       <span>{feature}</span>
                     </div>
                   ))}
@@ -97,15 +101,14 @@ export default function GuaranteeSection() {
           })}
         </div>
 
-        {/* Bottom Institutional Message */}
         <div className="mt-24 pt-16 border-t border-white/10">
           <div className="max-w-2xl">
             <p className="text-lg text-white/70 leading-relaxed">
-              Mais do que execução técnica, entregamos{" "}
+              Zabbix, GLPI e Grafana não são diferenciais — são{" "}
               <span className="font-semibold text-white">
-                previsibilidade operacional e segurança contratual
+                requisitos mínimos para uma sustentação séria.
               </span>{" "}
-              para ambientes críticos.
+              Seu ERP merece mais do que um técnico de plantão.
             </p>
           </div>
         </div>

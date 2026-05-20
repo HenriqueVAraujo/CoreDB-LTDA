@@ -72,8 +72,8 @@ export default function SupportAMS() {
             className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight mb-6 text-left"
             style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
           >
-            Suporte AMS TOTVS com SLA Contratual: <br />
-            <span className="text-[var(--coredb-cyan)]">Sua Operação Não Para.</span>
+            Suporte AMS TOTVS em BH e Todo o Brasil: <br />
+            <span className="text-[var(--coredb-cyan)]">SLA Contratual. Sua Operação Não Para.</span>
           </h1>
 
           <p className="text-lg md:text-xl text-white/70 mb-10 max-w-3xl leading-relaxed">

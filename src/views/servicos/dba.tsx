@@ -72,8 +72,8 @@ export default function DBA() {
             className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight mb-6 text-left"
             style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
           >
-            DBA SQL Server e Oracle para <br />
-            <span className="text-[var(--coredb-cyan)]">Ambientes TOTVS Críticos.</span>
+            DBA SQL Server e Oracle em Belo Horizonte <br />
+            <span className="text-[var(--coredb-cyan)]">para Ambientes TOTVS Críticos.</span>
           </h1>
 
           <p className="text-lg md:text-xl text-white/70 mb-10 max-w-3xl leading-relaxed">

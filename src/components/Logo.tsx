@@ -1,46 +1,55 @@
+import Image from 'next/image'
+
 interface LogoProps {
-  variant?: 'header' | 'footer' | 'full';
-  className?: string;
+  variant?: 'header' | 'footer' | 'full'
+  className?: string
 }
+
+// Dimensões intrínsecas das imagens (obtidas com sharp):
+// coredb-logoescura.png → 1418×498
+// coredb-logo.png       → 1137×419
 
 export default function Logo({ variant = 'header', className = '' }: LogoProps) {
   switch (variant) {
     case 'header':
-      // Header: Logo com texto "CoreDB" - fundo branco
       return (
         <div className={`flex items-center gap-2 group ${className}`}>
-          {/* Logo completa - apenas o ícone do cubo visível */}
-          <img 
-            src="/images/coredb-logoescura.png" 
-            alt="CoreDB" 
-            className="h-40 w-auto object-contain transition-all duration-300 group-hover:opacity-80"
+          <Image
+            src="/images/coredb-logoescura.png"
+            alt="CoreDB — Consultoria TOTVS e DBA"
+            width={1418}
+            height={498}
+            className="h-auto w-full object-contain transition-all duration-300 group-hover:opacity-80"
+            priority
           />
         </div>
-      );
+      )
 
     case 'footer':
-      // Footer: Logo apenas - fundo escuro
       return (
-        <img 
-          src="/images/coredb-logo.png" 
-          alt="CoreDB" 
-          className={`h-42 w-auto object-contain transition-all duration-300 hover:opacity-90 ${className}`}
+        <Image
+          src="/images/coredb-logo.png"
+          alt="CoreDB — Consultoria TOTVS e DBA"
+          width={1137}
+          height={419}
+          className={`h-auto object-contain transition-all duration-300 hover:opacity-90 ${className}`}
         />
-      );
+      )
 
     case 'full':
-      // Full: Logo completa com texto (para hero ou seções especiais)
       return (
         <div className={`flex items-center gap-4 group ${className}`}>
-          <img 
-            src="/images/coredb-logo.png" 
-            alt="CoreDB" 
-            className="h-24 w-auto object-contain transition-all duration-300 group-hover:opacity-90"
+          <Image
+            src="/images/coredb-logo.png"
+            alt="CoreDB — Consultoria TOTVS e DBA"
+            width={1137}
+            height={419}
+            className="h-auto w-auto object-contain transition-all duration-300 group-hover:opacity-90"
           />
         </div>
-      );
+      )
 
     default:
-      return null;
+      return null
   }
 }

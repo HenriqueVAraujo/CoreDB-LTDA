@@ -1,44 +1,46 @@
+'use client'
+
 import { CheckCircle2 } from "lucide-react";
 
 export default function AboutSection() {
   const areas = [
     {
-      title: "TOTVS RM",
+      title: "TOTVS Protheus e RM",
       description:
-        "Implantação, tuning e sustentação estruturada dos módulos RM com foco em estabilidade e governança operacional.",
-    },
-    {
-      title: "TOTVS Protheus",
-      description:
-        "Parametrização avançada, integrações seguras e otimização contínua para ambientes críticos.",
+        "Parametrização avançada, integrações seguras e sustentação estruturada dos módulos críticos com foco em estabilidade, governança e performance contínua.",
     },
     {
       title: "Administração de Banco de Dados (DBA)",
       description:
-        "Monitoramento, performance, alta disponibilidade e políticas formais de backup para SQL Server e Oracle.",
+        "Monitoramento proativo, SQL Tuning, alta disponibilidade e políticas formais de backup para SQL Server e Oracle em ambientes de missão crítica.",
     },
     {
       title: "Fluig e Automação de Processos",
       description:
-        "Desenvolvimento de fluxos, portais e integrações que conectam processos e reduzem dependências manuais.",
+        "Desenvolvimento de fluxos, portais e integrações que eliminam trabalho manual, conectam sistemas e reduzem dependências operacionais.",
+    },
+    {
+      title: "Customizações e Integrações ERP",
+      description:
+        "Desenvolvimento em ADVPL, TLPP e PO-UI para Protheus. Integrações via API REST com CRMs, e-commerce e plataformas financeiras com segurança e rastreabilidade.",
     },
   ];
 
   const differentials = [
     {
-      title: "Atuação Direta e Técnica",
+      title: "Stack de Monitoramento Enterprise",
       description:
-        "Relacionamento direto com especialista responsável, garantindo agilidade e profundidade técnica.",
+        "Operamos com Zabbix para alertas proativos de infraestrutura, Grafana para dashboards de SLA e GLPI para gestão formal de chamados — a mesma stack de grandes operações, acessível para o seu negócio.",
     },
     {
-      title: "Visão Integrada de ERP e Banco",
+      title: "Visão Integrada: ERP + Banco de Dados",
       description:
-        "Atuação simultânea na aplicação e na base de dados, eliminando conflitos entre camadas técnicas.",
+        "Atuamos simultaneamente na aplicação e na camada de dados, eliminando o conflito entre times e garantindo responsabilidade técnica ponta a ponta.",
     },
     {
-      title: "Modelo Flexível de Contratação",
+      title: "Contratos Mensais com SLA Definido",
       description:
-        "Estrutura adaptável à criticidade da operação, com definição clara de SLA e escopo técnico.",
+        "Modelo de sustentação contínua — não suporte avulso. Escopo claro, SLA contratual e evolução planejada do ambiente a cada ciclo.",
     },
   ];
 
@@ -46,7 +48,6 @@ export default function AboutSection() {
     <section className="py-24 lg:py-32 bg-white">
       <div className="container mx-auto px-4 max-w-6xl">
 
-        {/* Header */}
         <div className="mb-20 max-w-3xl">
           <span className="text-[var(--coredb-cyan)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
             Sobre a CoreDB
@@ -57,64 +58,50 @@ export default function AboutSection() {
           </h2>
 
           <p className="text-lg md:text-xl text-[#4B5563] leading-relaxed">
-            A CoreDB é uma consultoria independente focada em sustentação,
-            governança e performance de ambientes TOTVS e bancos de dados.
-            Atuamos em operações que exigem estabilidade contínua e controle técnico rigoroso.
+            A CoreDB é uma consultoria independente focada em sustentação, governança e performance
+            de ambientes TOTVS e bancos de dados. Operamos com infraestrutura de monitoramento
+            enterprise — Zabbix, Grafana e GLPI — para garantir estabilidade contínua e controle
+            técnico rigoroso nas operações que não podem parar.
           </p>
         </div>
 
-        {/* Areas of Expertise */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-24">
           {areas.map((area, index) => (
             <div
               key={index}
               className="flex items-start gap-4 border border-gray-200 rounded-xl p-8"
             >
-              <CheckCircle2 className="w-5 h-5 text-[var(--coredb-cyan)] mt-1" />
-
+              <CheckCircle2 className="w-5 h-5 text-[var(--coredb-cyan)] mt-1 shrink-0" />
               <div>
-                <h3 className="text-lg font-semibold text-[var(--coredb-dark)] mb-3">
-                  {area.title}
-                </h3>
-                <p className="text-[#4B5563] leading-relaxed">
-                  {area.description}
-                </p>
+                <h3 className="text-lg font-semibold text-[var(--coredb-dark)] mb-3">{area.title}</h3>
+                <p className="text-[#4B5563] leading-relaxed">{area.description}</p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Differentials */}
         <div className="border-t border-gray-200 pt-20">
           <h3 className="text-2xl md:text-3xl font-semibold text-[var(--coredb-dark)] mb-16">
-            Estrutura de Atuação
+            Como Atuamos
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {differentials.map((diff, index) => (
               <div key={index}>
-                <div className="text-[var(--coredb-cyan)] font-bold mb-4">
+                <div className="text-[var(--coredb-cyan)] font-bold mb-4 text-lg">
                   0{index + 1}
                 </div>
-
-                <h4 className="text-lg font-semibold text-[var(--coredb-dark)] mb-3">
-                  {diff.title}
-                </h4>
-
-                <p className="text-[#4B5563] leading-relaxed">
-                  {diff.description}
-                </p>
+                <h4 className="text-lg font-semibold text-[var(--coredb-dark)] mb-3">{diff.title}</h4>
+                <p className="text-[#4B5563] leading-relaxed">{diff.description}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Bottom Message */}
         <div className="mt-24 pt-16 border-t border-gray-200">
           <p className="text-lg text-[#4B5563] max-w-2xl leading-relaxed">
-            Atuamos de forma integrada no ERP e na camada de dados,
-            garantindo visão técnica ponta a ponta e eliminando riscos
-            causados por fragmentação de responsabilidade.
+            Base em Belo Horizonte, MG — atendimento para empresas em todo o Brasil.
+            Contratos de sustentação mensal com escopo técnico e SLA formalizados desde o primeiro dia.
           </p>
         </div>
 

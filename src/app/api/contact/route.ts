@@ -2,17 +2,14 @@ import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
 const traducoes: Record<string, string> = {
-  small: 'Até 100 colaboradores',
-  medium: '100 a 500 colaboradores',
-  large: 'Acima de 500 colaboradores',
-  instability: 'Instabilidade ou lentidão recorrente',
-  monitoring: 'Falta de monitoramento estruturado',
-  project: 'Projeto crítico em andamento',
-  database: 'Revisão completa de banco de dados',
-  support: 'Sustentação especializada contínua',
+  instability: 'Instabilidade ou lentidão recorrente no ERP',
+  monitoring: 'Sem monitoramento estruturado (Zabbix / Grafana)',
+  database: 'Banco de dados sem DBA dedicado (SQL Server / Oracle)',
+  support: 'Suporte reativo — precisam de SLA contratual',
+  project: 'Projeto crítico: customização, integração ou migração',
   planning: 'Planejamento estratégico (30+ dias)',
   short: 'Necessidade no curto prazo (até 30 dias)',
-  immediate: 'Situação crítica / ação imediata',
+  immediate: 'Situação crítica — ação imediata',
 }
 
 export async function POST(req: NextRequest) {
@@ -46,9 +43,9 @@ export async function POST(req: NextRequest) {
           <p><strong>Telefone:</strong> ${data.phone}</p>
           <p><strong>Empresa:</strong> ${data.company}</p>
           <div style="background:#f9f9f9;padding:15px;border-radius:5px;margin-top:20px;">
-            <p style="margin:5px 0;"><strong>Porte:</strong> ${traducoes[data.companySize] ?? data.companySize}</p>
-            <p style="margin:5px 0;"><strong>Cenário:</strong> ${traducoes[data.environment] ?? data.environment}</p>
+            <p style="margin:5px 0;"><strong>Principal Dor:</strong> ${traducoes[data.environment] ?? data.environment}</p>
             <p style="margin:5px 0;"><strong>Urgência:</strong> ${traducoes[data.urgency] ?? data.urgency}</p>
+            <p style="margin:5px 0;"><strong>Classificação:</strong> ${data.leadType ?? 'standard'}</p>
           </div>
           <p style="margin-top:20px;"><strong>Mensagem:</strong></p>
           <div style="background:#fff;border-left:4px solid #1DAEFF;padding:10px 15px;font-style:italic;">
@@ -64,7 +61,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: true })
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'Erro desconhecido'
-    console.error('ERRO SMTP:', message)
     return NextResponse.json({ success: false, error: message }, { status: 500 })
   }
 }

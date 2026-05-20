@@ -72,7 +72,7 @@ export default function DesenvolvimentoCustomizacoes() {
             className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight mb-6 text-left"
             style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
           >
-            Customizações TOTVS em ADVPL, TLPP e Integrações ERP: <br />
+            Customizações TOTVS em BH: ADVPL, TLPP e Integrações ERP — <br />
             <span className="text-[var(--coredb-cyan)]">Resultados Reais.</span>
           </h1>
 

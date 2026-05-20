@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Remove-Item -Recurse -Force \"c:\\\\Users\\\\OPC Serviços\\\\Documents\\\\coredb-portfolio-completo\\\\coredb-portfolio\\\\public\\\\__manus__\")",
+      "Bash(Remove-Item -Recurse -Force \"c:\\\\Users\\\\OPC Serviços\\\\Documents\\\\coredb-portfolio-completo\\\\coredb-portfolio\\\\shared\")",
+      "Bash(Remove-Item -Force \"c:\\\\Users\\\\OPC Serviços\\\\Documents\\\\coredb-portfolio-completo\\\\coredb-portfolio\\\\src\\\\contexts\\\\ThemeContext.tsx\")",
+      "PowerShell(Get-Command magick, ffmpeg, cwebp, sharp -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\OPC Serviços\\\\Documents\\\\coredb-portfolio-completo\\\\coredb-portfolio\\\\public\\\\images\" | Select-Object Name, @{N='KB';E={[math]::Round\\($_.Length/1KB,1\\)}})"
+    ]
+  }
+}

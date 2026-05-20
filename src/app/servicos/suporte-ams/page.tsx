@@ -2,23 +2,24 @@ import type { Metadata } from 'next'
 import SupportAMSView from '@/views/servicos/SupportAMS'
 
 export const metadata: Metadata = {
-  title: 'Suporte AMS TOTVS com SLA Contratual | CoreDB',
+  title: 'Suporte AMS TOTVS com SLA Contratual — Belo Horizonte e Brasil | CoreDB',
   description:
-    'Sustentação estratégica AMS para TOTVS com governança via GLPI, SLA contratual e atendimento nível 2 e 3. Ideal para empresas que precisam de estabilidade e previsibilidade operacional. Atendimento nacional.',
+    'Suporte AMS TOTVS em Belo Horizonte (BH) com governança via GLPI, SLA contratual e especialistas nível 2 e 3. Sustentação estratégica para Protheus, RM e Fluig. Atendimento remoto nacional.',
   keywords: [
-    'suporte AMS TOTVS',
-    'AMS Protheus',
-    'sustentação TOTVS',
-    'suporte TOTVS SLA',
+    'suporte AMS TOTVS Belo Horizonte',
+    'AMS TOTVS BH',
+    'sustentação TOTVS SLA',
+    'AMS Protheus Belo Horizonte',
     'GLPI TOTVS',
     'suporte ERP BH',
     'sustentação ERP Brasil',
+    'AMS TOTVS remoto',
   ],
   alternates: { canonical: '/servicos/suporte-ams' },
   openGraph: {
-    title: 'Suporte AMS TOTVS com SLA Contratual | CoreDB',
+    title: 'Suporte AMS TOTVS com SLA Contratual — BH e Brasil | CoreDB',
     description:
-      'Sustentação estratégica para TOTVS com governança real, SLA rígido e especialistas nível 2 e 3. Atendimento nacional.',
+      'Suporte AMS TOTVS em BH: governança via GLPI, SLA contratual e especialistas nível 2 e 3. Atendimento remoto em todo o Brasil.',
     url: '/servicos/suporte-ams',
   },
 }
@@ -28,13 +29,22 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Suporte AMS TOTVS — Sustentação com SLA Contratual',
   description:
-    'Central de serviços estruturada para TOTVS com governança via GLPI, SLA de resposta crítica e atendimento nível 2 e 3. Relatórios mensais de indicadores.',
+    'Sustentação AMS para TOTVS com base em Belo Horizonte, MG. Governança via GLPI, SLA de resposta crítica, atendimento nível 2 e 3 e relatórios mensais de indicadores. Atendimento remoto nacional.',
   provider: {
-    '@type': 'Organization',
-    name: 'CoreDB',
+    '@type': 'LocalBusiness',
+    name: 'CoreDB LTDA',
     url: 'https://www.coredb.com.br',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Belo Horizonte',
+      addressRegion: 'MG',
+      addressCountry: 'BR',
+    },
   },
-  areaServed: { '@type': 'Country', name: 'Brasil' },
+  areaServed: [
+    { '@type': 'Country', name: 'Brasil' },
+    { '@type': 'City', name: 'Belo Horizonte' },
+  ],
   serviceType: 'Suporte AMS TOTVS',
 }
 
