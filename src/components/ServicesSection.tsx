@@ -1,5 +1,5 @@
 import { Settings, Code, Database, LifeBuoy } from "lucide-react";
-import { Link } from "wouter";
+import Link from "next/link";
 import { ROUTES } from "../routes";
 
 export default function ServicesSection() {

@@ -1,17 +1,14 @@
+'use client'
+
 import { useEffect } from 'react';
-import { useLocation } from 'wouter';
+import { usePathname } from 'next/navigation';
 
 export default function ScrollToTop() {
-  const [location] = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
-    // Scroll instantâneo ao topo para qualquer mudança de rota
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'instant' // Comportamento instantâneo ao invés de smooth
-    });
-  }, [location]);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [pathname]);
 
   return null;
 }

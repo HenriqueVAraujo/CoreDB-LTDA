@@ -1,5 +1,8 @@
+'use client'
+
 import { useState } from 'react';
-import { useLocation } from 'wouter';
+import { useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 
 import Logo from './Logo';
@@ -16,12 +19,13 @@ export default function Header() {
     { label: 'Contato', href: '#contact' }
   ];
 
-  const [, setLocation] = useLocation();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const handleNav = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    if (window.location.pathname !== '/') {
-      setLocation('/');
+    if (pathname !== '/') {
+      router.push('/');
       setTimeout(() => {
         const el = document.querySelector(href);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -38,20 +42,16 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a
+          <Link
             href="/"
-            onClick={e => {
-              e.preventDefault();
-              setLocation('/');
+            onClick={() => {
               setIsMenuOpen(false);
-              setTimeout(() => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }, 300);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             className="hover:opacity-80 transition-opacity"
           >
             <Logo variant="header" className="w-24 h-auto max-w-full md:w-32" />
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">

@@ -1,3 +1,5 @@
+'use client'
+
 import { ShieldCheck, Timer, Lock } from 'lucide-react';
 
 export default function Hero() {

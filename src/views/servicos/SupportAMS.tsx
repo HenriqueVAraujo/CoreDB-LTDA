@@ -1,3 +1,5 @@
+'use client'
+
 import { Shield, Clock, BarChart3, ArrowRight, CheckCircle2, Headphones } from 'lucide-react';
 
 export default function SupportAMS() {
@@ -66,16 +68,16 @@ export default function SupportAMS() {
             Sustentação Estratégica TOTVS
           </span>
 
-          <h1 
+          <h1
             className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight mb-6 text-left"
             style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
           >
-            Suporte AMS: <br />
+            Suporte AMS TOTVS com SLA Contratual: <br />
             <span className="text-[var(--coredb-cyan)]">Sua Operação Não Para.</span>
           </h1>
 
           <p className="text-lg md:text-xl text-white/70 mb-10 max-w-3xl leading-relaxed">
-            Esqueça o suporte reativo e lento. A CoreDB entrega uma sustentação baseada em governança real, SLA rígido e especialistas que entendem o seu negócio.
+            Esqueça o suporte reativo e lento. Sustentação AMS para TOTVS com governança via GLPI, SLA rígido e especialistas nível 2 e 3. Base em Belo Horizonte — atendimento em todo o Brasil.
           </p>
 
           {/* Trust Bar Customizada */}

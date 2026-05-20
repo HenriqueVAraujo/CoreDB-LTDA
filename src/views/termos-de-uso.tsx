@@ -1,6 +1,8 @@
+'use client'
+
 import React from 'react';
 import { FileText, Gavel, ShieldAlert, Copyright, ChevronLeft, MessageSquare, ExternalLink } from 'lucide-react';
-import { Link } from 'wouter';
+import Link from 'next/link';
 
 export default function TermsOfUse() {
   return (

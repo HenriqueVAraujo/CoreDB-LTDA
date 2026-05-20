@@ -1,6 +1,8 @@
+'use client'
+
 import React from 'react';
 import { ShieldCheck, Lock, EyeOff, Scale, ChevronLeft, Mail } from 'lucide-react';
-import { Link } from 'wouter';
+import Link from 'next/link';
 
 export default function PrivacyPolicy() {
   return (

@@ -1,3 +1,5 @@
+'use client'
+
 import { ArrowRight, Phone } from "lucide-react";
 
 export default function CTAFinalSection() {

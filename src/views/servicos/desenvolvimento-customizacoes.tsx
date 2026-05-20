@@ -1,3 +1,5 @@
+'use client'
+
 import { Code2, Zap, Share2, Layers, ArrowRight, Cpu, Globe, Rocket } from 'lucide-react';
 
 export default function DesenvolvimentoCustomizacoes() {
@@ -66,16 +68,16 @@ export default function DesenvolvimentoCustomizacoes() {
             Engenharia de Software para o Ecossistema TOTVS
           </span>
 
-          <h1 
+          <h1
             className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight mb-6 text-left"
             style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
           >
-            Sistemas Sob Medida, <br />
+            Customizações TOTVS em ADVPL, TLPP e Integrações ERP: <br />
             <span className="text-[var(--coredb-cyan)]">Resultados Reais.</span>
           </h1>
 
           <p className="text-lg md:text-xl text-white/70 mb-10 max-w-3xl leading-relaxed">
-            Seu ERP deve se adaptar ao seu negócio, e não o contrário. Desenvolvemos soluções personalizadas que eliminam processos manuais e conectam sua operação ao futuro digital.
+            Seu ERP deve se adaptar ao seu negócio, e não o contrário. Desenvolvemos customizações TOTVS, integrações via API e automação de processos para Protheus e RM. Base em Belo Horizonte — atendimento em todo o Brasil.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 mt-8">

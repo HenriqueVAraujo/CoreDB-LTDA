@@ -1,4 +1,7 @@
-import { Mail, Phone, Linkedin, Instagram } from 'lucide-react';
+'use client'
+
+import { Mail, Phone } from 'lucide-react';
+import Link from 'next/link';
 import Logo from './Logo';
 import { ROUTES } from '../routes';
 
@@ -15,7 +18,7 @@ export default function Footer() {
     <footer className="bg-[#0B1C2D] text-white">
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          
+
           {/* Brand */}
           <div className="flex flex-col items-center md:items-start gap-4">
             <Logo variant="footer" className="w-32 h-auto" />
@@ -29,17 +32,20 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start">
             <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">Navegação</h4>
             <ul className="space-y-3 text-sm text-center md:text-left">
-              {['about', 'services', 'methodology', 'results', 'contact'].map((item) => (
-                <li key={item}>
-                  <a 
-                    href={`#${item}`} 
-                    onClick={e => handleFooterNav(e, item)} 
-                    className="text-white/60 hover:text-[#1DAEFF] transition-colors capitalize"
+              {[
+                { id: 'about',       label: 'Sobre'      },
+                { id: 'services',    label: 'Serviços'   },
+                { id: 'methodology', label: 'Metodologia'},
+                { id: 'results',     label: 'Resultados' },
+                { id: 'contact',     label: 'Contato'    },
+              ].map(({ id, label }) => (
+                <li key={id}>
+                  <a
+                    href={`#${id}`}
+                    onClick={e => handleFooterNav(e, id)}
+                    className="text-white/60 hover:text-[#1DAEFF] transition-colors"
                   >
-                    {item === 'about' ? 'Sobre' : 
-                     item === 'services' ? 'Serviços' : 
-                     item === 'methodology' ? 'Metodologia' : 
-                     item === 'results' ? 'Resultados' : 'Contato'}
+                    {label}
                   </a>
                 </li>
               ))}
@@ -50,10 +56,10 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start">
             <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">Serviços</h4>
             <ul className="space-y-3 text-sm text-center md:text-left">
-              <li><a href={ROUTES.SERVICE_TOTVS} className="text-white/60 hover:text-[#1DAEFF] transition-colors">Especialidades TOTVS</a></li>
-              <li><a href={ROUTES.SERVICE_CUSTOM} className="text-white/60 hover:text-[#1DAEFF] transition-colors">Desenvolvimento e Customizações</a></li>
-              <li><a href={ROUTES.SERVICE_DBA} className="text-white/60 hover:text-[#1DAEFF] transition-colors">Administração de Banco de Dados</a></li>
-              <li><a href={ROUTES.SERVICE_AMS} className="text-white/60 hover:text-[#1DAEFF] transition-colors">Suporte AMS e Governança</a></li>
+              <li><Link href={ROUTES.SERVICE_TOTVS}  className="text-white/60 hover:text-[#1DAEFF] transition-colors">Especialidades TOTVS</Link></li>
+              <li><Link href={ROUTES.SERVICE_CUSTOM} className="text-white/60 hover:text-[#1DAEFF] transition-colors">Desenvolvimento e Customizações</Link></li>
+              <li><Link href={ROUTES.SERVICE_DBA}    className="text-white/60 hover:text-[#1DAEFF] transition-colors">Administração de Banco de Dados</Link></li>
+              <li><Link href={ROUTES.SERVICE_AMS}    className="text-white/60 hover:text-[#1DAEFF] transition-colors">Suporte AMS e Governança</Link></li>
             </ul>
           </div>
 
@@ -68,7 +74,7 @@ export default function Footer() {
                 <span className="text-sm text-white/60 group-hover:text-white transition-colors">comercial@coredb.com.br</span>
               </a>
               <a
-                href="https://wa.me/553191873435?text=Olá, gostaria de agendar um diagnóstico técnico com a CoreDB."
+                href="https://wa.me/553191873435?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20diagn%C3%B3stico%20t%C3%A9cnico%20com%20a%20CoreDB."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center md:justify-start gap-3 group"
@@ -82,28 +88,25 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Divider */}
         <div className="h-px bg-white/5 my-8" />
 
-        {/* Texto Jurídico */}
         <div className="text-[10px] md:text-xs text-white/40 leading-relaxed text-center md:text-left mb-8 space-y-2">
           <p><strong>COREDB LTDA.</strong> Todos os direitos Reservados.</p>
           <p>
-            Protheus, RM, Fluig e TOTVS® são produtos e marcas registradas de propriedade da TOTVS® S.A. 
+            Protheus, RM, Fluig e TOTVS® são produtos e marcas registradas de propriedade da TOTVS® S.A.
             Logotipos TOTVS® e Microsiga são de propriedade da TOTVS® S.A.
           </p>
           <p className="font-medium text-white/50">
-            A COREDB LTDA é uma empresa de consultoria independente e não tem nenhum vínculo direto ou indireto com a TOTVS®, 
+            A COREDB LTDA é uma empresa de consultoria independente e não tem nenhum vínculo direto ou indireto com a TOTVS®,
             qualquer uma das suas franquias ou qualquer um de seus representantes.
           </p>
         </div>
 
-        {/* Bottom */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-white/5 text-[11px] text-white/30 uppercase tracking-widest">
           <p>© {currentYear} COREDB</p>
           <div className="flex items-center gap-6">
-            <a href={ROUTES.PRIVACY} className="hover:text-white transition-colors">Privacidade</a>
-            <a href={ROUTES.TERMS} className="hover:text-white transition-colors">Termos</a>
+            <Link href={ROUTES.PRIVACY} className="hover:text-white transition-colors">Privacidade</Link>
+            <Link href={ROUTES.TERMS}   className="hover:text-white transition-colors">Termos</Link>
           </div>
         </div>
       </div>
