@@ -79,11 +79,12 @@ export default function ProblemSection() {
         <div className="mt-20 pt-12 border-t border-[#E5E7EB]">
           <div className="max-w-3xl">
             <p className="text-2xl font-semibold text-[#0B1C2D] leading-relaxed">
-              Ter um ERP não é suficiente.
+              Um ERP sem banco de dados otimizado é como um carro de luxo com motor de 1.0.
             </p>
             <p className="text-lg text-[#4B5563] mt-4 leading-relaxed">
-              Ele precisa operar com previsibilidade, disponibilidade e responsabilidade técnica formal.
-              Sem estrutura contínua, o risco permanece — apenas invisível.
+              A maioria das consultorias cuida da carroceria — a interface, os módulos, as telas.
+              A CoreDB cuida do motor: o banco de dados que sustenta toda a operação.
+              Sem ele calibrado, nenhuma melhoria no ERP resolve o problema de verdade.
             </p>
           </div>
         </div>

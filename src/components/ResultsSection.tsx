@@ -1,4 +1,25 @@
-import { TrendingUp } from "lucide-react";
+import { TrendingUp, BarChart2, Gauge, Shield } from "lucide-react";
+
+const autoridade = [
+  {
+    icon: BarChart2,
+    valor: "+100",
+    label: "Ambientes Otimizados",
+    descricao: "Diagnósticos e intervenções técnicas realizados",
+  },
+  {
+    icon: Gauge,
+    valor: "~30%",
+    label: "Redução Média de Tempo",
+    descricao: "Em processamento de queries e rotinas críticas",
+  },
+  {
+    icon: Shield,
+    valor: "99,8%",
+    label: "Disponibilidade Operacional",
+    descricao: "Em ambientes sob sustentação contínua",
+  },
+];
 
 export default function ResultsSection() {
   const cases = [
@@ -35,6 +56,28 @@ export default function ResultsSection() {
     <section className="py-24 lg:py-32 bg-gray-50">
       <div className="container mx-auto px-4 max-w-6xl">
 
+        {/* Authority Metrics Bar */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+          {autoridade.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={index}
+                className="bg-[var(--coredb-dark)] rounded-xl p-8 border border-white/10 flex items-start gap-5"
+              >
+                <div className="w-10 h-10 rounded-lg bg-[var(--coredb-cyan)]/10 flex items-center justify-center shrink-0">
+                  <Icon className="w-5 h-5 text-[var(--coredb-cyan)]" />
+                </div>
+                <div>
+                  <p className="text-3xl font-bold text-white mb-1">{item.valor}</p>
+                  <p className="text-sm font-semibold text-[var(--coredb-cyan)] mb-1">{item.label}</p>
+                  <p className="text-xs text-white/50 leading-relaxed">{item.descricao}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
         {/* Header */}
         <div className="mb-20 max-w-3xl">
           <span className="text-[var(--coredb-cyan)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
@@ -42,12 +85,12 @@ export default function ResultsSection() {
           </span>
 
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--coredb-dark)] mb-8">
-            Impacto Mensurável em Operações Críticas
+            Como Salvamos Operações Críticas
           </h2>
 
           <p className="text-lg md:text-xl text-[#4B5563] leading-relaxed">
-            Exemplos de intervenções técnicas estruturadas que resultaram em
-            ganho operacional, redução de risco e aumento de previsibilidade.
+            Cenários reais de intervenção técnica estruturada. Os nomes das empresas são preservados por NDA,
+            mas os resultados são verificáveis e mensuráveis.
           </p>
         </div>
 
@@ -114,9 +157,9 @@ export default function ResultsSection() {
               href="https://wa.me/553191873435?text=Olá, gostaria de agendar um diagnóstico técnico."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[var(--coredb-cyan)] text-white px-8 py-4 rounded-md font-semibold hover:opacity-90 transition"
+              className="inline-flex items-center justify-center bg-[var(--coredb-cyan)] text-[var(--coredb-dark)] px-8 py-4 rounded-xl font-bold hover:opacity-90 transition"
             >
-              Solicitar Diagnóstico Técnico
+              Identificar os Gargalos do Meu Ambiente
             </a>
           </div>
         </div>
