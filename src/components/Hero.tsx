@@ -1,11 +1,6 @@
 'use client'
 
-import Image from 'next/image'
 import { Activity, FileText, BarChart2 } from 'lucide-react'
-
-// 8×5 px WebP sólido em #0B1C2D — placeholder de baixíssimo custo durante preload
-const BLUR_PLACEHOLDER =
-  'data:image/webp;base64,UklGRioAAABXRUJQVlA4IB4AAABwAQCdASoIAAUABUB8JYwCdAFAAAD+77r9tk3iAAA='
 
 export default function Hero() {
   const handleCTAClick = () => {
@@ -25,10 +20,10 @@ export default function Hero() {
     <section className="relative bg-[#0B1C2D] min-h-[85vh] flex items-center py-24 lg:py-32 overflow-hidden">
 
       {/* ─── Layout duas colunas ─── */}
-      <div className="container mx-auto px-4 max-w-6xl relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-12 xl:gap-20 items-center">
+      <div className="container mx-auto px-4 max-w-5xl relative z-10 w-full">
+        <div className="max-w-3xl">
 
-          {/* ── Coluna esquerda: copy + CTAs + trust bar ── */}
+          {/* ── Copy + CTAs + trust bar ── */}
           <div className="text-white">
 
             <span className="inline-block text-[var(--coredb-cyan)] font-semibold tracking-widest uppercase text-xs mb-6 border-l-2 border-[var(--coredb-cyan)] pl-3">
@@ -101,26 +96,6 @@ export default function Hero() {
               </div>
 
             </div>
-          </div>
-
-          {/* ── Coluna direita: cubo 3D animado ── */}
-          {/*
-           * priority={true} → adiciona <link rel="preload" fetchpriority="high"> no <head>.
-           * Imagem hero é o LCP — usar loading="lazy" aqui quebraria Core Web Vitals.
-           * sizes reflete a largura real do container (420 px fixo em lg+, 100vw em mobile).
-           */}
-          <div className="hidden lg:block relative w-[420px] h-[420px] shrink-0">
-            <Image
-              src="/images/hero-lg.webp"
-              alt="Cubo de blindagem transacional com anéis orbitais de monitoramento — CoreDB"
-              fill
-              priority
-              sizes="420px"
-              quality={90}
-              className="object-contain animate-hero3d drop-shadow-[0_0_48px_rgba(29,174,255,0.25)]"
-              placeholder="blur"
-              blurDataURL={BLUR_PLACEHOLDER}
-            />
           </div>
 
         </div>
