@@ -43,6 +43,9 @@ export const metadata: Metadata = {
   authors: [{ name: 'CoreDB', url: SITE_URL }],
   creator: 'CoreDB',
   publisher: 'CoreDB',
+  verification: {
+    google: 'pNpEVbrZOj2I3Vujue7b_pEGsVL4lO_XpxaHWs0yw7Y',
+  },
   robots: {
     index: true,
     follow: true,
@@ -103,7 +106,10 @@ const localBusinessSchema = {
     'Desenvolvimento e Customizações ERP',
   ],
   priceRange: '$$',
-  sameAs: [],
+  sameAs: [
+    'https://www.linkedin.com/in/coredb-consultoria-83319236b/',
+    'https://share.google/BKp3nyAq3Ul1bLTgI',
+  ],
 }
 
 export default function RootLayout({
