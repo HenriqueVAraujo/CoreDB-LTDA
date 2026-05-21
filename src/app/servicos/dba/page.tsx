@@ -50,12 +50,55 @@ const serviceSchema = {
   serviceType: 'Administração de Banco de Dados',
 }
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'O que é SQL Tuning e por que é importante para o TOTVS?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'SQL Tuning é o processo de otimização de queries e estrutura do banco de dados para reduzir tempo de resposta. Consultas mal escritas ou sem índices adequados são a principal causa de lentidão no Protheus e RM.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'A CoreDB oferece plano de Disaster Recovery?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim. Implementamos planos formais de Disaster Recovery com RTO e RPO definidos, backup automatizado e testes periódicos de restauração para garantir a continuidade do negócio.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Com quais bancos de dados a CoreDB trabalha?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Trabalhamos com SQL Server, Oracle e PostgreSQL, com foco em ambientes TOTVS Protheus e RM de missão crítica.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'O monitoramento do banco de dados é feito 24 horas por dia?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim. Utilizamos Zabbix para monitoramento contínuo 24/7 com alertas automáticos e escalada por nível de criticidade, antes que o usuário perceba qualquer instabilidade.',
+      },
+    },
+  ],
+}
+
 export default function DBAPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <DBAView />
     </>

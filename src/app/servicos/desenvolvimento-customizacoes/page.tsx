@@ -48,12 +48,55 @@ const serviceSchema = {
   serviceType: 'Desenvolvimento e Customizações ERP',
 }
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'O que é ADVPL?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'ADVPL (Advanced Protheus Language) é a linguagem de programação proprietária da TOTVS usada para customizar o Protheus. É a principal linguagem para desenvolvimento de pontos de entrada, relatórios e integrações no ERP.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'A CoreDB faz integração entre TOTVS e sistemas externos?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim. Desenvolvemos integrações via API REST entre TOTVS Protheus e RM e sistemas externos como CRMs, plataformas de e-commerce, ERPs legados e portais de fornecedores.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Customizações antigas e legadas podem ser modernizadas?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim. Auditamos customizações existentes, identificamos problemas de performance que oneram o banco de dados e realizamos a modernização para TLPP e PO-UI quando aplicável.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'O desenvolvimento leva em conta a performance do banco de dados?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Obrigatoriamente. Todo código desenvolvido pela CoreDB é revisado com foco em impacto no banco de dados. Queries ineficientes dentro de customizações são a segunda maior causa de lentidão em ambientes TOTVS.',
+      },
+    },
+  ],
+}
+
 export default function DesenvolvimentoPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <DesenvolvimentoView />
     </>

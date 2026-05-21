@@ -48,12 +48,55 @@ const serviceSchema = {
   serviceType: 'Suporte AMS TOTVS',
 }
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'O que é AMS em TI?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'AMS (Application Management Services) é um modelo de sustentação contínua do ERP com SLA contratual, gestão formal de chamados e relatórios de indicadores. Diferente do suporte reativo, o AMS tem governança formal e atendimento preventivo.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Qual o SLA de atendimento crítico da CoreDB?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Definimos SLA contratual por nível de criticidade. Incidentes críticos têm primeira resposta em até 1 hora. Todos os tempos são auditáveis via GLPI.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Preciso estar em Belo Horizonte para contratar o suporte AMS?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Não. Atendemos empresas em todo o Brasil de forma remota. O monitoramento, os chamados e os relatórios são todos gerenciados digitalmente.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Como funciona a gestão de chamados no suporte AMS?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Todos os chamados são registrados e gerenciados via GLPI com classificação por urgência e impacto. Cada chamado tem histórico completo, prazo e responsável definido em contrato.',
+      },
+    },
+  ],
+}
+
 export default function SupportAMSPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <SupportAMSView />
     </>
