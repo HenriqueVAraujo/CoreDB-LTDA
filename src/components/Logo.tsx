@@ -6,8 +6,8 @@ interface LogoProps {
 }
 
 // Dimensões intrínsecas das imagens (obtidas com sharp):
-// coredb-logoescura.png → 1418×498
-// coredb-logo.png       → 1137×419
+// coredb-logoescura.webp → 1418×498
+// coredb-logo.webp       → 1137×419
 
 export default function Logo({ variant = 'header', className = '' }: LogoProps) {
   switch (variant) {
@@ -15,7 +15,7 @@ export default function Logo({ variant = 'header', className = '' }: LogoProps) 
       return (
         <div className={`flex items-center gap-2 group ${className}`}>
           <Image
-            src="/images/coredb-logoescura.png"
+            src="/images/coredb-logoescura.webp"
             alt="CoreDB — Consultoria TOTVS e DBA"
             width={1418}
             height={498}
@@ -28,7 +28,7 @@ export default function Logo({ variant = 'header', className = '' }: LogoProps) 
     case 'footer':
       return (
         <Image
-          src="/images/coredb-logo.png"
+          src="/images/coredb-logo.webp"
           alt="CoreDB — Consultoria TOTVS e DBA"
           width={1137}
           height={419}
@@ -40,7 +40,7 @@ export default function Logo({ variant = 'header', className = '' }: LogoProps) 
       return (
         <div className={`flex items-center gap-4 group ${className}`}>
           <Image
-            src="/images/coredb-logo.png"
+            src="/images/coredb-logo.webp"
             alt="CoreDB — Consultoria TOTVS e DBA"
             width={1137}
             height={419}
