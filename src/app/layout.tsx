@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Source_Sans_3, Roboto } from 'next/font/google'
-import { GoogleAnalytics } from '@next/third-parties/google'
+import CookieConsent from '@/components/CookieConsent'
 import './globals.css'
 
 const sourceSans = Source_Sans_3({
@@ -130,8 +130,8 @@ export default function RootLayout({
         }}
       >
         {children}
+        <CookieConsent />
       </body>
-      <GoogleAnalytics gaId="G-YZSTRQKCQG" />
     </html>
   )
 }
