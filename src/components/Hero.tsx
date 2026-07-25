@@ -84,7 +84,12 @@ export default function Hero() {
               <div className="flex items-start gap-3">
                 <Activity className="w-7 h-7 text-[var(--coredb-cyan)] shrink-0 mt-0.5" />
                 <div>
-                  <h2 className="font-semibold text-sm mb-1">Monitoramento automatizado pelo Zabbix</h2>
+                  <p
+                    className="font-semibold text-sm leading-[1.2] mb-1"
+                    style={{ fontFamily: 'var(--font-manrope), Arial, sans-serif' }}
+                  >
+                    Monitoramento automatizado pelo Zabbix
+                  </p>
                   <p className="text-xs text-white/60">
                     24/7, com alertas configurados por criticidade.
                   </p>
@@ -94,7 +99,12 @@ export default function Hero() {
               <div className="flex items-start gap-3">
                 <FileText className="w-7 h-7 text-[var(--coredb-cyan)] shrink-0 mt-0.5" />
                 <div>
-                  <h2 className="font-semibold text-sm mb-1">SLA Contratual Mensurável</h2>
+                  <p
+                    className="font-semibold text-sm leading-[1.2] mb-1"
+                    style={{ fontFamily: 'var(--font-manrope), Arial, sans-serif' }}
+                  >
+                    SLA Contratual Mensurável
+                  </p>
                   <p className="text-xs text-white/60">
                     Tempos de resposta definidos no SLA contratual aplicável.
                   </p>
@@ -104,7 +114,12 @@ export default function Hero() {
               <div className="flex items-start gap-3">
                 <BarChart2 className="w-7 h-7 text-[var(--coredb-cyan)] shrink-0 mt-0.5" />
                 <div>
-                  <h2 className="font-semibold text-sm mb-1">Governança GLPI + Grafana</h2>
+                  <p
+                    className="font-semibold text-sm leading-[1.2] mb-1"
+                    style={{ fontFamily: 'var(--font-manrope), Arial, sans-serif' }}
+                  >
+                    Governança GLPI + Grafana
+                  </p>
                   <p className="text-xs text-white/60">
                     Dashboards de indicadores em tempo real.
                   </p>

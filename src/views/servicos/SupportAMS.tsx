@@ -147,20 +147,22 @@ export default function SupportAMS() {
 
       {/* Metodologia Section */}
       <section className="py-20 md:py-32 bg-[#F9FAFB]">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-[var(--coredb-dark)] mb-6">Metodologia de Atendimento</h2>
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-4xl font-bold text-[var(--coredb-dark)] mb-6">Metodologia de Atendimento</h2>
             <div className="h-1.5 w-24 bg-[var(--coredb-cyan)] mx-auto rounded-full" />
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {metodologia.map((item, index) => (
-              <div key={index} className="relative p-8 bg-white rounded-2xl shadow-sm border border-gray-100 hover:border-[var(--coredb-cyan)]/30 transition-colors">
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 w-10 h-10 bg-[var(--coredb-cyan)] text-[var(--coredb-dark)] font-bold flex items-center justify-center rounded-full shadow-lg">
+              <div key={index} className="relative">
+                <div className="text-8xl font-black text-[var(--coredb-cyan)]/10 absolute -top-8 -left-4 select-none">
                   {item.step}
-                </span>
-                <h3 className="text-lg font-bold mt-4 mb-3 text-[var(--coredb-dark)]">{item.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{item.description}</p>
+                </div>
+                <div className="relative z-10">
+                  <h3 className="text-xl font-bold text-[var(--coredb-dark)] mb-4">{item.title}</h3>
+                  <p className="text-[#4B5563] text-sm leading-relaxed">{item.description}</p>
+                </div>
               </div>
             ))}
           </div>

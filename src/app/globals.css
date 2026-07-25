@@ -9,17 +9,6 @@
   animation: hero-fadein 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
 }
 
-@keyframes hero3d {
-  0%   { transform: rotateY(-8deg) rotateX(2deg) scale(1.01); box-shadow: 0 8px 32px 0 rgba(29,174,255,0.10); }
-  50%  { transform: rotateY(8deg) rotateX(-2deg) scale(1.04);  box-shadow: 0 16px 48px 0 rgba(29,174,255,0.16); }
-  100% { transform: rotateY(-8deg) rotateX(2deg) scale(1.01); box-shadow: 0 8px 32px 0 rgba(29,174,255,0.10); }
-}
-.animate-hero3d {
-  animation: hero3d 7s ease-in-out infinite;
-  will-change: transform, box-shadow;
-  transform-style: preserve-3d;
-}
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

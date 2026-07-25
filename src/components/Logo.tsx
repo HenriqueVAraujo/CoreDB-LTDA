@@ -7,7 +7,7 @@ interface LogoProps {
 
 const LOGO_WIDTH = 1513
 const LOGO_HEIGHT = 501
-const LOGO_ALT = 'CoreDB — O núcleo da continuidade.'
+const LOGO_ALT = 'CoreDB'
 
 export default function Logo({ variant = 'header', className = '' }: LogoProps) {
   switch (variant) {
