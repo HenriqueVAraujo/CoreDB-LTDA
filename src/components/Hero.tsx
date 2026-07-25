@@ -12,8 +12,8 @@ export default function Hero() {
     window.open(url, '_blank', 'noopener,noreferrer')
   }
 
-  const handleMethodologyClick = () => {
-    document.getElementById('methodology')?.scrollIntoView({ behavior: 'smooth' })
+  const handleServicesClick = () => {
+    document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -27,7 +27,7 @@ export default function Hero() {
           <div className="text-white">
 
             <span className="inline-block text-[var(--coredb-cyan)] font-semibold tracking-widest uppercase text-xs mb-6 border-l-2 border-[var(--coredb-cyan)] pl-3">
-              Diagnóstico Executivo de Risco TOTVS RM
+              CONTINUIDADE PARA AMBIENTES TOTVS E BANCOS DE DADOS CRÍTICOS
             </span>
 
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.1] mb-8">
@@ -36,10 +36,15 @@ export default function Hero() {
               <span className="text-[var(--coredb-cyan)]">que não podem parar.</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-white/80 mb-12 max-w-xl leading-relaxed">
-              A CoreDB combina monitoramento automatizado via <strong>Zabbix</strong>, dashboards
-              de performance em <strong>Grafana</strong> e SLA formalizado em contrato para apoiar
-              a continuidade de ambientes <strong>Protheus, RM, Fluig</strong> e bancos de dados.
+            <p className="text-lg md:text-xl text-white/80 mb-5 max-w-xl leading-relaxed">
+              A CoreDB atua na sustentação, evolução e proteção de ambientes TOTVS e bancos de dados
+              críticos, combinando diagnóstico técnico, governança, monitoramento automatizado e
+              atuação especializada conforme o escopo de cada operação.
+            </p>
+
+            <p className="text-sm md:text-base text-white/70 mb-12 max-w-xl leading-relaxed">
+              <span className="font-semibold text-white/80">Principais especialidades:</span>{' '}
+              Protheus · RM · Fluig · Datasul · SQL Server · Oracle
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-16">
@@ -57,10 +62,10 @@ export default function Hero() {
 
               <button
                 type="button"
-                onClick={handleMethodologyClick}
+                onClick={handleServicesClick}
                 className="w-full sm:w-auto font-semibold rounded-lg px-6 sm:px-10 py-5 text-lg transition-all duration-300 border border-white/20 hover:bg-white/5 text-white"
               >
-                Entender Nossa Metodologia
+                Conhecer nossos serviços
               </button>
             </div>
 
