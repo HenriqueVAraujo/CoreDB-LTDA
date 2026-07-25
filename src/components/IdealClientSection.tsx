@@ -1,5 +1,8 @@
 import { CheckCircle2, XCircle } from "lucide-react";
 
+const TRIAGE_URL =
+  "https://wa.me/553191873435?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20triagem%20t%C3%A9cnica%20de%20risco%20do%20RM%20%E2%80%94%2020%20minutos.";
+
 export default function IdealClientSection() {
   const idealTraits = [
     "Operações dependentes de ERP TOTVS em ambientes críticos",
@@ -21,7 +24,7 @@ export default function IdealClientSection() {
 
         {/* Header */}
         <div className="mb-20 max-w-3xl">
-          <span className="text-[var(--coredb-cyan)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
+          <span className="text-[var(--coredb-dark)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
             Perfil de Operações Atendidas
           </span>
 
@@ -86,12 +89,13 @@ export default function IdealClientSection() {
             </p>
 
             <a
-              href="https://wa.me/553191873435?text=Olá, gostaria de agendar um diagnóstico técnico."
+              href={TRIAGE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[var(--coredb-cyan)] text-white px-8 py-4 rounded-md font-semibold hover:opacity-90 transition"
+              aria-label="Agendar uma triagem técnica de risco do RM — 20 minutos."
+              className="inline-flex w-full sm:w-auto items-center justify-center bg-[var(--coredb-cyan)] text-[var(--coredb-dark)] px-6 sm:px-8 py-4 text-center whitespace-normal rounded-md font-semibold hover:opacity-90 transition"
             >
-              Solicitar Diagnóstico Técnico
+              Agendar triagem técnica
             </a>
           </div>
         </div>

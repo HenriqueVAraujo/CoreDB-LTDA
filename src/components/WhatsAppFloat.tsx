@@ -3,10 +3,10 @@
 export default function WhatsAppFloat() {
   return (
     <a
-      href="https://wa.me/553191873435?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20diagn%C3%B3stico%20t%C3%A9cnico%20com%20a%20CoreDB."
+      href="https://wa.me/553191873435?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20triagem%20t%C3%A9cnica%20de%20risco%20do%20RM%20%E2%80%94%2020%20minutos."
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Fale conosco pelo WhatsApp"
+      aria-label="Agendar uma triagem técnica de risco do RM — 20 minutos pelo WhatsApp"
       className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-lg hover:scale-110 transition-transform duration-200"
     >
       <svg

@@ -9,7 +9,7 @@ export default function GuaranteeSection() {
       label: "Zabbix",
       title: "Monitoramento automatizado 24/7 por ferramentas",
       description:
-        "Infraestrutura de monitoramento enterprise via Zabbix configurada para seus servidores TOTVS e banco de dados. Alertas chegam antes do seu usuário perceber qualquer instabilidade.",
+        "Infraestrutura de monitoramento via Zabbix configurada para servidores TOTVS e bancos de dados, com alertas gerados conforme regras e níveis de criticidade definidos.",
       features: [
         "Alertas de CPU, memória e disco em tempo real",
         "Monitoramento de processos críticos do ERP",
@@ -22,7 +22,7 @@ export default function GuaranteeSection() {
       label: "GLPI",
       title: "Gestão Formal de Chamados",
       description:
-        "Governança via GLPI com rastreabilidade completa de cada atendimento. Nada fica em e-mail ou WhatsApp — cada chamado tem histórico, prazo e responsável definido em contrato.",
+        "Governança via GLPI para centralizar o histórico, os prazos e os responsáveis de cada chamado conforme o processo contratado.",
       features: [
         "SLA crítico definido e auditável em contrato",
         "Histórico completo de interações e resoluções",
@@ -60,8 +60,8 @@ export default function GuaranteeSection() {
           </h2>
 
           <p className="text-lg md:text-xl text-white/70 leading-relaxed">
-            Enquanto a maioria apaga incêndios, a CoreDB opera com stack de monitoramento enterprise
-            para antecipar e prevenir qualquer instabilidade no seu ambiente TOTVS.
+            A CoreDB integra ferramentas de monitoramento e governança para identificar sinais técnicos,
+            gerar alertas e reduzir riscos de instabilidade conforme a cobertura contratada.
           </p>
         </div>
 
@@ -104,11 +104,8 @@ export default function GuaranteeSection() {
         <div className="mt-24 pt-16 border-t border-white/10">
           <div className="max-w-2xl">
             <p className="text-lg text-white/70 leading-relaxed">
-              Zabbix, GLPI e Grafana não são diferenciais — são{" "}
-              <span className="font-semibold text-white">
-                requisitos mínimos para uma sustentação séria.
-              </span>{" "}
-              Seu ERP merece mais do que um técnico de plantão.
+              Zabbix, GLPI e Grafana apoiam monitoramento, rastreabilidade e análise de indicadores.
+              O atendimento humano e os tempos de resposta seguem a cobertura e o SLA contratados.
             </p>
           </div>
         </div>

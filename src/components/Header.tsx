@@ -1,12 +1,16 @@
 'use client'
 
 import { useState } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 
 import Logo from './Logo';
-import { ROUTES } from '../routes';
+
+const TRIAGE_LABEL = 'Agendar uma triagem técnica de risco do RM — 20 minutos.'
+const TRIAGE_URL =
+  'https://wa.me/553191873435?text=' +
+  encodeURIComponent('Olá! Gostaria de agendar uma triagem técnica de risco do RM — 20 minutos.')
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,21 +23,17 @@ export default function Header() {
     { label: 'Contato', href: '#contact' }
   ];
 
-  const router = useRouter();
   const pathname = usePathname();
 
   const handleNav = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
     if (pathname !== '/') {
-      router.push('/');
-      setTimeout(() => {
-        const el = document.querySelector(href);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 300);
-    } else {
-      const el = document.querySelector(href);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false);
+      return;
     }
+
+    e.preventDefault();
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
   };
 
@@ -44,6 +44,7 @@ export default function Header() {
           {/* Logo */}
           <Link
             href="/"
+            aria-label="CoreDB — página inicial"
             onClick={() => {
               setIsMenuOpen(false);
               window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -58,9 +59,9 @@ export default function Header() {
             {navLinks.map((link) => (
               <a
                 key={link.label}
-                href={link.href}
+                href={pathname === '/' ? link.href : `/${link.href}`}
                 onClick={e => handleNav(e, link.href)}
-                className="text-[#4B5563] hover:text-[var(--coredb-cyan)] font-medium transition-colors text-sm"
+                className="text-[#4B5563] hover:text-[var(--coredb-dark)] hover:underline font-medium transition-colors text-sm"
               >
                 {link.label}
               </a>
@@ -70,19 +71,24 @@ export default function Header() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="https://wa.me/553191873435?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20diagn%C3%B3stico%20t%C3%A9cnico%20com%20a%20CoreDB."
+              href={TRIAGE_URL}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={TRIAGE_LABEL}
               className="px-6 py-2 bg-[var(--coredb-dark)] text-white font-semibold rounded-lg hover:bg-[var(--coredb-cyan)] hover:text-[var(--coredb-dark)] transition-all text-sm"
             >
-              Agendar diagnóstico
+              Agendar triagem técnica
             </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
+            type="button"
             className="md:hidden p-2 text-[#0B1C2D] hover:bg-[#F5F7FA] rounded-lg transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
           >
             {isMenuOpen ? (
               <X className="w-6 h-6" />
@@ -94,25 +100,26 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden pb-6 space-y-3 border-t border-[#E5E7EB] pt-6">
+          <div id="mobile-navigation" className="md:hidden pb-6 space-y-3 border-t border-[#E5E7EB] pt-6">
             {navLinks.map((link) => (
               <a
                 key={link.label}
-                href={link.href}
+                href={pathname === '/' ? link.href : `/${link.href}`}
                 onClick={e => handleNav(e, link.href)}
-                className="block px-4 py-2 text-[#4B5563] hover:bg-[#F5F7FA] hover:text-[var(--coredb-cyan)] rounded-lg transition-colors font-medium"
+                className="block px-4 py-2 text-[#4B5563] hover:bg-[#F5F7FA] hover:text-[var(--coredb-dark)] hover:underline rounded-lg transition-colors font-medium"
               >
                 {link.label}
               </a>
             ))}
             <a
-              href="https://wa.me/553191873435?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20diagn%C3%B3stico%20t%C3%A9cnico%20com%20a%20CoreDB."
+              href={TRIAGE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full px-4 py-3 bg-[var(--coredb-dark)] text-white font-semibold rounded-lg hover:bg-[var(--coredb-cyan)] hover:text-[var(--coredb-dark)] transition-all mt-4"
+              aria-label={TRIAGE_LABEL}
+              className="block w-full px-4 py-3 bg-[var(--coredb-dark)] text-white text-center font-semibold rounded-lg hover:bg-[var(--coredb-cyan)] hover:text-[var(--coredb-dark)] transition-all mt-4"
               onClick={() => setIsMenuOpen(false)}
             >
-              Agendar diagnóstico
+              Agendar triagem técnica
             </a>
           </div>
         )}

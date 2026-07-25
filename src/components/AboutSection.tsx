@@ -30,7 +30,7 @@ export default function AboutSection() {
     {
       title: "Stack de Monitoramento Enterprise",
       description:
-        "Operamos com Zabbix para alertas proativos de infraestrutura, Grafana para dashboards de SLA e GLPI para gestão formal de chamados — a mesma stack de grandes operações, acessível para o seu negócio.",
+        "Integramos Zabbix para alertas de infraestrutura, Grafana para dashboards e GLPI para gestão formal de chamados, conforme o escopo técnico contratado.",
     },
     {
       title: "Visão Integrada: ERP + Banco de Dados",
@@ -49,7 +49,7 @@ export default function AboutSection() {
       <div className="container mx-auto px-4 max-w-6xl">
 
         <div className="mb-20 max-w-3xl">
-          <span className="text-[var(--coredb-cyan)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
+          <span className="text-[var(--coredb-dark)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
             Sobre a CoreDB
           </span>
 
@@ -88,7 +88,7 @@ export default function AboutSection() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {differentials.map((diff, index) => (
               <div key={index}>
-                <div className="text-[var(--coredb-cyan)] font-bold mb-4 text-lg">
+                <div className="text-[var(--coredb-dark)] font-bold mb-4 text-lg">
                   0{index + 1}
                 </div>
                 <h4 className="text-lg font-semibold text-[var(--coredb-dark)] mb-3">{diff.title}</h4>

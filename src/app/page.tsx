@@ -1,71 +1,35 @@
 import type { Metadata } from 'next'
 import HomeView from '@/views/Home'
 
+const title = 'CoreDB | Consultoria TOTVS e DBA — Belo Horizonte, MG'
+const description =
+  'Blindamos ambientes TOTVS e bancos de dados que não podem parar, com diagnóstico técnico, governança e SLA conforme o escopo contratado.'
+
 export const metadata: Metadata = {
-  title: 'CoreDB | Consultoria TOTVS e DBA — Belo Horizonte, MG',
-  description:
-    'Consultoria especializada em ERP TOTVS (Protheus, RM e Fluig) e Banco de Dados SQL Server e Oracle. Missão crítica, performance e SLA contratual. Base em BH, atendimento nacional.',
+  title: { absolute: title },
+  description,
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'CoreDB | Consultoria TOTVS e DBA — Belo Horizonte, MG',
-    description:
-      'Especialistas em ERP TOTVS e Banco de Dados em Belo Horizonte. Missão crítica, SLA contratual, atendimento nacional.',
+    title,
+    description,
     url: '/',
+    images: [
+      {
+        url: '/social/open-graph-logo-card-1200x630.png',
+        width: 1200,
+        height: 630,
+        alt: 'CoreDB — O núcleo da continuidade.',
+      },
+    ],
   },
-}
-
-const localBusinessSchema = {
-  '@context': 'https://schema.org',
-  '@type': ['LocalBusiness', 'ProfessionalService'],
-  '@id': 'https://www.coredb.com.br/#local-business',
-  name: 'CoreDB LTDA',
-  description:
-    'Consultoria especializada em ERP TOTVS (Protheus, RM e Fluig) e Administração de Banco de Dados SQL Server e Oracle. Base em Belo Horizonte, MG — atendimento em todo o Brasil.',
-  url: 'https://www.coredb.com.br',
-  telephone: '+55-31-99187-3435',
-  email: 'comercial@coredb.com.br',
-  image: 'https://www.coredb.com.br/social/open-graph-logo-card-1200x630.png',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Belo Horizonte',
-    addressRegion: 'MG',
-    addressCountry: 'BR',
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+    images: ['/social/social-share-logo-card-1200x630.png'],
   },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: -19.9166813,
-    longitude: -43.9344931,
-  },
-  areaServed: [
-    { '@type': 'Country', name: 'Brasil' },
-    { '@type': 'City', name: 'Belo Horizonte' },
-  ],
-  priceRange: '$$',
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '08:00',
-      closes: '18:00',
-    },
-  ],
-  serviceType: [
-    'Consultoria TOTVS',
-    'Administração de Banco de Dados',
-    'Suporte AMS',
-    'Desenvolvimento e Customizações ERP',
-  ],
-  sameAs: [],
 }
 
 export default function HomePage() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
-      <HomeView />
-    </>
-  )
+  return <HomeView />
 }

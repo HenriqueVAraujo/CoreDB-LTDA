@@ -2,16 +2,12 @@
 
 import { Shield, Clock, BarChart3, ArrowRight, CheckCircle2, Headphones } from 'lucide-react';
 
-export default function SupportAMS() {
-  const handleCTAClick = () => {
-    const url =
-      'https://wa.me/553191873435?text=' +
-      encodeURIComponent(
-        'Olá! Gostaria de entender como funciona o Suporte AMS da CoreDB com SLA definido contratualmente.'
-      );
-    window.open(url, '_blank');
-  };
+const TRIAGE_LABEL = 'Agendar uma triagem técnica de risco do RM — 20 minutos.'
+const TRIAGE_URL =
+  'https://wa.me/553191873435?text=' +
+  encodeURIComponent('Olá! Gostaria de agendar uma triagem técnica de risco do RM — 20 minutos.')
 
+export default function SupportAMS() {
   const diferenciais = [
     {
       icon: Shield,
@@ -25,13 +21,13 @@ export default function SupportAMS() {
     },
     {
       icon: Headphones,
-      title: 'Sustentação Nível 2 e 3',
-      description: 'Equipe sênior pronta para resolver problemas complexos que o suporte padrão não soluciona.'
+      title: 'Encaminhamento Técnico',
+      description: 'Tratamento e escalada dos chamados conforme criticidade, responsabilidades e cobertura contratada.'
     },
     {
       icon: BarChart3,
       title: 'Relatórios Mensais',
-      description: 'Análise de indicadores, volume de chamados e sugestões proativas para redução de incidentes.'
+      description: 'Análise de indicadores e volume de chamados conforme a governança definida no serviço.'
     }
   ];
 
@@ -43,18 +39,18 @@ export default function SupportAMS() {
     },
     {
       step: '2',
-      title: 'Estabilização Proativa',
-      description: 'Monitoramento inicial para identificar e sanar os problemas recorrentes que geram chamados.'
+      title: 'Análise de Recorrências',
+      description: 'Levantamento inicial para identificar padrões e priorizar causas recorrentes dos chamados.'
     },
     {
       step: '3',
       title: 'Atendimento Consultivo',
-      description: 'Suporte focado em resolver a causa raiz, evitando que o mesmo problema aconteça duas vezes.'
+      description: 'Tratamento dos chamados e investigação de causa conforme evidências e escopo contratado.'
     },
     {
       step: '4',
       title: 'Evolução do ERP',
-      description: 'Sugestões de melhorias baseadas nos dados de suporte para tornar seu sistema cada vez mais autônomo.'
+      description: 'Recomendações de melhoria baseadas nos indicadores e no histórico do atendimento.'
     }
   ];
 
@@ -65,19 +61,19 @@ export default function SupportAMS() {
       <section className="relative bg-[#0B1C2D] min-h-[80vh] flex items-center py-20">
         <div className="container mx-auto px-4 max-w-5xl text-white">
           <span className="text-[var(--coredb-cyan)] font-bold tracking-widest uppercase text-sm mb-4 inline-block">
-            Sustentação Estratégica TOTVS
+            Diagnóstico Executivo de Risco TOTVS RM
           </span>
 
           <h1
             className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight mb-6 text-left"
             style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
           >
-            Suporte AMS TOTVS em BH e Todo o Brasil: <br />
-            <span className="text-[var(--coredb-cyan)]">SLA Contratual. Sua Operação Não Para.</span>
+            Suporte AMS TOTVS em BH e Todo o Brasil: <br className="hidden md:block" />
+            <span className="text-[var(--coredb-cyan)]">governança e SLA contratual.</span>
           </h1>
 
           <p className="text-lg md:text-xl text-white/70 mb-10 max-w-3xl leading-relaxed">
-            Esqueça o suporte reativo e lento. Sustentação AMS para TOTVS com governança via GLPI, SLA rígido e especialistas nível 2 e 3. Base em Belo Horizonte — atendimento em todo o Brasil.
+            Blindamos ambientes TOTVS e bancos de dados que não podem parar. A sustentação AMS segue governança, cobertura e tempos definidos no contrato.
           </p>
 
           {/* Trust Bar Customizada */}
@@ -92,19 +88,22 @@ export default function SupportAMS() {
             </div>
             <div className="flex items-center gap-3">
               <CheckCircle2 className="w-5 h-5 text-[var(--coredb-cyan)]" />
-              <p className="text-sm font-medium text-white/60 uppercase tracking-wider">Expertise Nível 3</p>
+              <p className="text-sm font-medium text-white/60 uppercase tracking-wider">Cobertura Contratada</p>
             </div>
           </div>
 
           {/* Botões - Única Ação (WhatsApp) */}
           <div className="mt-12">
-            <button
-              onClick={handleCTAClick}
-              className="w-full sm:w-auto font-bold rounded-lg px-10 py-5 text-lg shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
+            <a
+              href={TRIAGE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={TRIAGE_LABEL}
+              className="inline-flex w-full sm:w-auto items-center justify-center text-center whitespace-normal font-bold rounded-lg px-6 sm:px-10 py-5 text-base sm:text-lg shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
               style={{ background: 'var(--coredb-cyan)', color: 'var(--coredb-dark)' }}
             >
-              Contratar Sustentação AMS
-            </button>
+              Agendar triagem técnica
+            </a>
           </div>
         </div>
 
@@ -116,16 +115,16 @@ export default function SupportAMS() {
       {/* Diferenciais Section */}
       <section className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mb-20">
+          <div className="max-w-3xl mb-12 md:mb-16">
             <h2 
               className="text-4xl md:text-5xl font-bold text-[var(--coredb-dark)] mb-6"
               style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
             >
-              Por que nosso AMS <br />
-              <span className="text-[var(--coredb-cyan)]">é referência no mercado.</span>
+              Sustentação AMS com <br />
+              <span className="text-[var(--coredb-dark)]">governança definida em contrato.</span>
             </h2>
             <p className="text-lg text-[#4B5563] leading-relaxed">
-              Transformamos chamados técnicos em inteligência de negócio. Nossa meta é reduzir o número de problemas, e não apenas respondê-los.
+              O histórico e os indicadores dos chamados apoiam a priorização técnica e a melhoria do ambiente.
             </p>
           </div>
 
@@ -171,19 +170,22 @@ export default function SupportAMS() {
       {/* CTA Final */}
       <section className="py-24 bg-[#0B1C2D] text-white text-center">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto p-12 rounded-3xl border border-white/5 bg-gradient-to-br from-[#0B1C2D] to-[#152a3d] shadow-2xl">
-            <h2 className="text-3xl md:text-5xl font-bold mb-8">Sua consultoria atual cumpre o que promete?</h2>
+          <div className="max-w-4xl mx-auto p-6 sm:p-12 rounded-3xl border border-white/5 bg-gradient-to-br from-[#0B1C2D] to-[#152a3d] shadow-2xl">
+            <h2 className="text-3xl md:text-5xl font-bold mb-8">Avalie o risco do RM antes de definir a sustentação.</h2>
             <p className="text-white/60 text-lg mb-10 max-w-2xl mx-auto">
-              Mude para um suporte que entrega governança, previsibilidade e técnicos que realmente entendem seu ERP.
+              Diagnóstico Executivo de Risco TOTVS RM. A triagem técnica inicial leva 20 minutos.
             </p>
-            <button
-              onClick={handleCTAClick}
-              className="group flex items-center gap-3 mx-auto px-10 py-5 font-bold rounded-xl transition-all duration-300 hover:gap-5"
+            <a
+              href={TRIAGE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={TRIAGE_LABEL}
+              className="group flex w-full sm:w-auto items-center justify-center gap-3 mx-auto px-6 sm:px-10 py-5 text-center whitespace-normal font-bold rounded-xl transition-all duration-300 hover:gap-5"
               style={{ background: 'var(--coredb-cyan)', color: 'var(--coredb-dark)' }}
             >
-              Falar com Especialista em Sustentação
+              Agendar triagem técnica
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </a>
           </div>
         </div>
       </section>

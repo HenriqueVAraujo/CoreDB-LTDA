@@ -7,9 +7,9 @@ export default function Hero() {
     const url =
       'https://wa.me/553191873435?text=' +
       encodeURIComponent(
-        'Olá, gostaria de solicitar um diagnóstico técnico do meu ambiente TOTVS e banco de dados para avaliar riscos operacionais.'
+        'Olá! Gostaria de agendar uma triagem técnica de risco do RM — 20 minutos.'
       )
-    window.open(url, '_blank')
+    window.open(url, '_blank', 'noopener,noreferrer')
   }
 
   const handleMethodologyClick = () => {
@@ -27,36 +27,38 @@ export default function Hero() {
           <div className="text-white">
 
             <span className="inline-block text-[var(--coredb-cyan)] font-semibold tracking-widest uppercase text-xs mb-6 border-l-2 border-[var(--coredb-cyan)] pl-3">
-              Blindagem Transacional para TOTVS
+              Diagnóstico Executivo de Risco TOTVS RM
             </span>
 
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.1] mb-8">
-              Blindamos ambientes TOTVS <br className="hidden md:block" />
-              que{' '}
-              <span className="text-[var(--coredb-cyan)]">não podem parar.</span>
+              Blindamos ambientes TOTVS e bancos de dados{' '}
+              <br className="hidden md:block" />
+              <span className="text-[var(--coredb-cyan)]">que não podem parar.</span>
             </h1>
 
             <p className="text-lg md:text-xl text-white/80 mb-12 max-w-xl leading-relaxed">
-              Quando o ERP para, o negócio para. A CoreDB atua antes disso acontecer — com
-              monitoramento ativo via <strong>Zabbix</strong>, dashboards de performance em{' '}
-              <strong>Grafana</strong> e SLA formalizado em contrato. Seu{' '}
-              <strong>Protheus, RM ou Fluig</strong> com previsibilidade real.
+              A CoreDB combina monitoramento automatizado via <strong>Zabbix</strong>, dashboards
+              de performance em <strong>Grafana</strong> e SLA formalizado em contrato para apoiar
+              a continuidade de ambientes <strong>Protheus, RM, Fluig</strong> e bancos de dados.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-16">
               <button
+                type="button"
                 onClick={handleCTAClick}
-                className="font-bold tracking-wide rounded-lg px-10 py-5 text-lg transition-all duration-300 bg-[var(--coredb-cyan)] text-[#0B1C2D] hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(29,174,255,0.5)]"
+                aria-label="Agendar uma triagem técnica de risco do RM — 20 minutos."
+                className="w-full sm:w-auto font-bold tracking-wide rounded-lg px-6 sm:px-10 py-5 text-lg text-center whitespace-normal transition-all duration-300 bg-[var(--coredb-cyan)] text-[#0B1C2D] hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(29,174,255,0.5)]"
               >
-                Solicitar Diagnóstico Técnico
+                Agendar triagem técnica
                 <span className="block text-[11px] uppercase tracking-wider opacity-70 font-medium mt-1">
-                  Avaliação inicial estruturada
+                  20 minutos • avaliação inicial
                 </span>
               </button>
 
               <button
+                type="button"
                 onClick={handleMethodologyClick}
-                className="font-semibold rounded-lg px-10 py-5 text-lg transition-all duration-300 border border-white/20 hover:bg-white/5 text-white"
+                className="w-full sm:w-auto font-semibold rounded-lg px-6 sm:px-10 py-5 text-lg transition-all duration-300 border border-white/20 hover:bg-white/5 text-white"
               >
                 Entender Nossa Metodologia
               </button>
@@ -68,7 +70,7 @@ export default function Hero() {
               <div className="flex items-start gap-3">
                 <Activity className="w-7 h-7 text-[var(--coredb-cyan)] shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-sm mb-1">Monitoramento automatizado pelo Zabbix</h4>
+                  <h2 className="font-semibold text-sm mb-1">Monitoramento automatizado pelo Zabbix</h2>
                   <p className="text-xs text-white/60">
                     24/7, com alertas configurados por criticidade.
                   </p>
@@ -78,7 +80,7 @@ export default function Hero() {
               <div className="flex items-start gap-3">
                 <FileText className="w-7 h-7 text-[var(--coredb-cyan)] shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-sm mb-1">SLA Contratual Mensurável</h4>
+                  <h2 className="font-semibold text-sm mb-1">SLA Contratual Mensurável</h2>
                   <p className="text-xs text-white/60">
                     Tempos de resposta definidos no SLA contratual aplicável.
                   </p>
@@ -88,7 +90,7 @@ export default function Hero() {
               <div className="flex items-start gap-3">
                 <BarChart2 className="w-7 h-7 text-[var(--coredb-cyan)] shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-sm mb-1">Governança GLPI + Grafana</h4>
+                  <h2 className="font-semibold text-sm mb-1">Governança GLPI + Grafana</h2>
                   <p className="text-xs text-white/60">
                     Dashboards de indicadores em tempo real.
                   </p>

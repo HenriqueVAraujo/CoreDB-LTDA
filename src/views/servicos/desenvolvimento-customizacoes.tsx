@@ -1,17 +1,13 @@
 'use client'
 
-import { Code2, Zap, Share2, Layers, ArrowRight, Cpu, Globe, Rocket } from 'lucide-react';
+import { Code2, Share2, Layers, ArrowRight, Cpu } from 'lucide-react';
+
+const TRIAGE_LABEL = 'Agendar uma triagem técnica de risco do RM — 20 minutos.'
+const TRIAGE_URL =
+  'https://wa.me/553191873435?text=' +
+  encodeURIComponent('Olá! Gostaria de agendar uma triagem técnica de risco do RM — 20 minutos.')
 
 export default function DesenvolvimentoCustomizacoes() {
-  const handleCTAClick = () => {
-    const url =
-      'https://wa.me/553191873435?text=' +
-      encodeURIComponent(
-        'Olá! Preciso de uma solução customizada para meu ERP TOTVS. Gostaria de falar com um arquiteto de software.'
-      );
-    window.open(url, '_blank');
-  };
-
   const diferenciais = [
     {
       icon: Share2,
@@ -21,12 +17,12 @@ export default function DesenvolvimentoCustomizacoes() {
     {
       icon: Cpu,
       title: 'Automação de Processos',
-      description: 'Eliminamos o trabalho braçal e as planilhas paralelas, criando rotinas automáticas dentro do Protheus, RM ou Fluig.'
+      description: 'Mapeamento e automação de rotinas aplicáveis no Protheus, RM ou Fluig, conforme requisitos homologados.'
     },
     {
       icon: Code2,
-      title: 'Código de Alta Performance',
-      description: 'Desenvolvimento em ADVPL, TLPP, PO-UI ou Metadados seguindo padrões que não pesam no seu banco de dados.'
+      title: 'Código com Critérios Técnicos',
+      description: 'Desenvolvimento em ADVPL, TLPP, PO-UI ou Metadados com revisão do impacto no banco de dados.'
     },
     {
       icon: Layers,
@@ -39,17 +35,17 @@ export default function DesenvolvimentoCustomizacoes() {
     {
       step: '1',
       title: 'Imersão Técnica',
-      description: 'Entendemos o gargalo do negócio para desenhar a arquitetura técnica mais eficiente e menos custosa.'
+      description: 'Levantamento do processo, das restrições e dos critérios para definir a arquitetura aplicável.'
     },
     {
       step: '2',
       title: 'Desenvolvimento e Boas Práticas',
-      description: 'Desenvolvimento focado em escalabilidade, com código limpo, documentado e fácil de manter.'
+      description: 'Desenvolvimento orientado pelos padrões, testes e documentação definidos no projeto.'
     },
     {
       step: '3',
-      title: 'Homologação Rígida',
-      description: 'Testes de estresse e integridade para reduzir o risco de impactos por testes e homologação.'
+      title: 'Testes e Homologação',
+      description: 'Testes e homologação conforme os riscos, critérios de aceite e ambientes disponíveis.'
     },
     {
       step: '4',
@@ -65,38 +61,41 @@ export default function DesenvolvimentoCustomizacoes() {
       <section className="relative bg-[#0B1C2D] min-h-[80vh] flex items-center py-20">
         <div className="container mx-auto px-4 max-w-5xl text-white">
           <span className="text-[var(--coredb-cyan)] font-bold tracking-widest uppercase text-sm mb-4 inline-block">
-            Engenharia de Software para o Ecossistema TOTVS
+            Diagnóstico Executivo de Risco TOTVS RM
           </span>
 
           <h1
             className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight mb-6 text-left"
             style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
           >
-            Customizações TOTVS em BH: ADVPL, TLPP e Integrações ERP — <br />
-            <span className="text-[var(--coredb-cyan)]">Resultados Reais.</span>
+            Customizações TOTVS em BH: <br className="hidden md:block" />
+            <span className="text-[var(--coredb-cyan)]">ADVPL, TLPP e Integrações ERP.</span>
           </h1>
 
           <p className="text-lg md:text-xl text-white/70 mb-10 max-w-3xl leading-relaxed">
-            Seu ERP deve se adaptar ao seu negócio, e não o contrário. Desenvolvemos customizações TOTVS, integrações via API e automação de processos para Protheus e RM. Base em Belo Horizonte — atendimento em todo o Brasil.
+            Blindamos ambientes TOTVS e bancos de dados que não podem parar. Desenvolvemos customizações e integrações conforme requisitos, testes e escopo acordados.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 mt-8">
-            <button
-              onClick={handleCTAClick}
-              className="font-bold rounded-lg px-10 py-5 text-lg shadow-lg transition-all duration-300 hover:scale-105"
+            <a
+              href={TRIAGE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={TRIAGE_LABEL}
+              className="inline-flex w-full sm:w-auto items-center justify-center text-center whitespace-normal font-bold rounded-lg px-6 sm:px-10 py-5 text-base sm:text-lg shadow-lg transition-all duration-300 hover:scale-105"
               style={{ background: 'var(--coredb-cyan)', color: 'var(--coredb-dark)' }}
             >
-              Iniciar Projeto Customizado
-            </button>
+              Agendar triagem técnica
+            </a>
             
             <div className="flex items-center gap-6 px-4 border-l border-white/10">
               <div className="text-center">
                 <p className="text-2xl font-bold text-white">Código</p>
-                <p className="text-xs text-white/40 uppercase tracking-widest">Limpo e Seguro</p>
+                <p className="text-xs text-white/70 uppercase tracking-widest">Revisado e documentado</p>
               </div>
               <div className="text-center">
                 <p className="text-2xl font-bold text-white">Alta</p>
-                <p className="text-xs text-white/40 uppercase tracking-widest">Integração</p>
+                <p className="text-xs text-white/70 uppercase tracking-widest">Integração avaliada</p>
               </div>
             </div>
           </div>
@@ -115,11 +114,11 @@ export default function DesenvolvimentoCustomizacoes() {
               className="text-4xl md:text-5xl font-bold text-[var(--coredb-dark)] mb-6"
               style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
             >
-              Tecnologia que <br />
-              <span className="text-[var(--coredb-cyan)]">potencializa o seu ERP.</span>
+              Desenvolvimento com <br />
+              <span className="text-[var(--coredb-dark)]">requisitos e critérios de aceite.</span>
             </h2>
             <p className="text-lg text-[#4B5563] leading-relaxed">
-              Não fazemos apenas "programação". Entregamos arquitetura de software pensada para não onerar seu banco de dados e facilitar futuras atualizações de versão.
+              O trabalho considera arquitetura, integração, impacto no banco de dados e manutenção futura.
             </p>
           </div>
 
@@ -151,7 +150,7 @@ export default function DesenvolvimentoCustomizacoes() {
       <section className="py-20 md:py-32 bg-[#F9FAFB]">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl font-bold text-[var(--coredb-dark)] mb-6">Ciclo de Desenvolvimento Ágil</h2>
+            <h2 className="text-4xl font-bold text-[var(--coredb-dark)] mb-6">Etapas do desenvolvimento</h2>
             <div className="h-1.5 w-24 bg-[var(--coredb-cyan)] mx-auto rounded-full" />
           </div>
 
@@ -174,19 +173,22 @@ export default function DesenvolvimentoCustomizacoes() {
       {/* Rodapé CTA */}
       <section className="py-24 bg-[#0B1C2D] text-white text-center">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto p-12 rounded-3xl border border-white/5 bg-gradient-to-br from-[#0B1C2D] to-[#152a3d] shadow-2xl">
+          <div className="max-w-4xl mx-auto p-6 sm:p-12 rounded-3xl border border-white/5 bg-gradient-to-br from-[#0B1C2D] to-[#152a3d] shadow-2xl">
             <h2 className="text-3xl md:text-5xl font-bold mb-8">Tem um desafio de integração ou automação?</h2>
             <p className="text-white/60 text-lg mb-10 max-w-2xl mx-auto">
-              Nossa equipe de arquitetos está pronta para transformar sua necessidade em um sistema estável, escalável e produtivo.
+              Diagnóstico Executivo de Risco TOTVS RM. A triagem técnica inicial leva 20 minutos.
             </p>
-            <button
-              onClick={handleCTAClick}
-              className="group flex items-center gap-3 mx-auto px-10 py-5 font-bold rounded-xl transition-all duration-300 hover:gap-5"
+            <a
+              href={TRIAGE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={TRIAGE_LABEL}
+              className="group flex w-full sm:w-auto items-center justify-center gap-3 mx-auto px-6 sm:px-10 py-5 text-center whitespace-normal font-bold rounded-xl transition-all duration-300 hover:gap-5"
               style={{ background: 'var(--coredb-cyan)', color: 'var(--coredb-dark)' }}
             >
-              Falar com Arquiteto de Software
+              Agendar triagem técnica
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </a>
           </div>
         </div>
       </section>

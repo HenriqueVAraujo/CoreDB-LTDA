@@ -33,7 +33,7 @@ export default function ProblemSection() {
       <div className="container mx-auto px-4 max-w-5xl">
 
         {/* Overline */}
-        <span className="text-[var(--coredb-cyan)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
+        <span className="text-[var(--coredb-dark)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
           Risco Operacional
         </span>
 
@@ -84,7 +84,7 @@ export default function ProblemSection() {
             <p className="text-lg text-[#4B5563] mt-4 leading-relaxed">
               A maioria das consultorias cuida da carroceria — a interface, os módulos, as telas.
               A CoreDB cuida do motor: o banco de dados que sustenta toda a operação.
-              Sem ele calibrado, nenhuma melhoria no ERP resolve o problema de verdade.
+              A análise conjunta das duas camadas ajuda a localizar a causa técnica e priorizar melhorias mensuráveis.
             </p>
           </div>
         </div>

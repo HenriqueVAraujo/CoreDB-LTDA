@@ -18,6 +18,8 @@ const roboto = Roboto({
 })
 
 const SITE_URL = 'https://www.coredb.com.br'
+const ORGANIZATION_ID = `${SITE_URL}/#organization`
+const isProduction = process.env.VERCEL_ENV === 'production'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -26,21 +28,8 @@ export const metadata: Metadata = {
     template: '%s | CoreDB',
   },
   description:
-    'Consultoria especializada em ERP TOTVS (Protheus, RM, Fluig) e Administração de Banco de Dados. Atendemos empresas em todo o Brasil com foco em missão crítica, performance e SLA contratual.',
-  keywords: [
-    'consultoria TOTVS',
-    'TOTVS Belo Horizonte',
-    'consultoria ERP BH',
-    'DBA SQL Server',
-    'DBA Oracle',
-    'banco de dados TOTVS',
-    'suporte Protheus',
-    'suporte RM',
-    'Fluig',
-    'AMS TOTVS',
-    'customizações TOTVS',
-    'CoreDB',
-  ],
+    'Consultoria em ambientes TOTVS e bancos de dados, com diagnóstico técnico, governança e SLA definidos conforme o escopo contratado.',
+  applicationName: 'CoreDB',
   authors: [{ name: 'CoreDB', url: SITE_URL }],
   creator: 'CoreDB',
   publisher: 'CoreDB',
@@ -48,11 +37,18 @@ export const metadata: Metadata = {
   verification: {
     google: 'pNpEVbrZOj2I3Vujue7b_pEGsVL4lO_XpxaHWs0yw7Y',
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
-  },
+  robots: isProduction
+    ? {
+        index: true,
+        follow: true,
+        googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+      }
+    : {
+        index: false,
+        follow: false,
+        nocache: true,
+        googleBot: { index: false, follow: false, noimageindex: true },
+      },
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
@@ -60,7 +56,7 @@ export const metadata: Metadata = {
     siteName: 'CoreDB',
     title: 'CoreDB | Consultoria TOTVS e DBA — Belo Horizonte, MG',
     description:
-      'Consultoria especializada em ERP TOTVS e Banco de Dados. Missão crítica, performance e SLA contratual. Atendemos todo o Brasil.',
+      'Consultoria em ambientes TOTVS e bancos de dados, com diagnóstico técnico, governança e SLA definidos conforme o escopo contratado.',
     images: [
       {
         url: '/social/open-graph-logo-card-1200x630.png',
@@ -74,44 +70,38 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'CoreDB | Consultoria TOTVS e DBA',
     description:
-      'Especialistas em ERP TOTVS e Banco de Dados. Missão crítica, SLA contratual, atendimento nacional.',
+      'Diagnóstico técnico e governança para ambientes TOTVS e bancos de dados.',
     images: ['/social/social-share-logo-card-1200x630.png'],
-  },
-  alternates: {
-    canonical: '/',
   },
 }
 
-const localBusinessSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: 'CoreDB',
+const organizationSchema = {
+  '@type': 'Organization',
+  '@id': ORGANIZATION_ID,
+  name: 'CoreDB LTDA',
+  alternateName: 'CoreDB',
   description:
-    'Consultoria especializada em ERP TOTVS (Protheus, RM e Fluig) e Administração de Banco de Dados SQL Server e Oracle. Foco em missão crítica, performance e SLA contratual.',
+    'Consultoria especializada em ambientes TOTVS e administração de bancos de dados SQL Server e Oracle.',
   url: SITE_URL,
+  logo: `${SITE_URL}/brand/header-logo-light.svg`,
+  image: `${SITE_URL}/social/open-graph-logo-card-1200x630.png`,
   telephone: '+55-31-99187-3435',
   email: 'comercial@coredb.com.br',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Belo Horizonte',
-    addressRegion: 'MG',
-    addressCountry: 'BR',
-  },
-  areaServed: {
-    '@type': 'Country',
-    name: 'Brasil',
-  },
-  serviceType: [
-    'Consultoria TOTVS',
-    'Administração de Banco de Dados',
-    'Suporte AMS',
-    'Desenvolvimento e Customizações ERP',
-  ],
-  priceRange: '$$',
-  sameAs: [
-    'https://www.linkedin.com/in/coredb-consultoria-83319236b/',
-    'https://share.google/BKp3nyAq3Ul1bLTgI',
-  ],
+  sameAs: ['https://www.linkedin.com/in/coredb-consultoria-83319236b/'],
+}
+
+const websiteSchema = {
+  '@type': 'WebSite',
+  '@id': `${SITE_URL}/#website`,
+  name: 'CoreDB',
+  url: SITE_URL,
+  inLanguage: 'pt-BR',
+  publisher: { '@id': ORGANIZATION_ID },
+}
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [organizationSchema, websiteSchema],
 }
 
 export default function RootLayout({
@@ -122,7 +112,7 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
       <body
