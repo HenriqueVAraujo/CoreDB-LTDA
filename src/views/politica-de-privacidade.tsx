@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react';
-import { ShieldCheck, Lock, EyeOff, Scale, ChevronLeft, Mail } from 'lucide-react';
+import { ShieldCheck, ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
 
 export default function PrivacyPolicy() {
@@ -25,7 +25,7 @@ export default function PrivacyPolicy() {
             Política de Privacidade
           </h1>
           <p className="text-[#1DAEFF] font-medium mb-2">CoreDB Consultoria Técnica</p>
-          <p className="text-white/40 text-sm">Última atualização: 13 de Fevereiro de 2026</p>
+          <p className="text-white/40 text-sm">Última atualização: 25 de julho de 2026</p>
         </div>
       </header>
 
@@ -42,8 +42,8 @@ export default function PrivacyPolicy() {
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div>
-                <h4 className="font-bold text-[#1DAEFF] mb-2">Confidencialidade</h4>
-                <p className="text-sm text-white/70">Seus dados são tratados com sigilo bancário e protegidos por criptografia.</p>
+                <h4 className="font-bold text-[#1DAEFF] mb-2">Proteção de Dados</h4>
+                <p className="text-sm text-white/70">Os dados pessoais são tratados com medidas técnicas e administrativas adequadas ao contexto e aos riscos envolvidos, com o objetivo de reduzir acessos não autorizados, perda, alteração ou divulgação indevida.</p>
               </div>
               <div>
                 <h4 className="font-bold text-[#1DAEFF] mb-2">Uso Ético</h4>
@@ -76,19 +76,20 @@ export default function PrivacyPolicy() {
 
             <section>
               <h2 className="text-2xl font-bold !text-white mb-4" style={{ color: 'white' }}>3. Seus Direitos (LGPD)</h2>
-              <p>Conforme o Art. 18 da LGPD, você pode solicitar a qualquer momento o acesso, correção ou exclusão de seus dados através do e-mail <strong>contato@coredb.com.br</strong>.</p>
+              <p>Para exercer esses direitos, utilize o Canal de privacidade indicado abaixo.</p>
             </section>
 
           </article>
 
           {/* CTA Final - CONVERSÃO */}
           <div className="mt-20 p-10 bg-white/5 rounded-3xl border border-white/10 text-center">
-            <h3 className="text-2xl font-bold mb-4 !text-white" style={{ color: 'white' }}>Dúvidas sobre sua segurança?</h3>
-            <p className="text-white/60 mb-8">Nosso DPO e time técnico estão à disposição para explicar nossos processos de proteção.</p>
-            <a href="mailto:contato@coredb.com.br" className="inline-flex items-center gap-3 bg-[#1DAEFF] hover:bg-[#1DAEFF]/80 text-white px-8 py-4 rounded-full font-bold transition-all">
-              <Mail className="w-5 h-5" />
-              Falar com o Encarregado de Dados
-            </a>
+            <h3 className="text-2xl font-bold mb-4 !text-white" style={{ color: 'white' }}>Canal de privacidade</h3>
+            <p className="text-white/60 mb-8">
+              Solicitações relacionadas à privacidade e ao exercício de direitos podem ser encaminhadas para{' '}
+              <a href="mailto:coredb@coredb.com.br" className="font-semibold text-[#1DAEFF] hover:underline">
+                coredb@coredb.com.br
+              </a>.
+            </p>
           </div>
 
         </div>

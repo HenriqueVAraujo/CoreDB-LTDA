@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Mail, Phone, Send, ShieldCheck, MessageCircle } from "lucide-react";
 
+const REQUIRED_FIELD_DESCRIPTION_ID = "contact-required-fields";
+
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
@@ -63,7 +65,7 @@ export default function ContactForm() {
       encodeURIComponent(
         'Olá! Gostaria de falar diretamente com um especialista CoreDB para discutir meu ambiente TOTVS.'
       );
-    window.open(url, '_blank');
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -84,15 +86,18 @@ export default function ContactForm() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
           <div className="lg:col-span-2 bg-white p-10 rounded-2xl border border-gray-200 shadow-sm">
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-8" aria-busy={isSubmitting}>
+              <p id={REQUIRED_FIELD_DESCRIPTION_ID} className="sr-only">
+                Campos identificados como obrigatórios devem ser preenchidos.
+              </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input label="Nome Completo" name="name" value={formData.name} onChange={handleChange} />
-                <Input label="E-mail Corporativo" name="email" value={formData.email} onChange={handleChange} type="email" />
+                <Input label="Nome Completo" name="name" value={formData.name} onChange={handleChange} disabled={isSubmitting} />
+                <Input label="E-mail Corporativo" name="email" value={formData.email} onChange={handleChange} type="email" disabled={isSubmitting} />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input label="Telefone / WhatsApp" name="phone" value={formData.phone} onChange={handleChange} type="tel" />
-                <Input label="Empresa" name="company" value={formData.company} onChange={handleChange} />
+                <Input label="Telefone / WhatsApp" name="phone" value={formData.phone} onChange={handleChange} type="tel" disabled={isSubmitting} />
+                <Input label="Empresa" name="company" value={formData.company} onChange={handleChange} disabled={isSubmitting} />
               </div>
 
               <Select
@@ -100,6 +105,7 @@ export default function ContactForm() {
                 name="environment"
                 value={formData.environment}
                 onChange={handleChange}
+                disabled={isSubmitting}
                 options={[
                   { value: "instability", label: "Instabilidade ou lentidão recorrente no ERP" },
                   { value: "monitoring", label: "Sem monitoramento estruturado (Zabbix / Grafana)" },
@@ -114,6 +120,7 @@ export default function ContactForm() {
                 name="urgency"
                 value={formData.urgency}
                 onChange={handleChange}
+                disabled={isSubmitting}
                 options={[
                   { value: "planning", label: "Planejamento estratégico (30+ dias)" },
                   { value: "short", label: "Necessidade no curto prazo (até 30 dias)" },
@@ -122,14 +129,17 @@ export default function ContactForm() {
               />
 
               <div>
-                <label className="block text-sm font-semibold text-[var(--coredb-dark)] mb-2">
-                  Contexto Adicional <span className="font-normal text-gray-400">(opcional)</span>
+                <label htmlFor="contact-message" className="block text-sm font-semibold text-[var(--coredb-dark)] mb-2">
+                  Contexto Adicional <span id="contact-message-optional" className="font-normal text-gray-400">(opcional)</span>
                 </label>
                 <textarea
+                  id="contact-message"
                   name="message"
                   rows={4}
                   value={formData.message}
                   onChange={handleChange}
+                  aria-describedby="contact-message-optional"
+                  disabled={isSubmitting}
                   placeholder="Descreva brevemente o cenário, volume de usuários, módulos em uso ou qualquer detalhe relevante..."
                   className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[var(--coredb-cyan)] focus:ring-2 focus:ring-[var(--coredb-cyan)]/20 transition resize-none text-sm"
                 />
@@ -138,6 +148,7 @@ export default function ContactForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
+                aria-busy={isSubmitting}
                 className="w-full py-5 bg-[var(--coredb-dark)] text-white font-semibold rounded-xl hover:bg-[var(--coredb-cyan)] hover:text-[var(--coredb-dark)] transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? "Processando..." : "Solicitar Análise Técnica"}
@@ -145,13 +156,13 @@ export default function ContactForm() {
               </button>
 
               {submitStatus === "success" && (
-                <div className="p-4 bg-green-50 border border-green-200 text-green-700 rounded-xl">
+                <div role="status" aria-live="polite" className="p-4 bg-green-50 border border-green-200 text-green-700 rounded-xl">
                   Solicitação recebida! Nossa equipe técnica entrará em contato em breve.
                 </div>
               )}
 
               {submitStatus === "error" && (
-                <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl">
+                <div role="alert" aria-live="assertive" className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl">
                   Erro ao enviar. Por favor, use o contato direto ao lado ou tente novamente.
                 </div>
               )}
@@ -182,6 +193,7 @@ export default function ContactForm() {
             </div>
 
             <button
+              type="button"
               onClick={handleWhatsApp}
               className="w-full flex items-center justify-center gap-3 py-5 px-6 rounded-2xl font-semibold text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
               style={{ background: '#25D366' }}
@@ -208,31 +220,47 @@ export default function ContactForm() {
   );
 }
 
-function Input({ label, name, value, onChange, type = "text" }: any) {
+function Input({ label, name, value, onChange, type = "text", disabled }: any) {
+  const id = `contact-${name}`;
+
   return (
     <div>
-      <label className="block text-sm font-semibold text-[var(--coredb-dark)] mb-2">{label}</label>
+      <label htmlFor={id} className="block text-sm font-semibold text-[var(--coredb-dark)] mb-2">
+        {label}<span className="sr-only"> (obrigatório)</span>
+      </label>
       <input
+        id={id}
         type={type}
         name={name}
         value={value}
         onChange={onChange}
         required
+        aria-required="true"
+        aria-describedby={REQUIRED_FIELD_DESCRIPTION_ID}
+        disabled={disabled}
         className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[var(--coredb-cyan)] focus:ring-2 focus:ring-[var(--coredb-cyan)]/20 transition"
       />
     </div>
   );
 }
 
-function Select({ label, name, value, onChange, options }: any) {
+function Select({ label, name, value, onChange, options, disabled }: any) {
+  const id = `contact-${name}`;
+
   return (
     <div>
-      <label className="block text-sm font-semibold text-[var(--coredb-dark)] mb-2">{label}</label>
+      <label htmlFor={id} className="block text-sm font-semibold text-[var(--coredb-dark)] mb-2">
+        {label}<span className="sr-only"> (obrigatório)</span>
+      </label>
       <select
+        id={id}
         name={name}
         value={value}
         onChange={onChange}
         required
+        aria-required="true"
+        aria-describedby={REQUIRED_FIELD_DESCRIPTION_ID}
+        disabled={disabled}
         className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[var(--coredb-cyan)] focus:ring-2 focus:ring-[var(--coredb-cyan)]/20 transition bg-white"
       >
         <option value="">Selecione uma opção</option>
