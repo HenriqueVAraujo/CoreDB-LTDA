@@ -66,7 +66,7 @@ export default function SupportAMS() {
 
           <h1
             className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight mb-6 text-left"
-            style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
+            style={{ fontWeight: 700 }}
           >
             Suporte AMS TOTVS em BH e Todo o Brasil: <br className="hidden md:block" />
             <span className="text-[var(--coredb-cyan)]">governança e SLA contratual.</span>
@@ -118,7 +118,7 @@ export default function SupportAMS() {
           <div className="max-w-3xl mb-12 md:mb-16">
             <h2 
               className="text-4xl md:text-5xl font-bold text-[var(--coredb-dark)] mb-6"
-              style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
+              style={{ fontWeight: 700 }}
             >
               Sustentação AMS com <br />
               <span className="text-[var(--coredb-dark)]">governança definida em contrato.</span>

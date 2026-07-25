@@ -66,7 +66,7 @@ export default function DBA() {
 
           <h1
             className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight mb-6 text-left"
-            style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
+            style={{ fontWeight: 700 }}
           >
             Administração de bancos de dados multiplataforma <br className="hidden md:block" />
             <span className="text-[var(--coredb-cyan)]">para ambientes críticos.</span>
@@ -102,7 +102,7 @@ export default function DBA() {
           <div className="max-w-3xl mb-20">
             <h2 
               className="text-4xl md:text-5xl font-bold text-[var(--coredb-dark)] mb-6"
-              style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
+              style={{ fontWeight: 700 }}
             >
               Gestão multiplataforma de bancos de dados <br />
               <span className="text-[var(--coredb-dark)]">orientada por risco e evidências.</span>

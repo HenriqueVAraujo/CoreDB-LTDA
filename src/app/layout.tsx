@@ -1,19 +1,19 @@
 import type { Metadata } from 'next'
-import { Source_Sans_3, Roboto } from 'next/font/google'
+import { Inter, Manrope } from 'next/font/google'
 import CookieConsent from '@/components/CookieConsent'
 import './globals.css'
 
-const sourceSans = Source_Sans_3({
+const manrope = Manrope({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  variable: '--font-source-sans',
+  weight: ['600', '700', '800'],
+  variable: '--font-manrope',
   display: 'swap',
 })
 
-const roboto = Roboto({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '700'],
-  variable: '--font-roboto',
+  weight: ['400', '500', '600'],
+  variable: '--font-inter',
   display: 'swap',
 })
 
@@ -108,18 +108,14 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={`${sourceSans.variable} ${roboto.variable}`}>
+    <html lang="pt-BR" className={`${manrope.variable} ${inter.variable}`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body
-        style={{
-          fontFamily: "var(--font-roboto), 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-        }}
-      >
+      <body>
         {children}
         <CookieConsent />
       </body>

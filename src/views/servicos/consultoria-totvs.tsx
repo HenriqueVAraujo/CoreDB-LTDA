@@ -66,7 +66,7 @@ export default function ConsultoriaTOTVS() {
 
           <h1
             className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight mb-6 text-left"
-            style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
+            style={{ fontWeight: 700 }}
           >
             Consultoria TOTVS em Belo Horizonte — <br className="hidden md:block" />
             <span className="text-[var(--coredb-cyan)]"> Protheus, RM e Fluig.</span>
@@ -102,7 +102,7 @@ export default function ConsultoriaTOTVS() {
           <div className="max-w-3xl mb-20">
             <h2 
               className="text-4xl md:text-5xl font-bold text-[var(--coredb-dark)] mb-6"
-              style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
+              style={{ fontWeight: 700 }}
             >
               Atuação integrada em <br />
               <span className="text-[var(--coredb-dark)]">ERP e banco de dados.</span>

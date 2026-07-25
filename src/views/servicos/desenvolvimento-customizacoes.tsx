@@ -66,7 +66,7 @@ export default function DesenvolvimentoCustomizacoes() {
 
           <h1
             className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight mb-6 text-left"
-            style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
+            style={{ fontWeight: 700 }}
           >
             Customizações TOTVS em BH: <br className="hidden md:block" />
             <span className="text-[var(--coredb-cyan)]">ADVPL, TLPP e Integrações ERP.</span>
@@ -112,7 +112,7 @@ export default function DesenvolvimentoCustomizacoes() {
           <div className="max-w-3xl mb-20">
             <h2 
               className="text-4xl md:text-5xl font-bold text-[var(--coredb-dark)] mb-6"
-              style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
+              style={{ fontWeight: 700 }}
             >
               Desenvolvimento com <br />
               <span className="text-[var(--coredb-dark)]">requisitos e critérios de aceite.</span>
