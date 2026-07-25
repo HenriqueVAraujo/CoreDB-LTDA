@@ -81,7 +81,7 @@ const organizationSchema = {
   name: 'CoreDB LTDA',
   alternateName: 'CoreDB',
   description:
-    'Consultoria especializada em ambientes TOTVS e administração de bancos de dados SQL Server e Oracle.',
+    'Empresa de engenharia e execução de tecnologia crítica, com atuação em Protheus, RM e Fluig e administração de bancos de dados SQL Server, Oracle, PostgreSQL e MySQL.',
   url: SITE_URL,
   logo: `${SITE_URL}/brand/header-logo-light.svg`,
   image: `${SITE_URL}/social/open-graph-logo-card-1200x630.png`,

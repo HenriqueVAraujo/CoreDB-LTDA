@@ -68,12 +68,12 @@ export default function DBA() {
             className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight mb-6 text-left"
             style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
           >
-            DBA SQL Server e Oracle em Belo Horizonte <br className="hidden md:block" />
-            <span className="text-[var(--coredb-cyan)]">para Ambientes TOTVS Críticos.</span>
+            Administração de bancos de dados multiplataforma <br className="hidden md:block" />
+            <span className="text-[var(--coredb-cyan)]">para ambientes críticos.</span>
           </h1>
 
           <p className="text-lg md:text-xl text-white/70 mb-10 max-w-3xl leading-relaxed">
-            Blindamos ambientes TOTVS e bancos de dados que não podem parar. O monitoramento pode ser automatizado de forma contínua; o atendimento humano segue a cobertura contratada.
+            A CoreDB administra SQL Server, Oracle, PostgreSQL e MySQL com diagnóstico técnico, performance, monitoramento automatizado, backup, continuidade e governança conforme o escopo contratado.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 mt-8">
@@ -104,7 +104,7 @@ export default function DBA() {
               className="text-4xl md:text-5xl font-bold text-[var(--coredb-dark)] mb-6"
               style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
             >
-              Gestão de Banco de Dados <br />
+              Gestão multiplataforma de bancos de dados <br />
               <span className="text-[var(--coredb-dark)]">orientada por risco e evidências.</span>
             </h2>
             <p className="text-lg text-[#4B5563] leading-relaxed">

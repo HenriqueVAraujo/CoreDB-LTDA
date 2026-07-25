@@ -6,7 +6,7 @@ export default function ServicesSection() {
   const services = [
     {
       icon: Settings,
-      title: "Especialidades TOTVS",
+      title: "Engenharia e Sustentação TOTVS",
       subtitle: "Protheus, RM e Fluig",
       description:
         "Atuação integrada em regra de negócio e infraestrutura técnica para implementação, atualização de release, sustentação e investigação de gargalos.",
@@ -14,10 +14,10 @@ export default function ServicesSection() {
     },
     {
       icon: Database,
-      title: "DBA de Alta Performance",
-      subtitle: "SQL Server e Oracle",
+      title: "Engenharia de Bancos de Dados Multiplataforma",
+      subtitle: "SQL Server, Oracle, PostgreSQL e MySQL",
       description:
-        "SQL Tuning, alta disponibilidade e Disaster Recovery para ambientes críticos, com medições de queries, índices e capacidade do banco de dados.",
+        "Administração, diagnóstico, SQL Tuning, monitoramento, backup, continuidade e governança de bancos de dados conforme o escopo contratado.",
       path: ROUTES.SERVICE_DBA,
     },
     {
@@ -66,8 +66,9 @@ export default function ServicesSection() {
     "TOTVS RM",
     "Fluig",
     "SQL Server",
-    "Oracle Database",
+    "Oracle",
     "PostgreSQL",
+    "MySQL",
     "Zabbix",
     "Grafana",
     "GLPI",
@@ -85,14 +86,13 @@ export default function ServicesSection() {
           </span>
 
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--coredb-dark)] mb-8">
-            Soluções de Alta Performance <br />
-            <span className="text-[var(--coredb-dark)]">para o seu Ecossistema TOTVS</span>
+            Engenharia para Ambientes TOTVS <br />
+            <span className="text-[var(--coredb-dark)]">e Bancos de Dados Críticos</span>
           </h2>
 
           <p className="text-lg md:text-xl text-[#4B5563] leading-relaxed">
-            Unimos a inteligência do ERP à potência do Banco de Dados para apoiar a continuidade operacional e reduzir riscos de indisponibilidade.
-            Enquanto a maioria das consultorias foca na carcaça do sistema,{" "}
-            <span className="font-semibold text-[var(--coredb-dark)]">nós cuidamos do motor.</span>
+            Atuamos em duas frentes integradas: Engenharia e Sustentação TOTVS e Engenharia de
+            Bancos de Dados Multiplataforma, conforme o escopo de cada operação.
           </p>
         </div>
 

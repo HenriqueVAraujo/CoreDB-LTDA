@@ -3,10 +3,10 @@ import DBAView from '@/views/servicos/dba'
 
 const SITE_URL = 'https://www.coredb.com.br'
 const PAGE_PATH = '/servicos/dba'
-const title = 'DBA SQL Server e Oracle em Belo Horizonte — Banco de Dados TOTVS'
+const title = 'DBA Multiplataforma em Belo Horizonte — SQL Server, Oracle, PostgreSQL e MySQL'
 const socialTitle = `${title} | CoreDB`
 const description =
-  'Administração de SQL Server e Oracle para ambientes TOTVS, com Health Check, SQL Tuning, continuidade e monitoramento automatizado. Atendimento humano conforme cobertura contratada.'
+  'Administração de bancos de dados SQL Server, Oracle, PostgreSQL e MySQL, com diagnóstico, performance, monitoramento, backup, continuidade e governança conforme o escopo contratado.'
 
 export const metadata: Metadata = {
   title,
@@ -37,13 +37,13 @@ const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   '@id': `${SITE_URL}${PAGE_PATH}#service`,
-  name: 'Administração de Banco de Dados — DBA SQL Server e Oracle',
+  name: 'Administração de Bancos de Dados Multiplataforma',
   description,
   url: `${SITE_URL}${PAGE_PATH}`,
   image: `${SITE_URL}/social/open-graph-logo-card-1200x630.png`,
   provider: { '@id': `${SITE_URL}/#organization` },
   areaServed: { '@type': 'Country', name: 'Brasil' },
-  serviceType: 'Administração de Banco de Dados',
+  serviceType: 'Administração de Bancos de Dados Multiplataforma',
   inLanguage: 'pt-BR',
 }
 

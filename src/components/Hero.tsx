@@ -42,10 +42,19 @@ export default function Hero() {
               atuação especializada conforme o escopo de cada operação.
             </p>
 
-            <p className="text-sm md:text-base text-white/70 mb-12 max-w-xl leading-relaxed">
-              <span className="font-semibold text-white/80">Principais especialidades:</span>{' '}
-              Protheus · RM · Fluig · Datasul · SQL Server · Oracle
-            </p>
+            <ul
+              aria-label="Principais especialidades"
+              className="text-sm md:text-base text-white/70 mb-12 max-w-xl leading-relaxed space-y-1"
+            >
+              <li>
+                <strong className="font-semibold text-white/80">TOTVS:</strong>{' '}
+                Protheus · RM · Fluig
+              </li>
+              <li>
+                <strong className="font-semibold text-white/80">Bancos de dados:</strong>{' '}
+                SQL Server · Oracle · PostgreSQL · MySQL
+              </li>
+            </ul>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-16">
               <button

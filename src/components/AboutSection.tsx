@@ -5,14 +5,14 @@ import { CheckCircle2 } from "lucide-react";
 export default function AboutSection() {
   const areas = [
     {
-      title: "TOTVS Protheus e RM",
+      title: "Engenharia e Sustentação TOTVS",
       description:
-        "Parametrização avançada, integrações seguras e sustentação estruturada dos módulos críticos com foco em estabilidade, governança e performance contínua.",
+        "Atuação em Protheus, RM e Fluig com parametrização, integrações, sustentação e evolução técnica conforme o escopo de cada ambiente.",
     },
     {
-      title: "Administração de Banco de Dados (DBA)",
+      title: "Engenharia de Bancos de Dados Multiplataforma",
       description:
-        "Monitoramento proativo, SQL Tuning, alta disponibilidade e políticas formais de backup para SQL Server e Oracle em ambientes de missão crítica.",
+        "Administração de SQL Server, Oracle, PostgreSQL e MySQL com diagnóstico, performance, monitoramento, backup, continuidade e governança conforme o escopo contratado.",
     },
     {
       title: "Fluig e Automação de Processos",
@@ -54,7 +54,7 @@ export default function AboutSection() {
           </span>
 
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--coredb-dark)] mb-8">
-            Consultoria Especializada em Ambientes TOTVS Críticos
+            Engenharia para Ambientes TOTVS e Bancos de Dados Críticos
           </h2>
 
           <p className="text-lg md:text-xl text-[#4B5563] leading-relaxed">
