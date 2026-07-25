@@ -7,7 +7,7 @@ export default function GuaranteeSection() {
     {
       icon: Activity,
       label: "Zabbix",
-      title: "Monitoramento Proativo 24/7",
+      title: "Monitoramento automatizado 24/7 por ferramentas",
       description:
         "Infraestrutura de monitoramento enterprise via Zabbix configurada para seus servidores TOTVS e banco de dados. Alertas chegam antes do seu usuário perceber qualquer instabilidade.",
       features: [
@@ -35,7 +35,7 @@ export default function GuaranteeSection() {
       label: "Grafana",
       title: "Dashboards de SLA em Tempo Real",
       description:
-        "Visibilidade total da operação via dashboards Grafana. Métricas de desempenho do banco, tempo de resposta do ERP e indicadores de SLA — disponíveis para você a qualquer momento.",
+        "Visibilidade por dashboards, conforme métricas e disponibilidade contratadas.",
       features: [
         "KPIs operacionais do ambiente TOTVS",
         "Performance de banco de dados em tempo real",

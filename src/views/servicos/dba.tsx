@@ -26,12 +26,12 @@ export default function DBA() {
     {
       icon: ShieldAlert,
       title: 'Disaster Recovery',
-      description: 'Estratégias reais de backup e alta disponibilidade para garantir que sua operação volte em minutos após uma falha.'
+      description: 'Objetivos de recuperação definidos após análise e testes do ambiente.'
     },
     {
       icon: Server,
-      title: 'Monitoramento 24/7',
-      description: 'Nossa equipe detecta o problema antes do seu usuário, agindo de forma proativa na saúde do servidor.'
+      title: 'Monitoramento automatizado',
+      description: 'Ferramentas monitoram continuamente e geram alertas; o atendimento segue a cobertura contratada.'
     }
   ];
 
@@ -44,7 +44,7 @@ export default function DBA() {
     {
       step: '2',
       title: 'Plano de Contingência',
-      description: 'Estruturação de políticas de backup e redundância para garantir risco zero de perda de dados.'
+      description: 'Estruturação de políticas de backup e redundância para reduzir o risco de perda de dados com testes periódicos.'
     },
     {
       step: '3',
@@ -77,7 +77,7 @@ export default function DBA() {
           </h1>
 
           <p className="text-lg md:text-xl text-white/70 mb-10 max-w-3xl leading-relaxed">
-            O banco de dados é o coração da sua empresa. Administração profissional de SQL Server e Oracle com Health Check, SQL Tuning e monitoramento 24/7. Base em Belo Horizonte — atendimento em todo o Brasil.
+            O banco de dados é o coração da sua empresa. Administração profissional de SQL Server e Oracle com Health Check, SQL Tuning e monitoramento automatizado 24/7 por ferramentas. Base em Belo Horizonte — atendimento em todo o Brasil.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 mt-8">
@@ -89,16 +89,6 @@ export default function DBA() {
               Agendar Diagnóstico DBA
             </button>
             
-            <div className="flex items-center gap-6 px-4 border-l border-white/10">
-              <div className="text-center">
-                <p className="text-2xl font-bold text-white">99.9%</p>
-                <p className="text-xs text-white/40 uppercase tracking-widest">Uptime Alvo</p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl font-bold text-white">Zero</p>
-                <p className="text-xs text-white/40 uppercase tracking-widest">Perda de Dados</p>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -119,7 +109,7 @@ export default function DBA() {
               <span className="text-[var(--coredb-cyan)]">Não é um gasto, é proteção.</span>
             </h2>
             <p className="text-lg text-[#4B5563] leading-relaxed">
-              Enquanto as consultorias de software focam na aplicação, nós focamos na fundação. Garantimos que sua base suporte o crescimento da sua empresa sem lentidões.
+              Enquanto as consultorias de software focam na aplicação, nós focamos na fundação. Avaliamos capacidade e gargalos para apoiar o crescimento do ambiente.
             </p>
           </div>
 

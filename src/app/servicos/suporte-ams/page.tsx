@@ -65,7 +65,7 @@ const faqSchema = {
       name: 'Qual o SLA de atendimento crítico da CoreDB?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Definimos SLA contratual por nível de criticidade. Incidentes críticos têm primeira resposta em até 1 hora. Todos os tempos são auditáveis via GLPI.',
+        text: 'O prazo de primeira resposta varia por criticidade e consta no SLA contratado. Todos os tempos são auditáveis via GLPI.',
       },
     },
     {

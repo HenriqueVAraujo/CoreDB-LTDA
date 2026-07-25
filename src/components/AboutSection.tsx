@@ -35,7 +35,7 @@ export default function AboutSection() {
     {
       title: "Visão Integrada: ERP + Banco de Dados",
       description:
-        "Atuamos simultaneamente na aplicação e na camada de dados, eliminando o conflito entre times e garantindo responsabilidade técnica ponta a ponta.",
+        "Atuamos simultaneamente na aplicação e na camada de dados, eliminando o conflito entre times e com responsabilidade técnica definida no escopo contratado.",
     },
     {
       title: "Contratos Mensais com SLA Definido",
@@ -60,7 +60,7 @@ export default function AboutSection() {
           <p className="text-lg md:text-xl text-[#4B5563] leading-relaxed">
             A CoreDB é uma consultoria independente focada em sustentação, governança e performance
             de ambientes TOTVS e bancos de dados. Operamos com infraestrutura de monitoramento
-            enterprise — Zabbix, Grafana e GLPI — para garantir estabilidade contínua e controle
+            enterprise — Zabbix, Grafana e GLPI — para acompanhar estabilidade e indicadores operacionais continuamente, com controle
             técnico rigoroso nas operações que não podem parar.
           </p>
         </div>

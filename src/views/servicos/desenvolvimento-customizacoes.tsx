@@ -16,7 +16,7 @@ export default function DesenvolvimentoCustomizacoes() {
     {
       icon: Share2,
       title: 'Integrações Inteligentes',
-      description: 'Conectamos seu TOTVS a qualquer plataforma (CRMs, E-commerce, Bancos) via API Rest com total segurança.'
+      description: 'Conectamos seu TOTVS a plataformas compatíveis, após análise técnica, via API Rest, com controles de segurança definidos no projeto.'
     },
     {
       icon: Cpu,
@@ -31,7 +31,7 @@ export default function DesenvolvimentoCustomizacoes() {
     {
       icon: Layers,
       title: 'Evolução de Legados',
-      description: 'Modernizamos customizações antigas e instáveis, garantindo que elas sobrevivam às atualizações de release.'
+      description: 'Modernizamos customizações antigas e instáveis, buscando compatibilidade com releases avaliadas.'
     }
   ];
 
@@ -49,12 +49,12 @@ export default function DesenvolvimentoCustomizacoes() {
     {
       step: '3',
       title: 'Homologação Rígida',
-      description: 'Testes de estresse e integridade para garantir que a nova funcionalidade não gere impactos colaterais.'
+      description: 'Testes de estresse e integridade para reduzir o risco de impactos por testes e homologação.'
     },
     {
       step: '4',
       title: 'Acompanhamento de Go-Live',
-      description: 'Acompanhamento em tempo real durante a virada de chave, garantindo o sucesso imediato da solução.'
+      description: 'Acompanhamento durante a entrada em produção para tratar ocorrências do escopo.'
     }
   ];
 

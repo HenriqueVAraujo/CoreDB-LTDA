@@ -7,7 +7,7 @@ export default function SupportAMS() {
     const url =
       'https://wa.me/553191873435?text=' +
       encodeURIComponent(
-        'Olá! Gostaria de entender como funciona o Suporte AMS da CoreDB com SLA garantido.'
+        'Olá! Gostaria de entender como funciona o Suporte AMS da CoreDB com SLA definido contratualmente.'
       );
     window.open(url, '_blank');
   };
@@ -16,12 +16,12 @@ export default function SupportAMS() {
     {
       icon: Shield,
       title: 'Governança via GLPI',
-      description: 'Gestão profissional de chamados com histórico auditável e transparência total em cada interação.'
+      description: 'Gestão profissional de chamados com histórico auditável e visibilidade dos chamados no GLPI.'
     },
     {
       icon: Clock,
       title: 'SLA de Resposta Crítica',
-      description: 'Tempos de resposta garantidos em contrato. Emergências tratadas com prioridade absoluta 24/7.'
+      description: 'Tempos definidos por criticidade no SLA. Cobertura e horários conforme contrato.'
     },
     {
       icon: Headphones,

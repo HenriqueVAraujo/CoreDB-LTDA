@@ -21,7 +21,7 @@ export default function ConsultoriaTOTVS() {
     {
       icon: Database,
       title: 'Expertise em DBAs',
-      description: 'Diferente de consultorias comuns, unimos especialistas em ERP e DBAs SQL Server/Oracle para estabilidade total.'
+      description: 'Diferente de consultorias comuns, unimos especialistas em ERP e DBAs SQL Server/Oracle para maior estabilidade, medida conforme indicadores do ambiente.'
     },
     {
       icon: Zap,
@@ -49,12 +49,12 @@ export default function ConsultoriaTOTVS() {
     {
       step: '3',
       title: 'Otimização de Processos',
-      description: 'Revisão de customizações (ADVPL/TLPP/RM) para garantir máxima performance e integridade.'
+      description: 'Revisão de customizações (ADVPL/TLPP/RM) para avaliar performance e integridade com critérios técnicos documentados.'
     },
     {
       step: '4',
       title: 'Evolução Estratégica',
-      description: 'Acompanhamento contínuo para garantir que o ERP acompanhe o crescimento do seu negócio.'
+      description: 'Acompanhamento contínuo para apoiar a evolução do ERP conforme o crescimento do negócio.'
     }
   ];
 
@@ -89,16 +89,6 @@ export default function ConsultoriaTOTVS() {
               Solicitar Diagnóstico Técnico
             </button>
             
-            <div className="flex items-center gap-6 px-4 border-l border-white/10">
-              <div>
-                <p className="text-2xl font-bold text-white">24h</p>
-                <p className="text-xs text-white/40 uppercase tracking-widest">Retorno Técnico</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-white">+150</p>
-                <p className="text-xs text-white/40 uppercase tracking-widest">Ambientes Otimizados</p>
-              </div>
-            </div>
           </div>
         </div>
 

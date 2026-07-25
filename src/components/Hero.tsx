@@ -68,9 +68,9 @@ export default function Hero() {
               <div className="flex items-start gap-3">
                 <Activity className="w-7 h-7 text-[var(--coredb-cyan)] shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-sm mb-1">Monitoramento Zabbix 24/7</h4>
+                  <h4 className="font-semibold text-sm mb-1">Monitoramento automatizado pelo Zabbix</h4>
                   <p className="text-xs text-white/60">
-                    Alertas proativos antes do usuário perceber.
+                    24/7, com alertas configurados por criticidade.
                   </p>
                 </div>
               </div>
@@ -80,7 +80,7 @@ export default function Hero() {
                 <div>
                   <h4 className="font-semibold text-sm mb-1">SLA Contratual Mensurável</h4>
                   <p className="text-xs text-white/60">
-                    Chamados gerenciados via GLPI com tempos garantidos.
+                    Tempos de resposta definidos no SLA contratual aplicável.
                   </p>
                 </div>
               </div>

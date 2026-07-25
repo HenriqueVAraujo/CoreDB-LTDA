@@ -90,7 +90,7 @@ export default function ServicesSection() {
           </h2>
 
           <p className="text-lg md:text-xl text-[#4B5563] leading-relaxed">
-            Unimos a inteligência do ERP à potência do Banco de Dados para garantir uma operação ininterrupta.
+            Unimos a inteligência do ERP à potência do Banco de Dados para apoiar a continuidade operacional e reduzir riscos de indisponibilidade.
             Enquanto a maioria das consultorias foca na carcaça do sistema,{" "}
             <span className="font-semibold text-[var(--coredb-dark)]">nós cuidamos do motor.</span>
           </p>

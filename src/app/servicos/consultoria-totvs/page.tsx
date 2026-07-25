@@ -74,7 +74,7 @@ const faqSchema = {
       name: 'Em quanto tempo vocês resolvem um problema de lentidão no Protheus?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Após diagnóstico técnico estruturado, a maioria dos casos de lentidão é resolvida em até 5 dias úteis. Casos complexos têm cronograma definido desde o início do projeto.',
+        text: 'O prazo é definido após diagnóstico, conforme complexidade e escopo.',
       },
     },
     {
@@ -82,7 +82,7 @@ const faqSchema = {
       name: 'A CoreDB trabalha com todos os módulos do Protheus?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Sim. Atendemos todos os módulos do Protheus, RM e Fluig, com foco especial em processos críticos como faturamento, folha de pagamento, estoque e financeiro.',
+        text: 'Atendemos módulos definidos no escopo contratado, com foco em processos críticos como faturamento, folha de pagamento, estoque e financeiro.',
       },
     },
   ],

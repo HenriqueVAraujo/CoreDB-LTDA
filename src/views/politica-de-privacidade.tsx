@@ -51,7 +51,7 @@ export default function PrivacyPolicy() {
               </div>
               <div>
                 <h4 className="font-bold text-[#1DAEFF] mb-2">Continuidade</h4>
-                <p className="text-sm text-white/70">Garantimos RTO de 24h e RPO de 4h para seus dados críticos em nossos cuidados.</p>
+                <p className="text-sm text-white/70">RTO e RPO são definidos no contrato e no plano técnico aplicável.</p>
               </div>
             </div>
           </div>

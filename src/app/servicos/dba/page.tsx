@@ -4,7 +4,7 @@ import DBAView from '@/views/servicos/dba'
 export const metadata: Metadata = {
   title: 'DBA SQL Server e Oracle em Belo Horizonte — Banco de Dados TOTVS | CoreDB',
   description:
-    'DBA SQL Server e Oracle em Belo Horizonte (BH) para ambientes TOTVS críticos. Health Check, SQL Tuning, Disaster Recovery e monitoramento 24/7. Atendimento remoto em todo o Brasil.',
+    'DBA SQL Server e Oracle em Belo Horizonte (BH) para ambientes TOTVS críticos. Health Check, SQL Tuning, Disaster Recovery e monitoramento automatizado por ferramentas 24/7. Atendimento remoto em todo o Brasil.',
   keywords: [
     'DBA SQL Server Belo Horizonte',
     'DBA Oracle BH',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'DBA SQL Server e Oracle em Belo Horizonte — Banco de Dados TOTVS | CoreDB',
     description:
-      'DBA especializado em SQL Server e Oracle para TOTVS em BH. Health Check, SQL Tuning, Disaster Recovery e monitoramento 24/7. Atendimento nacional.',
+      'DBA especializado em SQL Server e Oracle para TOTVS em BH. Health Check, SQL Tuning, Disaster Recovery e monitoramento automatizado por ferramentas 24/7. Atendimento nacional.',
     url: '/servicos/dba',
   },
 }
@@ -31,7 +31,7 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Administração de Banco de Dados — DBA SQL Server e Oracle',
   description:
-    'Gestão profissional de SQL Server e Oracle com base em Belo Horizonte, MG. Health Check, SQL Tuning avançado, Disaster Recovery, segurança e monitoramento 24/7. Atendimento remoto nacional.',
+    'Gestão profissional de SQL Server e Oracle com base em Belo Horizonte, MG. Health Check, SQL Tuning avançado, Disaster Recovery, segurança e monitoramento automatizado por ferramentas 24/7. Atendimento remoto nacional.',
   provider: {
     '@type': 'LocalBusiness',
     name: 'CoreDB LTDA',
@@ -67,7 +67,7 @@ const faqSchema = {
       name: 'A CoreDB oferece plano de Disaster Recovery?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Sim. Implementamos planos formais de Disaster Recovery com RTO e RPO definidos, backup automatizado e testes periódicos de restauração para garantir a continuidade do negócio.',
+        text: 'Implementamos planos formais de Disaster Recovery com RTO e RPO definidos, backup automatizado e testes periódicos de restauração para apoiar a continuidade e validar os objetivos de recuperação por testes.',
       },
     },
     {
@@ -83,7 +83,7 @@ const faqSchema = {
       name: 'O monitoramento do banco de dados é feito 24 horas por dia?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Sim. Utilizamos Zabbix para monitoramento contínuo 24/7 com alertas automáticos e escalada por nível de criticidade, antes que o usuário perceba qualquer instabilidade.',
+        text: 'Utilizamos Zabbix para monitoramento automatizado contínuo 24/7, com alertas e escalada por nível de criticidade, para permitir tratamento conforme criticidade e cobertura contratada.',
       },
     },
   ],

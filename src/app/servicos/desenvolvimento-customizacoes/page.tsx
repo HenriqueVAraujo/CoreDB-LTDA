@@ -81,7 +81,7 @@ const faqSchema = {
       name: 'O desenvolvimento leva em conta a performance do banco de dados?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Obrigatoriamente. Todo código desenvolvido pela CoreDB é revisado com foco em impacto no banco de dados. Queries ineficientes dentro de customizações são a segunda maior causa de lentidão em ambientes TOTVS.',
+        text: 'Obrigatoriamente. Todo código desenvolvido pela CoreDB é revisado com foco em impacto no banco de dados. Queries ineficientes dentro de customizações podem contribuir significativamente para problemas de desempenho em ambientes TOTVS.',
       },
     },
   ],
