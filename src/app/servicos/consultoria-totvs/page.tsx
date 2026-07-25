@@ -22,6 +22,21 @@ export const metadata: Metadata = {
     description:
       'Consultoria TOTVS em BH para Protheus, RM e Fluig. Tuning de performance, resolução de gargalos e SLA contratual. Atendimento nacional e remoto.',
     url: '/servicos/consultoria-totvs',
+    images: [
+      {
+        url: '/social/open-graph-logo-card-1200x630.png',
+        width: 1200,
+        height: 630,
+        alt: 'CoreDB — O núcleo da continuidade.',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Consultoria TOTVS em Belo Horizonte — Protheus, RM e Fluig | CoreDB',
+    description:
+      'Consultoria TOTVS em BH para Protheus, RM e Fluig. Tuning de performance, resolução de gargalos e SLA contratual. Atendimento nacional e remoto.',
+    images: ['/social/social-share-logo-card-1200x630.png'],
   },
 }
 

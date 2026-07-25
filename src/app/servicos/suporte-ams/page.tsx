@@ -21,6 +21,21 @@ export const metadata: Metadata = {
     description:
       'Suporte AMS TOTVS em BH: governança via GLPI, SLA contratual e especialistas nível 2 e 3. Atendimento remoto em todo o Brasil.',
     url: '/servicos/suporte-ams',
+    images: [
+      {
+        url: '/social/open-graph-logo-card-1200x630.png',
+        width: 1200,
+        height: 630,
+        alt: 'CoreDB — O núcleo da continuidade.',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Suporte AMS TOTVS com SLA Contratual — BH e Brasil | CoreDB',
+    description:
+      'Suporte AMS TOTVS em BH: governança via GLPI, SLA contratual e especialistas nível 2 e 3. Atendimento remoto em todo o Brasil.',
+    images: ['/social/social-share-logo-card-1200x630.png'],
   },
 }
 

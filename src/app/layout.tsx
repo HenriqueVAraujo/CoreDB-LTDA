@@ -44,6 +44,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'CoreDB', url: SITE_URL }],
   creator: 'CoreDB',
   publisher: 'CoreDB',
+  manifest: '/pwa/site.webmanifest',
   verification: {
     google: 'pNpEVbrZOj2I3Vujue7b_pEGsVL4lO_XpxaHWs0yw7Y',
   },
@@ -62,10 +63,10 @@ export const metadata: Metadata = {
       'Consultoria especializada em ERP TOTVS e Banco de Dados. Missão crítica, performance e SLA contratual. Atendemos todo o Brasil.',
     images: [
       {
-        url: '/opengraph-image',
+        url: '/social/open-graph-logo-card-1200x630.png',
         width: 1200,
         height: 630,
-        alt: 'CoreDB — Consultoria TOTVS e DBA',
+        alt: 'CoreDB — O núcleo da continuidade.',
       },
     ],
   },
@@ -74,7 +75,7 @@ export const metadata: Metadata = {
     title: 'CoreDB | Consultoria TOTVS e DBA',
     description:
       'Especialistas em ERP TOTVS e Banco de Dados. Missão crítica, SLA contratual, atendimento nacional.',
-    images: ['/opengraph-image'],
+    images: ['/social/social-share-logo-card-1200x630.png'],
   },
   alternates: {
     canonical: '/',

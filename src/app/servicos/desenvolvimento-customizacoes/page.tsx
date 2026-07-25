@@ -21,6 +21,21 @@ export const metadata: Metadata = {
     description:
       'Customizações TOTVS em ADVPL, TLPP e PO-UI. Integrações via API e automação de processos para Protheus e RM. Base em BH, atendimento nacional.',
     url: '/servicos/desenvolvimento-customizacoes',
+    images: [
+      {
+        url: '/social/open-graph-logo-card-1200x630.png',
+        width: 1200,
+        height: 630,
+        alt: 'CoreDB — O núcleo da continuidade.',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Customizações TOTVS ADVPL e TLPP em BH — Integrações ERP | CoreDB',
+    description:
+      'Customizações TOTVS em ADVPL, TLPP e PO-UI. Integrações via API e automação de processos para Protheus e RM. Base em BH, atendimento nacional.',
+    images: ['/social/social-share-logo-card-1200x630.png'],
   },
 }
 

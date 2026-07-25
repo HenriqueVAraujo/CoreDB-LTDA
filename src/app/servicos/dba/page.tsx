@@ -23,6 +23,21 @@ export const metadata: Metadata = {
     description:
       'DBA especializado em SQL Server e Oracle para TOTVS em BH. Health Check, SQL Tuning, Disaster Recovery e monitoramento automatizado por ferramentas 24/7. Atendimento nacional.',
     url: '/servicos/dba',
+    images: [
+      {
+        url: '/social/open-graph-logo-card-1200x630.png',
+        width: 1200,
+        height: 630,
+        alt: 'CoreDB — O núcleo da continuidade.',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'DBA SQL Server e Oracle em Belo Horizonte — Banco de Dados TOTVS | CoreDB',
+    description:
+      'DBA especializado em SQL Server e Oracle para TOTVS em BH. Health Check, SQL Tuning, Disaster Recovery e monitoramento automatizado por ferramentas 24/7. Atendimento nacional.',
+    images: ['/social/social-share-logo-card-1200x630.png'],
   },
 }
 

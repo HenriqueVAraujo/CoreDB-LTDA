@@ -24,7 +24,7 @@ const localBusinessSchema = {
   url: 'https://www.coredb.com.br',
   telephone: '+55-31-99187-3435',
   email: 'comercial@coredb.com.br',
-  image: 'https://www.coredb.com.br/opengraph-image',
+  image: 'https://www.coredb.com.br/social/open-graph-logo-card-1200x630.png',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Belo Horizonte',
