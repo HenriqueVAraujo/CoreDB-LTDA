@@ -2,6 +2,25 @@
 
 import { Shield, Zap, Database, ArrowRight, Gauge } from 'lucide-react';
 import { CTA_CONFIGS } from '@/routes';
+import TechnologyCards from '@/components/TechnologyCards';
+
+const totvsTechnologies = [
+  {
+    href: '/servicos/protheus',
+    title: 'Consultoria Protheus',
+    description: 'Performance, sustentação, atualizações, integrações e continuidade para ambientes Protheus.',
+  },
+  {
+    href: '/servicos/rm',
+    title: 'Consultoria TOTVS RM',
+    description: 'Diagnóstico, sustentação e evolução técnica do RM conforme o contexto de cada operação.',
+  },
+  {
+    href: '/servicos/fluig',
+    title: 'Consultoria Fluig',
+    description: 'Workflows, formulários, datasets, integrações e governança de processos no Fluig.',
+  },
+];
 
 export default function ConsultoriaTOTVS() {
   const features = [
@@ -91,6 +110,14 @@ export default function ConsultoriaTOTVS() {
           <div className="bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-600/10 via-[#0B1C2D] to-[#0B1C2D] w-full h-full" />
         </div>
       </section>
+
+      <TechnologyCards
+        headingId="totvs-specialties-heading"
+        eyebrow="Especialidades TOTVS"
+        title="Aprofunde a análise por plataforma"
+        description="Protheus, RM e Fluig têm arquiteturas e desafios próprios. Consulte a frente técnica correspondente ao seu ambiente."
+        items={totvsTechnologies}
+      />
 
       {/* Diferenciais Section */}
       <section className="py-20 md:py-32 bg-white">

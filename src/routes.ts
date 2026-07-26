@@ -2,6 +2,9 @@
 export const ROUTES = {
   HOME: '/',
   SERVICE_TOTVS: '/servicos/consultoria-totvs',
+  SERVICE_PROTHEUS: '/servicos/protheus',
+  SERVICE_RM: '/servicos/rm',
+  SERVICE_FLUIG: '/servicos/fluig',
   SERVICE_CUSTOM: '/servicos/desenvolvimento-customizacoes',
   SERVICE_DBA: '/servicos/dba',
   SERVICE_AMS: '/servicos/suporte-ams',
@@ -33,6 +36,18 @@ export const CTA_CONFIGS = {
     'Agendar triagem técnica do ambiente TOTVS — 20 minutos',
     'Olá! Gostaria de agendar uma triagem técnica para nosso ambiente TOTVS.'
   ),
+  protheus: createCtaConfig(
+    'Agendar triagem técnica do Protheus — 20 minutos',
+    'Olá! Gostaria de agendar uma triagem técnica para nosso ambiente Protheus.'
+  ),
+  rm: createCtaConfig(
+    'Agendar triagem técnica de risco do RM — 20 minutos',
+    'Olá! Gostaria de agendar uma triagem técnica de risco para nosso ambiente TOTVS RM.'
+  ),
+  fluig: createCtaConfig(
+    'Agendar triagem técnica do Fluig — 20 minutos',
+    'Olá! Gostaria de agendar uma triagem técnica para nosso ambiente Fluig.'
+  ),
   dba: createCtaConfig(
     'Agendar triagem técnica de bancos de dados — 20 minutos',
     'Olá! Gostaria de agendar uma triagem técnica para nosso ambiente de banco de dados.'
@@ -49,6 +64,9 @@ export const CTA_CONFIGS = {
 
 const CTA_CONFIG_BY_ROUTE: Record<string, CtaConfig> = {
   [ROUTES.SERVICE_TOTVS]: CTA_CONFIGS.totvs,
+  [ROUTES.SERVICE_PROTHEUS]: CTA_CONFIGS.protheus,
+  [ROUTES.SERVICE_RM]: CTA_CONFIGS.rm,
+  [ROUTES.SERVICE_FLUIG]: CTA_CONFIGS.fluig,
   [ROUTES.SERVICE_DBA]: CTA_CONFIGS.dba,
   [ROUTES.SERVICE_CUSTOM]: CTA_CONFIGS.development,
   [ROUTES.SERVICE_AMS]: CTA_CONFIGS.ams,
