@@ -7,13 +7,16 @@
 - Promoções são realizadas por mantenedor humano via Pull Request e deployment automático da integração Git.
 - O Codex não usa Vercel CLI nem altera domínio, aliases, variáveis ou configurações da Vercel.
 - HubSpot e Fase E permanecem fora do escopo.
+- A Fase E permanece bloqueada até Henrique escrever literalmente: **pode executar a Fase E**. Nenhuma outra formulação vale como autorização.
 
 ## Branches autorizadas
 
 - `sprint/go-live-2026-07-24`: documentação e manutenção controlada do site-base.
 - `feature/seo-technical-pages-2026-07`: expansão técnica e SEO autorizada, criada a partir de `origin/main` atualizado.
+- `feature/analytics-conversion-2026-07`: mensuração de eventos de conversão (analytics), criada a partir de `origin/main` atualizado. Não cobre CTA, copy ou identidade visual — ver "Conversão (somente especificação)".
+- `feature/security-hardening-2026-08`: rate limiting e CSP em modo `Report-Only`, criada a partir de `origin/main` atualizado.
 
-Commits e pushes só podem ocorrer na branch explicitamente autorizada para a tarefa. A feature pode gerar Preview automático, mas não pode ser promovida pelo Codex.
+Commits e pushes só podem ocorrer na branch explicitamente autorizada para a tarefa. Nenhuma dessas branches pode ser promovida pelo Codex — apenas gerar Preview automático.
 
 ## Stack
 
@@ -104,6 +107,28 @@ Também são permitidas alterações aditivas em:
 - componentes compartilhados estritamente necessários.
 
 Esse escopo permite metadata, canonical, Open Graph, Twitter metadata, JSON-LD `Service`, `BreadcrumbList`, links internos, sitemap e CTAs contextuais. Não autoriza mudança da homepage, menu principal, formulário, API, cookies ou identidade visual.
+
+## Analytics e mensuração de conversão autorizada
+
+Exclusivamente em `feature/analytics-conversion-2026-07`.
+
+Eventos autorizados: `cta_click`, `whatsapp_click`, `form_start`, `form_submit_success`, `form_submit_error`, `phone_click`, `email_click`, `faq_open`, `service_navigation`, `outbound_click`.
+
+Parâmetros permitidos: `page_path`, `service`, `cta_location`, `source`, `medium`, `campaign`, `content`, `device`.
+
+Nunca enviar: nome, e-mail, telefone, empresa, mensagem, conteúdo do formulário ou qualquer identificador pessoal. Nenhum evento dispara antes do consentimento existente. Nenhuma alteração na API `/api/contact`, no SMTP, em CTA existente ou em identidade visual nesta frente.
+
+## Hardening de segurança autorizado
+
+Exclusivamente em `feature/security-hardening-2026-08`.
+
+- Rate limiting em `/api/contact`: sem armazenar dado pessoal, retorno `429` controlado, preservando honeypot e validações existentes.
+- CSP: começar em `Content-Security-Policy-Report-Only`, nunca em modo bloqueante nesta etapa, mapeando GA4/Vercel/fontes/assets antes de qualquer restrição.
+- Testes apenas por GET/HEAD, sem rajada, sem teste de carga.
+
+## Conversão (somente especificação)
+
+CTA intermediário, bloco "o que acontece depois da triagem", CTA fixo mobile, formulário por serviço e qualquer redesign permanecem como especificação técnica — sem autorização de implementação automática até baseline de uso real ou aprovação explícita adicional de Henrique.
 
 ## SEO — regras operacionais
 
