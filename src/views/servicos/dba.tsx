@@ -61,7 +61,7 @@ export default function DBA() {
       <section className="relative bg-[#0B1C2D] min-h-[80vh] flex items-center py-20">
         <div className="container mx-auto px-4 max-w-5xl text-white">
           <span className="text-[var(--coredb-cyan)] font-bold tracking-widest uppercase text-sm mb-4 inline-block">
-            Diagnóstico Executivo de Risco TOTVS RM
+            DBA MULTIPLATAFORMA PARA AMBIENTES CRÍTICOS
           </span>
 
           <h1
@@ -166,7 +166,7 @@ export default function DBA() {
           <div className="max-w-4xl mx-auto p-6 sm:p-12 rounded-3xl border border-white/5 bg-gradient-to-br from-[#0B1C2D] to-[#152a3d] shadow-2xl">
             <h2 className="text-3xl md:text-5xl font-bold mb-8">Avalie os riscos do ambiente com critérios técnicos.</h2>
             <p className="text-white/60 text-lg mb-10 max-w-2xl mx-auto">
-              Diagnóstico Executivo de Risco TOTVS RM. A triagem técnica inicial leva 20 minutos.
+              DBA multiplataforma para ambientes críticos. A triagem técnica inicial leva 20 minutos.
             </p>
             <a
               href={TRIAGE_URL}
