@@ -2,6 +2,30 @@
 
 import { ShieldAlert, Activity, ArrowRight, Lock, Server } from 'lucide-react';
 import { CTA_CONFIGS } from '@/routes';
+import TechnologyCards from '@/components/TechnologyCards';
+
+const databaseTechnologies = [
+  {
+    href: '/servicos/dba/sql-server',
+    title: 'DBA SQL Server',
+    description: 'Bloqueios, deadlocks, planos, TempDB, memória, backup e alta disponibilidade.',
+  },
+  {
+    href: '/servicos/dba/oracle',
+    title: 'DBA Oracle',
+    description: 'Sessões, eventos de espera, planos, tablespaces, recuperação e alta disponibilidade.',
+  },
+  {
+    href: '/servicos/dba/postgresql',
+    title: 'DBA PostgreSQL',
+    description: 'Locks, autovacuum, bloat, WAL, backup, replicação e acompanhamento técnico.',
+  },
+  {
+    href: '/servicos/dba/mysql',
+    title: 'DBA MySQL',
+    description: 'InnoDB, consultas lentas, buffer pool, backup, replicação e monitoramento.',
+  },
+];
 
 export default function DBA() {
   const features = [
@@ -91,6 +115,15 @@ export default function DBA() {
           <div className="bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-cyan-900/10 via-[#0B1C2D] to-[#0B1C2D] w-full h-full" />
         </div>
       </section>
+
+      <TechnologyCards
+        headingId="database-specialties-heading"
+        eyebrow="DBA por plataforma"
+        title="Aprofunde a análise por motor de banco de dados"
+        description="Cada plataforma exige leitura própria de concorrência, memória, recuperação, replicação e observabilidade."
+        items={databaseTechnologies}
+        columns={4}
+      />
 
       {/* Diferenciais Section */}
       <section className="py-20 md:py-32 bg-white">
