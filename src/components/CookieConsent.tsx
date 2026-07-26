@@ -5,6 +5,7 @@ import Script from 'next/script'
 import Link from 'next/link'
 
 const COOKIE_NAME = 'coredb_consent'
+const CONSENT_UPDATED_EVENT = 'coredb:consent-updated'
 const GA_ID = 'G-YZSTRQKCQG'
 
 function getCookie(name: string): string | null {
@@ -35,11 +36,13 @@ export default function CookieConsent() {
     setCookie(COOKIE_NAME, 'accepted', 365)
     setAccepted(true)
     setShow(false)
+    window.dispatchEvent(new Event(CONSENT_UPDATED_EVENT))
   }
 
   const handleReject = () => {
     setCookie(COOKIE_NAME, 'rejected', 365)
     setShow(false)
+    window.dispatchEvent(new Event(CONSENT_UPDATED_EVENT))
   }
 
   return (

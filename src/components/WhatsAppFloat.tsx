@@ -1,6 +1,31 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
+const COOKIE_NAME = 'coredb_consent'
+const CONSENT_UPDATED_EVENT = 'coredb:consent-updated'
+
+function hasConsentDecision() {
+  const match = document.cookie.match(new RegExp('(^| )' + COOKIE_NAME + '=([^;]+)'))
+  return match?.[2] === 'accepted' || match?.[2] === 'rejected'
+}
+
 export default function WhatsAppFloat() {
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const updateVisibility = () => setIsVisible(hasConsentDecision())
+
+    updateVisibility()
+    window.addEventListener(CONSENT_UPDATED_EVENT, updateVisibility)
+
+    return () => window.removeEventListener(CONSENT_UPDATED_EVENT, updateVisibility)
+  }, [])
+
+  if (!isVisible) {
+    return null
+  }
+
   return (
     <a
       href="https://wa.me/553191873435?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20triagem%20t%C3%A9cnica%20de%20risco%20do%20RM%20%E2%80%94%2020%20minutos."

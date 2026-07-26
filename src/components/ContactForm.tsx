@@ -93,7 +93,7 @@ export default function ContactForm() {
               </p>
 
               {/* Honeypot anti-automação: deve permanecer vazio para usuários reais. */}
-              <div aria-hidden="true" className="fixed left-[-10000px] top-0 h-px w-px overflow-hidden">
+              <div aria-hidden="true" className="sr-only">
                 <label htmlFor="contact-website">Website</label>
                 <input
                   id="contact-website"
