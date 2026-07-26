@@ -50,6 +50,35 @@ A branch deve ser criada a partir de `origin/main` atualizado. Nela, o Codex pod
 
 Isso não autoriza merge ou push na `main`, produção ou alterações na configuração da Vercel.
 
+### Analytics e mensuração de conversão
+
+Branch: `feature/analytics-conversion-2026-07`.
+
+A branch deve ser criada a partir de `origin/main` atualizado. Nela, o Codex pode:
+
+- executar `git fetch` e ler `origin/main`;
+- criar a branch a partir de `origin/main`;
+- implementar exclusivamente mensuração de eventos (analytics), preservando o consentimento existente e sem transmitir dado pessoal;
+- fazer commits e push exclusivamente nesta branch;
+- permitir que a integração Git gere o Preview da branch.
+
+Isso não autoriza merge ou push na `main`, produção, HubSpot, Fase E, nem as melhorias de conversão visual/UX listadas em "Conversão (somente especificação)". Antes de editar qualquer arquivo de aplicação nesta branch, o Codex deve apresentar a tabela `| Arquivo | Alteração | Evento | Consentimento | Risco |` e aguardá-la ficar clara e compatível com esta governança antes de prosseguir.
+
+### Hardening de segurança
+
+Branch: `feature/security-hardening-2026-08`.
+
+A branch deve ser criada a partir de `origin/main` atualizado. Nela, o Codex pode:
+
+- executar `git fetch` e ler `origin/main`;
+- criar a branch a partir de `origin/main`;
+- implementar rate limiting no endpoint `/api/contact`;
+- implementar Content-Security-Policy exclusivamente em modo `Report-Only` nesta primeira etapa;
+- fazer commits e push exclusivamente nesta branch;
+- permitir que a integração Git gere o Preview da branch.
+
+Isso não autoriza merge ou push na `main`, produção, ativação de CSP em modo bloqueante sem período de observação documentado, nem qualquer teste de carga, rajada ou ataque contra qualquer ambiente.
+
 ## Escopo técnico e SEO autorizado
 
 Exclusivamente em `feature/seo-technical-pages-2026-07`, estão autorizadas estas rotas:
@@ -78,6 +107,47 @@ Continuam fora do escopo:
 - homepage, menu principal ou redesign;
 - formulário, API ou cookies;
 - automação comercial, HubSpot e Fase E.
+
+## Escopo de analytics autorizado
+
+Exclusivamente em `feature/analytics-conversion-2026-07`.
+
+Eventos autorizados (nomes fixos, não renomear nem adicionar outros sem atualizar esta lista):
+
+- `cta_click`;
+- `whatsapp_click`;
+- `form_start`;
+- `form_submit_success`;
+- `form_submit_error`;
+- `phone_click`;
+- `email_click`;
+- `faq_open`;
+- `service_navigation`;
+- `outbound_click`.
+
+Parâmetros permitidos: `page_path`, `service`, `cta_location`, `source`, `medium`, `campaign`, `content`, `device`.
+
+Proibido em qualquer evento: nome, e-mail, telefone, empresa, mensagem, conteúdo do formulário ou qualquer identificador pessoal.
+
+Regras:
+
+- nenhum evento pode disparar antes do consentimento, quando o consentimento for exigido;
+- nenhuma dependência nova sem justificativa e aprovação expressa;
+- nenhuma alteração na API `/api/contact` ou no SMTP nesta frente;
+- nenhuma mudança de texto comercial, CTA existente ou identidade visual nesta primeira implementação.
+
+## Escopo de hardening de segurança autorizado
+
+Exclusivamente em `feature/security-hardening-2026-08`.
+
+- Rate limiting do endpoint de contato: não bloquear uso legítimo, não armazenar dado pessoal, retornar `429` de forma controlada, documentar limites e o comportamento em ambiente serverless, preservar honeypot e validações já existentes.
+- CSP: iniciar obrigatoriamente em `Content-Security-Policy-Report-Only`, mapear os recursos atuais (GA4, Vercel, fontes, assets) antes de qualquer restrição, não ativar modo bloqueante sem período de observação, documentar rollback.
+- Testes autorizados somente por GET/HEAD; uma requisição por cenário quando houver autorização específica; nunca rajada, teste de carga ou ataque.
+- Preservar integralmente o formulário e o SMTP existentes.
+
+## Conversão (somente especificação)
+
+As seguintes melhorias permanecem como especificação técnica nesta rodada, sem autorização de implementação automática: CTA intermediário, bloco "o que acontece depois da triagem", CTA fixo mobile, formulário específico por serviço, e qualquer alteração visual ou redesign. Implementação exige baseline de uso real ou aprovação explícita adicional de Henrique, em uma autorização de governança futura e separada desta.
 
 ## Marca, portfólio e tipografia vigentes
 
@@ -165,3 +235,7 @@ Monitoramento técnico 24/7 só pode ser descrito como monitoramento por ferrame
 7. A Vercel executa o deployment automático configurado.
 8. A equipe realiza o smoke test de produção.
 9. O rollback fica sob responsabilidade do mantenedor.
+
+## Fase E
+
+A Fase E permanece bloqueada até Henrique escrever literalmente: **pode executar a Fase E**. Nenhuma outra formulação (por exemplo "pode seguir", "está autorizado", "vai em frente") vale como autorização para a Fase E.
