@@ -1,11 +1,7 @@
 'use client'
 
 import { Shield, Zap, Database, ArrowRight, Gauge } from 'lucide-react';
-
-const TRIAGE_LABEL = 'Agendar uma triagem técnica de risco do RM — 20 minutos.'
-const TRIAGE_URL =
-  'https://wa.me/553191873435?text=' +
-  encodeURIComponent('Olá! Gostaria de agendar uma triagem técnica de risco do RM — 20 minutos.')
+import { CTA_CONFIGS } from '@/routes';
 
 export default function ConsultoriaTOTVS() {
   const features = [
@@ -78,10 +74,10 @@ export default function ConsultoriaTOTVS() {
 
           <div className="flex flex-col sm:flex-row gap-6 mt-8">
             <a
-              href={TRIAGE_URL}
+              href={CTA_CONFIGS.totvs.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={TRIAGE_LABEL}
+              aria-label={CTA_CONFIGS.totvs.label}
               className="inline-flex w-full sm:w-auto items-center justify-center text-center whitespace-normal font-bold rounded-lg px-6 sm:px-10 py-5 text-base sm:text-lg shadow-lg transition-all duration-300 hover:scale-105"
               style={{ background: 'var(--coredb-cyan)', color: 'var(--coredb-dark)' }}
             >
@@ -164,15 +160,15 @@ export default function ConsultoriaTOTVS() {
       <section className="py-24 bg-[#0B1C2D] text-white text-center">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto p-6 sm:p-12 rounded-3xl border border-white/5 bg-gradient-to-br from-[#0B1C2D] to-[#152a3d] shadow-2xl">
-            <h2 className="text-3xl md:text-5xl font-bold mb-8">Comece pelo diagnóstico técnico do ambiente.</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-8">Avalie o ambiente TOTVS antes que riscos técnicos impactem a operação.</h2>
             <p className="text-white/60 text-lg mb-10 max-w-2xl mx-auto">
               Engenharia e sustentação TOTVS. A triagem técnica inicial leva 20 minutos.
             </p>
             <a
-              href={TRIAGE_URL}
+              href={CTA_CONFIGS.totvs.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={TRIAGE_LABEL}
+              aria-label={CTA_CONFIGS.totvs.label}
               className="group flex w-full sm:w-auto items-center justify-center gap-3 mx-auto px-6 sm:px-10 py-5 text-center whitespace-normal font-bold rounded-xl transition-all duration-300 hover:gap-5"
               style={{ background: 'var(--coredb-cyan)', color: 'var(--coredb-dark)' }}
             >

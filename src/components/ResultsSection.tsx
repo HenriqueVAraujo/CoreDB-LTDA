@@ -1,7 +1,5 @@
 import { TrendingUp, BarChart2, Gauge, Shield } from "lucide-react";
-
-const TRIAGE_URL =
-  "https://wa.me/553191873435?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20triagem%20t%C3%A9cnica%20de%20risco%20do%20RM%20%E2%80%94%2020%20minutos.";
+import { CTA_CONFIGS } from "@/routes";
 
 const autoridade = [
   {
@@ -157,10 +155,10 @@ export default function ResultsSection() {
             </p>
 
             <a
-              href={TRIAGE_URL}
+              href={CTA_CONFIGS.institutional.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Agendar uma triagem técnica de risco do RM — 20 minutos."
+              aria-label={CTA_CONFIGS.institutional.label}
               className="inline-flex w-full sm:w-auto items-center justify-center bg-[var(--coredb-cyan)] text-[var(--coredb-dark)] px-6 sm:px-8 py-4 text-center whitespace-normal rounded-xl font-bold hover:opacity-90 transition"
             >
               Agendar triagem técnica

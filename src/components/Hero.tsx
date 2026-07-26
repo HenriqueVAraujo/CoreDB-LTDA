@@ -1,15 +1,11 @@
 'use client'
 
 import { Activity, FileText, BarChart2 } from 'lucide-react'
+import { CTA_CONFIGS } from '@/routes'
 
 export default function Hero() {
   const handleCTAClick = () => {
-    const url =
-      'https://wa.me/553191873435?text=' +
-      encodeURIComponent(
-        'Olá! Gostaria de agendar uma triagem técnica de risco do RM — 20 minutos.'
-      )
-    window.open(url, '_blank', 'noopener,noreferrer')
+    window.open(CTA_CONFIGS.institutional.url, '_blank', 'noopener,noreferrer')
   }
 
   const handleServicesClick = () => {
@@ -60,7 +56,7 @@ export default function Hero() {
               <button
                 type="button"
                 onClick={handleCTAClick}
-                aria-label="Agendar uma triagem técnica de risco do RM — 20 minutos."
+                aria-label={CTA_CONFIGS.institutional.label}
                 className="w-full sm:w-auto font-bold tracking-wide rounded-lg px-6 sm:px-10 py-5 text-lg text-center whitespace-normal transition-all duration-300 bg-[var(--coredb-cyan)] text-[#0B1C2D] hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(29,174,255,0.5)]"
               >
                 Agendar triagem técnica

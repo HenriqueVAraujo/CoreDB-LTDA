@@ -5,12 +5,8 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 
+import { getCtaConfig } from '@/routes';
 import Logo from './Logo';
-
-const TRIAGE_LABEL = 'Agendar uma triagem técnica de risco do RM — 20 minutos.'
-const TRIAGE_URL =
-  'https://wa.me/553191873435?text=' +
-  encodeURIComponent('Olá! Gostaria de agendar uma triagem técnica de risco do RM — 20 minutos.')
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,6 +20,7 @@ export default function Header() {
   ];
 
   const pathname = usePathname();
+  const ctaConfig = getCtaConfig(pathname);
 
   const handleNav = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (pathname !== '/') {
@@ -71,10 +68,10 @@ export default function Header() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href={TRIAGE_URL}
+              href={ctaConfig.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={TRIAGE_LABEL}
+              aria-label={ctaConfig.label}
               className="px-6 py-2 bg-[var(--coredb-dark)] text-white font-semibold rounded-lg hover:bg-[var(--coredb-cyan)] hover:text-[var(--coredb-dark)] transition-all text-sm"
             >
               Agendar triagem técnica
@@ -112,10 +109,10 @@ export default function Header() {
               </a>
             ))}
             <a
-              href={TRIAGE_URL}
+              href={ctaConfig.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={TRIAGE_LABEL}
+              aria-label={ctaConfig.label}
               className="block w-full px-4 py-3 bg-[var(--coredb-dark)] text-white text-center font-semibold rounded-lg hover:bg-[var(--coredb-cyan)] hover:text-[var(--coredb-dark)] transition-all mt-4"
               onClick={() => setIsMenuOpen(false)}
             >

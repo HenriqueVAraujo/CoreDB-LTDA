@@ -4,7 +4,7 @@ import { Mail, Phone } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Logo from './Logo';
-import { ROUTES } from '../routes';
+import { CTA_CONFIGS, ROUTES } from '../routes';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -77,10 +77,10 @@ export default function Footer() {
                 <span className="text-sm text-white/60 group-hover:text-white transition-colors">comercial@coredb.com.br</span>
               </a>
               <a
-                href="https://wa.me/553191873435?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20triagem%20t%C3%A9cnica%20de%20risco%20do%20RM%20%E2%80%94%2020%20minutos."
+                href={CTA_CONFIGS.institutional.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Agendar uma triagem técnica de risco do RM — 20 minutos."
+                aria-label={CTA_CONFIGS.institutional.label}
                 className="flex items-center justify-center md:justify-start gap-3 group"
               >
                 <div className="bg-white/5 p-2 rounded-lg group-hover:bg-[#1DAEFF]/20 transition-colors">

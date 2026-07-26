@@ -2,6 +2,7 @@
 
 import { FileText, ShieldAlert, Copyright, ChevronLeft, MessageSquare, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
+import { CTA_CONFIGS } from '@/routes';
 
 export default function TermsOfUse() {
   return (
@@ -113,11 +114,13 @@ export default function TermsOfUse() {
             <div className="bg-[#0B1C2D] p-10 rounded-[23px] text-center">
               <h3 className="text-2xl font-bold mb-4 !text-white" style={{ color: 'white' }}>Precisa de uma análise formal?</h3>
               <p className="text-white/60 mb-8 max-w-xl mx-auto">
-                Conheça o Diagnóstico Executivo de Risco TOTVS RM em uma triagem técnica inicial de 20 minutos.
+                Conheça a triagem técnica com a CoreDB em uma conversa inicial de 20 minutos.
               </p>
               <Link
-                href="/#contact"
-                aria-label="Agendar uma triagem técnica de risco do RM — 20 minutos."
+                href={CTA_CONFIGS.institutional.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={CTA_CONFIGS.institutional.label}
                 className="inline-flex w-full sm:w-auto items-center justify-center gap-3 bg-white text-[#0B1C2D] px-6 sm:px-8 py-4 text-center whitespace-normal rounded-full font-bold hover:bg-[#1DAEFF] transition-all transform hover:scale-105"
               >
                 <MessageSquare className="w-5 h-5" />
