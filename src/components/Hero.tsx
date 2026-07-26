@@ -1,10 +1,16 @@
 'use client'
 
 import { Activity, FileText, BarChart2 } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 import { CTA_CONFIGS } from '@/routes'
+import { getServiceFromPath, trackEvent } from '@/lib/analytics'
 
 export default function Hero() {
+  const pathname = usePathname()
+  const service = getServiceFromPath(pathname)
+
   const handleCTAClick = () => {
+    trackEvent('cta_click', { page_path: pathname ?? '', service, cta_location: 'home_hero' })
     window.open(CTA_CONFIGS.institutional.url, '_blank', 'noopener,noreferrer')
   }
 

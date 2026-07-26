@@ -1,7 +1,9 @@
 'use client'
 
 import { ShieldAlert, Activity, ArrowRight, Lock, Server } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 import { CTA_CONFIGS } from '@/routes';
+import { getServiceFromPath, trackEvent } from '@/lib/analytics';
 import TechnologyCards from '@/components/TechnologyCards';
 
 const databaseTechnologies = [
@@ -28,6 +30,9 @@ const databaseTechnologies = [
 ];
 
 export default function DBA() {
+  const pathname = usePathname();
+  const service = getServiceFromPath(pathname);
+
   const features = [
     {
       icon: Activity,
@@ -102,6 +107,7 @@ export default function DBA() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={CTA_CONFIGS.dba.label}
+              onClick={() => trackEvent('cta_click', { page_path: pathname ?? '', service, cta_location: 'hero' })}
               className="inline-flex w-full sm:w-auto items-center justify-center text-center whitespace-normal font-bold rounded-lg px-6 sm:px-10 py-5 text-base sm:text-lg shadow-lg transition-all duration-300 hover:scale-105"
               style={{ background: 'var(--coredb-cyan)', color: 'var(--coredb-dark)' }}
             >
@@ -202,6 +208,7 @@ export default function DBA() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={CTA_CONFIGS.dba.label}
+              onClick={() => trackEvent('cta_click', { page_path: pathname ?? '', service, cta_location: 'final_cta' })}
               className="group flex w-full sm:w-auto items-center justify-center gap-3 mx-auto px-6 sm:px-10 py-5 text-center whitespace-normal font-bold rounded-xl transition-all duration-300 hover:gap-5"
               style={{ background: 'var(--coredb-cyan)', color: 'var(--coredb-dark)' }}
             >

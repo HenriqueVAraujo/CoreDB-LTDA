@@ -1,8 +1,15 @@
+'use client'
+
 import { Settings, Code, Database, LifeBuoy, CheckCircle2, XCircle } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ROUTES } from "../routes";
+import { getServiceFromPath, trackEvent } from "../lib/analytics";
 
 export default function ServicesSection() {
+  const pathname = usePathname();
+  const serviceSlug = getServiceFromPath(pathname);
+
   const services = [
     {
       icon: Settings,
@@ -121,6 +128,7 @@ export default function ServicesSection() {
                   <Link
                     href={service.path}
                     aria-label={`Ver detalhes sobre ${service.title}`}
+                    onClick={() => trackEvent('service_navigation', { page_path: pathname ?? '', service: serviceSlug, cta_location: 'home_services' })}
                     className="text-[var(--coredb-cyan)] text-sm font-semibold hover:underline"
                   >
                     Ver detalhes →

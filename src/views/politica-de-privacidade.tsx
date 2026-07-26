@@ -3,8 +3,13 @@
 import React from 'react';
 import { ShieldCheck, ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { getServiceFromPath, trackEvent } from '@/lib/analytics';
 
 export default function PrivacyPolicy() {
+  const pathname = usePathname();
+  const service = getServiceFromPath(pathname);
+
   return (
     <div className="bg-[#0B1C2D] min-h-screen text-white font-sans selection:bg-[#1DAEFF]/30">
       {/* Header de Navegação Rápida */}
@@ -86,7 +91,11 @@ export default function PrivacyPolicy() {
             <h3 className="text-2xl font-bold mb-4 !text-white" style={{ color: 'white' }}>Canal de privacidade</h3>
             <p className="text-white/60 mb-8">
               Solicitações relacionadas à privacidade e ao exercício de direitos podem ser encaminhadas para{' '}
-              <a href="mailto:coredb@coredb.com.br" className="font-semibold text-[#1DAEFF] hover:underline">
+              <a
+                href="mailto:coredb@coredb.com.br"
+                onClick={() => trackEvent('email_click', { page_path: pathname ?? '', service, cta_location: 'privacy_contact' })}
+                className="font-semibold text-[#1DAEFF] hover:underline"
+              >
                 coredb@coredb.com.br
               </a>.
             </p>

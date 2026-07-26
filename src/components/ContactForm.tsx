@@ -30,7 +30,7 @@ export default function ContactForm() {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    if (!hasStartedRef.current) {
+    if (name !== "website" && !hasStartedRef.current) {
       hasStartedRef.current = true;
       trackEvent('form_start', { page_path: pathname ?? '', service });
     }

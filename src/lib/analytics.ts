@@ -35,6 +35,95 @@ declare global {
   }
 }
 
+const CONSENT_COOKIE_NAME = 'coredb_consent'
+const CONSENT_UPDATED_EVENT = 'coredb:consent-updated'
+const MAX_QUEUE_SIZE = 50
+const FLUSH_RETRY_DELAYS_MS = [250, 500, 1000, 2000, 4000]
+
+type QueuedEvent = { name: AnalyticsEvent; payload: Record<string, string> }
+
+let eventQueue: QueuedEvent[] = []
+let flushRetryTimer: ReturnType<typeof setTimeout> | null = null
+let flushRetryAttempt = 0
+let consentListenerAttached = false
+
+function hasAcceptedConsent(): boolean {
+  if (typeof document === 'undefined') return false
+  const match = document.cookie.match(new RegExp('(^| )' + CONSENT_COOKIE_NAME + '=([^;]+)'))
+  return match ? match[2] === 'accepted' : false
+}
+
+function isGtagReady(): boolean {
+  return typeof window !== 'undefined' && typeof window.gtag === 'function'
+}
+
+function stopFlushRetries(): void {
+  if (flushRetryTimer) {
+    clearTimeout(flushRetryTimer)
+    flushRetryTimer = null
+  }
+  flushRetryAttempt = 0
+}
+
+/** Envia e esvazia a fila atomicamente para nunca reenviar o mesmo evento em duas chamadas concorrentes. */
+function flushQueue(): void {
+  if (!hasAcceptedConsent() || !isGtagReady()) return
+
+  const pending = eventQueue
+  eventQueue = []
+  for (const event of pending) {
+    window.gtag!('event', event.name, event.payload)
+  }
+}
+
+/** Tenta o flush em janelas curtas e limitadas; nunca faz polling indefinido. */
+function scheduleFlushRetry(): void {
+  if (flushRetryTimer) return
+
+  const delay = FLUSH_RETRY_DELAYS_MS[flushRetryAttempt]
+  if (delay === undefined) return
+
+  flushRetryTimer = setTimeout(() => {
+    flushRetryTimer = null
+    flushRetryAttempt += 1
+
+    if (!hasAcceptedConsent()) {
+      eventQueue = []
+      stopFlushRetries()
+      return
+    }
+
+    if (isGtagReady()) {
+      flushQueue()
+      stopFlushRetries()
+      return
+    }
+
+    if (eventQueue.length > 0) {
+      scheduleFlushRetry()
+    }
+  }, delay)
+}
+
+/** Anexado somente após o primeiro evento pós-aceite; nunca antes do consentimento. */
+function ensureConsentListener(): void {
+  if (consentListenerAttached || typeof window === 'undefined') return
+  consentListenerAttached = true
+
+  window.addEventListener(CONSENT_UPDATED_EVENT, () => {
+    if (!hasAcceptedConsent()) {
+      eventQueue = []
+      stopFlushRetries()
+      return
+    }
+
+    flushQueue()
+    if (eventQueue.length > 0) {
+      scheduleFlushRetry()
+    }
+  })
+}
+
 function getDevice(): string {
   if (typeof window === 'undefined') return 'unknown'
   return window.innerWidth < 768 ? 'mobile' : 'desktop'
@@ -95,14 +184,20 @@ export function getServiceFromPath(pathname?: string | null): string {
 }
 
 /**
- * Dispara um evento de analytics somente quando o GA4 já foi montado pelo
- * CookieConsent (isto é, somente após consentimento aceito). Nunca envia
- * nenhum parâmetro fora da lista fixa autorizada em AGENTS.md/CLAUDE.md.
+ * Dispara um evento de analytics somente após consentimento aceito (lido
+ * diretamente do cookie do CookieConsent). Nunca envia nenhum parâmetro fora
+ * da lista fixa autorizada em AGENTS.md/CLAUDE.md.
+ *
+ * Se o GA4 ainda não tiver terminado de carregar (janela curta logo após o
+ * aceite), o evento já sanitizado é enfileirado em memória e reenviado assim
+ * que window.gtag estiver disponível, sem bloquear a ação do usuário. Nada é
+ * armazenado antes do consentimento nem após a rejeição.
  */
 export function trackEvent(name: AnalyticsEvent, params: AnalyticsParams = {}): void {
-  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
-    return
-  }
+  if (typeof window === 'undefined') return
+  if (!hasAcceptedConsent()) return
+
+  ensureConsentListener()
 
   const payload = sanitize({
     device: getDevice(),
@@ -110,5 +205,14 @@ export function trackEvent(name: AnalyticsEvent, params: AnalyticsParams = {}): 
     ...params,
   })
 
-  window.gtag('event', name, payload)
+  if (isGtagReady()) {
+    flushQueue()
+    window.gtag!('event', name, payload)
+    return
+  }
+
+  if (eventQueue.length < MAX_QUEUE_SIZE) {
+    eventQueue.push({ name, payload })
+  }
+  scheduleFlushRetry()
 }

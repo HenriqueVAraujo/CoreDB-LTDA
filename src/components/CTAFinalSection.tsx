@@ -1,9 +1,14 @@
 'use client'
 
 import { ArrowRight, Phone } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { CTA_CONFIGS } from "@/routes";
+import { getServiceFromPath, trackEvent } from "@/lib/analytics";
 
 export default function CTAFinalSection() {
+  const pathname = usePathname();
+  const service = getServiceFromPath(pathname);
+
   return (
     <section className="relative py-24 md:py-32 bg-[#0B1C2D] overflow-hidden">
       
@@ -32,6 +37,7 @@ export default function CTAFinalSection() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={CTA_CONFIGS.institutional.label}
+              onClick={() => trackEvent('cta_click', { page_path: pathname ?? '', service, cta_location: 'home_final_cta' })}
               className="w-full sm:w-auto px-6 sm:px-10 py-5 bg-[#1DAEFF] hover:bg-[#1493d6] text-[#0B1C2D] font-semibold text-lg text-center whitespace-normal rounded-xl transition-all duration-300 flex items-center justify-center gap-3 group shadow-lg shadow-[#1DAEFF]/30"
             >
               Agendar triagem técnica
@@ -44,6 +50,7 @@ export default function CTAFinalSection() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={CTA_CONFIGS.institutional.label}
+              onClick={() => trackEvent('cta_click', { page_path: pathname ?? '', service, cta_location: 'home_final_cta' })}
               className="text-white/70 hover:text-white text-sm flex items-center gap-2 transition"
             >
               <Phone className="w-4 h-4" />
