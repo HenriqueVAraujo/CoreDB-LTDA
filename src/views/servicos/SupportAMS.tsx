@@ -1,9 +1,14 @@
 'use client'
 
 import { Shield, Clock, BarChart3, ArrowRight, CheckCircle2, Headphones } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 import { CTA_CONFIGS } from '@/routes';
+import { getServiceFromPath, trackEvent } from '@/lib/analytics';
 
 export default function SupportAMS() {
+  const pathname = usePathname();
+  const service = getServiceFromPath(pathname);
+
   const diferenciais = [
     {
       icon: Shield,
@@ -95,6 +100,7 @@ export default function SupportAMS() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={CTA_CONFIGS.ams.label}
+              onClick={() => trackEvent('cta_click', { page_path: pathname ?? '', service, cta_location: 'hero' })}
               className="inline-flex w-full sm:w-auto items-center justify-center text-center whitespace-normal font-bold rounded-lg px-6 sm:px-10 py-5 text-base sm:text-lg shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
               style={{ background: 'var(--coredb-cyan)', color: 'var(--coredb-dark)' }}
             >
@@ -178,6 +184,7 @@ export default function SupportAMS() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={CTA_CONFIGS.ams.label}
+              onClick={() => trackEvent('cta_click', { page_path: pathname ?? '', service, cta_location: 'final_cta' })}
               className="group flex w-full sm:w-auto items-center justify-center gap-3 mx-auto px-6 sm:px-10 py-5 text-center whitespace-normal font-bold rounded-xl transition-all duration-300 hover:gap-5"
               style={{ background: 'var(--coredb-cyan)', color: 'var(--coredb-dark)' }}
             >

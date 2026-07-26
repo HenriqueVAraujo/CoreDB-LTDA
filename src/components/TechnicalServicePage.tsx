@@ -1,6 +1,10 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import type { CtaConfig } from '@/routes'
+import { getServiceFromPath, trackEvent } from '@/lib/analytics'
 
 export type TechnicalDetail = {
   title: string
@@ -73,6 +77,9 @@ export default function TechnicalServicePage({
   ctaDescription,
   offerNote,
 }: TechnicalServicePageProps) {
+  const pathname = usePathname()
+  const service = getServiceFromPath(pathname)
+
   return (
     <main className="min-h-screen overflow-x-hidden bg-white">
       <section className="bg-[var(--coredb-dark)] pb-20 pt-32 text-white md:pb-28 md:pt-40">
@@ -91,6 +98,7 @@ export default function TechnicalServicePage({
               <li>
                 <Link
                   href={hub.href}
+                  onClick={() => trackEvent('service_navigation', { page_path: pathname ?? '', service, cta_location: 'breadcrumb' })}
                   className="rounded-sm underline-offset-4 hover:text-white hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--coredb-cyan)]"
                 >
                   {hub.label}
@@ -117,6 +125,7 @@ export default function TechnicalServicePage({
             target="_blank"
             rel="noopener noreferrer"
             aria-label={cta.label}
+            onClick={() => trackEvent('cta_click', { page_path: pathname ?? '', service, cta_location: 'hero' })}
             className="mt-10 inline-flex w-full items-center justify-center gap-3 rounded-xl bg-[var(--coredb-cyan)] px-6 py-5 text-center text-base font-bold text-[var(--coredb-dark)] transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:w-auto sm:px-10 sm:text-lg"
           >
             {ctaText}
@@ -229,8 +238,16 @@ export default function TechnicalServicePage({
             Perguntas frequentes
           </h2>
           <div className="mt-10 space-y-4">
-            {faq.map((item) => (
-              <details key={item.question} className="group rounded-2xl border border-gray-200 bg-white p-5 sm:p-6">
+            {faq.map((item, index) => (
+              <details
+                key={item.question}
+                className="group rounded-2xl border border-gray-200 bg-white p-5 sm:p-6"
+                onToggle={(event) => {
+                  if (event.currentTarget.open) {
+                    trackEvent('faq_open', { page_path: pathname ?? '', service, cta_location: `faq_${index}` })
+                  }
+                }}
+              >
                 <summary className="cursor-pointer rounded-sm text-lg font-bold text-[var(--coredb-dark)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#087DB8]">
                   {item.question}
                 </summary>
@@ -249,6 +266,7 @@ export default function TechnicalServicePage({
             </h2>
             <Link
               href={hub.href}
+              onClick={() => trackEvent('service_navigation', { page_path: pathname ?? '', service, cta_location: 'related_content' })}
               className="mt-4 inline-flex rounded-sm font-semibold text-[#087DB8] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#087DB8]"
             >
               {hub.description}
@@ -258,6 +276,7 @@ export default function TechnicalServicePage({
                 <Link
                   key={sibling.href}
                   href={sibling.href}
+                  onClick={() => trackEvent('service_navigation', { page_path: pathname ?? '', service, cta_location: 'related_content' })}
                   className="group rounded-xl border border-gray-200 p-5 transition hover:border-[var(--coredb-cyan)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#087DB8]"
                 >
                   <span className="block font-bold text-[var(--coredb-dark)]">{sibling.label}</span>
@@ -282,6 +301,7 @@ export default function TechnicalServicePage({
             target="_blank"
             rel="noopener noreferrer"
             aria-label={cta.label}
+            onClick={() => trackEvent('cta_click', { page_path: pathname ?? '', service, cta_location: 'final_cta' })}
             className="mt-8 inline-flex w-full items-center justify-center gap-3 rounded-xl bg-[var(--coredb-cyan)] px-6 py-5 text-center text-base font-bold text-[var(--coredb-dark)] transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:w-auto sm:px-10 sm:text-lg"
           >
             {ctaText}

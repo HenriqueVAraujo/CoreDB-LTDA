@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Logo from './Logo';
 import { CTA_CONFIGS, ROUTES } from '../routes';
+import { getServiceFromPath, trackEvent } from '../lib/analytics';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -70,7 +71,11 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start">
             <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">Fale Conosco</h4>
             <div className="space-y-4 w-full">
-              <a href="mailto:comercial@coredb.com.br" className="flex items-center justify-center md:justify-start gap-3 group">
+              <a
+                href="mailto:comercial@coredb.com.br"
+                onClick={() => trackEvent('email_click', { page_path: pathname ?? '', service: getServiceFromPath(pathname), cta_location: 'footer_cta' })}
+                className="flex items-center justify-center md:justify-start gap-3 group"
+              >
                 <div className="bg-white/5 p-2 rounded-lg group-hover:bg-[#1DAEFF]/20 transition-colors">
                   <Mail className="w-4 h-4 text-[#1DAEFF]" />
                 </div>
@@ -81,6 +86,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={CTA_CONFIGS.institutional.label}
+                onClick={() => trackEvent('whatsapp_click', { page_path: pathname ?? '', service: getServiceFromPath(pathname), cta_location: 'footer_cta' })}
                 className="flex items-center justify-center md:justify-start gap-3 group"
               >
                 <div className="bg-white/5 p-2 rounded-lg group-hover:bg-[#1DAEFF]/20 transition-colors">
