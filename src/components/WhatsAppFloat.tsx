@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 
 import { getCtaConfig } from '@/routes'
+import { getServiceFromPath, trackEvent } from '@/lib/analytics'
 
 const COOKIE_NAME = 'coredb_consent'
 const CONSENT_UPDATED_EVENT = 'coredb:consent-updated'
@@ -37,6 +38,7 @@ export default function WhatsAppFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={ctaConfig.label}
+      onClick={() => trackEvent('whatsapp_click', { page_path: pathname ?? '', service: getServiceFromPath(pathname), cta_location: 'whatsapp_float' })}
       className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-lg hover:scale-110 transition-transform duration-200"
     >
       <svg

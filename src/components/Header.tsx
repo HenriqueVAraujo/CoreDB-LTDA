@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 
 import { getCtaConfig } from '@/routes';
+import { getServiceFromPath, trackEvent } from '@/lib/analytics';
 import Logo from './Logo';
 
 export default function Header() {
@@ -72,6 +73,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={ctaConfig.label}
+              onClick={() => trackEvent('cta_click', { page_path: pathname ?? '', service: getServiceFromPath(pathname), cta_location: 'header' })}
               className="px-6 py-2 bg-[var(--coredb-dark)] text-white font-semibold rounded-lg hover:bg-[var(--coredb-cyan)] hover:text-[var(--coredb-dark)] transition-all text-sm"
             >
               Agendar triagem técnica
@@ -113,8 +115,11 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={ctaConfig.label}
+              onClick={() => {
+                trackEvent('cta_click', { page_path: pathname ?? '', service: getServiceFromPath(pathname), cta_location: 'header' })
+                setIsMenuOpen(false)
+              }}
               className="block w-full px-4 py-3 bg-[var(--coredb-dark)] text-white text-center font-semibold rounded-lg hover:bg-[var(--coredb-cyan)] hover:text-[var(--coredb-dark)] transition-all mt-4"
-              onClick={() => setIsMenuOpen(false)}
             >
               Agendar triagem técnica
             </a>

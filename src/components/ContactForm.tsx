@@ -1,7 +1,9 @@
 'use client'
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Mail, Phone, Send, ShieldCheck, MessageCircle } from "lucide-react";
+import { getServiceFromPath, trackEvent } from "@/lib/analytics";
 
 const REQUIRED_FIELD_DESCRIPTION_ID = "contact-required-fields";
 
@@ -20,10 +22,18 @@ export default function ContactForm() {
   const [leadType, setLeadType] = useState<"standard" | "strategic" | "critical">("standard");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const hasStartedRef = useRef(false);
+  const pathname = usePathname();
+  const service = getServiceFromPath(pathname);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+    if (!hasStartedRef.current) {
+      hasStartedRef.current = true;
+      trackEvent('form_start', { page_path: pathname ?? '', service });
+    }
 
     if (name === "urgency") {
       if (value === "immediate") setLeadType("critical");
@@ -48,19 +58,23 @@ export default function ContactForm() {
 
       if (response.ok && result.success) {
         setSubmitStatus("success");
+        trackEvent('form_submit_success', { page_path: pathname ?? '', service });
         setFormData({ name: "", email: "", phone: "", company: "", environment: "", urgency: "", message: "", website: "" });
+        hasStartedRef.current = false;
         setTimeout(() => setSubmitStatus("idle"), 5000);
       } else {
         throw new Error(result.error || "Falha no envio");
       }
     } catch {
       setSubmitStatus("error");
+      trackEvent('form_submit_error', { page_path: pathname ?? '', service });
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleWhatsApp = () => {
+    trackEvent('whatsapp_click', { page_path: pathname ?? '', service, cta_location: 'contact_form' });
     const url =
       'https://wa.me/553191873435?text=' +
       encodeURIComponent(
