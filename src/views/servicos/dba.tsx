@@ -1,37 +1,29 @@
 'use client'
 
-import { ShieldAlert, Database, Activity, ArrowRight, Lock, Server } from 'lucide-react';
+import { ShieldAlert, Activity, ArrowRight, Lock, Server } from 'lucide-react';
+import { CTA_CONFIGS } from '@/routes';
 
 export default function DBA() {
-  const handleCTAClick = () => {
-    const url =
-      'https://wa.me/553191873435?text=' +
-      encodeURIComponent(
-        'Olá! Preciso de um Health Check especializado no meu Banco de Dados. Meu ambiente está apresentando instabilidades.'
-      );
-    window.open(url, '_blank');
-  };
-
   const features = [
     {
       icon: Activity,
-      title: 'SQL Tuning Avançado',
-      description: 'Identificação de querys ofensoras e otimização de índices para reduzir drasticamente o tempo de resposta.'
+      title: 'SQL Tuning',
+      description: 'Análise de consultas, planos de execução e índices para orientar melhorias mensuráveis no ambiente.'
     },
     {
       icon: Lock,
-      title: 'Segurança e Blindagem',
-      description: 'Proteção contra ataques, controle de privilégios e auditoria completa para conformidade com a LGPD.'
+      title: 'Controles de Segurança',
+      description: 'Revisão de privilégios, trilhas de auditoria e controles técnicos aplicáveis ao escopo contratado.'
     },
     {
       icon: ShieldAlert,
       title: 'Disaster Recovery',
-      description: 'Estratégias reais de backup e alta disponibilidade para garantir que sua operação volte em minutos após uma falha.'
+      description: 'Objetivos de recuperação definidos após análise e testes do ambiente.'
     },
     {
       icon: Server,
-      title: 'Monitoramento 24/7',
-      description: 'Nossa equipe detecta o problema antes do seu usuário, agindo de forma proativa na saúde do servidor.'
+      title: 'Monitoramento automatizado',
+      description: 'Ferramentas monitoram continuamente e geram alertas; o atendimento segue a cobertura contratada.'
     }
   ];
 
@@ -39,17 +31,17 @@ export default function DBA() {
     {
       step: '1',
       title: 'Health Check Inicial',
-      description: 'Raio-X completo do servidor e da instância do banco de dados para identificar gargalos imediatos.'
+      description: 'Análise do servidor e da instância do banco de dados para registrar riscos e gargalos observados.'
     },
     {
       step: '2',
       title: 'Plano de Contingência',
-      description: 'Estruturação de políticas de backup e redundância para garantir risco zero de perda de dados.'
+      description: 'Estruturação de políticas de backup e redundância para reduzir o risco de perda de dados com testes periódicos.'
     },
     {
       step: '3',
-      title: 'Otimização Contínua',
-      description: 'Ajustes finos de memória, disco e CPU para extrair o máximo do seu hardware atual.'
+      title: 'Ajustes Orientados por Métricas',
+      description: 'Ajustes de memória, disco e CPU orientados por métricas e pelos limites do ambiente.'
     },
     {
       step: '4',
@@ -65,40 +57,33 @@ export default function DBA() {
       <section className="relative bg-[#0B1C2D] min-h-[80vh] flex items-center py-20">
         <div className="container mx-auto px-4 max-w-5xl text-white">
           <span className="text-[var(--coredb-cyan)] font-bold tracking-widest uppercase text-sm mb-4 inline-block">
-            Gestão Especializada de Bancos de Dados
+            DBA MULTIPLATAFORMA PARA AMBIENTES CRÍTICOS
           </span>
 
           <h1
             className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight mb-6 text-left"
-            style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
+            style={{ fontWeight: 700 }}
           >
-            DBA SQL Server e Oracle em Belo Horizonte <br />
-            <span className="text-[var(--coredb-cyan)]">para Ambientes TOTVS Críticos.</span>
+            Administração de bancos de dados multiplataforma <br className="hidden md:block" />
+            <span className="text-[var(--coredb-cyan)]">para ambientes críticos.</span>
           </h1>
 
           <p className="text-lg md:text-xl text-white/70 mb-10 max-w-3xl leading-relaxed">
-            O banco de dados é o coração da sua empresa. Administração profissional de SQL Server e Oracle com Health Check, SQL Tuning e monitoramento 24/7. Base em Belo Horizonte — atendimento em todo o Brasil.
+            A CoreDB administra SQL Server, Oracle, PostgreSQL e MySQL com diagnóstico técnico, performance, monitoramento automatizado, backup, continuidade e governança conforme o escopo contratado.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 mt-8">
-            <button
-              onClick={handleCTAClick}
-              className="font-bold rounded-lg px-10 py-5 text-lg shadow-lg transition-all duration-300 hover:scale-105"
+            <a
+              href={CTA_CONFIGS.dba.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={CTA_CONFIGS.dba.label}
+              className="inline-flex w-full sm:w-auto items-center justify-center text-center whitespace-normal font-bold rounded-lg px-6 sm:px-10 py-5 text-base sm:text-lg shadow-lg transition-all duration-300 hover:scale-105"
               style={{ background: 'var(--coredb-cyan)', color: 'var(--coredb-dark)' }}
             >
-              Agendar Diagnóstico DBA
-            </button>
+              Agendar triagem técnica
+            </a>
             
-            <div className="flex items-center gap-6 px-4 border-l border-white/10">
-              <div className="text-center">
-                <p className="text-2xl font-bold text-white">99.9%</p>
-                <p className="text-xs text-white/40 uppercase tracking-widest">Uptime Alvo</p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl font-bold text-white">Zero</p>
-                <p className="text-xs text-white/40 uppercase tracking-widest">Perda de Dados</p>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -113,13 +98,13 @@ export default function DBA() {
           <div className="max-w-3xl mb-20">
             <h2 
               className="text-4xl md:text-5xl font-bold text-[var(--coredb-dark)] mb-6"
-              style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
+              style={{ fontWeight: 700 }}
             >
-              Gestão de Banco de Dados <br />
-              <span className="text-[var(--coredb-cyan)]">Não é um gasto, é proteção.</span>
+              Gestão multiplataforma de bancos de dados <br />
+              <span className="text-[var(--coredb-dark)]">orientada por risco e evidências.</span>
             </h2>
             <p className="text-lg text-[#4B5563] leading-relaxed">
-              Enquanto as consultorias de software focam na aplicação, nós focamos na fundação. Garantimos que sua base suporte o crescimento da sua empresa sem lentidões.
+              Enquanto as consultorias de software focam na aplicação, nós focamos na fundação. Avaliamos capacidade e gargalos para apoiar o crescimento do ambiente.
             </p>
           </div>
 
@@ -151,7 +136,7 @@ export default function DBA() {
       <section className="py-20 md:py-32 bg-[#F9FAFB]">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl font-bold text-[var(--coredb-dark)] mb-6">Metodologia de Segurança de Dados</h2>
+            <h2 className="text-4xl font-bold text-[var(--coredb-dark)] mb-6">Etapas da gestão técnica</h2>
             <div className="h-1.5 w-24 bg-[var(--coredb-cyan)] mx-auto rounded-full" />
           </div>
 
@@ -174,19 +159,22 @@ export default function DBA() {
       {/* Bottom CTA */}
       <section className="py-24 bg-[#0B1C2D] text-white text-center">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto p-12 rounded-3xl border border-white/5 bg-gradient-to-br from-[#0B1C2D] to-[#152a3d] shadow-2xl">
-            <h2 className="text-3xl md:text-5xl font-bold mb-8">Sua base de dados está segura agora?</h2>
+          <div className="max-w-4xl mx-auto p-6 sm:p-12 rounded-3xl border border-white/5 bg-gradient-to-br from-[#0B1C2D] to-[#152a3d] shadow-2xl">
+            <h2 className="text-3xl md:text-5xl font-bold mb-8">Avalie os riscos do banco de dados antes que afetem a continuidade da operação.</h2>
             <p className="text-white/60 text-lg mb-10 max-w-2xl mx-auto">
-              Não espere um incidente acontecer para agir. Solicite um Health Check técnico e descubra como está a saúde do seu maior ativo.
+              DBA multiplataforma para ambientes críticos. A triagem técnica inicial leva 20 minutos.
             </p>
-            <button
-              onClick={handleCTAClick}
-              className="group flex items-center gap-3 mx-auto px-10 py-5 font-bold rounded-xl transition-all duration-300 hover:gap-5"
+            <a
+              href={CTA_CONFIGS.dba.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={CTA_CONFIGS.dba.label}
+              className="group flex w-full sm:w-auto items-center justify-center gap-3 mx-auto px-6 sm:px-10 py-5 text-center whitespace-normal font-bold rounded-xl transition-all duration-300 hover:gap-5"
               style={{ background: 'var(--coredb-cyan)', color: 'var(--coredb-dark)' }}
             >
-              Falar com um Especialista DBA
+              Agendar triagem técnica
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </a>
           </div>
         </div>
       </section>

@@ -1,4 +1,5 @@
 import { CheckCircle2, XCircle } from "lucide-react";
+import { CTA_CONFIGS } from "@/routes";
 
 export default function IdealClientSection() {
   const idealTraits = [
@@ -21,7 +22,7 @@ export default function IdealClientSection() {
 
         {/* Header */}
         <div className="mb-20 max-w-3xl">
-          <span className="text-[var(--coredb-cyan)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
+          <span className="text-[var(--coredb-dark)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
             Perfil de Operações Atendidas
           </span>
 
@@ -86,12 +87,13 @@ export default function IdealClientSection() {
             </p>
 
             <a
-              href="https://wa.me/553191873435?text=Olá, gostaria de agendar um diagnóstico técnico."
+              href={CTA_CONFIGS.institutional.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[var(--coredb-cyan)] text-white px-8 py-4 rounded-md font-semibold hover:opacity-90 transition"
+              aria-label={CTA_CONFIGS.institutional.label}
+              className="inline-flex w-full sm:w-auto items-center justify-center bg-[var(--coredb-cyan)] text-[var(--coredb-dark)] px-6 sm:px-8 py-4 text-center whitespace-normal rounded-md font-semibold hover:opacity-90 transition"
             >
-              Solicitar Diagnóstico Técnico
+              Agendar triagem técnica
             </a>
           </div>
         </div>

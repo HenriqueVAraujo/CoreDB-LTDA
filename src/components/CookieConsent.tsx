@@ -5,6 +5,7 @@ import Script from 'next/script'
 import Link from 'next/link'
 
 const COOKIE_NAME = 'coredb_consent'
+const CONSENT_UPDATED_EVENT = 'coredb:consent-updated'
 const GA_ID = 'G-YZSTRQKCQG'
 
 function getCookie(name: string): string | null {
@@ -14,7 +15,8 @@ function getCookie(name: string): string | null {
 
 function setCookie(name: string, value: string, days: number) {
   const expires = new Date(Date.now() + days * 864e5).toUTCString()
-  document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=Lax`
+  const maxAge = days * 24 * 60 * 60
+  document.cookie = `${name}=${value}; Expires=${expires}; Max-Age=${maxAge}; Path=/; SameSite=Lax; Secure`
 }
 
 export default function CookieConsent() {
@@ -34,11 +36,13 @@ export default function CookieConsent() {
     setCookie(COOKIE_NAME, 'accepted', 365)
     setAccepted(true)
     setShow(false)
+    window.dispatchEvent(new Event(CONSENT_UPDATED_EVENT))
   }
 
   const handleReject = () => {
     setCookie(COOKIE_NAME, 'rejected', 365)
     setShow(false)
+    window.dispatchEvent(new Event(CONSENT_UPDATED_EVENT))
   }
 
   return (

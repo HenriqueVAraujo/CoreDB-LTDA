@@ -1,37 +1,29 @@
 'use client'
 
 import { Shield, Clock, BarChart3, ArrowRight, CheckCircle2, Headphones } from 'lucide-react';
+import { CTA_CONFIGS } from '@/routes';
 
 export default function SupportAMS() {
-  const handleCTAClick = () => {
-    const url =
-      'https://wa.me/553191873435?text=' +
-      encodeURIComponent(
-        'Olá! Gostaria de entender como funciona o Suporte AMS da CoreDB com SLA garantido.'
-      );
-    window.open(url, '_blank');
-  };
-
   const diferenciais = [
     {
       icon: Shield,
       title: 'Governança via GLPI',
-      description: 'Gestão profissional de chamados com histórico auditável e transparência total em cada interação.'
+      description: 'Gestão profissional de chamados com histórico auditável e visibilidade dos chamados no GLPI.'
     },
     {
       icon: Clock,
       title: 'SLA de Resposta Crítica',
-      description: 'Tempos de resposta garantidos em contrato. Emergências tratadas com prioridade absoluta 24/7.'
+      description: 'Tempos definidos por criticidade no SLA. Cobertura e horários conforme contrato.'
     },
     {
       icon: Headphones,
-      title: 'Sustentação Nível 2 e 3',
-      description: 'Equipe sênior pronta para resolver problemas complexos que o suporte padrão não soluciona.'
+      title: 'Encaminhamento Técnico',
+      description: 'Tratamento e escalada dos chamados conforme criticidade, responsabilidades e cobertura contratada.'
     },
     {
       icon: BarChart3,
       title: 'Relatórios Mensais',
-      description: 'Análise de indicadores, volume de chamados e sugestões proativas para redução de incidentes.'
+      description: 'Análise de indicadores e volume de chamados conforme a governança definida no serviço.'
     }
   ];
 
@@ -43,18 +35,18 @@ export default function SupportAMS() {
     },
     {
       step: '2',
-      title: 'Estabilização Proativa',
-      description: 'Monitoramento inicial para identificar e sanar os problemas recorrentes que geram chamados.'
+      title: 'Análise de Recorrências',
+      description: 'Levantamento inicial para identificar padrões e priorizar causas recorrentes dos chamados.'
     },
     {
       step: '3',
       title: 'Atendimento Consultivo',
-      description: 'Suporte focado em resolver a causa raiz, evitando que o mesmo problema aconteça duas vezes.'
+      description: 'Tratamento dos chamados e investigação de causa conforme evidências e escopo contratado.'
     },
     {
       step: '4',
       title: 'Evolução do ERP',
-      description: 'Sugestões de melhorias baseadas nos dados de suporte para tornar seu sistema cada vez mais autônomo.'
+      description: 'Recomendações de melhoria baseadas nos indicadores e no histórico do atendimento.'
     }
   ];
 
@@ -65,19 +57,19 @@ export default function SupportAMS() {
       <section className="relative bg-[#0B1C2D] min-h-[80vh] flex items-center py-20">
         <div className="container mx-auto px-4 max-w-5xl text-white">
           <span className="text-[var(--coredb-cyan)] font-bold tracking-widest uppercase text-sm mb-4 inline-block">
-            Sustentação Estratégica TOTVS
+            SUPORTE AMS E GOVERNANÇA OPERACIONAL
           </span>
 
           <h1
             className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight mb-6 text-left"
-            style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
+            style={{ fontWeight: 700 }}
           >
-            Suporte AMS TOTVS em BH e Todo o Brasil: <br />
-            <span className="text-[var(--coredb-cyan)]">SLA Contratual. Sua Operação Não Para.</span>
+            Suporte AMS TOTVS em BH e Todo o Brasil: <br className="hidden md:block" />
+            <span className="text-[var(--coredb-cyan)]">governança e SLA contratual.</span>
           </h1>
 
           <p className="text-lg md:text-xl text-white/70 mb-10 max-w-3xl leading-relaxed">
-            Esqueça o suporte reativo e lento. Sustentação AMS para TOTVS com governança via GLPI, SLA rígido e especialistas nível 2 e 3. Base em Belo Horizonte — atendimento em todo o Brasil.
+            Blindamos ambientes TOTVS e bancos de dados que não podem parar. A sustentação AMS segue governança, cobertura e tempos definidos no contrato.
           </p>
 
           {/* Trust Bar Customizada */}
@@ -92,19 +84,22 @@ export default function SupportAMS() {
             </div>
             <div className="flex items-center gap-3">
               <CheckCircle2 className="w-5 h-5 text-[var(--coredb-cyan)]" />
-              <p className="text-sm font-medium text-white/60 uppercase tracking-wider">Expertise Nível 3</p>
+              <p className="text-sm font-medium text-white/60 uppercase tracking-wider">Cobertura Contratada</p>
             </div>
           </div>
 
           {/* Botões - Única Ação (WhatsApp) */}
           <div className="mt-12">
-            <button
-              onClick={handleCTAClick}
-              className="w-full sm:w-auto font-bold rounded-lg px-10 py-5 text-lg shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
+            <a
+              href={CTA_CONFIGS.ams.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={CTA_CONFIGS.ams.label}
+              className="inline-flex w-full sm:w-auto items-center justify-center text-center whitespace-normal font-bold rounded-lg px-6 sm:px-10 py-5 text-base sm:text-lg shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
               style={{ background: 'var(--coredb-cyan)', color: 'var(--coredb-dark)' }}
             >
-              Contratar Sustentação AMS
-            </button>
+              Agendar triagem técnica
+            </a>
           </div>
         </div>
 
@@ -116,16 +111,16 @@ export default function SupportAMS() {
       {/* Diferenciais Section */}
       <section className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mb-20">
+          <div className="max-w-3xl mb-12 md:mb-16">
             <h2 
               className="text-4xl md:text-5xl font-bold text-[var(--coredb-dark)] mb-6"
-              style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
+              style={{ fontWeight: 700 }}
             >
-              Por que nosso AMS <br />
-              <span className="text-[var(--coredb-cyan)]">é referência no mercado.</span>
+              Sustentação AMS com <br />
+              <span className="text-[var(--coredb-dark)]">governança definida em contrato.</span>
             </h2>
             <p className="text-lg text-[#4B5563] leading-relaxed">
-              Transformamos chamados técnicos em inteligência de negócio. Nossa meta é reduzir o número de problemas, e não apenas respondê-los.
+              O histórico e os indicadores dos chamados apoiam a priorização técnica e a melhoria do ambiente.
             </p>
           </div>
 
@@ -148,20 +143,22 @@ export default function SupportAMS() {
 
       {/* Metodologia Section */}
       <section className="py-20 md:py-32 bg-[#F9FAFB]">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-[var(--coredb-dark)] mb-6">Metodologia de Atendimento</h2>
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-4xl font-bold text-[var(--coredb-dark)] mb-6">Metodologia de Atendimento</h2>
             <div className="h-1.5 w-24 bg-[var(--coredb-cyan)] mx-auto rounded-full" />
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {metodologia.map((item, index) => (
-              <div key={index} className="relative p-8 bg-white rounded-2xl shadow-sm border border-gray-100 hover:border-[var(--coredb-cyan)]/30 transition-colors">
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 w-10 h-10 bg-[var(--coredb-cyan)] text-[var(--coredb-dark)] font-bold flex items-center justify-center rounded-full shadow-lg">
+              <div key={index} className="relative">
+                <div className="text-8xl font-black text-[var(--coredb-cyan)]/10 absolute -top-8 -left-4 select-none">
                   {item.step}
-                </span>
-                <h3 className="text-lg font-bold mt-4 mb-3 text-[var(--coredb-dark)]">{item.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{item.description}</p>
+                </div>
+                <div className="relative z-10">
+                  <h3 className="text-xl font-bold text-[var(--coredb-dark)] mb-4">{item.title}</h3>
+                  <p className="text-[#4B5563] text-sm leading-relaxed">{item.description}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -171,19 +168,22 @@ export default function SupportAMS() {
       {/* CTA Final */}
       <section className="py-24 bg-[#0B1C2D] text-white text-center">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto p-12 rounded-3xl border border-white/5 bg-gradient-to-br from-[#0B1C2D] to-[#152a3d] shadow-2xl">
-            <h2 className="text-3xl md:text-5xl font-bold mb-8">Sua consultoria atual cumpre o que promete?</h2>
+          <div className="max-w-4xl mx-auto p-6 sm:p-12 rounded-3xl border border-white/5 bg-gradient-to-br from-[#0B1C2D] to-[#152a3d] shadow-2xl">
+            <h2 className="text-3xl md:text-5xl font-bold mb-8">Estruture a sustentação antes que incidentes recorrentes comprometam a operação.</h2>
             <p className="text-white/60 text-lg mb-10 max-w-2xl mx-auto">
-              Mude para um suporte que entrega governança, previsibilidade e técnicos que realmente entendem seu ERP.
+              Suporte AMS e governança operacional. A triagem técnica inicial leva 20 minutos.
             </p>
-            <button
-              onClick={handleCTAClick}
-              className="group flex items-center gap-3 mx-auto px-10 py-5 font-bold rounded-xl transition-all duration-300 hover:gap-5"
+            <a
+              href={CTA_CONFIGS.ams.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={CTA_CONFIGS.ams.label}
+              className="group flex w-full sm:w-auto items-center justify-center gap-3 mx-auto px-6 sm:px-10 py-5 text-center whitespace-normal font-bold rounded-xl transition-all duration-300 hover:gap-5"
               style={{ background: 'var(--coredb-cyan)', color: 'var(--coredb-dark)' }}
             >
-              Falar com Especialista em Sustentação
+              Agendar triagem técnica
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </a>
           </div>
         </div>
       </section>

@@ -1,91 +1,50 @@
 import type { Metadata } from 'next'
 import ConsultoriaTOTVSView from '@/views/servicos/consultoria-totvs'
 
+const SITE_URL = 'https://www.coredb.com.br'
+const PAGE_PATH = '/servicos/consultoria-totvs'
+const title = 'Consultoria TOTVS em Belo Horizonte — Protheus, RM e Fluig'
+const socialTitle = `${title} | CoreDB`
+const description =
+  'Consultoria para ambientes TOTVS Protheus, RM e Fluig, com diagnóstico técnico, análise de performance e atuação conforme escopo contratado. Atendimento remoto nacional.'
+
 export const metadata: Metadata = {
-  title: 'Consultoria TOTVS em Belo Horizonte — Protheus, RM e Fluig | CoreDB',
-  description:
-    'Consultoria TOTVS em Belo Horizonte (BH) para Protheus, RM e Fluig. Eliminamos lentidão, gargalos e instabilidade no seu ERP com tuning de performance e SLA contratual. Atendimento nacional e remoto.',
-  keywords: [
-    'consultoria TOTVS Belo Horizonte',
-    'consultoria TOTVS BH',
-    'consultoria Protheus Belo Horizonte',
-    'consultoria RM TOTVS BH',
-    'Fluig consultoria BH',
-    'tuning TOTVS',
-    'performance Protheus',
-    'consultoria ERP Belo Horizonte',
-    'TOTVS BH',
-  ],
-  alternates: { canonical: '/servicos/consultoria-totvs' },
+  title,
+  description,
+  alternates: { canonical: PAGE_PATH },
   openGraph: {
-    title: 'Consultoria TOTVS em Belo Horizonte — Protheus, RM e Fluig | CoreDB',
-    description:
-      'Consultoria TOTVS em BH para Protheus, RM e Fluig. Tuning de performance, resolução de gargalos e SLA contratual. Atendimento nacional e remoto.',
-    url: '/servicos/consultoria-totvs',
+    title: socialTitle,
+    description,
+    url: PAGE_PATH,
+    images: [
+      {
+        url: '/social/open-graph-logo-card-1200x630.png',
+        width: 1200,
+        height: 630,
+        alt: 'CoreDB — O núcleo da continuidade.',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: socialTitle,
+    description,
+    images: ['/social/social-share-logo-card-1200x630.png'],
   },
 }
 
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
+  '@id': `${SITE_URL}${PAGE_PATH}#service`,
   name: 'Consultoria TOTVS — Protheus, RM e Fluig',
-  description:
-    'Consultoria especializada em TOTVS Protheus, RM e Fluig com base em Belo Horizonte, MG. Tuning de performance, resolução de gargalos, atualização segura e sustentação contínua. Atendimento nacional e remoto.',
-  provider: {
-    '@type': 'LocalBusiness',
-    name: 'CoreDB LTDA',
-    url: 'https://www.coredb.com.br',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Belo Horizonte',
-      addressRegion: 'MG',
-      addressCountry: 'BR',
-    },
-  },
-  areaServed: [
-    { '@type': 'Country', name: 'Brasil' },
-    { '@type': 'City', name: 'Belo Horizonte' },
-  ],
+  description,
+  url: `${SITE_URL}${PAGE_PATH}`,
+  image: `${SITE_URL}/social/open-graph-logo-card-1200x630.png`,
+  provider: { '@id': `${SITE_URL}/#organization` },
+  areaServed: { '@type': 'Country', name: 'Brasil' },
   serviceType: 'Consultoria ERP TOTVS',
-}
-
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'A CoreDB atende fora de Belo Horizonte?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Sim. Atendemos empresas em todo o Brasil de forma remota. Realizamos visitas presenciais em BH e região quando necessário.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Qual a diferença entre a CoreDB e o suporte padrão da TOTVS?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'A CoreDB é uma consultoria independente especializada em performance de banco de dados e ERP. Resolvemos problemas crônicos que o suporte padrão da TOTVS não alcança, atuando ponta a ponta no ERP e no banco de dados.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Em quanto tempo vocês resolvem um problema de lentidão no Protheus?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Após diagnóstico técnico estruturado, a maioria dos casos de lentidão é resolvida em até 5 dias úteis. Casos complexos têm cronograma definido desde o início do projeto.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'A CoreDB trabalha com todos os módulos do Protheus?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Sim. Atendemos todos os módulos do Protheus, RM e Fluig, com foco especial em processos críticos como faturamento, folha de pagamento, estoque e financeiro.',
-      },
-    },
-  ],
+  inLanguage: 'pt-BR',
 }
 
 export default function ConsultoriaTOTVSPage() {
@@ -94,10 +53,6 @@ export default function ConsultoriaTOTVSPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <ConsultoriaTOTVSView />
     </>

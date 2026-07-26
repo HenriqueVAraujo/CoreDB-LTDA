@@ -1,60 +1,52 @@
 'use client'
 
 import { Shield, Zap, Database, ArrowRight, Gauge } from 'lucide-react';
+import { CTA_CONFIGS } from '@/routes';
 
 export default function ConsultoriaTOTVS() {
-  const handleCTAClick = () => {
-    const url =
-      'https://wa.me/553191873435?text=' +
-      encodeURIComponent(
-        'Olá! Vi a página de Consultoria de Elite TOTVS e gostaria de agilizar um diagnóstico do meu ambiente.'
-      );
-    window.open(url, '_blank');
-  };
-
   const features = [
     {
       icon: Gauge,
       title: 'Tuning de Performance',
-      description: 'Otimização profunda de camadas: desde o dicionário de dados até as querys de banco de dados mais complexas.'
+      description: 'Análise de camadas, do dicionário de dados às consultas de banco, com ajustes orientados por métricas.'
     },
     {
       icon: Database,
-      title: 'Expertise em DBAs',
-      description: 'Diferente de consultorias comuns, unimos especialistas em ERP e DBAs SQL Server/Oracle para estabilidade total.'
+      title: 'Atuação Integrada',
+      description: 'Análise conjunta de ERP e bancos SQL Server ou Oracle, com resultados avaliados por indicadores do ambiente.'
     },
     {
       icon: Zap,
       title: 'Resolução de Gargalos',
-      description: 'Identificação e eliminação de travamentos em rotinas críticas de faturamento, estoque e contabilidade.'
+      description: 'Identificação e tratamento de gargalos em rotinas críticas de faturamento, estoque e contabilidade.'
     },
     {
       icon: Shield,
-      title: 'Atualização Segura',
-      description: 'Migrações de versão, aplicação de patches e releases com metodologia que minimiza o downtime.'
+      title: 'Atualização Planejada',
+      description: 'Migrações de versão, aplicação de patches e releases com planejamento, homologação e critérios técnicos definidos.'
     }
   ];
 
   const methodology = [
     {
       step: '1',
-      title: 'Diagnóstico 360º',
+      title: 'Diagnóstico Técnico',
       description: 'Análise técnica da infraestrutura, banco de dados e aderência dos processos ao padrão TOTVS.'
     },
     {
       step: '2',
       title: 'Plano de Estabilização',
-      description: 'Execução de melhorias imediatas para eliminar erros e lentidões que travam a operação.'
+      description: 'Priorização de melhorias conforme os achados, o impacto operacional e o escopo aprovado.'
     },
     {
       step: '3',
       title: 'Otimização de Processos',
-      description: 'Revisão de customizações (ADVPL/TLPP/RM) para garantir máxima performance e integridade.'
+      description: 'Revisão de customizações (ADVPL/TLPP/RM) para avaliar performance e integridade com critérios técnicos documentados.'
     },
     {
       step: '4',
       title: 'Evolução Estratégica',
-      description: 'Acompanhamento contínuo para garantir que o ERP acompanhe o crescimento do seu negócio.'
+      description: 'Acompanhamento conforme o contrato para apoiar a evolução planejada do ERP.'
     }
   ];
 
@@ -65,40 +57,33 @@ export default function ConsultoriaTOTVS() {
       <section className="relative bg-[#0B1C2D] min-h-[80vh] flex items-center py-20">
         <div className="container mx-auto px-4 max-w-5xl text-white">
           <span className="text-[var(--coredb-cyan)] font-bold tracking-widest uppercase text-sm mb-4 inline-block">
-            Consultoria de Elite para Protheus, RM e Fluig
+            ENGENHARIA E SUSTENTAÇÃO TOTVS
           </span>
 
           <h1
             className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight mb-6 text-left"
-            style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
+            style={{ fontWeight: 700 }}
           >
-            Consultoria TOTVS em Belo Horizonte — <br />
-            <span className="text-[var(--coredb-cyan)]">Protheus, RM e Fluig sem Instabilidade.</span>
+            Consultoria TOTVS em Belo Horizonte — <br className="hidden md:block" />
+            <span className="text-[var(--coredb-cyan)]"> Protheus, RM e Fluig.</span>
           </h1>
 
           <p className="text-lg md:text-xl text-white/70 mb-10 max-w-3xl leading-relaxed">
-            Eliminamos a lentidão e a instabilidade que travam sua empresa. Unimos engenharia de banco de dados com consultoria TOTVS para transformar seu ERP em uma ferramenta de alta produtividade. Base em Belo Horizonte — atendimento em todo o Brasil.
+            Blindamos ambientes TOTVS e bancos de dados que não podem parar. A atuação combina diagnóstico técnico de ERP e banco de dados, conforme o escopo contratado.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 mt-8">
-            <button
-              onClick={handleCTAClick}
-              className="font-bold rounded-lg px-10 py-5 text-lg shadow-lg transition-all duration-300 hover:scale-105"
+            <a
+              href={CTA_CONFIGS.totvs.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={CTA_CONFIGS.totvs.label}
+              className="inline-flex w-full sm:w-auto items-center justify-center text-center whitespace-normal font-bold rounded-lg px-6 sm:px-10 py-5 text-base sm:text-lg shadow-lg transition-all duration-300 hover:scale-105"
               style={{ background: 'var(--coredb-cyan)', color: 'var(--coredb-dark)' }}
             >
-              Solicitar Diagnóstico Técnico
-            </button>
+              Agendar triagem técnica
+            </a>
             
-            <div className="flex items-center gap-6 px-4 border-l border-white/10">
-              <div>
-                <p className="text-2xl font-bold text-white">24h</p>
-                <p className="text-xs text-white/40 uppercase tracking-widest">Retorno Técnico</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-white">+150</p>
-                <p className="text-xs text-white/40 uppercase tracking-widest">Ambientes Otimizados</p>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -113,13 +98,13 @@ export default function ConsultoriaTOTVS() {
           <div className="max-w-3xl mb-20">
             <h2 
               className="text-4xl md:text-5xl font-bold text-[var(--coredb-dark)] mb-6"
-              style={{ fontFamily: 'Source Sans Pro', fontWeight: 700 }}
+              style={{ fontWeight: 700 }}
             >
-              Onde as consultorias comuns param, <br />
-              <span className="text-[var(--coredb-cyan)]">nós começamos.</span>
+              Atuação integrada em <br />
+              <span className="text-[var(--coredb-dark)]">ERP e banco de dados.</span>
             </h2>
             <p className="text-lg text-[#4B5563] leading-relaxed">
-              Resolvemos problemas complexos de infraestrutura e performance que o suporte padrão da fábrica não consegue alcançar.
+              A análise correlaciona infraestrutura, banco de dados, ERP e processos para orientar prioridades técnicas.
             </p>
           </div>
 
@@ -151,7 +136,7 @@ export default function ConsultoriaTOTVS() {
       <section className="py-20 md:py-32 bg-[#F9FAFB]">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl font-bold text-[var(--coredb-dark)] mb-6">A Jornada para a Estabilidade</h2>
+            <h2 className="text-4xl font-bold text-[var(--coredb-dark)] mb-6">Etapas da atuação técnica</h2>
             <div className="h-1.5 w-24 bg-[var(--coredb-cyan)] mx-auto rounded-full" />
           </div>
 
@@ -174,19 +159,22 @@ export default function ConsultoriaTOTVS() {
       {/* Bottom CTA */}
       <section className="py-24 bg-[#0B1C2D] text-white text-center">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto p-12 rounded-3xl border border-white/5 bg-gradient-to-br from-[#0B1C2D] to-[#152a3d] shadow-2xl">
-            <h2 className="text-3xl md:text-5xl font-bold mb-8">Pare de perder tempo com lentidões inexplicáveis.</h2>
+          <div className="max-w-4xl mx-auto p-6 sm:p-12 rounded-3xl border border-white/5 bg-gradient-to-br from-[#0B1C2D] to-[#152a3d] shadow-2xl">
+            <h2 className="text-3xl md:text-5xl font-bold mb-8">Avalie o ambiente TOTVS antes que riscos técnicos impactem a operação.</h2>
             <p className="text-white/60 text-lg mb-10 max-w-2xl mx-auto">
-              Nossa equipe técnica está pronta para realizar um health check inicial do seu ambiente e propor soluções definitivas.
+              Engenharia e sustentação TOTVS. A triagem técnica inicial leva 20 minutos.
             </p>
-            <button
-              onClick={handleCTAClick}
-              className="group flex items-center gap-3 mx-auto px-10 py-5 font-bold rounded-xl transition-all duration-300 hover:gap-5"
+            <a
+              href={CTA_CONFIGS.totvs.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={CTA_CONFIGS.totvs.label}
+              className="group flex w-full sm:w-auto items-center justify-center gap-3 mx-auto px-6 sm:px-10 py-5 text-center whitespace-normal font-bold rounded-xl transition-all duration-300 hover:gap-5"
               style={{ background: 'var(--coredb-cyan)', color: 'var(--coredb-dark)' }}
             >
-              Falar com Engenheiro de Consultoria
+              Agendar triagem técnica
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </a>
           </div>
         </div>
       </section>

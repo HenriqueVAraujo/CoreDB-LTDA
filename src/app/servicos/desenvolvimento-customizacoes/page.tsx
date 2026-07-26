@@ -1,90 +1,50 @@
 import type { Metadata } from 'next'
 import DesenvolvimentoView from '@/views/servicos/desenvolvimento-customizacoes'
 
+const SITE_URL = 'https://www.coredb.com.br'
+const PAGE_PATH = '/servicos/desenvolvimento-customizacoes'
+const title = 'Customizações TOTVS ADVPL e TLPP em Belo Horizonte — Integrações ERP'
+const socialTitle = `${title} | CoreDB`
+const description =
+  'Customizações TOTVS em ADVPL, TLPP e PO-UI, integrações via API e automação de processos para Protheus e RM, conforme escopo definido.'
+
 export const metadata: Metadata = {
-  title: 'Customizações TOTVS ADVPL e TLPP em Belo Horizonte — Integrações ERP | CoreDB',
-  description:
-    'Desenvolvimento de customizações TOTVS em ADVPL, TLPP e PO-UI com base em Belo Horizonte (BH). Integrações via API, automação de processos e evolução de legados para Protheus e RM. Atendimento remoto nacional.',
-  keywords: [
-    'customizações TOTVS Belo Horizonte',
-    'desenvolvimento ADVPL BH',
-    'TLPP TOTVS',
-    'customizações Protheus BH',
-    'integrações ERP Belo Horizonte',
-    'integração TOTVS API',
-    'automação processos TOTVS',
-    'PO-UI Protheus',
-  ],
-  alternates: { canonical: '/servicos/desenvolvimento-customizacoes' },
+  title,
+  description,
+  alternates: { canonical: PAGE_PATH },
   openGraph: {
-    title: 'Customizações TOTVS ADVPL e TLPP em BH — Integrações ERP | CoreDB',
-    description:
-      'Customizações TOTVS em ADVPL, TLPP e PO-UI. Integrações via API e automação de processos para Protheus e RM. Base em BH, atendimento nacional.',
-    url: '/servicos/desenvolvimento-customizacoes',
+    title: socialTitle,
+    description,
+    url: PAGE_PATH,
+    images: [
+      {
+        url: '/social/open-graph-logo-card-1200x630.png',
+        width: 1200,
+        height: 630,
+        alt: 'CoreDB — O núcleo da continuidade.',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: socialTitle,
+    description,
+    images: ['/social/social-share-logo-card-1200x630.png'],
   },
 }
 
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
+  '@id': `${SITE_URL}${PAGE_PATH}#service`,
   name: 'Desenvolvimento e Customizações TOTVS',
-  description:
-    'Desenvolvimento de customizações TOTVS em ADVPL, TLPP e PO-UI com base em Belo Horizonte, MG. Integrações via API, automação de processos e evolução de customizações legadas. Atendimento remoto nacional.',
-  provider: {
-    '@type': 'LocalBusiness',
-    name: 'CoreDB LTDA',
-    url: 'https://www.coredb.com.br',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Belo Horizonte',
-      addressRegion: 'MG',
-      addressCountry: 'BR',
-    },
-  },
-  areaServed: [
-    { '@type': 'Country', name: 'Brasil' },
-    { '@type': 'City', name: 'Belo Horizonte' },
-  ],
+  description,
+  url: `${SITE_URL}${PAGE_PATH}`,
+  image: `${SITE_URL}/social/open-graph-logo-card-1200x630.png`,
+  provider: { '@id': `${SITE_URL}/#organization` },
+  areaServed: { '@type': 'Country', name: 'Brasil' },
   serviceType: 'Desenvolvimento e Customizações ERP',
-}
-
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'O que é ADVPL?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'ADVPL (Advanced Protheus Language) é a linguagem de programação proprietária da TOTVS usada para customizar o Protheus. É a principal linguagem para desenvolvimento de pontos de entrada, relatórios e integrações no ERP.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'A CoreDB faz integração entre TOTVS e sistemas externos?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Sim. Desenvolvemos integrações via API REST entre TOTVS Protheus e RM e sistemas externos como CRMs, plataformas de e-commerce, ERPs legados e portais de fornecedores.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Customizações antigas e legadas podem ser modernizadas?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Sim. Auditamos customizações existentes, identificamos problemas de performance que oneram o banco de dados e realizamos a modernização para TLPP e PO-UI quando aplicável.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'O desenvolvimento leva em conta a performance do banco de dados?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Obrigatoriamente. Todo código desenvolvido pela CoreDB é revisado com foco em impacto no banco de dados. Queries ineficientes dentro de customizações são a segunda maior causa de lentidão em ambientes TOTVS.',
-      },
-    },
-  ],
+  inLanguage: 'pt-BR',
 }
 
 export default function DesenvolvimentoPage() {
@@ -93,10 +53,6 @@ export default function DesenvolvimentoPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <DesenvolvimentoView />
     </>

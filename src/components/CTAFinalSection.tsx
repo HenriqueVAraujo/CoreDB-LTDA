@@ -1,11 +1,9 @@
 'use client'
 
 import { ArrowRight, Phone } from "lucide-react";
+import { CTA_CONFIGS } from "@/routes";
 
 export default function CTAFinalSection() {
-  const whatsappUrl =
-    "https://wa.me/553191873435?text=Olá%2C%20quero%20avaliar%20a%20estabilidade%20do%20meu%20ambiente%20TOTVS.";
-
   return (
     <section className="relative py-24 md:py-32 bg-[#0B1C2D] overflow-hidden">
       
@@ -30,20 +28,22 @@ export default function CTAFinalSection() {
           <div className="flex flex-col items-center gap-6">
 
             <a
-              href={whatsappUrl}
+              href={CTA_CONFIGS.institutional.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-10 py-5 bg-[#1DAEFF] hover:bg-[#1493d6] text-white font-semibold text-lg rounded-xl transition-all duration-300 flex items-center gap-3 group shadow-lg shadow-[#1DAEFF]/30"
+              aria-label={CTA_CONFIGS.institutional.label}
+              className="w-full sm:w-auto px-6 sm:px-10 py-5 bg-[#1DAEFF] hover:bg-[#1493d6] text-[#0B1C2D] font-semibold text-lg text-center whitespace-normal rounded-xl transition-all duration-300 flex items-center justify-center gap-3 group shadow-lg shadow-[#1DAEFF]/30"
             >
-              Solicitar Avaliação Técnica
+              Agendar triagem técnica
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
 
             {/* Secondary CTA */}
             <a
-              href={whatsappUrl}
+              href={CTA_CONFIGS.institutional.url}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={CTA_CONFIGS.institutional.label}
               className="text-white/70 hover:text-white text-sm flex items-center gap-2 transition"
             >
               <Phone className="w-4 h-4" />
@@ -54,7 +54,7 @@ export default function CTAFinalSection() {
 
           {/* Trust Line */}
           <div className="mt-12 text-white/60 text-sm">
-            Diagnóstico inicial estratégico • Conversa técnica direta • Sem compromisso contratual
+            Triagem técnica para ambientes críticos • Triagem técnica de 20 minutos
           </div>
 
         </div>

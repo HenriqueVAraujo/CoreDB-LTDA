@@ -5,9 +5,9 @@ interface LogoProps {
   className?: string
 }
 
-// Dimensões intrínsecas das imagens (obtidas com sharp):
-// coredb-logoescura.webp → 1418×498
-// coredb-logo.webp       → 1137×419
+const LOGO_WIDTH = 1513
+const LOGO_HEIGHT = 501
+const LOGO_ALT = 'CoreDB'
 
 export default function Logo({ variant = 'header', className = '' }: LogoProps) {
   switch (variant) {
@@ -15,10 +15,10 @@ export default function Logo({ variant = 'header', className = '' }: LogoProps) 
       return (
         <div className={`flex items-center gap-2 group ${className}`}>
           <Image
-            src="/images/coredb-logoescura.webp"
-            alt="CoreDB — Consultoria TOTVS e DBA"
-            width={1418}
-            height={498}
+            src="/brand/header-logo-light.svg"
+            alt={LOGO_ALT}
+            width={LOGO_WIDTH}
+            height={LOGO_HEIGHT}
             className="h-auto w-full object-contain transition-all duration-300 group-hover:opacity-80"
             priority
           />
@@ -28,10 +28,10 @@ export default function Logo({ variant = 'header', className = '' }: LogoProps) 
     case 'footer':
       return (
         <Image
-          src="/images/coredb-logo.webp"
-          alt="CoreDB — Consultoria TOTVS e DBA"
-          width={1137}
-          height={419}
+          src="/brand/footer-logo-dark.svg"
+          alt={LOGO_ALT}
+          width={LOGO_WIDTH}
+          height={LOGO_HEIGHT}
           className={`h-auto object-contain transition-all duration-300 hover:opacity-90 ${className}`}
         />
       )
@@ -40,10 +40,10 @@ export default function Logo({ variant = 'header', className = '' }: LogoProps) 
       return (
         <div className={`flex items-center gap-4 group ${className}`}>
           <Image
-            src="/images/coredb-logo.webp"
-            alt="CoreDB — Consultoria TOTVS e DBA"
-            width={1137}
-            height={419}
+            src="/brand/header-logo-dark.svg"
+            alt={LOGO_ALT}
+            width={LOGO_WIDTH}
+            height={LOGO_HEIGHT}
             className="h-auto w-auto object-contain transition-all duration-300 group-hover:opacity-90"
           />
         </div>

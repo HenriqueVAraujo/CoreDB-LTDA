@@ -6,18 +6,18 @@ export default function ServicesSection() {
   const services = [
     {
       icon: Settings,
-      title: "Especialidades TOTVS",
+      title: "Engenharia e Sustentação TOTVS",
       subtitle: "Protheus, RM e Fluig",
       description:
-        "Consultores que entendem de regra de negócio e de infraestrutura técnica. Implementação, migração de versão, sustentação e resolução de gargalos que o suporte padrão da TOTVS não alcança.",
+        "Atuação integrada em regra de negócio e infraestrutura técnica para implementação, atualização de release, sustentação e investigação de gargalos.",
       path: ROUTES.SERVICE_TOTVS,
     },
     {
       icon: Database,
-      title: "DBA de Alta Performance",
-      subtitle: "SQL Server e Oracle",
+      title: "Engenharia de Bancos de Dados Multiplataforma",
+      subtitle: "SQL Server, Oracle, PostgreSQL e MySQL",
       description:
-        "SQL Tuning, alta disponibilidade e Disaster Recovery para ambientes críticos. Otimizamos o coração do ERP — o banco de dados — para que o sistema responda em milissegundos, não em horas.",
+        "Administração, diagnóstico, SQL Tuning, monitoramento, backup, continuidade e governança de bancos de dados conforme o escopo contratado.",
       path: ROUTES.SERVICE_DBA,
     },
     {
@@ -25,7 +25,7 @@ export default function ServicesSection() {
       title: "Suporte AMS e Governança",
       subtitle: "GLPI e SLA Contratual",
       description:
-        "Sustentação estruturada com SLA rigoroso, gestão de chamados via GLPI e relatórios mensais de indicadores. Sem filas de espera — especialistas seniores desde o primeiro até o último chamado.",
+        "Sustentação estruturada com SLA definido em contrato, gestão de chamados via GLPI e relatórios de indicadores conforme o escopo.",
       path: ROUTES.SERVICE_AMS,
     },
     {
@@ -33,7 +33,7 @@ export default function ServicesSection() {
       title: "Desenvolvimento e Customizações",
       subtitle: "ADVPL, TLPP e Integrações",
       description:
-        "Código limpo e performático pensado para não onerar o banco de dados. Customizações, pontos de entrada e integrações via API que eliminam trabalho manual e escalam com seu negócio.",
+        "Customizações, pontos de entrada e integrações via API desenvolvidas com critérios de manutenção, compatibilidade e impacto no banco de dados.",
       path: ROUTES.SERVICE_CUSTOM,
     },
   ];
@@ -41,23 +41,23 @@ export default function ServicesSection() {
   const comparativo = [
     {
       criterio: "Foco em Performance de Banco de Dados",
-      mercado: "Raro ou superficial",
-      coredb: "Nativo — é o nosso maior diferencial",
+      mercado: "Atuação isolada pode limitar o diagnóstico",
+      coredb: "Análise integrada conforme o escopo",
     },
     {
       criterio: "Especialista sênior no atendimento",
-      mercado: "Tickets e escalada burocrática",
-      coredb: "Especialista na linha desde o primeiro chamado",
+      mercado: "Encaminhamento entre diferentes camadas",
+      coredb: "Responsáveis definidos conforme a cobertura",
     },
     {
       criterio: "Diagnóstico de causa raiz (ERP + BD)",
-      mercado: "Análise apenas de camada de aplicação",
-      coredb: "ERP e Banco de Dados ponta a ponta",
+      mercado: "Análise separada por camada",
+      coredb: "ERP e banco de dados analisados em conjunto",
     },
     {
       criterio: "Agilidade na tomada de decisão",
-      mercado: "Aprovações e múltiplas camadas",
-      coredb: "Resposta técnica direta e imediata",
+      mercado: "Fluxo sujeito a múltiplas etapas",
+      coredb: "Fluxo técnico definido no contrato",
     },
   ];
 
@@ -66,8 +66,9 @@ export default function ServicesSection() {
     "TOTVS RM",
     "Fluig",
     "SQL Server",
-    "Oracle Database",
+    "Oracle",
     "PostgreSQL",
+    "MySQL",
     "Zabbix",
     "Grafana",
     "GLPI",
@@ -80,19 +81,18 @@ export default function ServicesSection() {
 
         {/* Header */}
         <div className="mb-20 max-w-3xl">
-          <span className="text-[var(--coredb-cyan)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
+          <span className="text-[var(--coredb-dark)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
             Nossos Serviços
           </span>
 
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--coredb-dark)] mb-8">
-            Soluções de Alta Performance <br />
-            <span className="text-[var(--coredb-cyan)]">para o seu Ecossistema TOTVS</span>
+            Engenharia para Ambientes TOTVS <br />
+            <span className="text-[var(--coredb-dark)]">e Bancos de Dados Críticos</span>
           </h2>
 
           <p className="text-lg md:text-xl text-[#4B5563] leading-relaxed">
-            Unimos a inteligência do ERP à potência do Banco de Dados para garantir uma operação ininterrupta.
-            Enquanto a maioria das consultorias foca na carcaça do sistema,{" "}
-            <span className="font-semibold text-[var(--coredb-dark)]">nós cuidamos do motor.</span>
+            Atuamos em duas frentes integradas: Engenharia e Sustentação TOTVS e Engenharia de
+            Bancos de Dados Multiplataforma, conforme o escopo de cada operação.
           </p>
         </div>
 
@@ -120,6 +120,7 @@ export default function ServicesSection() {
                 <div className="mt-10">
                   <Link
                     href={service.path}
+                    aria-label={`Ver detalhes sobre ${service.title}`}
                     className="text-[var(--coredb-cyan)] text-sm font-semibold hover:underline"
                   >
                     Ver detalhes →
@@ -132,7 +133,7 @@ export default function ServicesSection() {
 
         {/* Technology Strip */}
         <div className="mt-16 pt-12 border-t border-gray-100">
-          <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#4B5563] mb-6">
             Tecnologias que dominamos
           </p>
           <div className="flex flex-wrap gap-3">
@@ -150,7 +151,7 @@ export default function ServicesSection() {
         {/* Comparison Table */}
         <div className="mt-24 pt-16 border-t border-gray-200">
           <div className="mb-12 max-w-2xl">
-            <span className="text-[var(--coredb-cyan)] uppercase tracking-widest text-xs font-semibold mb-4 inline-block">
+            <span className="text-[var(--coredb-dark)] uppercase tracking-widest text-xs font-semibold mb-4 inline-block">
               Diferenciação Competitiva
             </span>
             <h3 className="text-2xl md:text-3xl font-bold text-[var(--coredb-dark)] mb-4">
@@ -172,7 +173,7 @@ export default function ServicesSection() {
                   <th className="text-left py-4 px-4 text-[#4B5563] font-semibold w-[33%]">
                     Consultorias Comuns
                   </th>
-                  <th className="text-left py-4 px-4 font-semibold w-[33%] text-[var(--coredb-cyan)]">
+                  <th className="text-left py-4 px-4 font-semibold w-[33%] text-[var(--coredb-dark)]">
                     CoreDB
                   </th>
                 </tr>
@@ -204,12 +205,9 @@ export default function ServicesSection() {
 
           <div className="mt-12 p-6 bg-[#F9FAFB] rounded-xl border border-gray-200">
             <p className="text-[#4B5563] leading-relaxed">
-              <span className="font-semibold text-[var(--coredb-dark)]">Resolvemos o que as grandes não resolveram.</span>{" "}
-              Empresas do porte das grandes consultorias falham em resolver problemas crônicos de performance de banco
-              de dados porque são focadas demais na camada do software. A CoreDB é a consultoria que{" "}
-              <span className="font-semibold text-[var(--coredb-dark)]">
-                conserta o que o suporte padrão não diagnostica.
-              </span>
+              <span className="font-semibold text-[var(--coredb-dark)]">Análise integrada de ERP e banco de dados.</span>{" "}
+              O diagnóstico considera as duas camadas, registra as evidências técnicas e define prioridades
+              conforme o ambiente e o escopo contratado.
             </p>
           </div>
         </div>

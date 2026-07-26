@@ -1,54 +1,55 @@
 import { TrendingUp, BarChart2, Gauge, Shield } from "lucide-react";
+import { CTA_CONFIGS } from "@/routes";
 
 const autoridade = [
   {
     icon: BarChart2,
-    valor: "+100",
-    label: "Ambientes Otimizados",
-    descricao: "Diagnósticos e intervenções técnicas realizados",
+    valor: "Experiência",
+    label: "Em ambientes TOTVS e bancos de dados",
+    descricao: "Capacidade técnica aplicada conforme o escopo do ambiente",
   },
   {
     icon: Gauge,
-    valor: "~30%",
-    label: "Redução Média de Tempo",
-    descricao: "Em processamento de queries e rotinas críticas",
+    valor: "Diagnóstico",
+    label: "De performance e gargalos",
+    descricao: "Análise baseada em métricas do ambiente",
   },
   {
     icon: Shield,
-    valor: "99,8%",
-    label: "Disponibilidade Operacional",
-    descricao: "Em ambientes sob sustentação contínua",
+    valor: "Disponibilidade",
+    label: "Acompanhada por indicadores",
+    descricao: "Definidos conforme cada ambiente",
   },
 ];
 
 export default function ResultsSection() {
   const cases = [
     {
-      industry: "Manufatura",
+      industry: "Performance e processamento",
       challenge:
-        "Processamento crítico de pedidos apresentando lentidão severa, impactando diretamente o faturamento diário.",
+        "Rotinas críticas podem apresentar gargalos que afetam o processamento e a operação.",
       action:
-        "Diagnóstico técnico identificou queries não otimizadas e ausência de índices estratégicos. Foi realizado tuning estrutural no banco de dados e ajustes no Protheus.",
-      result: "Redução de 87% no tempo de processamento",
-      impact: "Recuperação estimada de R$ 2,5M/ano em capacidade operacional",
+        "Diagnóstico técnico de queries, índices e configurações, com definição de ajustes conforme medições do ambiente.",
+      result: "Análise de gargalos no tempo de processamento",
+      impact: "Priorização de melhorias com base em métricas do ambiente",
     },
     {
-      industry: "Distribuição",
+      industry: "Integrações e sincronização",
       challenge:
-        "Falhas recorrentes na sincronização de estoque entre ERP e sistemas externos, gerando inconsistências operacionais.",
+        "Falhas de sincronização entre ERP e sistemas externos podem gerar inconsistências operacionais.",
       action:
-        "Redesenho da arquitetura de integrações com monitoramento contínuo e rotinas automáticas de recuperação.",
-      result: "Redução de 95% nas falhas de sincronização",
-      impact: "Disponibilidade operacional estabilizada em 99,8%",
+        "Revisão da arquitetura de integrações, dos mecanismos de monitoramento e das rotinas de recuperação.",
+      result: "Revisão técnica de falhas de sincronização e integração",
+      impact: "Acompanhamento da disponibilidade após intervenções",
     },
     {
-      industry: "Serviços",
+      industry: "Continuidade e recuperação",
       challenge:
-        "Ausência de plano estruturado de backup e recuperação de desastres, com alto risco de indisponibilidade prolongada.",
+        "Ambientes sem plano estruturado de backup e recuperação ficam mais expostos a indisponibilidades prolongadas.",
       action:
-        "Implementação de política formal de backup, monitoramento contínuo e plano de Disaster Recovery (DR).",
-      result: "Monitoramento ativo 24/7 com alertas automáticos",
-      impact: "RTO reduzido de 24h para 2h",
+        "Definição de políticas de backup, monitoramento automatizado e plano de Disaster Recovery (DR) conforme escopo técnico.",
+      result: "Monitoramento automatizado por ferramentas, 24/7, com alertas conforme configuração contratada",
+      impact: "RTO definido após análise do ambiente e formalizado no plano de recuperação",
     },
   ];
 
@@ -63,13 +64,13 @@ export default function ResultsSection() {
             return (
               <div
                 key={index}
-                className="bg-[var(--coredb-dark)] rounded-xl p-8 border border-white/10 flex items-start gap-5"
+                className="bg-[var(--coredb-dark)] rounded-xl p-6 sm:p-8 border border-white/10 flex items-start gap-4 sm:gap-5"
               >
                 <div className="w-10 h-10 rounded-lg bg-[var(--coredb-cyan)]/10 flex items-center justify-center shrink-0">
                   <Icon className="w-5 h-5 text-[var(--coredb-cyan)]" />
                 </div>
-                <div>
-                  <p className="text-3xl font-bold text-white mb-1">{item.valor}</p>
+                <div className="min-w-0 flex-1 break-words">
+                  <p className="text-2xl sm:text-3xl font-bold text-white mb-1">{item.valor}</p>
                   <p className="text-sm font-semibold text-[var(--coredb-cyan)] mb-1">{item.label}</p>
                   <p className="text-xs text-white/50 leading-relaxed">{item.descricao}</p>
                 </div>
@@ -80,17 +81,17 @@ export default function ResultsSection() {
 
         {/* Header */}
         <div className="mb-20 max-w-3xl">
-          <span className="text-[var(--coredb-cyan)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
-            Resultados Técnicos
+          <span className="text-[var(--coredb-dark)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
+            Frentes de Atuação Técnica
           </span>
 
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--coredb-dark)] mb-8">
-            Como Salvamos Operações Críticas
+            Atuação Técnica em Ambientes Críticos
           </h2>
 
           <p className="text-lg md:text-xl text-[#4B5563] leading-relaxed">
-            Cenários reais de intervenção técnica estruturada. Os nomes das empresas são preservados por NDA,
-            mas os resultados são verificáveis e mensuráveis.
+            Capacidades aplicadas a diagnóstico, estabilização e continuidade de ambientes TOTVS e bancos de dados,
+            conforme escopo e métricas definidos para cada projeto.
           </p>
         </div>
 
@@ -122,7 +123,7 @@ export default function ResultsSection() {
               {/* Action */}
               <div className="mb-6">
                 <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">
-                  Intervenção
+                  Abordagem Técnica
                 </p>
                 <p className="text-sm text-[#4B5563] leading-relaxed">
                   {caseItem.action}
@@ -132,7 +133,7 @@ export default function ResultsSection() {
               {/* Result */}
               <div className="border-t border-gray-200 pt-6">
                 <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">
-                  Resultado Obtido
+                  Frente de Atuação
                 </p>
                 <p className="text-sm font-semibold text-[var(--coredb-dark)] mb-1">
                   {caseItem.result}
@@ -149,17 +150,18 @@ export default function ResultsSection() {
         <div className="mt-24 pt-16 border-t border-gray-200">
           <div className="max-w-2xl">
             <p className="text-lg text-[#4B5563] mb-8 leading-relaxed">
-              Resultados obtidos a partir de diagnóstico técnico estruturado e
+              Atuação orientada por diagnóstico técnico estruturado e
               aplicação de metodologia de governança operacional.
             </p>
 
             <a
-              href="https://wa.me/553191873435?text=Olá, gostaria de agendar um diagnóstico técnico."
+              href={CTA_CONFIGS.institutional.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[var(--coredb-cyan)] text-[var(--coredb-dark)] px-8 py-4 rounded-xl font-bold hover:opacity-90 transition"
+              aria-label={CTA_CONFIGS.institutional.label}
+              className="inline-flex w-full sm:w-auto items-center justify-center bg-[var(--coredb-cyan)] text-[var(--coredb-dark)] px-6 sm:px-8 py-4 text-center whitespace-normal rounded-xl font-bold hover:opacity-90 transition"
             >
-              Identificar os Gargalos do Meu Ambiente
+              Agendar triagem técnica
             </a>
           </div>
         </div>

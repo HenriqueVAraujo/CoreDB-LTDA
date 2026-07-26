@@ -1,8 +1,8 @@
 'use client'
 
-import React from 'react';
-import { FileText, Gavel, ShieldAlert, Copyright, ChevronLeft, MessageSquare, ExternalLink } from 'lucide-react';
+import { FileText, ShieldAlert, Copyright, ChevronLeft, MessageSquare, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
+import { CTA_CONFIGS } from '@/routes';
 
 export default function TermsOfUse() {
   return (
@@ -25,7 +25,7 @@ export default function TermsOfUse() {
             Termos de Uso
           </h1>
           <p className="text-[#1DAEFF] font-medium mb-2 text-lg">Regras e Condições de Navegação</p>
-          <p className="text-white/40 text-sm italic">Última atualização: 13 de Fevereiro de 2026</p>
+          <p className="text-white/40 text-sm italic">Última atualização: 25 de julho de 2026</p>
         </div>
       </header>
 
@@ -54,7 +54,7 @@ export default function TermsOfUse() {
                 <FileText className="text-[#1DAEFF]" /> 1. Aceitação dos Termos
               </h2>
               <p>
-                Ao aceder ao site da CoreDB, o utilizador concorda em cumprir estes termos de serviço, todas as leis e regulamentos aplicáveis. 
+                Ao acessar o site da CoreDB, o usuário concorda em cumprir estes termos de serviço, todas as leis e regulamentos aplicáveis.
                 O conteúdo aqui disponibilizado tem finalidade informativa sobre os nossos serviços de consultoria técnica em Banco de Dados e sistemas ERP.
               </p>
             </section>
@@ -62,7 +62,7 @@ export default function TermsOfUse() {
             <section>
               <h2 className="text-2xl font-bold !text-white mb-4" style={{ color: 'white' }}>2. Propriedade Intelectual</h2>
               <p>
-                Todo o conteúdo deste site (textos, logótipos, design e scripts) é propriedade exclusiva da CoreDB. 
+                Todo o conteúdo deste site (textos, logotipos, design e scripts) é propriedade exclusiva da CoreDB.
                 A reprodução de qualquer material sem autorização prévia por escrito é estritamente proibida, conforme a Lei de Direitos Autorais brasileira.
               </p>
             </section>
@@ -70,18 +70,18 @@ export default function TermsOfUse() {
             <section>
               <h2 className="text-2xl font-bold !text-white mb-4" style={{ color: 'white' }}>3. Limitação de Responsabilidade</h2>
               <p>
-                As informações técnicas partilhadas (artigos e diagnósticos superficiais) são de caráter educativo. 
+                As informações técnicas compartilhadas (artigos e diagnósticos superficiais) são de caráter educativo.
                 A implementação de qualquer script ou alteração em banco de dados deve ser precedida de uma consultoria formal e contrato assinado. 
-                A CoreDB não se responsabiliza por decisões tomadas de forma autónoma com base no conteúdo do site.
+                A CoreDB não se responsabiliza por decisões tomadas de forma autônoma com base no conteúdo do site.
               </p>
             </section>
 
             <section className="border-l-4 border-[#1DAEFF] pl-6 py-2">
               <h2 className="text-2xl font-bold !text-white mb-4" style={{ color: 'white' }}>4. Uso Proibido</h2>
-              <p>É vedado ao utilizador:</p>
+              <p>É vedado ao usuário:</p>
               <ul className="list-disc pl-6 space-y-2 text-sm">
                 <li>Tentar extrair código-fonte do site ou realizar engenharia reversa;</li>
-                <li>Utilizar ferramentas automatizadas (bots/scrapers) para recolher dados;</li>
+                <li>Utilizar ferramentas automatizadas (bots/scrapers) para coletar dados;</li>
                 <li>Simular identidade para obter diagnósticos comerciais de forma fraudulenta.</li>
               </ul>
             </section>
@@ -98,7 +98,7 @@ export default function TermsOfUse() {
 
           {/* Rodapé Interno da Página */}
           <div className="mt-20 pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-4 text-white/40 text-sm">
+            <div className="flex items-center gap-4 text-white/60 text-sm">
               <Copyright className="w-4 h-4" />
               <span>{new Date().getFullYear()} CoreDB Consultoria Técnica</span>
             </div>
@@ -114,11 +114,17 @@ export default function TermsOfUse() {
             <div className="bg-[#0B1C2D] p-10 rounded-[23px] text-center">
               <h3 className="text-2xl font-bold mb-4 !text-white" style={{ color: 'white' }}>Precisa de uma análise formal?</h3>
               <p className="text-white/60 mb-8 max-w-xl mx-auto">
-                Não arrisque a sua operação com informações genéricas. Agende um diagnóstico técnico oficial com os nossos especialistas.
+                Conheça a triagem técnica com a CoreDB em uma conversa inicial de 20 minutos.
               </p>
-              <Link href="/#contact" className="inline-flex items-center gap-3 bg-white text-[#0B1C2D] px-8 py-4 rounded-full font-bold hover:bg-[#1DAEFF] hover:text-white transition-all transform hover:scale-105">
+              <Link
+                href={CTA_CONFIGS.institutional.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={CTA_CONFIGS.institutional.label}
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-3 bg-white text-[#0B1C2D] px-6 sm:px-8 py-4 text-center whitespace-normal rounded-full font-bold hover:bg-[#1DAEFF] transition-all transform hover:scale-105"
+              >
                 <MessageSquare className="w-5 h-5" />
-                Agendar Diagnóstico Gratuito
+                Agendar triagem técnica
               </Link>
             </div>
           </div>

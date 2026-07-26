@@ -5,14 +5,14 @@ import { CheckCircle2 } from "lucide-react";
 export default function AboutSection() {
   const areas = [
     {
-      title: "TOTVS Protheus e RM",
+      title: "Engenharia e Sustentação TOTVS",
       description:
-        "Parametrização avançada, integrações seguras e sustentação estruturada dos módulos críticos com foco em estabilidade, governança e performance contínua.",
+        "Atuação em Protheus, RM e Fluig com parametrização, integrações, sustentação e evolução técnica conforme o escopo de cada ambiente.",
     },
     {
-      title: "Administração de Banco de Dados (DBA)",
+      title: "Engenharia de Bancos de Dados Multiplataforma",
       description:
-        "Monitoramento proativo, SQL Tuning, alta disponibilidade e políticas formais de backup para SQL Server e Oracle em ambientes de missão crítica.",
+        "Administração de SQL Server, Oracle, PostgreSQL e MySQL com diagnóstico, performance, monitoramento, backup, continuidade e governança conforme o escopo contratado.",
     },
     {
       title: "Fluig e Automação de Processos",
@@ -30,12 +30,12 @@ export default function AboutSection() {
     {
       title: "Stack de Monitoramento Enterprise",
       description:
-        "Operamos com Zabbix para alertas proativos de infraestrutura, Grafana para dashboards de SLA e GLPI para gestão formal de chamados — a mesma stack de grandes operações, acessível para o seu negócio.",
+        "Integramos Zabbix para alertas de infraestrutura, Grafana para dashboards e GLPI para gestão formal de chamados, conforme o escopo técnico contratado.",
     },
     {
       title: "Visão Integrada: ERP + Banco de Dados",
       description:
-        "Atuamos simultaneamente na aplicação e na camada de dados, eliminando o conflito entre times e garantindo responsabilidade técnica ponta a ponta.",
+        "Atuamos simultaneamente na aplicação e na camada de dados, eliminando o conflito entre times e com responsabilidade técnica definida no escopo contratado.",
     },
     {
       title: "Contratos Mensais com SLA Definido",
@@ -49,18 +49,18 @@ export default function AboutSection() {
       <div className="container mx-auto px-4 max-w-6xl">
 
         <div className="mb-20 max-w-3xl">
-          <span className="text-[var(--coredb-cyan)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
+          <span className="text-[var(--coredb-dark)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
             Sobre a CoreDB
           </span>
 
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--coredb-dark)] mb-8">
-            Consultoria Especializada em Ambientes TOTVS Críticos
+            Engenharia para Ambientes TOTVS e Bancos de Dados Críticos
           </h2>
 
           <p className="text-lg md:text-xl text-[#4B5563] leading-relaxed">
             A CoreDB é uma consultoria independente focada em sustentação, governança e performance
             de ambientes TOTVS e bancos de dados. Operamos com infraestrutura de monitoramento
-            enterprise — Zabbix, Grafana e GLPI — para garantir estabilidade contínua e controle
+            enterprise — Zabbix, Grafana e GLPI — para acompanhar estabilidade e indicadores operacionais continuamente, com controle
             técnico rigoroso nas operações que não podem parar.
           </p>
         </div>
@@ -88,7 +88,7 @@ export default function AboutSection() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {differentials.map((diff, index) => (
               <div key={index}>
-                <div className="text-[var(--coredb-cyan)] font-bold mb-4 text-lg">
+                <div className="text-[var(--coredb-dark)] font-bold mb-4 text-lg">
                   0{index + 1}
                 </div>
                 <h4 className="text-lg font-semibold text-[var(--coredb-dark)] mb-3">{diff.title}</h4>

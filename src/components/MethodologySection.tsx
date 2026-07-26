@@ -5,7 +5,7 @@ export default function MethodologySection() {
     {
       icon: Search,
       title: 'Diagnóstico Técnico Estruturado',
-      description: 'Mapeamos sistemas, rotinas críticas, infraestrutura e riscos operacionais com visão completa do ambiente.'
+      description: 'Mapeamos sistemas, rotinas críticas, infraestrutura e riscos operacionais com visão integrada do ambiente.'
     },
     {
       icon: BarChart3,
@@ -33,7 +33,7 @@ export default function MethodologySection() {
     <section className="py-24 lg:py-32 bg-white">
       <div className="container mx-auto px-4 max-w-6xl">
 
-        <span className="text-[var(--coredb-cyan)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
+        <span className="text-[var(--coredb-dark)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
           Framework CoreDB
         </span>
 
@@ -54,7 +54,7 @@ export default function MethodologySection() {
                 key={index}
                 className="border border-[#E5E7EB] rounded-xl p-6"
               >
-                <div className="mb-4 text-sm font-semibold text-[var(--coredb-cyan)]">
+                <div className="mb-4 text-sm font-semibold text-[var(--coredb-dark)]">
                   Etapa {index + 1}
                 </div>
 

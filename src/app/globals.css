@@ -9,20 +9,10 @@
   animation: hero-fadein 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
 }
 
-@keyframes hero3d {
-  0%   { transform: rotateY(-8deg) rotateX(2deg) scale(1.01); box-shadow: 0 8px 32px 0 rgba(29,174,255,0.10); }
-  50%  { transform: rotateY(8deg) rotateX(-2deg) scale(1.04);  box-shadow: 0 16px 48px 0 rgba(29,174,255,0.16); }
-  100% { transform: rotateY(-8deg) rotateX(2deg) scale(1.01); box-shadow: 0 8px 32px 0 rgba(29,174,255,0.10); }
-}
-.animate-hero3d {
-  animation: hero3d 7s ease-in-out infinite;
-  will-change: transform, box-shadow;
-  transform-style: preserve-3d;
-}
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --font-sans: var(--font-inter), Arial, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -107,18 +97,35 @@
   --sidebar-ring: #1DAEFF;
 }
 
+html,
+body {
+  overflow-x: clip;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   line-height: 1.6;
-  overflow-x: hidden;
-  font-family: var(--font-roboto), 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-inter), Arial, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-inter), Arial, sans-serif;
+}
+
+:focus-visible {
+  outline: 3px solid var(--coredb-white) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 5px var(--coredb-dark) !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
-  font-family: var(--font-source-sans), sans-serif;
+  font-family: var(--font-manrope), Arial, sans-serif;
 }
 
 h1 { font-size: 3rem; letter-spacing: -0.02em; }
@@ -193,6 +200,17 @@ h4 { font-size: 1.25rem; font-weight: 600; }
   h3 { font-size: 1.25rem; }
   .section-title    { font-size: 2rem; }
   .section-subtitle { font-size: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @media print {

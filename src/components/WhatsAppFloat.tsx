@@ -1,12 +1,42 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
+
+import { getCtaConfig } from '@/routes'
+
+const COOKIE_NAME = 'coredb_consent'
+const CONSENT_UPDATED_EVENT = 'coredb:consent-updated'
+
+function hasConsentDecision() {
+  const match = document.cookie.match(new RegExp('(^| )' + COOKIE_NAME + '=([^;]+)'))
+  return match?.[2] === 'accepted' || match?.[2] === 'rejected'
+}
+
 export default function WhatsAppFloat() {
+  const [isVisible, setIsVisible] = useState(false)
+  const pathname = usePathname()
+  const ctaConfig = getCtaConfig(pathname)
+
+  useEffect(() => {
+    const updateVisibility = () => setIsVisible(hasConsentDecision())
+
+    updateVisibility()
+    window.addEventListener(CONSENT_UPDATED_EVENT, updateVisibility)
+
+    return () => window.removeEventListener(CONSENT_UPDATED_EVENT, updateVisibility)
+  }, [])
+
+  if (!isVisible) {
+    return null
+  }
+
   return (
     <a
-      href="https://wa.me/553191873435?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20diagn%C3%B3stico%20t%C3%A9cnico%20com%20a%20CoreDB."
+      href={ctaConfig.url}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Fale conosco pelo WhatsApp"
+      aria-label={ctaConfig.label}
       className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-lg hover:scale-110 transition-transform duration-200"
     >
       <svg
