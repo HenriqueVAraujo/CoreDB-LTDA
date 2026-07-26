@@ -66,13 +66,13 @@ export default function ResultsSection() {
             return (
               <div
                 key={index}
-                className="bg-[var(--coredb-dark)] rounded-xl p-8 border border-white/10 flex items-start gap-5"
+                className="bg-[var(--coredb-dark)] rounded-xl p-6 sm:p-8 border border-white/10 flex items-start gap-4 sm:gap-5"
               >
                 <div className="w-10 h-10 rounded-lg bg-[var(--coredb-cyan)]/10 flex items-center justify-center shrink-0">
                   <Icon className="w-5 h-5 text-[var(--coredb-cyan)]" />
                 </div>
-                <div>
-                  <p className="text-3xl font-bold text-white mb-1">{item.valor}</p>
+                <div className="min-w-0 flex-1 break-words">
+                  <p className="text-2xl sm:text-3xl font-bold text-white mb-1">{item.valor}</p>
                   <p className="text-sm font-semibold text-[var(--coredb-cyan)] mb-1">{item.label}</p>
                   <p className="text-xs text-white/50 leading-relaxed">{item.descricao}</p>
                 </div>
