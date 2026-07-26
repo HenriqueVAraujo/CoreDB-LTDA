@@ -4,7 +4,8 @@ import RMView from '@/views/servicos/rm'
 const SITE_URL = 'https://www.coredb.com.br'
 const PAGE_PATH = '/servicos/rm'
 const PAGE_URL = `${SITE_URL}${PAGE_PATH}`
-const title = 'Consultoria TOTVS RM: Diagnóstico e Sustentação | CoreDB'
+const title = 'Consultoria TOTVS RM: Diagnóstico e Sustentação'
+const socialTitle = `${title} | CoreDB`
 const description =
   'Diagnóstico e sustentação TOTVS RM para sinais de risco técnico, atualizações, RM Liber, integrações, banco de dados e evolução do ambiente.'
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title,
+    title: socialTitle,
     description,
     url: PAGE_URL,
     type: 'website',
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title,
+    title: socialTitle,
     description,
     images: ['/social/social-share-logo-card-1200x630.png'],
   },

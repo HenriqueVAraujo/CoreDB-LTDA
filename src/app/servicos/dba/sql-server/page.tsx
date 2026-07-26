@@ -4,7 +4,8 @@ import SqlServerView from '@/views/servicos/dba-sql-server'
 const SITE_URL = 'https://www.coredb.com.br'
 const PAGE_PATH = '/servicos/dba/sql-server'
 const PAGE_URL = `${SITE_URL}${PAGE_PATH}`
-const title = 'DBA SQL Server para Ambientes Críticos | CoreDB'
+const title = 'DBA SQL Server para Ambientes Críticos'
+const socialTitle = `${title} | CoreDB`
 const description =
   'DBA SQL Server para bloqueios, deadlocks, planos de execução, TempDB, memória, backup, alta disponibilidade e monitoramento técnico.'
 
@@ -13,13 +14,13 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title,
+    title: socialTitle,
     description,
     url: PAGE_URL,
     type: 'website',
     images: [{ url: '/social/open-graph-logo-card-1200x630.png', width: 1200, height: 630, alt: 'CoreDB — O núcleo da continuidade.' }],
   },
-  twitter: { card: 'summary_large_image', title, description, images: ['/social/social-share-logo-card-1200x630.png'] },
+  twitter: { card: 'summary_large_image', title: socialTitle, description, images: ['/social/social-share-logo-card-1200x630.png'] },
 }
 
 const serviceSchema = {

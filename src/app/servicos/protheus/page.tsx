@@ -4,7 +4,8 @@ import ProtheusView from '@/views/servicos/protheus'
 const SITE_URL = 'https://www.coredb.com.br'
 const PAGE_PATH = '/servicos/protheus'
 const PAGE_URL = `${SITE_URL}${PAGE_PATH}`
-const title = 'Consultoria Protheus: Performance e Sustentação | CoreDB'
+const title = 'Consultoria Protheus: Performance e Sustentação'
+const socialTitle = `${title} | CoreDB`
 const description =
   'Consultoria Protheus para diagnóstico de performance, AppServer, DBAccess, banco de dados, atualizações, integrações e continuidade operacional.'
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title,
+    title: socialTitle,
     description,
     url: PAGE_URL,
     type: 'website',
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title,
+    title: socialTitle,
     description,
     images: ['/social/social-share-logo-card-1200x630.png'],
   },

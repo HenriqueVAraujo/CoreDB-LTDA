@@ -4,7 +4,8 @@ import FluigView from '@/views/servicos/fluig'
 const SITE_URL = 'https://www.coredb.com.br'
 const PAGE_PATH = '/servicos/fluig'
 const PAGE_URL = `${SITE_URL}${PAGE_PATH}`
-const title = 'Consultoria Fluig: Workflows e Integrações | CoreDB'
+const title = 'Consultoria Fluig: Workflows e Integrações'
+const socialTitle = `${title} | CoreDB`
 const description =
   'Consultoria Fluig para workflows, formulários, datasets, integrações, performance, sustentação e governança de processos digitais.'
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title,
+    title: socialTitle,
     description,
     url: PAGE_URL,
     type: 'website',
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title,
+    title: socialTitle,
     description,
     images: ['/social/social-share-logo-card-1200x630.png'],
   },
