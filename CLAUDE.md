@@ -1,85 +1,151 @@
-# CoreDB — Instruções do Projeto
+# CoreDB — Instruções vigentes do projeto
+
+## Governança
+
+- `origin/main` é a fonte de verdade do estado atual da produção.
+- O Codex não faz checkout, merge, rebase, push ou force push na `main` e não promove produção.
+- Promoções são realizadas por mantenedor humano via Pull Request e deployment automático da integração Git.
+- O Codex não usa Vercel CLI nem altera domínio, aliases, variáveis ou configurações da Vercel.
+- HubSpot e Fase E permanecem fora do escopo.
+
+## Branches autorizadas
+
+- `sprint/go-live-2026-07-24`: documentação e manutenção controlada do site-base.
+- `feature/seo-technical-pages-2026-07`: expansão técnica e SEO autorizada, criada a partir de `origin/main` atualizado.
+
+Commits e pushes só podem ocorrer na branch explicitamente autorizada para a tarefa. A feature pode gerar Preview automático, mas não pode ser promovida pelo Codex.
 
 ## Stack
-- **Framework**: Next.js 15 App Router (migrado de Vite + React em maio/2025)
-- **React**: 19
-- **Linguagem**: TypeScript
-- **Estilo**: Tailwind CSS v4 via `@tailwindcss/postcss`
-- **Componentes UI**: Radix UI + shadcn/ui (em `src/components/ui/`)
-- **Animação**: Framer Motion
-- **Fontes**: `next/font/google` — Source Sans 3 (headings) e Roboto (body)
-- **Deploy**: Vercel
 
-## Estrutura de pastas
-```
+- **Framework**: Next.js 15 App Router;
+- **React**: 19;
+- **Linguagem**: TypeScript;
+- **Estilo**: Tailwind CSS v4 via `@tailwindcss/postcss`;
+- **Componentes UI**: Radix UI e shadcn/ui em `src/components/ui/`;
+- **Animação**: Framer Motion;
+- **Tipografia**: Manrope para títulos e comunicação institucional; Inter para textos, interfaces e conteúdo;
+- **Deploy**: Vercel por integração Git.
+
+Source Sans e Roboto não fazem parte da tipografia vigente.
+
+## Estrutura principal
+
+```text
 src/
-  app/                  ← Next.js App Router (rotas, metadata, API)
-    layout.tsx          ← Root layout: fontes, metadata global, Schema LocalBusiness
-    page.tsx            ← Home (/)
-    sitemap.ts          ← /sitemap.xml (gerado automaticamente)
-    robots.ts           ← /robots.txt (gerado automaticamente)
-    not-found.tsx       ← Página 404
-    servicos/
-      consultoria-totvs/page.tsx
-      dba/page.tsx
-      suporte-ams/page.tsx
-      desenvolvimento-customizacoes/page.tsx
-    politica-de-privacidade/page.tsx
-    termos-de-uso/page.tsx
-    api/contact/route.ts ← API de contato: Zoho SMTP via nodemailer
-  components/           ← Componentes compartilhados ('use client' onde necessário)
-  views/                ← Views de página (importadas pelos arquivos app/*/page.tsx)
-    Home.tsx
-    servicos/
-    politica-de-privacidade.tsx
-    termos-de-uso.tsx
-  contexts/             ← ThemeContext
-  hooks/                ← useMobile, useComposition
-  lib/                  ← utils (cn)
+  app/          # App Router, metadata, sitemap, robots e API
+  components/   # componentes compartilhados
+  views/        # views das páginas
+  contexts/
+  hooks/
+  lib/
 ```
 
 ## Identidade visual
-- **Azul escuro (dark)**: `#0B1C2D` → `var(--coredb-dark)`
-- **Cyan (accent)**: `#1DAEFF` → `var(--coredb-cyan)`
-- CSS variables definidas em `src/app/globals.css`
 
-## Negócio
-- **Empresa**: CoreDB LTDA
-- **Segmento**: Consultoria TOTVS e Administração de Banco de Dados
-- **Localização**: Belo Horizonte, MG — atendimento nacional e internacional
-- **Contato**: comercial@coredb.com.br | (31) 99187-3435
-- **WhatsApp**: `https://wa.me/553191873435`
+- Marca CoreDB e ativos oficiais v1.0.1;
+- Navy: `#0B1C2D` / `var(--coredb-dark)`;
+- Cyan: `#1DAEFF` / `var(--coredb-cyan)`;
+- White;
+- sem submarca, visual gamer ou cyberpunk;
+- preservar logo, Header, Footer, botões, cards e linguagem institucional.
 
-## Serviços
-1. Consultoria TOTVS (Protheus, RM, Fluig) → `/servicos/consultoria-totvs`
-2. DBA SQL Server e Oracle → `/servicos/dba`
-3. Suporte AMS com SLA → `/servicos/suporte-ams`
-4. Desenvolvimento e Customizações (ADVPL, TLPP) → `/servicos/desenvolvimento-customizacoes`
+## Portfólio vigente
 
-## SEO — Regras obrigatórias
-- Todo `app/*/page.tsx` deve exportar `metadata` com `title`, `description` e `canonical`
-- Keywords sempre incluem o serviço + "TOTVS" + referência ao Brasil
-- H1 de cada página deve conter o nome do serviço e tecnologias envolvidas
-- Schema.org: `ProfessionalService` no layout raiz + `Service` em cada página de serviço
-- Sitemap: atualizar `src/app/sitemap.ts` ao criar novas rotas
-- `robots.ts` bloqueia apenas `/api/`
+### TOTVS
 
-## Variáveis de ambiente (Vercel)
-- `SMTP_USER` — usuário Zoho SMTP
-- `SMTP_PASS` — senha Zoho SMTP
-- `RECEIVER_EMAIL` — e-mail que recebe os leads
+- Protheus;
+- RM;
+- Fluig.
 
-## Comandos
-```bash
-pnpm dev      # desenvolvimento local (porta 3000)
-pnpm build    # build de produção
-pnpm check    # TypeScript sem emitir
-pnpm format   # Prettier
-```
+Datasul não faz parte do portfólio vigente.
+
+### DBA multiplataforma
+
+- SQL Server;
+- Oracle;
+- PostgreSQL;
+- MySQL.
+
+### Outras frentes
+
+- ADVPL e TLPP;
+- APIs e integrações;
+- AMS;
+- governança operacional.
+
+## Posicionamento e CTAs
+
+- A homepage apresenta institucionalmente toda a CoreDB.
+- As páginas de serviço possuem identidade editorial própria.
+- A homepage e os componentes institucionais usam CTA genérico da CoreDB.
+- Consultoria TOTVS usa CTA geral do ambiente TOTVS.
+- DBA, Desenvolvimento e AMS usam CTAs contextuais.
+- Somente `/servicos/rm` pode usar oferta, CTA ou mensagem comercial específicos de “risco do RM”.
+- RM continua normalmente no portfólio “Protheus, RM e Fluig”.
+
+## Expansão técnica e SEO autorizada
+
+Exclusivamente em `feature/seo-technical-pages-2026-07`:
+
+- `/servicos/protheus`;
+- `/servicos/rm`;
+- `/servicos/fluig`;
+- `/servicos/dba/sql-server`;
+- `/servicos/dba/oracle`;
+- `/servicos/dba/postgresql`;
+- `/servicos/dba/mysql`.
+
+Também são permitidas alterações aditivas em:
+
+- `/servicos/consultoria-totvs`;
+- `/servicos/dba`;
+- `src/routes.ts`;
+- `src/app/sitemap.ts`;
+- componentes compartilhados estritamente necessários.
+
+Esse escopo permite metadata, canonical, Open Graph, Twitter metadata, JSON-LD `Service`, `BreadcrumbList`, links internos, sitemap e CTAs contextuais. Não autoriza mudança da homepage, menu principal, formulário, API, cookies ou identidade visual.
+
+## SEO — regras operacionais
+
+- Cada rota deve possuir `title`, `description` e canonical próprios.
+- O conteúdo de metadata e dados estruturados deve corresponder ao conteúdo visível.
+- Cada página deve ter exatamente um H1 e hierarquia de headings coerente.
+- Páginas de serviço usam JSON-LD `Service`; `BreadcrumbList` pode ser usado quando coerente.
+- Não duplicar `Organization` nas páginas.
+- Atualizar `src/app/sitemap.ts` ao criar as rotas autorizadas.
+- Preview deve preservar noindex e sitemap vazio conforme a regra ambiental vigente.
+- Nenhuma URL `vercel.app` pode ser versionada.
+
+## Conteúdo protegido
+
+Pode-se explicar sintomas, causas gerais, riscos, impactos, entregáveis possíveis, limites de escopo, boas práticas públicas e critérios para contratação.
+
+Não publicar:
+
+- scripts, queries ou comandos operacionais completos;
+- credenciais, segredos, dados ou topologias de clientes;
+- método proprietário ou artefatos internos;
+- métricas não comprovadas ou claims absolutos;
+- preços, descontos ou placeholders inventados;
+- cases sem autorização, incluindo G+D;
+- a métrica de -67%;
+- garantias de risco zero ou resultado garantido.
 
 ## Convenções
-- Componentes que usam hooks ou browser APIs devem ter `'use client'` na primeira linha
-- Imagens em `public/images/` — usar `next/image` com `width` e `height` sempre que possível
-- Links internos: usar `next/link` (não `<a>`)
-- Variáveis de cor: usar `var(--coredb-cyan)` e `var(--coredb-dark)` em vez de hex literal
-- Não usar wouter — roteamento é feito pelo Next.js App Router
+
+- Componentes com hooks ou APIs do navegador usam `'use client'` na primeira linha.
+- Links internos usam `next/link`.
+- Imagens usam `next/image` com dimensões explícitas quando possível.
+- Cores usam as variáveis institucionais existentes.
+- O roteamento é feito pelo Next.js App Router.
+- Não instalar dependências sem autorização expressa.
+
+## Validação e promoção
+
+1. Implementar e validar na branch autorizada.
+2. Executar check, build, diff check e smoke proporcionais ao escopo.
+3. Permitir que a integração Git gere o Preview.
+4. Submeter o Preview a QA humano.
+5. O mantenedor humano cria/revisa a Pull Request e executa o merge.
+6. A Vercel realiza o deployment automático.
+7. O mantenedor é responsável pelo rollback.
