@@ -19,6 +19,7 @@ const contactSchema = z.object({
   urgency: z.enum(['planning', 'short', 'immediate']),
   message: z.string().trim().max(4000),
   leadType: z.enum(['standard', 'strategic', 'critical']),
+  website: z.string().max(256).optional(),
 }).strict().superRefine((data, context) => {
   if (leadTypeByUrgency[data.urgency] !== data.leadType) {
     context.addIssue({
@@ -41,6 +42,13 @@ function escapeHtml(value: string) {
   return value.replace(/[&<>"']/g, (character) => htmlEscapes[character])
 }
 
+function jsonResponse(body: { success: boolean; error?: string }, status = 200) {
+  return NextResponse.json(body, {
+    status,
+    headers: { 'Cache-Control': 'no-store' },
+  })
+}
+
 const traducoes: Record<string, string> = {
   instability: 'Instabilidade ou lentidão recorrente no ERP',
   monitoring: 'Sem monitoramento estruturado (Zabbix / Grafana)',
@@ -56,20 +64,14 @@ export async function POST(req: NextRequest) {
   const contentType = req.headers.get('content-type')?.split(';', 1)[0].trim().toLowerCase()
 
   if (contentType !== 'application/json') {
-    return NextResponse.json(
-      { success: false, error: 'Formato de conteúdo não suportado.' },
-      { status: 415 },
-    )
+    return jsonResponse({ success: false, error: 'Formato de conteúdo não suportado.' }, 415)
   }
 
   const contentLengthHeader = req.headers.get('content-length')
   const contentLength = contentLengthHeader ? Number(contentLengthHeader) : 0
 
   if (Number.isFinite(contentLength) && contentLength > MAX_PAYLOAD_BYTES) {
-    return NextResponse.json(
-      { success: false, error: 'Solicitação muito grande.' },
-      { status: 413 },
-    )
+    return jsonResponse({ success: false, error: 'Solicitação muito grande.' }, 413)
   }
 
   let rawBody: string
@@ -77,17 +79,11 @@ export async function POST(req: NextRequest) {
   try {
     rawBody = await req.text()
   } catch {
-    return NextResponse.json(
-      { success: false, error: 'Solicitação inválida.' },
-      { status: 400 },
-    )
+    return jsonResponse({ success: false, error: 'Solicitação inválida.' }, 400)
   }
 
   if (new TextEncoder().encode(rawBody).byteLength > MAX_PAYLOAD_BYTES) {
-    return NextResponse.json(
-      { success: false, error: 'Solicitação muito grande.' },
-      { status: 413 },
-    )
+    return jsonResponse({ success: false, error: 'Solicitação muito grande.' }, 413)
   }
 
   let payload: unknown
@@ -95,22 +91,21 @@ export async function POST(req: NextRequest) {
   try {
     payload = JSON.parse(rawBody)
   } catch {
-    return NextResponse.json(
-      { success: false, error: 'Solicitação inválida.' },
-      { status: 400 },
-    )
+    return jsonResponse({ success: false, error: 'Solicitação inválida.' }, 400)
   }
 
   const validation = contactSchema.safeParse(payload)
 
   if (!validation.success) {
-    return NextResponse.json(
-      { success: false, error: 'Solicitação inválida.' },
-      { status: 400 },
-    )
+    return jsonResponse({ success: false, error: 'Solicitação inválida.' }, 400)
   }
 
-  const data = validation.data
+  const { website, ...data } = validation.data
+
+  if ((website ?? '').trim()) {
+    return jsonResponse({ success: true })
+  }
+
   const translatedEnvironment = traducoes[data.environment] ?? data.environment
   const translatedUrgency = traducoes[data.urgency] ?? data.urgency
   const escaped = {
@@ -188,11 +183,8 @@ export async function POST(req: NextRequest) {
       `,
     })
 
-    return NextResponse.json({ success: true })
+    return jsonResponse({ success: true })
   } catch {
-    return NextResponse.json(
-      { success: false, error: 'Não foi possível enviar a solicitação.' },
-      { status: 500 },
-    )
+    return jsonResponse({ success: false, error: 'Não foi possível enviar a solicitação.' }, 500)
   }
 }

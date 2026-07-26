@@ -14,6 +14,7 @@ export default function ContactForm() {
     environment: "",
     urgency: "",
     message: "",
+    website: "",
   });
 
   const [leadType, setLeadType] = useState<"standard" | "strategic" | "critical">("standard");
@@ -47,7 +48,7 @@ export default function ContactForm() {
 
       if (response.ok && result.success) {
         setSubmitStatus("success");
-        setFormData({ name: "", email: "", phone: "", company: "", environment: "", urgency: "", message: "" });
+        setFormData({ name: "", email: "", phone: "", company: "", environment: "", urgency: "", message: "", website: "" });
         setTimeout(() => setSubmitStatus("idle"), 5000);
       } else {
         throw new Error(result.error || "Falha no envio");
@@ -90,6 +91,22 @@ export default function ContactForm() {
               <p id={REQUIRED_FIELD_DESCRIPTION_ID} className="sr-only">
                 Campos identificados como obrigatórios devem ser preenchidos.
               </p>
+
+              {/* Honeypot anti-automação: deve permanecer vazio para usuários reais. */}
+              <div aria-hidden="true" className="fixed left-[-10000px] top-0 h-px w-px overflow-hidden">
+                <label htmlFor="contact-website">Website</label>
+                <input
+                  id="contact-website"
+                  type="text"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleChange}
+                  aria-hidden="true"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Input label="Nome Completo" name="name" value={formData.name} onChange={handleChange} disabled={isSubmitting} />
                 <Input label="E-mail Corporativo" name="email" value={formData.email} onChange={handleChange} type="email" disabled={isSubmitting} />
