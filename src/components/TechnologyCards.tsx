@@ -13,6 +13,7 @@ type TechnologyCardsProps = {
   title: string
   description: string
   items: TechnologyCard[]
+  columns?: 3 | 4
 }
 
 export default function TechnologyCards({
@@ -21,6 +22,7 @@ export default function TechnologyCards({
   title,
   description,
   items,
+  columns = 3,
 }: TechnologyCardsProps) {
   return (
     <section className="bg-[#F4F7FA] py-20 md:py-28" aria-labelledby={headingId}>
@@ -32,7 +34,7 @@ export default function TechnologyCards({
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-[#4B5563]">{description}</p>
         </div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className={columns === 4 ? 'grid gap-6 md:grid-cols-2 lg:grid-cols-4' : 'grid gap-6 md:grid-cols-2 lg:grid-cols-3'}>
           {items.map((item) => (
             <Link
               key={item.href}
