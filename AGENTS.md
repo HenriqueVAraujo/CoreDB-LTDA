@@ -22,47 +22,26 @@ O Codex não pode:
 
 Toda promoção deve ser feita por mantenedor humano por meio de Pull Request. A integração Git pode gerar Preview das branches autorizadas, mas o Codex não pode promover esse Preview.
 
+## Branches encerradas e históricas (pós-go-live)
+
+As branches abaixo foram formalmente encerradas:
+
+- `sprint/go-live-2026-07-24`;
+- `feature/seo-technical-pages-2026-07`;
+- `feature/analytics-conversion-2026-07`;
+- `fix/analytics-production-only-2026-07`.
+
+- Todo o conteúdo dessas branches está integrado em `origin/main`.
+- As Pull Requests e os commits correspondentes permanecem como histórico do repositório; não devem ser reabertos, revertidos ou reescritos.
+- Nenhuma dessas branches é mais uma branch de trabalho autorizada: não fazer commit, push, checkout de trabalho ativo nem solicitar novo Preview a partir delas.
+- Toda nova frente deve nascer atualizada a partir de `origin/main` (via `git fetch origin` e criação a partir de `origin/main`), nunca a partir de uma branch encerrada.
+- A próxima frente prevista é `feature/security-hardening-2026-08`, ainda a ser criada a partir de `origin/main` atualizado quando autorizada.
+- Nenhuma alteração direta na `main` é permitida, inclusive para fins de encerramento ou limpeza dessas branches.
+- A Fase E permanece bloqueada.
+
+As seções "Escopo técnico e SEO", "Escopo de analytics" e as regras específicas de cada branch encerrada, abaixo, são mantidas apenas como registro histórico do que foi implementado e já integrado em `origin/main`.
+
 ## Branches autorizadas
-
-### Site-base e manutenção do Go-Live
-
-Branch: `sprint/go-live-2026-07-24`.
-
-Uso autorizado:
-
-- correções controladas;
-- documentação;
-- manutenção do candidato e do site-base;
-- commits e push apenas quando expressamente autorizados;
-- Preview automático pela integração Git, sem promoção pelo Codex.
-
-### Expansão técnica e SEO
-
-Branch: `feature/seo-technical-pages-2026-07`.
-
-A branch deve ser criada a partir de `origin/main` atualizado. Nela, o Codex pode:
-
-- executar `git fetch` e ler `origin/main`;
-- criar a feature branch a partir de `origin/main`;
-- criar e validar as páginas técnicas autorizadas;
-- fazer commits e push exclusivamente na feature branch;
-- permitir que a integração Git gere o Preview da feature branch.
-
-Isso não autoriza merge ou push na `main`, produção ou alterações na configuração da Vercel.
-
-### Analytics e mensuração de conversão
-
-Branch: `feature/analytics-conversion-2026-07`.
-
-A branch deve ser criada a partir de `origin/main` atualizado. Nela, o Codex pode:
-
-- executar `git fetch` e ler `origin/main`;
-- criar a branch a partir de `origin/main`;
-- implementar exclusivamente mensuração de eventos (analytics), preservando o consentimento existente e sem transmitir dado pessoal;
-- fazer commits e push exclusivamente nesta branch;
-- permitir que a integração Git gere o Preview da branch.
-
-Isso não autoriza merge ou push na `main`, produção, HubSpot, Fase E, nem as melhorias de conversão visual/UX listadas em "Conversão (somente especificação)". Antes de editar qualquer arquivo de aplicação nesta branch, o Codex deve apresentar a tabela `| Arquivo | Alteração | Evento | Consentimento | Risco |` e aguardá-la ficar clara e compatível com esta governança antes de prosseguir.
 
 ### Hardening de segurança
 
@@ -79,9 +58,9 @@ A branch deve ser criada a partir de `origin/main` atualizado. Nela, o Codex pod
 
 Isso não autoriza merge ou push na `main`, produção, ativação de CSP em modo bloqueante sem período de observação documentado, nem qualquer teste de carga, rajada ou ataque contra qualquer ambiente.
 
-## Escopo técnico e SEO autorizado
+## Escopo técnico e SEO (histórico — `feature/seo-technical-pages-2026-07`, branch encerrada)
 
-Exclusivamente em `feature/seo-technical-pages-2026-07`, estão autorizadas estas rotas:
+Registro histórico do escopo executado nessa branch, já integrado em `origin/main`. Estas rotas foram autorizadas e implementadas:
 
 - `/servicos/protheus`;
 - `/servicos/rm`;
@@ -108,11 +87,9 @@ Continuam fora do escopo:
 - formulário, API ou cookies;
 - automação comercial, HubSpot e Fase E.
 
-## Escopo de analytics autorizado
+## Escopo de analytics (histórico — `feature/analytics-conversion-2026-07` e `fix/analytics-production-only-2026-07`, branches encerradas)
 
-Exclusivamente em `feature/analytics-conversion-2026-07`.
-
-Eventos autorizados (nomes fixos, não renomear nem adicionar outros sem atualizar esta lista):
+Registro histórico do escopo executado nessas branches, já integrado em `origin/main` (a segunda restringiu a coleta de analytics ao ambiente de produção). Eventos implementados (nomes fixos; qualquer alteração exige nova frente autorizada a partir de `origin/main`):
 
 - `cta_click`;
 - `whatsapp_click`;
