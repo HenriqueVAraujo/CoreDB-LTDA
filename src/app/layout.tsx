@@ -117,7 +117,7 @@ export default function RootLayout({
       </head>
       <body>
         {children}
-        <CookieConsent />
+        <CookieConsent isProduction={isProduction} />
       </body>
     </html>
   )

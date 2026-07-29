@@ -19,7 +19,11 @@ function setCookie(name: string, value: string, days: number) {
   document.cookie = `${name}=${value}; Expires=${expires}; Max-Age=${maxAge}; Path=/; SameSite=Lax; Secure`
 }
 
-export default function CookieConsent() {
+type CookieConsentProps = {
+  isProduction: boolean
+}
+
+export default function CookieConsent({ isProduction }: CookieConsentProps) {
   const [show, setShow] = useState(false)
   const [accepted, setAccepted] = useState(false)
 
@@ -47,7 +51,7 @@ export default function CookieConsent() {
 
   return (
     <>
-      {accepted && (
+      {accepted && isProduction && (
         <>
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
