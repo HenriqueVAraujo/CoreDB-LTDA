@@ -9,14 +9,28 @@
 - HubSpot e Fase E permanecem fora do escopo.
 - A Fase E permanece bloqueada até Henrique escrever literalmente: **pode executar a Fase E**. Nenhuma outra formulação vale como autorização.
 
+## Branches encerradas e históricas (pós-go-live)
+
+As branches abaixo foram formalmente encerradas:
+
+- `sprint/go-live-2026-07-24`;
+- `feature/seo-technical-pages-2026-07`;
+- `feature/analytics-conversion-2026-07`;
+- `fix/analytics-production-only-2026-07`.
+
+- Todo o conteúdo dessas branches está integrado em `origin/main`.
+- As Pull Requests e os commits correspondentes permanecem como histórico do repositório; não devem ser reabertos, revertidos ou reescritos.
+- Nenhuma dessas branches é mais uma branch de trabalho autorizada: não fazer commit, push, checkout de trabalho ativo nem solicitar novo Preview a partir delas.
+- Toda nova frente deve nascer atualizada a partir de `origin/main` (via `git fetch origin` e criação a partir de `origin/main`), nunca a partir de uma branch encerrada.
+- A próxima frente prevista é `feature/security-hardening-2026-08`, ainda a ser criada a partir de `origin/main` atualizado quando autorizada.
+- Nenhuma alteração direta na `main` é permitida, inclusive para fins de encerramento ou limpeza dessas branches.
+- A Fase E permanece bloqueada.
+
 ## Branches autorizadas
 
-- `sprint/go-live-2026-07-24`: documentação e manutenção controlada do site-base.
-- `feature/seo-technical-pages-2026-07`: expansão técnica e SEO autorizada, criada a partir de `origin/main` atualizado.
-- `feature/analytics-conversion-2026-07`: mensuração de eventos de conversão (analytics), criada a partir de `origin/main` atualizado. Não cobre CTA, copy ou identidade visual — ver "Conversão (somente especificação)".
-- `feature/security-hardening-2026-08`: rate limiting e CSP em modo `Report-Only`, criada a partir de `origin/main` atualizado.
+- `feature/security-hardening-2026-08`: rate limiting e CSP em modo `Report-Only`, a ser criada a partir de `origin/main` atualizado.
 
-Commits e pushes só podem ocorrer na branch explicitamente autorizada para a tarefa. Nenhuma dessas branches pode ser promovida pelo Codex — apenas gerar Preview automático.
+Commits e pushes só podem ocorrer na branch explicitamente autorizada para a tarefa. Nenhuma branch pode ser promovida pelo Codex — apenas gerar Preview automático.
 
 ## Stack
 
@@ -86,9 +100,9 @@ Datasul não faz parte do portfólio vigente.
 - Somente `/servicos/rm` pode usar oferta, CTA ou mensagem comercial específicos de “risco do RM”.
 - RM continua normalmente no portfólio “Protheus, RM e Fluig”.
 
-## Expansão técnica e SEO autorizada
+## Expansão técnica e SEO (histórico — `feature/seo-technical-pages-2026-07`, branch encerrada)
 
-Exclusivamente em `feature/seo-technical-pages-2026-07`:
+Registro histórico do escopo executado nessa branch, já integrado em `origin/main`:
 
 - `/servicos/protheus`;
 - `/servicos/rm`;
@@ -108,9 +122,9 @@ Também são permitidas alterações aditivas em:
 
 Esse escopo permite metadata, canonical, Open Graph, Twitter metadata, JSON-LD `Service`, `BreadcrumbList`, links internos, sitemap e CTAs contextuais. Não autoriza mudança da homepage, menu principal, formulário, API, cookies ou identidade visual.
 
-## Analytics e mensuração de conversão autorizada
+## Analytics e mensuração de conversão (histórico — `feature/analytics-conversion-2026-07` e `fix/analytics-production-only-2026-07`, branches encerradas)
 
-Exclusivamente em `feature/analytics-conversion-2026-07`.
+Registro histórico do escopo executado nessas branches, já integrado em `origin/main` (a segunda restringiu a coleta de analytics ao ambiente de produção).
 
 Eventos autorizados: `cta_click`, `whatsapp_click`, `form_start`, `form_submit_success`, `form_submit_error`, `phone_click`, `email_click`, `faq_open`, `service_navigation`, `outbound_click`.
 
