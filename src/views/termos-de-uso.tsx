@@ -7,7 +7,6 @@ import { CTA_CONFIGS } from '@/routes';
 export default function TermsOfUse() {
   return (
     <div className="bg-[#0B1C2D] min-h-screen text-white font-sans selection:bg-[#1DAEFF]/30">
-      {/* Navegação */}
       <nav className="border-b border-white/5 py-6 bg-[#0B1C2D]/80 backdrop-blur-md sticky top-0 z-50">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-2 text-white/60 hover:text-[#1DAEFF] transition-colors group">
@@ -18,21 +17,18 @@ export default function TermsOfUse() {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <header className="py-20 bg-gradient-to-b from-[#0B1C2D] to-[#0f273d]">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 !text-white" style={{ color: 'white' }}>
             Termos de Uso
           </h1>
           <p className="text-[#1DAEFF] font-medium mb-2 text-lg">Regras e Condições de Navegação</p>
-          <p className="text-white/40 text-sm italic">Última atualização: 25 de julho de 2026</p>
+          <p className="text-white/40 text-sm italic">Última atualização: 13 de setembro de 2026</p>
         </div>
       </header>
 
       <main className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
-          
-          {/* Alerta de Independência - CRÍTICO PARA CONVERSÃO B2B */}
           <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-6 mb-12 flex flex-col md:flex-row gap-6 items-center">
             <div className="bg-amber-500/20 p-4 rounded-full">
               <ShieldAlert className="w-8 h-8 text-amber-500" />
@@ -40,22 +36,20 @@ export default function TermsOfUse() {
             <div>
               <h3 className="font-bold text-amber-500 mb-1">Aviso de Independência</h3>
               <p className="text-sm text-white/70 leading-relaxed">
-                A CoreDB é uma consultoria <strong>independente</strong>. Não somos afiliados, representantes ou parceiros oficiais da TOTVS S.A. 
-                As marcas Protheus, RM e Fluig são propriedade da sua detentora.
+                A CoreDB LTDA é uma empresa <strong>independente</strong> de engenharia e execução de tecnologia crítica. Não somos afiliados,
+                representantes ou parceiros oficiais da TOTVS® S.A. As marcas Protheus, RM e Fluig são propriedade da sua detentora.
               </p>
             </div>
           </div>
 
-          {/* Conteúdo dos Termos */}
           <article className="prose prose-invert prose-blue max-w-none space-y-12 text-white/80">
-            
             <section className="bg-white/5 p-8 rounded-2xl border border-white/10">
               <h2 className="text-2xl font-bold !text-white mb-6 flex items-center gap-3" style={{ color: 'white' }}>
                 <FileText className="text-[#1DAEFF]" /> 1. Aceitação dos Termos
               </h2>
               <p>
                 Ao acessar o site da CoreDB, o usuário concorda em cumprir estes termos de serviço, todas as leis e regulamentos aplicáveis.
-                O conteúdo aqui disponibilizado tem finalidade informativa sobre os nossos serviços de consultoria técnica em Banco de Dados e sistemas ERP.
+                O conteúdo aqui disponibilizado tem finalidade informativa sobre nossos serviços de engenharia técnica em bancos de dados e sistemas ERP.
               </p>
             </section>
 
@@ -71,7 +65,7 @@ export default function TermsOfUse() {
               <h2 className="text-2xl font-bold !text-white mb-4" style={{ color: 'white' }}>3. Limitação de Responsabilidade</h2>
               <p>
                 As informações técnicas compartilhadas (artigos e diagnósticos superficiais) são de caráter educativo.
-                A implementação de qualquer script ou alteração em banco de dados deve ser precedida de uma consultoria formal e contrato assinado. 
+                A implementação de qualquer script ou alteração em banco de dados deve ser precedida de uma contratação formal e escopo definido.
                 A CoreDB não se responsabiliza por decisões tomadas de forma autônoma com base no conteúdo do site.
               </p>
             </section>
@@ -89,18 +83,16 @@ export default function TermsOfUse() {
             <section>
               <h2 className="text-2xl font-bold !text-white mb-4" style={{ color: 'white' }}>5. Foro e Legislação</h2>
               <p>
-                Estes termos são regidos pelas leis da República Federativa do Brasil. Fica eleito o foro da 
-                <strong> Comarca de Belo Horizonte/MG</strong> para dirimir quaisquer questões legais.
+                Estes termos são regidos pelas leis da República Federativa do Brasil. Fica eleito o foro da{' '}
+                <strong>Comarca de Belo Horizonte/MG</strong> para dirimir quaisquer questões legais.
               </p>
             </section>
-
           </article>
 
-          {/* Rodapé Interno da Página */}
           <div className="mt-20 pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-4 text-white/60 text-sm">
               <Copyright className="w-4 h-4" />
-              <span>{new Date().getFullYear()} CoreDB Consultoria Técnica</span>
+              <span>{new Date().getFullYear()} CoreDB LTDA</span>
             </div>
             <div className="flex gap-8">
               <Link href="/politica-de-privacidade" className="text-sm text-[#1DAEFF] hover:underline flex items-center gap-2">
@@ -109,7 +101,6 @@ export default function TermsOfUse() {
             </div>
           </div>
 
-          {/* CTA de Conversão */}
           <div className="mt-16 bg-gradient-to-r from-[#1DAEFF] to-[#0B1C2D] p-[1px] rounded-3xl">
             <div className="bg-[#0B1C2D] p-10 rounded-[23px] text-center">
               <h3 className="text-2xl font-bold mb-4 !text-white" style={{ color: 'white' }}>Precisa de uma análise formal?</h3>
