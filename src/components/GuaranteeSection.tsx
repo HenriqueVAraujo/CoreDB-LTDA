@@ -55,8 +55,8 @@ export default function GuaranteeSection() {
           </span>
 
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8">
-            Não vendemos suporte. <br />
-            <span className="text-[var(--coredb-cyan)]">Entregamos blindagem operacional.</span>
+            Não tratamos apenas sintomas. <br />
+            <span className="text-[var(--coredb-cyan)]">Estruturamos continuidade operacional.</span>
           </h2>
 
           <p className="text-lg md:text-xl text-white/70 leading-relaxed">
