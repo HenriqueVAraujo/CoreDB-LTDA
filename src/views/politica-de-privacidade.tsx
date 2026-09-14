@@ -64,13 +64,16 @@ export default function PrivacyPolicy() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold !text-white mb-4" style={{ color: 'white' }}>2. Coleta de Dados</h2>
+              <h2 className="text-2xl font-bold !text-white mb-4" style={{ color: 'white' }}>2. Coleta e Uso de Dados</h2>
               <p>Coletamos nome, e-mail corporativo, empresa e telefone exclusivamente através de nossos formulários para:</p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Diagnósticos de Banco de Dados e ERP Protheus/RM;</li>
                 <li>Envio de propostas comerciais personalizadas;</li>
                 <li>Comunicação técnica sobre projetos em andamento.</li>
               </ul>
+              <p>
+                Quando o usuário aceita os cookies analíticos, utilizamos Google Analytics para compreender o uso do site. O serviço pode processar dados técnicos de navegação e do dispositivo conforme suas próprias políticas. Os campos pessoais informados no formulário — como nome, e-mail, telefone, empresa e mensagem — não são enviados pela instrumentação de eventos do site ao Google Analytics.
+              </p>
             </section>
 
             <section>
