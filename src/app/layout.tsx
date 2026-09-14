@@ -24,11 +24,11 @@ const isProduction = process.env.VERCEL_ENV === 'production'
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'CoreDB | Consultoria TOTVS e DBA — Belo Horizonte, MG',
+    default: 'CoreDB | Engenharia TOTVS e Bancos de Dados — Belo Horizonte, MG',
     template: '%s | CoreDB',
   },
   description:
-    'Consultoria em ambientes TOTVS e bancos de dados, com diagnóstico técnico, governança e SLA definidos conforme o escopo contratado.',
+    'Engenharia e execução de tecnologia crítica para ambientes TOTVS e bancos de dados, com foco em performance, segurança e disponibilidade.',
   applicationName: 'CoreDB',
   authors: [{ name: 'CoreDB', url: SITE_URL }],
   creator: 'CoreDB',
@@ -54,9 +54,9 @@ export const metadata: Metadata = {
     locale: 'pt_BR',
     url: SITE_URL,
     siteName: 'CoreDB',
-    title: 'CoreDB | Consultoria TOTVS e DBA — Belo Horizonte, MG',
+    title: 'CoreDB | Engenharia TOTVS e Bancos de Dados — Belo Horizonte, MG',
     description:
-      'Consultoria em ambientes TOTVS e bancos de dados, com diagnóstico técnico, governança e SLA definidos conforme o escopo contratado.',
+      'Engenharia e execução de tecnologia crítica para ambientes TOTVS e bancos de dados, com foco em performance, segurança e disponibilidade.',
     images: [
       {
         url: '/social/open-graph-logo-card-1200x630.png',
@@ -68,9 +68,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CoreDB | Consultoria TOTVS e DBA',
+    title: 'CoreDB | Engenharia TOTVS e Bancos de Dados',
     description:
-      'Diagnóstico técnico e governança para ambientes TOTVS e bancos de dados.',
+      'Performance, segurança e disponibilidade para ambientes TOTVS e bancos de dados críticos.',
     images: ['/social/social-share-logo-card-1200x630.png'],
   },
 }
@@ -87,7 +87,7 @@ const organizationSchema = {
   image: `${SITE_URL}/social/open-graph-logo-card-1200x630.png`,
   telephone: '+55-31-99187-3435',
   email: 'comercial@coredb.com.br',
-  sameAs: ['https://www.linkedin.com/in/coredb-consultoria-83319236b/'],
+  sameAs: ['https://www.linkedin.com/company/coredb-consultoria/'],
 }
 
 const websiteSchema = {
