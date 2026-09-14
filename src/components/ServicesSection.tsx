@@ -1,6 +1,6 @@
 'use client'
 
-import { Settings, Code, Database, LifeBuoy, CheckCircle2, XCircle } from "lucide-react";
+import { Settings, Code, Database, LifeBuoy, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ROUTES } from "../routes";
@@ -45,26 +45,22 @@ export default function ServicesSection() {
     },
   ];
 
-  const comparativo = [
+  const diferenciais = [
     {
-      criterio: "Foco em Performance de Banco de Dados",
-      mercado: "Atuação isolada pode limitar o diagnóstico",
-      coredb: "Análise integrada conforme o escopo",
+      title: "Visão integrada de ERP e banco de dados",
+      description: "Correlacionamos aplicação, regra de negócio, infraestrutura e camada de dados para reduzir diagnósticos fragmentados.",
     },
     {
-      criterio: "Especialista sênior no atendimento",
-      mercado: "Encaminhamento entre diferentes camadas",
-      coredb: "Responsáveis definidos conforme a cobertura",
+      title: "Responsabilidade técnica definida",
+      description: "Escopo, responsáveis, cobertura e critérios de atendimento são formalizados para dar previsibilidade à operação.",
     },
     {
-      criterio: "Diagnóstico de causa raiz (ERP + BD)",
-      mercado: "Análise separada por camada",
-      coredb: "ERP e banco de dados analisados em conjunto",
+      title: "Diagnóstico orientado por evidências",
+      description: "Métricas, logs, sintomas e dependências sustentam a priorização das ações técnicas e das decisões de evolução.",
     },
     {
-      criterio: "Agilidade na tomada de decisão",
-      mercado: "Fluxo sujeito a múltiplas etapas",
-      coredb: "Fluxo técnico definido no contrato",
+      title: "Governança para continuidade",
+      description: "Monitoramento, chamados, documentação e indicadores apoiam a sustentação contínua conforme o modelo contratado.",
     },
   ];
 
@@ -86,7 +82,6 @@ export default function ServicesSection() {
     <section className="py-24 lg:py-32 bg-white">
       <div className="container mx-auto px-4 max-w-6xl">
 
-        {/* Header */}
         <div className="mb-20 max-w-3xl">
           <span className="text-[var(--coredb-dark)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
             Nossos Serviços
@@ -103,7 +98,6 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {services.map((service, index) => {
             const Icon = service.icon;
@@ -139,7 +133,6 @@ export default function ServicesSection() {
           })}
         </div>
 
-        {/* Technology Strip */}
         <div className="mt-16 pt-12 border-t border-gray-100">
           <p className="text-xs font-semibold uppercase tracking-widest text-[#4B5563] mb-6">
             Tecnologias que dominamos
@@ -156,67 +149,31 @@ export default function ServicesSection() {
           </div>
         </div>
 
-        {/* Comparison Table */}
         <div className="mt-24 pt-16 border-t border-gray-200">
           <div className="mb-12 max-w-2xl">
             <span className="text-[var(--coredb-dark)] uppercase tracking-widest text-xs font-semibold mb-4 inline-block">
-              Diferenciação Competitiva
+              Forma de atuação
             </span>
             <h3 className="text-2xl md:text-3xl font-bold text-[var(--coredb-dark)] mb-4">
-              O que nos separa das consultorias comuns
+              Engenharia integrada para ambientes críticos
             </h3>
             <p className="text-[#4B5563] text-lg leading-relaxed">
-              A maioria das consultorias TOTVS foca apenas no software. A CoreDB atua onde elas não chegam:{" "}
-              <span className="font-semibold text-[var(--coredb-dark)]">
-                a intersecção entre a regra de negócio do ERP e o tuning profundo do banco de dados.
-              </span>
+              A CoreDB combina profundidade técnica, governança e visão de ponta a ponta para organizar a continuidade do ambiente sem depender de comparações genéricas com o mercado.
             </p>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b-2 border-gray-200">
-                  <th className="text-left py-4 px-4 text-[#4B5563] font-semibold w-[34%]">Critério</th>
-                  <th className="text-left py-4 px-4 text-[#4B5563] font-semibold w-[33%]">
-                    Consultorias Comuns
-                  </th>
-                  <th className="text-left py-4 px-4 font-semibold w-[33%] text-[var(--coredb-dark)]">
-                    CoreDB
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparativo.map((row, index) => (
-                  <tr
-                    key={index}
-                    className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
-                  >
-                    <td className="py-5 px-4 font-medium text-[var(--coredb-dark)]">{row.criterio}</td>
-                    <td className="py-5 px-4">
-                      <span className="flex items-start gap-2 text-gray-500">
-                        <XCircle className="w-4 h-4 text-gray-300 shrink-0 mt-0.5" />
-                        {row.mercado}
-                      </span>
-                    </td>
-                    <td className="py-5 px-4">
-                      <span className="flex items-start gap-2 text-[var(--coredb-dark)] font-medium">
-                        <CheckCircle2 className="w-4 h-4 text-[var(--coredb-cyan)] shrink-0 mt-0.5" />
-                        {row.coredb}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="mt-12 p-6 bg-[#F9FAFB] rounded-xl border border-gray-200">
-            <p className="text-[#4B5563] leading-relaxed">
-              <span className="font-semibold text-[var(--coredb-dark)]">Análise integrada de ERP e banco de dados.</span>{" "}
-              O diagnóstico considera as duas camadas, registra as evidências técnicas e define prioridades
-              conforme o ambiente e o escopo contratado.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {diferenciais.map((item) => (
+              <div key={item.title} className="p-6 bg-[#F9FAFB] rounded-xl border border-gray-200">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[var(--coredb-cyan)] shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-semibold text-[var(--coredb-dark)] mb-2">{item.title}</h4>
+                    <p className="text-sm text-[#4B5563] leading-relaxed">{item.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
