@@ -1,31 +1,26 @@
-import { Search, BarChart3, Wrench, Shield, Radar } from 'lucide-react';
+import { Search, Wrench, ShieldCheck, TrendingUp } from 'lucide-react';
 
 export default function MethodologySection() {
   const steps = [
     {
       icon: Search,
-      title: 'Diagnóstico Técnico Estruturado',
-      description: 'Mapeamos sistemas, rotinas críticas, infraestrutura e riscos operacionais com visão integrada do ambiente.'
-    },
-    {
-      icon: BarChart3,
-      title: 'Análise de Causa Raiz',
-      description: 'Identificamos as causas reais de lentidão, falhas e vulnerabilidades. Não tratamos sintomas.'
+      title: 'Diagnosticar',
+      description: 'Mapeamos sintomas, sistemas, rotinas críticas, infraestrutura, integrações e evidências para entender o cenário real antes de intervir.'
     },
     {
       icon: Wrench,
-      title: 'Plano de Ação Prioritário',
-      description: 'Definimos intervenções estruturadas em ERP e banco de dados com foco em impacto real no negócio.'
+      title: 'Corrigir',
+      description: 'Tratamos causas técnicas priorizadas com mudanças controladas, critérios de homologação e documentação do que foi executado.'
     },
     {
-      icon: Shield,
-      title: 'Implementação Controlada',
-      description: 'Executamos ajustes com governança, documentação e mitigação de riscos.'
+      icon: ShieldCheck,
+      title: 'Assumir',
+      description: 'Estruturamos responsabilidades, monitoramento, governança e cobertura operacional conforme o escopo e o SLA contratados.'
     },
     {
-      icon: Radar,
-      title: 'Monitoramento Contínuo',
-      description: 'Acompanhamento ativo de performance, indicadores e evolução do ambiente.'
+      icon: TrendingUp,
+      title: 'Evoluir',
+      description: 'Acompanhamos indicadores, capacidade e novas necessidades para orientar melhorias contínuas e decisões de evolução do ambiente.'
     }
   ];
 
@@ -34,24 +29,24 @@ export default function MethodologySection() {
       <div className="container mx-auto px-4 max-w-6xl">
 
         <span className="text-[var(--coredb-dark)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
-          Framework CoreDB
+          Jornada CoreDB
         </span>
 
         <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#0B1C2D] mb-8">
-          Nossa Estrutura de Blindagem Operacional
+          Diagnosticar → Corrigir → Assumir → Evoluir
         </h2>
 
         <p className="text-lg md:text-xl text-[#4B5563] max-w-3xl leading-relaxed mb-16">
-          Atuamos de forma estruturada, conectando ERP, banco de dados e governança técnica.
-          Cada etapa é documentada, mensurável e orientada à redução de risco.
+          A atuação conecta ERP, banco de dados e governança técnica em uma jornada única,
+          com evidências, responsabilidades e critérios definidos para cada etapa.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (
               <div
-                key={index}
+                key={step.title}
                 className="border border-[#E5E7EB] rounded-xl p-6"
               >
                 <div className="mb-4 text-sm font-semibold text-[var(--coredb-dark)]">
