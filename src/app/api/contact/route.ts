@@ -135,14 +135,6 @@ const traducoes: Record<string, string> = {
 }
 
 export async function POST(req: NextRequest) {
-  if (isRateLimited(req)) {
-    return jsonResponse(
-      { success: false, error: 'Muitas solicitações. Tente novamente em instantes.' },
-      429,
-      { 'Retry-After': String(Math.ceil(RATE_LIMIT_WINDOW_MS / 1000)) },
-    )
-  }
-
   const contentType = req.headers.get('content-type')?.split(';', 1)[0].trim().toLowerCase()
 
   if (contentType !== 'application/json') {
@@ -184,8 +176,19 @@ export async function POST(req: NextRequest) {
 
   const { website, ...data } = validation.data
 
+  // Honeypot primeiro: automações óbvias são descartadas sem consumir a cota
+  // de um usuário legítimo que eventualmente compartilhe o mesmo IP/NAT.
   if ((website ?? '').trim()) {
     return jsonResponse({ success: true })
+  }
+
+  // Rate limiting somente após as validações baratas e o honeypot.
+  if (isRateLimited(req)) {
+    return jsonResponse(
+      { success: false, error: 'Muitas solicitações. Tente novamente em instantes.' },
+      429,
+      { 'Retry-After': String(Math.ceil(RATE_LIMIT_WINDOW_MS / 1000)) },
+    )
   }
 
   const translatedEnvironment = traducoes[data.environment] ?? data.environment
