@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import HomeView from '@/views/Home'
 
-const title = 'CoreDB | Consultoria TOTVS e DBA — Belo Horizonte, MG'
+const title = 'CoreDB | Engenharia TOTVS e Bancos de Dados — Belo Horizonte, MG'
 const description =
-  'Blindamos ambientes TOTVS e bancos de dados que não podem parar, com diagnóstico técnico, governança e SLA conforme o escopo contratado.'
+  'Engenharia e execução de tecnologia crítica para Protheus, RM, Fluig, SQL Server, Oracle, PostgreSQL e MySQL, com foco em performance, segurança e disponibilidade.'
 
 export const metadata: Metadata = {
   title: { absolute: title },
