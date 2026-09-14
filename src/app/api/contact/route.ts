@@ -126,7 +126,7 @@ function jsonResponse(body: { success: boolean; error?: string }, status = 200, 
 const traducoes: Record<string, string> = {
   instability: 'Instabilidade ou lentidão recorrente no ERP',
   monitoring: 'Sem monitoramento estruturado (Zabbix / Grafana)',
-  database: 'Banco de dados sem DBA dedicado (SQL Server / Oracle)',
+  database: 'Banco de dados sem DBA dedicado (SQL Server / Oracle / PostgreSQL / MySQL)',
   support: 'Suporte reativo — precisam de SLA contratual',
   project: 'Projeto crítico: customização, integração ou migração',
   planning: 'Planejamento estratégico (30+ dias)',
