@@ -58,10 +58,10 @@ export default function AboutSection() {
           </h2>
 
           <p className="text-lg md:text-xl text-[#4B5563] leading-relaxed">
-            A CoreDB é uma consultoria independente focada em sustentação, governança e performance
-            de ambientes TOTVS e bancos de dados. Operamos com infraestrutura de monitoramento
-            enterprise — Zabbix, Grafana e GLPI — para acompanhar estabilidade e indicadores operacionais continuamente, com controle
-            técnico rigoroso nas operações que não podem parar.
+            A CoreDB é uma empresa de engenharia e execução de tecnologia crítica, com atuação em
+            sustentação, governança, performance e continuidade de ambientes TOTVS e bancos de dados.
+            Operamos com infraestrutura de monitoramento — Zabbix, Grafana e GLPI — para acompanhar
+            estabilidade e indicadores operacionais conforme o escopo contratado.
           </p>
         </div>
 

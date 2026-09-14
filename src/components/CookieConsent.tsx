@@ -71,9 +71,9 @@ export default function CookieConsent({ isProduction }: CookieConsentProps) {
                 Privacidade e Cookies
               </p>
               <p className="text-xs text-white/60 leading-relaxed">
-                Utilizamos cookies analíticos (Google Analytics) para entender o uso do site, em conformidade com a{' '}
-                <strong className="text-white/80">LGPD (Lei nº 13.709/2018)</strong>.
-                Seus dados não são vendidos ou compartilhados com terceiros.{' '}
+                Utilizamos cookies analíticos (Google Analytics) somente após seu consentimento para entender o uso do site.{' '}
+                <strong className="text-white/80">Não vendemos dados pessoais.</strong>{' '}
+                O Google pode processar dados técnicos de navegação conforme suas próprias políticas.{' '}
                 <Link href="/politica-de-privacidade" className="text-[#1DAEFF] hover:underline">
                   Política de Privacidade
                 </Link>

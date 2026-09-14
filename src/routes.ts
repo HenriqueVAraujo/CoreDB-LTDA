@@ -17,7 +17,7 @@ export const ROUTES = {
 };
 
 export const getWhatsAppLink = (message: string) =>
-  `https://wa.me/553191873435?text=${encodeURIComponent(message)}`;
+  `https://wa.me/5531991873435?text=${encodeURIComponent(message)}`;
 
 export type CtaConfig = {
   label: string;

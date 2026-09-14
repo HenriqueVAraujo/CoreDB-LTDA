@@ -24,7 +24,6 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
 
-          {/* Brand */}
           <div className="flex flex-col items-center md:items-start gap-4">
             <Logo variant="footer" className="w-32 h-auto" />
             <p className="text-white/70 text-sm leading-relaxed text-center md:text-left">
@@ -32,7 +31,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Navigation */}
           <div className="flex flex-col items-center md:items-start">
             <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">Navegação</h4>
             <ul className="space-y-3 text-sm text-center md:text-left">
@@ -56,7 +54,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
           <div className="flex flex-col items-center md:items-start">
             <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">Serviços</h4>
             <ul className="space-y-3 text-sm text-center md:text-left">
@@ -67,7 +64,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
           <div className="flex flex-col items-center md:items-start">
             <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">Fale Conosco</h4>
             <div className="space-y-4 w-full">
@@ -101,14 +97,14 @@ export default function Footer() {
         <div className="h-px bg-white/5 my-8" />
 
         <div className="text-[10px] md:text-xs text-white/60 leading-relaxed text-center md:text-left mb-8 space-y-2">
-          <p><strong>COREDB LTDA.</strong> Todos os direitos Reservados.</p>
+          <p><strong>COREDB LTDA.</strong> Todos os direitos reservados.</p>
           <p>
             Protheus, RM, Fluig e TOTVS® são produtos e marcas registradas de propriedade da TOTVS® S.A.
             Logotipos TOTVS® e Microsiga são de propriedade da TOTVS® S.A.
           </p>
           <p className="font-medium text-white/70">
-            A COREDB LTDA é uma empresa de consultoria independente e não tem nenhum vínculo direto ou indireto com a TOTVS®,
-            qualquer uma das suas franquias ou qualquer um de seus representantes.
+            A COREDB LTDA é uma empresa independente de engenharia e execução de tecnologia crítica e não possui vínculo societário,
+            comercial ou institucional com a TOTVS® S.A., suas franquias ou seus representantes.
           </p>
         </div>
 

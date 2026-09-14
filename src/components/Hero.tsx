@@ -21,27 +21,24 @@ export default function Hero() {
   return (
     <section className="relative bg-[#0B1C2D] min-h-[85vh] flex items-center py-24 lg:py-32 overflow-hidden">
 
-      {/* ─── Layout duas colunas ─── */}
       <div className="container mx-auto px-4 max-w-5xl relative z-10 w-full">
         <div className="max-w-3xl">
-
-          {/* ── Copy + CTAs + trust bar ── */}
           <div className="text-white">
 
             <span className="inline-block text-[var(--coredb-cyan)] font-semibold tracking-widest uppercase text-xs mb-6 border-l-2 border-[var(--coredb-cyan)] pl-3">
-              CONTINUIDADE PARA AMBIENTES TOTVS E BANCOS DE DADOS CRÍTICOS
+              EMPRESA DE ENGENHARIA E EXECUÇÃO DE TECNOLOGIA CRÍTICA
             </span>
 
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.1] mb-8">
-              Blindamos ambientes TOTVS e bancos de dados{' '}
+              Engenharia para ambientes TOTVS e bancos de dados{' '}
               <br className="hidden md:block" />
-              <span className="text-[var(--coredb-cyan)]">que não podem parar.</span>
+              <span className="text-[var(--coredb-cyan)]">críticos.</span>
             </h1>
 
             <p className="text-lg md:text-xl text-white/80 mb-5 max-w-xl leading-relaxed">
-              A CoreDB atua na sustentação, evolução e proteção de ambientes TOTVS e bancos de dados
-              críticos, combinando diagnóstico técnico, governança, monitoramento automatizado e
-              atuação especializada conforme o escopo de cada operação.
+              Performance, segurança e disponibilidade para sistemas e operações críticas,
+              combinando diagnóstico técnico, governança, monitoramento automatizado e atuação
+              especializada conforme o escopo de cada ambiente.
             </p>
 
             <ul
@@ -80,7 +77,6 @@ export default function Hero() {
               </button>
             </div>
 
-            {/* Trust bar */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-10 border-t border-white/10">
 
               <div className="flex items-start gap-3">
@@ -134,7 +130,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Gradiente de fundo sutil (substitui a div de bg anterior) */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div className="absolute right-0 top-0 w-2/3 h-full bg-[radial-gradient(ellipse_at_top_right,_rgba(29,174,255,0.07),_transparent_60%)]" />
       </div>

@@ -76,9 +76,9 @@ export default function ContactForm() {
   const handleWhatsApp = () => {
     trackEvent('whatsapp_click', { page_path: pathname ?? '', service, cta_location: 'contact_form' });
     const url =
-      'https://wa.me/553191873435?text=' +
+      'https://wa.me/5531991873435?text=' +
       encodeURIComponent(
-        'Olá! Gostaria de falar diretamente com um especialista CoreDB para discutir meu ambiente TOTVS.'
+        'Olá! Gostaria de falar com a CoreDB sobre nosso ambiente TOTVS e/ou bancos de dados.'
       );
     window.open(url, "_blank", "noopener,noreferrer");
   };
@@ -140,7 +140,7 @@ export default function ContactForm() {
                 options={[
                   { value: "instability", label: "Instabilidade ou lentidão recorrente no ERP" },
                   { value: "monitoring", label: "Sem monitoramento estruturado (Zabbix / Grafana)" },
-                  { value: "database", label: "Banco de dados sem DBA dedicado (SQL Server / Oracle)" },
+                  { value: "database", label: "Banco de dados sem DBA dedicado (SQL Server / Oracle / PostgreSQL / MySQL)" },
                   { value: "support", label: "Suporte reativo — precisamos de SLA contratual" },
                   { value: "project", label: "Projeto crítico: customização, integração ou migração" },
                 ]}
