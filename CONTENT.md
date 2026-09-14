@@ -1,249 +1,194 @@
-# CoreDB | Portfólio Institucional One-Page
-## Conteúdo Estruturado e Copywriting Executivo
+# CoreDB — Conteúdo Institucional Vigente
+
+**Status:** CANÔNICO PARA O SITE  
+**Vigência:** 13/09/2026  
+**Autoridade superior:** Brand Book CoreDB v1.0 + Logo Release v1.0.1 / R6.3.3  
+**Aprovador final:** Henrique
+
+> Este arquivo substitui integralmente o antigo `CONTENT.md`, que continha posicionamento, métricas, cases, promessas e tipografia anteriores à homologação atual. O conteúdo antigo deve ser tratado como histórico e **não deve ser reutilizado** em novas alterações do site.
 
 ---
 
-## 1. HERO SECTION
-**Objetivo:** Capturar atenção, posicionar autoridade, gerar primeira conversão.
+## 1. Arquitetura verbal oficial
 
-### Headline Principal
-**"Quando o ERP é crítico, a CoreDB resolve."**
+### Assinatura institucional
 
-### Subtítulo
-**"Performance, estabilidade e segurança para ERPs TOTVS de missão crítica."**
+**O núcleo da continuidade.**
 
-### Descrição Expandida
-A CoreDB é a consultoria especializada em Administração de Bancos de Dados (DBA) e otimização de sistemas TOTVS Protheus, RM e Fluig. Somos parceiros estratégicos de empresas que não aceitam risco operacional. Não somos suporte. Somos especialistas em ambientes críticos.
+### Posicionamento principal
 
-### CTA Primária
-**"Agendar diagnóstico técnico"** (Botão Azul Ciano)
+**Empresa de engenharia e execução de tecnologia crítica.**
 
-### CTA Secundária
-**"Conhecer nossa metodologia"** (Botão Outline)
+### Posicionamento descritivo
 
-### Elementos Visuais
-- Cubo 3D minimalista (representação do conceito CORE)
-- Fundo com gradiente sutil azul profundo
-- Espaço em branco generoso
+**Performance, segurança e disponibilidade para bancos de dados, sistemas e operações críticas.**
 
----
+### Jornada oficial
 
-## 2. O PROBLEMA DO MERCADO
-**Objetivo:** Validar dor do cliente, criar urgência, posicionar necessidade.
+**Diagnosticar → Corrigir → Assumir → Evoluir**
 
-### Título
-**"O Desafio das Operações Críticas"**
+### Campanha TOTVS
 
-### Subtítulo
-**"Quando o ERP falha, o negócio para."**
+**Blindamos ambientes TOTVS que não podem parar.**
 
-### Conteúdo
-Empresas que dependem de ERPs TOTVS para operações críticas enfrentam desafios recorrentes:
+Uso restrito a campanhas/ofertas TOTVS. Não usar como posicionamento institucional geral da CoreDB.
 
-- **Lentidão Operacional**: Processamentos que deveriam levar minutos tomam horas, impactando faturamento e tomada de decisão.
-- **Falhas Recorrentes**: Travamentos, timeouts e erros em rotinas críticas causam retrabalho e perda de produtividade.
-- **Riscos em Banco de Dados**: Falta de monitoramento, backups inadequados e ausência de planos de recuperação comprometem a continuidade operacional.
-- **Impacto Direto no Negócio**: Cada minuto de indisponibilidade representa prejuízo financeiro, perda de confiança e risco de conformidade.
+### Campanha DBA
 
-**Mensagem-Chave:** Não é suficiente ter um ERP. É preciso ter um ERP que roda com velocidade, segurança e disponibilidade máximas.
+**Seu negócio depende dos dados. Seus dados dependem de engenharia.**
+
+Uso restrito a campanhas/ofertas de bancos de dados. Não usar como posicionamento institucional geral da CoreDB.
 
 ---
 
-## 3. QUEM É A COREDB
-**Objetivo:** Estabelecer credibilidade, diferenciação, posicionamento estratégico.
+## 2. Frentes de excelência
 
-### Título
-**"Especialistas em Ambientes Críticos"**
+### Engenharia e Sustentação TOTVS
 
-### Subtítulo
-**"Não somos suporte. Somos especialistas em ambientes críticos."**
+Atuação fim a fim em **Protheus, RM e Fluig**, conectando sistemas, bancos de dados, integrações e processos de negócio.
 
-### Conteúdo Principal
-A CoreDB é uma consultoria independente especializada em:
+### Engenharia de Bancos de Dados Multiplataforma
 
-1. **TOTVS Protheus**: Implementação, parametrização, tuning e sustentação contínua de ambientes Protheus com foco em performance e segurança.
-2. **TOTVS RM**: Otimização de módulos RM, garantindo fluidez operacional e integrações estáveis.
-3. **Fluig & Automação de Processos**: Desenho e implementação de fluxos, portais e automações que conectam pessoas, dados e documentos.
-4. **Administração de Bancos de Dados (DBA)**: Monitoramento, ajustes de performance, governança e rotinas de backup com foco em alta disponibilidade.
+Administração, performance, monitoramento, segurança, continuidade e evolução de ambientes **SQL Server, Oracle, PostgreSQL e MySQL**.
 
-### Diferencial CoreDB
-- **Atendimento Direto**: Você fala com quem resolve, sem burocracia ou camadas desnecessárias.
-- **Visão Completa**: Entendemos tanto do ERP quanto da base que sustenta tudo, garantindo performance e estabilidade reais.
-- **Flexibilidade**: Adaptamos forma de atuação, carga horária e modelo comercial à realidade e ao orçamento da sua empresa.
-- **Profundidade Técnica**: 5+ anos transformando tecnologia em resultado, com capacidade superior a 2.000 horas em grandes contratos.
-
-### Mensagem-Chave
-"Cuidamos do ERP e do banco de dados ao mesmo tempo, evitando jogo de empurra entre times diferentes e garantindo uma visão de ponta a ponta da sua operação."
+Não adicionar novos fabricantes, ERPs, módulos ou especialidades ao posicionamento público sem validação explícita.
 
 ---
 
-## 4. METODOLOGIA PRÓPRIA
-**Objetivo:** Demonstrar estrutura, rigor, confiabilidade do processo.
+## 3. Copy institucional do site
 
-### Título
-**"Como Entregamos Estabilidade e Resultado"**
+### Metadata principal
 
-### Subtítulo
-**"Nossa atuação começa com um diagnóstico transparente e evolui para um plano estruturado de ação."**
+**Title:** `CoreDB | Engenharia TOTVS e Bancos de Dados — Belo Horizonte, MG`
 
-### Metodologia em 6 Etapas (Cards)
+**Description:** `Engenharia e execução de tecnologia crítica para ambientes TOTVS e bancos de dados, com foco em performance, segurança e disponibilidade.`
 
-#### Card 1: Diagnóstico Profundo
-**Ícone:** Lupa / Análise
-**Descrição:** Entendemos o cenário real da sua operação: sistemas, rotinas críticas, infraestrutura, chamados recorrentes e impactos no negócio. Levantamento completo sem suposições.
+### Hero
 
-#### Card 2: Análise de Causa Raiz
-**Ícone:** Gráfico / Análise
-**Descrição:** Identificamos as causas reais de lentidão, falhas e riscos. Não tratamos sintomas. Vamos ao cerne do problema.
+**Overline:** `EMPRESA DE ENGENHARIA E EXECUÇÃO DE TECNOLOGIA CRÍTICA`
 
-#### Card 3: Otimização Estrutural
-**Ícone:** Engrenagem / Otimização
-**Descrição:** Implementamos soluções estruturadas em ERP e banco de dados, reduzindo lentidões, eliminando retrabalho e trazendo visibilidade para as áreas envolvidas.
+**H1:** `Engenharia para ambientes TOTVS e bancos de dados críticos.`
 
-#### Card 4: Redução de Riscos
-**Ícone:** Escudo / Segurança
-**Descrição:** Estabelecemos governança, rotinas de backup, planos de recuperação e monitoramento contínuo para garantir conformidade e continuidade operacional.
+**Texto de apoio:** `Performance, segurança e disponibilidade para sistemas e operações críticas, combinando diagnóstico técnico, governança, monitoramento automatizado e atuação especializada conforme o escopo de cada ambiente.`
 
-#### Card 5: Monitoramento Contínuo
-**Ícone:** Radar / Monitoramento
-**Descrição:** Acompanhamos performance, alertas e indicadores em tempo real, garantindo que a solução mantenha eficiência ao longo do tempo.
+### Sobre
 
-#### Card 6: Evolução do Ambiente
-**Ícone:** Seta Ascendente / Crescimento
-**Descrição:** Revisamos, ajustamos e evoluímos a solução conforme o negócio cresce e as demandas mudam. Tecnologia que acompanha seu crescimento.
+A CoreDB deve ser descrita como **empresa de engenharia e execução de tecnologia crítica**. A palavra “consultoria” pode aparecer apenas de forma contextual/SEO quando necessário, sem substituir a categoria estratégica oficial.
+
+### CTA
+
+Preferir chamadas objetivas e comprováveis, como:
+
+- `Agendar triagem técnica`
+- `Falar com a CoreDB`
+- `Solicitar análise`
+- `Conhecer os serviços`
+
+Não prometer diagnóstico gratuito, garantia de resultado, disponibilidade absoluta ou SLA sem base contratual específica.
 
 ---
 
-## 5. SERVIÇOS
-**Objetivo:** Apresentar ofertas de forma clara, focada em benefícios e impacto.
+## 4. Independência de marcas de terceiros
 
-### Título
-**"O Que Fazemos Pela Sua Operação"**
+Quando necessário, usar formulação equivalente a:
 
-### Subtítulo
-**"Colocamos o TOTVS RM e o Protheus na frente das iniciativas, conectando ERP e banco de dados em um fluxo único."**
+> **A COREDB LTDA é uma empresa independente de engenharia e execução de tecnologia crítica e não possui vínculo societário, comercial ou institucional com a TOTVS® S.A., suas franquias ou seus representantes.**
 
-### Serviço 1: Consultoria Especializada TOTVS
-**Descrição:** Implementação, otimização e sustentação de ambientes TOTVS Protheus, RM e Fluig com foco em performance, segurança e aderência aos processos do negócio.
-
-**Benefícios:**
-- Redução de lentidões e travamentos
-- Otimização de rotinas críticas
-- Implementação de boas práticas
-- Suporte técnico especializado
-
-### Serviço 2: Desenvolvimento e Customizações
-**Descrição:** Desenvolvimento de customizações, integrações e automações que ampliam a capacidade do ERP sem comprometer estabilidade.
-
-**Benefícios:**
-- Soluções sob medida para seu negócio
-- Código limpo e documentado
-- Integração com sistemas externos
-- Automação de processos manuais
-
-### Serviço 3: Administração de Bancos de Dados (DBA)
-**Descrição:** Monitoramento, ajustes de performance, governança e rotinas de backup para bases seguras, disponíveis e preparadas para crescimento.
-
-**Benefícios:**
-- Monitoramento 24/7
-- Otimização de queries e índices
-- Planos de backup e recuperação
-- Governança de dados
+Protheus, RM, Fluig, TOTVS® e demais marcas de terceiros permanecem propriedade de seus respectivos titulares.
 
 ---
 
-## 6. RESULTADOS (Mini-Cases Anônimos)
-**Objetivo:** Demonstrar impacto real, criar confiança através de prova social.
+## 5. Regras de claims, cases e métricas
 
-### Case 1: Empresa Manufatura
-**Desafio:** Lentidão crítica em processamento de pedidos, impactando faturamento diário. Processamento que deveria levar 30 minutos levava 4 horas.
+É proibido publicar sem evidência e autorização específica:
 
-**Atuação CoreDB:** Diagnóstico profundo identificou queries mal otimizadas e índices ausentes. Implementamos otimização estrutural em banco de dados e tuning de Protheus.
+- percentuais de melhoria;
+- disponibilidade/uptime;
+- valores financeiros recuperados;
+- horas/capacidade usadas como prova de autoridade;
+- número de clientes ou projetos;
+- garantias de performance;
+- cases anônimos inventados;
+- depoimentos não autorizados;
+- resultados atribuídos à CoreDB sem evidência verificável;
+- nomes de clientes sem autorização.
 
-**Resultado:** Redução de 87% no tempo de processamento. Processamento agora leva 30 minutos conforme esperado. Impacto: +R$ 2.5M em faturamento anual recuperado.
-
----
-
-### Case 2: Empresa Distribuição
-**Desafio:** Falhas recorrentes em rotinas de sincronização de estoque entre Protheus e sistemas externos, causando inconsistências operacionais.
-
-**Atuação CoreDB:** Redesenho completo da arquitetura de integrações, implementação de monitoramento em tempo real e rotinas de recuperação automática.
-
-**Resultado:** Redução de 95% em falhas de sincronização. Operação agora roda com 99.8% de disponibilidade. Impacto: Eliminação de retrabalho manual, redução de erros operacionais.
+Qualquer case ou métrica futura deve possuir fonte, autorização, contexto e critério de medição rastreáveis.
 
 ---
 
-### Case 3: Empresa Serviços
-**Desafio:** Ausência de monitoramento de banco de dados, riscos de perda de dados e impossibilidade de recuperação rápida em caso de falha.
+## 6. Identidade visual aplicada ao site
 
-**Atuação CoreDB:** Implementação de plano de backup estruturado, monitoramento contínuo e plano de recuperação de desastres (DR).
+### Cores
 
-**Resultado:** Banco de dados agora monitorado 24/7 com alertas automáticos. RTO (Recovery Time Objective) reduzido de 24h para 2h. Conformidade com regulamentações de continuidade operacional.
+- Navy: `#0B1C2D`
+- Cyan: `#1DAEFF`
+- White: `#FFFFFF`
+- Gold `#C8922A`: uso restrito/premium
 
----
+Roxo, magenta e azul-violeta não fazem parte da paleta institucional, exceto quando pertencem a marcas de terceiros exibidas legitimamente.
 
-## 7. PERFIL DE CLIENTE IDEAL
-**Objetivo:** Qualificar leads, atrair clientes certos.
+### Tipografia
 
-### Título
-**"Você é nosso cliente ideal se..."**
+- **Manrope:** capas, títulos, subtítulos, chamadas e destaques institucionais.
+- **Inter:** corpo, tabelas, legendas, campos e interfaces.
+- **Arial:** somente contingência técnica emergencial.
 
-### Critérios
-- Sua empresa depende de ERP TOTVS para operações que não podem parar.
-- Você enfrenta desafios recorrentes de performance, lentidão ou falhas.
-- Você não aceita risco operacional e busca parceiros técnicos confiáveis.
-- Você quer uma consultoria que entende tanto ERP quanto banco de dados.
-- Você valoriza atendimento direto, transparência e resultados mensuráveis.
+**Source Sans, Source Sans Pro e Roboto não são tipografias institucionais vigentes e não devem ser reintroduzidas.**
 
-### Não Somos Para
-- Empresas que buscam apenas suporte técnico reativo.
-- Projetos que não exigem visão estratégica de tecnologia.
-- Clientes que não valorizam profundidade técnica e especialização.
+### Logos
+
+Usar exclusivamente os derivados produtivos dos masters R6.3.3 presentes em `public/brand`.
+
+Não reconstruir, redesenhar ou reinterpretar cubo, órbitas, núcleo, glow, wordmark, proporções, canvas ou `viewBox`.
 
 ---
 
-## 8. CHAMADA FINAL
-**Objetivo:** Reforçar posicionamento, gerar última conversão, criar urgência.
+## 7. Dados públicos vigentes
 
-### Título
-**"Se o Seu ERP é Crítico, Ele Precisa de Especialistas"**
+- Marca: `CoreDB`
+- Razão social em contexto jurídico: `COREDB LTDA`
+- Site: `https://www.coredb.com.br/`
+- E-mail comercial: `comercial@coredb.com.br`
+- Telefone/WhatsApp: `+55 (31) 99187-3435`
+- LinkedIn Page: `https://www.linkedin.com/company/coredb-consultoria/`
 
-### Descrição
-Não deixe a performance e a segurança do seu ERP ao acaso. A CoreDB está pronta para diagnosticar, otimizar e garantir que sua operação rode com velocidade, estabilidade e segurança máximas.
-
-### CTA Primária
-**"Agendar diagnóstico técnico"** (Botão Azul Ciano)
-
-### CTA Secundária
-**"Fale com nosso time"** (Link)
-
-### Mensagem Adicional
-Diagnóstico inicial sem custo. Sem compromisso. Apenas uma conversa honesta sobre sua realidade técnica.
+Endereço jurídico/fiscal, base operacional e demais dados cadastrais devem ser usados de acordo com o contexto e nunca inferidos a partir de copy comercial.
 
 ---
 
-## 9. FOOTER
-**Objetivo:** Informações legais, contato, navegação.
+## 8. Analytics e privacidade
 
-### Elementos
-- Logo CoreDB
-- Links de Navegação (Sobre, Serviços, Metodologia, Contato)
-- Informações de Contato (Email, WhatsApp)
-- Links Legais (Privacidade, Termos)
-- Copyright
+- Google Analytics só deve carregar após consentimento explícito.
+- Eventos devem permanecer limitados aos parâmetros autorizados pela instrumentação vigente.
+- Não enviar ao analytics nome, e-mail, telefone, empresa, mensagem ou outros campos pessoais do formulário.
+- A Política de Privacidade deve refletir o uso real de terceiros analíticos.
 
 ---
 
-## Tone & Voice
-- **Executivo**: Direto, sem floreios, focado em resultados.
-- **Técnico**: Preciso, demonstrando expertise profunda.
-- **Confiável**: Transparente, honesto, sem promessas vazias.
-- **Profissional**: Sem tom informal, sem jargões excessivos, sem elementos decorativos.
+## 9. Governança de alteração
+
+Antes de alterar copy, identidade, claims ou portfolio:
+
+1. confirmar aderência ao Brand Book v1.0;
+2. preservar masters R6.3.3;
+3. não inventar métricas, cases ou garantias;
+4. executar `pnpm check` e `pnpm build` quando houver alteração de código;
+5. validar Preview Vercel desktop/mobile;
+6. testar links, CTA, formulário, cookies e analytics aplicáveis;
+7. promover para `main` apenas com aprovação humana conforme a governança do repositório.
 
 ---
 
-## Identidade Visual (Obrigatória)
-- **Cores**: Azul Profundo #0B1C2D, Azul Ciano #1DAEFF, Branco #FFFFFF, Cinzas Neutros.
-- **Tipografia**: Source Sans Pro (títulos), Roboto (corpo).
-- **Layout**: Minimalismo corporativo, espaço em branco generoso, cards modulares, grid estruturado.
-- **Elementos**: Cubo técnico minimalista, linhas diagonais, badges tipográficas.
+## 10. Histórico
+
+O conteúdo anterior deste arquivo é **SUPERSEDED** desde 13/09/2026 porque continha, entre outros itens:
+
+- “consultoria” como posicionamento principal;
+- campanhas antigas usadas como mensagem institucional geral;
+- métricas e mini-cases não aprovados;
+- promessas comerciais não comprovadas;
+- Source Sans Pro e Roboto como tipografia;
+- copy anterior à homologação Brand Book v1.0 / Release v1.0.1 / R6.3.3.
+
+Não reutilizar esses elementos em novas entregas sem novo processo formal de aprovação.
