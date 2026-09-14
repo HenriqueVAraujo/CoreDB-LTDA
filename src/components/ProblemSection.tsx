@@ -32,25 +32,21 @@ export default function ProblemSection() {
     <section className="py-24 lg:py-32 bg-[#F9FAFB]">
       <div className="container mx-auto px-4 max-w-5xl">
 
-        {/* Overline */}
         <span className="text-[var(--coredb-dark)] uppercase tracking-widest text-xs font-semibold mb-6 inline-block">
           Risco Operacional
         </span>
 
-        {/* Headline */}
         <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#0B1C2D] mb-8">
           Seu ERP sustenta o negócio. <br className="hidden md:block" />
-          Mas ele está verdadeiramente blindado?
+          A infraestrutura acompanha essa criticidade?
         </h2>
 
-        {/* Subheadline */}
         <p className="text-lg md:text-xl text-[#4B5563] max-w-3xl leading-relaxed mb-16">
           Empresas que dependem de ambientes TOTVS para faturar, operar e fechar o mês
-          convivem com riscos invisíveis que raramente são tratados de forma estruturada.
-          O problema não é o ERP. É a ausência de governança técnica contínua.
+          convivem com riscos que raramente são tratados de forma estruturada.
+          O desafio está em conectar aplicação, banco de dados, monitoramento e governança técnica.
         </p>
 
-        {/* Grid de Problemas */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {problems.map((problem, index) => {
             const Icon = problem.icon;
@@ -75,16 +71,14 @@ export default function ProblemSection() {
           })}
         </div>
 
-        {/* Bloco de Conclusão Estratégica */}
         <div className="mt-20 pt-12 border-t border-[#E5E7EB]">
           <div className="max-w-3xl">
             <p className="text-2xl font-semibold text-[#0B1C2D] leading-relaxed">
-              Um ERP sem banco de dados otimizado é como um carro de luxo com motor de 1.0.
+              ERP e banco de dados precisam ser analisados como um único ambiente técnico.
             </p>
             <p className="text-lg text-[#4B5563] mt-4 leading-relaxed">
-              A maioria das consultorias cuida da carroceria — a interface, os módulos, as telas.
-              A CoreDB cuida do motor: o banco de dados que sustenta toda a operação.
-              A análise conjunta das duas camadas ajuda a localizar a causa técnica e priorizar melhorias mensuráveis.
+              A CoreDB conecta as duas camadas para localizar causas técnicas, priorizar intervenções
+              e acompanhar a evolução do ambiente com base em evidências e métricas.
             </p>
           </div>
         </div>
