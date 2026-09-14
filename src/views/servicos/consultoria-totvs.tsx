@@ -37,7 +37,7 @@ export default function ConsultoriaTOTVS() {
     {
       icon: Database,
       title: 'Atuação Integrada',
-      description: 'Análise conjunta de ERP e bancos SQL Server ou Oracle, com resultados avaliados por indicadores do ambiente.'
+      description: 'Análise conjunta de ERP e banco de dados, com resultados avaliados por indicadores do ambiente e conforme a plataforma suportada no escopo.'
     },
     {
       icon: Zap,
@@ -93,7 +93,7 @@ export default function ConsultoriaTOTVS() {
           </h1>
 
           <p className="text-lg md:text-xl text-white/70 mb-10 max-w-3xl leading-relaxed">
-            Blindamos ambientes TOTVS e bancos de dados que não podem parar. A atuação combina diagnóstico técnico de ERP e banco de dados, conforme o escopo contratado.
+            Blindamos ambientes TOTVS que não podem parar. A atuação conecta ERP, banco de dados, integrações e processos de negócio conforme o escopo contratado.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 mt-8">
