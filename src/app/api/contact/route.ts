@@ -46,6 +46,15 @@ function pruneExpiredBuckets(now: number): void {
   }
 }
 
+function makeRoomForNewBucket(): void {
+  if (rateLimitBuckets.size < RATE_LIMIT_MAX_TRACKED_KEYS) return
+
+  const oldestKey = rateLimitBuckets.keys().next().value as string | undefined
+  if (oldestKey) {
+    rateLimitBuckets.delete(oldestKey)
+  }
+}
+
 function isRateLimited(req: NextRequest): boolean {
   try {
     const now = Date.now()
@@ -55,6 +64,9 @@ function isRateLimited(req: NextRequest): boolean {
     const bucket = rateLimitBuckets.get(key)
 
     if (!bucket || now > bucket.resetAt) {
+      if (!bucket) {
+        makeRoomForNewBucket()
+      }
       rateLimitBuckets.set(key, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS })
       return false
     }
