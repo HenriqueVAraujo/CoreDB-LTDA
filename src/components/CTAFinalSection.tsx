@@ -61,7 +61,7 @@ export default function CTAFinalSection() {
 
           {/* Trust Line */}
           <div className="mt-12 text-white/60 text-sm">
-            Triagem técnica para ambientes críticos • Triagem técnica de 20 minutos
+            Triagem técnica para ambientes críticos • 30 minutos, sem custo e sem compromisso
           </div>
 
         </div>

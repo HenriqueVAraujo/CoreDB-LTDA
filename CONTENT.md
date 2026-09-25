@@ -1,7 +1,7 @@
 # CoreDB — Conteúdo Institucional Vigente
 
 **Status:** CANÔNICO PARA O SITE  
-**Vigência:** 13/09/2026  
+**Vigência:** 25/09/2026  
 **Autoridade superior:** Brand Book CoreDB v1.0 + Logo Release v1.0.1 / R6.3.3  
 **Aprovador final:** Henrique
 
@@ -85,6 +85,16 @@ Preferir chamadas objetivas e comprováveis, como:
 - `Conhecer os serviços`
 
 Não prometer diagnóstico gratuito, garantia de resultado, disponibilidade absoluta ou SLA sem base contratual específica.
+
+### Oferta de entrada vigente
+
+**Triagem Técnica Inicial CoreDB — 30 minutos, sem custo e sem compromisso.**
+
+A triagem inicial serve para entender contexto, dor, impacto, urgência, capacidade interna e próximo passo. Ela **não** representa auditoria profunda, acesso ao ambiente, análise de causa raiz (RCA) ou diagnóstico completo.
+
+- Não reutilizar a duração anterior de 20 minutos em novos materiais.
+- Adaptar o título ao contexto (TOTVS, RM, DBA/performance, fiscal, AMS/observabilidade) sem alterar a duração padrão de 30 minutos.
+- Primeiro contato frio permanece curto e sem anexo por padrão.
 
 ---
 

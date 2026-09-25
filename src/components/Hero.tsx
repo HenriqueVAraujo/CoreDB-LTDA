@@ -64,7 +64,7 @@ export default function Hero() {
               >
                 Agendar triagem técnica
                 <span className="block text-[11px] uppercase tracking-wider opacity-70 font-medium mt-1">
-                  20 minutos • avaliação inicial
+                  30 minutos • avaliação inicial
                 </span>
               </button>
 
