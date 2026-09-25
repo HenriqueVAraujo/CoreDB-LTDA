@@ -178,7 +178,7 @@ export default function DesenvolvimentoCustomizacoes() {
           <div className="max-w-4xl mx-auto p-6 sm:p-12 rounded-3xl border border-white/5 bg-gradient-to-br from-[#0B1C2D] to-[#152a3d] shadow-2xl">
             <h2 className="text-3xl md:text-5xl font-bold mb-8">Valide a solução antes de iniciar customizações e integrações críticas.</h2>
             <p className="text-white/60 text-lg mb-10 max-w-2xl mx-auto">
-              Desenvolvimento e integrações. A triagem técnica inicial leva 20 minutos.
+              Desenvolvimento e integrações. A triagem técnica inicial leva 30 minutos, sem custo e sem compromisso.
             </p>
             <a
               href={CTA_CONFIGS.development.url}
