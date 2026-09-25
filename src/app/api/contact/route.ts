@@ -4,6 +4,80 @@ import { z } from 'zod'
 
 const MAX_PAYLOAD_BYTES = 16 * 1024
 
+/**
+ * Rate limiting best-effort, em memória, por instância serverless.
+ *
+ * Não há Redis/KV/Upstash configurado neste projeto e adicionar um exigiria
+ * nova dependência e nova infraestrutura fora da autorização desta frente.
+ * Este limitador NÃO garante um teto distribuído: cada instância Vercel tem
+ * seu próprio mapa, que é zerado em cold start, então um cliente pode
+ * eventualmente exceder o limite nominal se atingir instâncias diferentes.
+ * É uma camada parcial somada ao honeypot existente, não uma garantia dura.
+ *
+ * Fail-open deliberado: qualquer erro interno do limitador libera a
+ * requisição em vez de bloquear — nunca queremos perder um lead legítimo
+ * por causa de um bug no rate limiter.
+ */
+const RATE_LIMIT_WINDOW_MS = 60_000
+const RATE_LIMIT_MAX_REQUESTS = 5
+const RATE_LIMIT_MAX_TRACKED_KEYS = 500
+
+type RateLimitBucket = { count: number; resetAt: number }
+const rateLimitBuckets = new Map<string, RateLimitBucket>()
+
+function getClientKey(req: NextRequest): string {
+  const forwardedFor = req.headers.get('x-forwarded-for')
+  const ip = forwardedFor?.split(',')[0]?.trim() || req.headers.get('x-real-ip') || 'unknown'
+
+  let hash = 0
+  for (let i = 0; i < ip.length; i += 1) {
+    hash = (hash * 31 + ip.charCodeAt(i)) | 0
+  }
+  return hash.toString(36)
+}
+
+function pruneExpiredBuckets(now: number): void {
+  if (rateLimitBuckets.size < RATE_LIMIT_MAX_TRACKED_KEYS) return
+
+  for (const [key, bucket] of rateLimitBuckets) {
+    if (now > bucket.resetAt) {
+      rateLimitBuckets.delete(key)
+    }
+  }
+}
+
+function makeRoomForNewBucket(): void {
+  if (rateLimitBuckets.size < RATE_LIMIT_MAX_TRACKED_KEYS) return
+
+  const oldestKey = rateLimitBuckets.keys().next().value as string | undefined
+  if (oldestKey) {
+    rateLimitBuckets.delete(oldestKey)
+  }
+}
+
+function isRateLimited(req: NextRequest): boolean {
+  try {
+    const now = Date.now()
+    pruneExpiredBuckets(now)
+
+    const key = getClientKey(req)
+    const bucket = rateLimitBuckets.get(key)
+
+    if (!bucket || now > bucket.resetAt) {
+      if (!bucket) {
+        makeRoomForNewBucket()
+      }
+      rateLimitBuckets.set(key, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS })
+      return false
+    }
+
+    bucket.count += 1
+    return bucket.count > RATE_LIMIT_MAX_REQUESTS
+  } catch {
+    return false
+  }
+}
+
 const leadTypeByUrgency = {
   planning: 'standard',
   short: 'strategic',
@@ -42,10 +116,10 @@ function escapeHtml(value: string) {
   return value.replace(/[&<>"']/g, (character) => htmlEscapes[character])
 }
 
-function jsonResponse(body: { success: boolean; error?: string }, status = 200) {
+function jsonResponse(body: { success: boolean; error?: string }, status = 200, extraHeaders?: Record<string, string>) {
   return NextResponse.json(body, {
     status,
-    headers: { 'Cache-Control': 'no-store' },
+    headers: { 'Cache-Control': 'no-store', ...extraHeaders },
   })
 }
 
@@ -102,8 +176,19 @@ export async function POST(req: NextRequest) {
 
   const { website, ...data } = validation.data
 
+  // Honeypot primeiro: automações óbvias são descartadas sem consumir a cota
+  // de um usuário legítimo que eventualmente compartilhe o mesmo IP/NAT.
   if ((website ?? '').trim()) {
     return jsonResponse({ success: true })
+  }
+
+  // Rate limiting somente após as validações baratas e o honeypot.
+  if (isRateLimited(req)) {
+    return jsonResponse(
+      { success: false, error: 'Muitas solicitações. Tente novamente em instantes.' },
+      429,
+      { 'Retry-After': String(Math.ceil(RATE_LIMIT_WINDOW_MS / 1000)) },
+    )
   }
 
   const translatedEnvironment = traducoes[data.environment] ?? data.environment
@@ -140,10 +225,14 @@ export async function POST(req: NextRequest) {
 
   try {
 
+    const smtpHost = process.env.SMTP_HOST?.trim() || 'smtp.gmail.com'
+    const smtpPort = Number(process.env.SMTP_PORT || '465')
+    const smtpSecure = (process.env.SMTP_SECURE || 'true').toLowerCase() === 'true'
+
     const transporter = nodemailer.createTransport({
-      host: 'smtp.zoho.com',
-      port: 465,
-      secure: true,
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpSecure,
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
