@@ -5,6 +5,7 @@
 - `origin/main` é a fonte de verdade do estado atual da produção.
 - O Codex não faz checkout, merge, rebase, push ou force push na `main` e não promove produção.
 - Promoções são realizadas por mantenedor humano via Pull Request e deployment automático da integração Git.
+- **Regra permanente:** nenhum PR pode ser mergeado em `main` sem revisão explícita do Claude sobre o diff/HEAD mais recente. Qualquer commit após a revisão invalida a aprovação anterior e exige nova revisão. A evidência da revisão deve ficar registrada no PR. O merge continua exclusivamente humano.
 - O Codex não usa Vercel CLI nem altera domínio, aliases, variáveis ou configurações da Vercel.
 - HubSpot e Fase E permanecem fora do escopo.
 - A Fase E permanece bloqueada até Henrique escrever literalmente: **pode executar a Fase E**. Nenhuma outra formulação vale como autorização.
