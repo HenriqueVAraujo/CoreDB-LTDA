@@ -27,7 +27,7 @@ export default function TermsOfUse() {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-16">
+      <main id="main-content" tabIndex={-1} className="outline-none container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-6 mb-12 flex flex-col md:flex-row gap-6 items-center">
             <div className="bg-amber-500/20 p-4 rounded-full">

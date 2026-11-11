@@ -32,7 +32,7 @@ export default function PrivacyPolicy() {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-16">
+      <main id="main-content" tabIndex={-1} className="outline-none container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           <div className="bg-gradient-to-br from-[#1DAEFF]/10 to-transparent border border-[#1DAEFF]/30 rounded-2xl p-8 mb-16 relative overflow-hidden">
             <div className="absolute top-0 right-0 p-4 opacity-10">

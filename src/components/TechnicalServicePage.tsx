@@ -81,7 +81,7 @@ export default function TechnicalServicePage({
   const service = getServiceFromPath(pathname)
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-white">
+    <main id="main-content" tabIndex={-1} className="outline-none min-h-screen overflow-x-hidden bg-white">
       <section className="bg-[var(--coredb-dark)] pb-20 pt-32 text-white md:pb-28 md:pt-40">
         <div className="container mx-auto max-w-5xl px-4">
           <nav aria-label="Breadcrumb" className="mb-8 text-sm text-white/70">

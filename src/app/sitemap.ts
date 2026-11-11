@@ -68,5 +68,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.9,
     },
+    {
+      url: `${SITE_URL}/trabalhe-conosco`,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: `${SITE_URL}/politica-de-privacidade`,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${SITE_URL}/termos-de-uso`,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
   ]
 }

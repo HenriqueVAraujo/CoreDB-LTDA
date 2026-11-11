@@ -56,7 +56,7 @@ export default function SupportAMS() {
   ];
 
   return (
-    <main className="min-h-screen bg-white">
+    <main id="main-content" tabIndex={-1} className="outline-none min-h-screen bg-white">
       
       {/* Hero Section */}
       <section className="relative bg-[#0B1C2D] min-h-[80vh] flex items-center py-20">
