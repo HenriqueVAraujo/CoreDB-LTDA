@@ -1,11 +1,14 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
-import { Send } from 'lucide-react'
+import { useRef, useState } from 'react'
+import { Paperclip, Send, X } from 'lucide-react'
 import { ROUTES } from '@/routes'
+import { CV_ACCEPT_ATTR, CV_MAX_BYTES_LABEL, validateCvFile, validateFileMeta } from '@/lib/careers-upload'
 
 const REQUIRED_ID = 'careers-required-fields'
+const CV_HELP_ID = 'careers-cv-help'
+const CV_ERROR_ID = 'careers-cv-error'
 
 const AREAS = [
   { value: 'dba', label: 'DBA (SQL Server, Oracle, PostgreSQL, MySQL)' },
@@ -26,36 +29,83 @@ export default function CareersForm() {
   const [form, setForm] = useState(EMPTY)
   const [consent, setConsent] = useState(false)
   const [busy, setBusy] = useState(false)
-  const [status, setStatus] = useState<'idle' | 'success' | 'dryrun' | 'error'>('idle')
+  const [status, setStatus] = useState<'idle' | 'success' | 'dryrun' | 'stored' | 'error'>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
+  const [cv, setCv] = useState<File | null>(null)
+  const [cvError, setCvError] = useState('')
+  const [consentCv, setConsentCv] = useState(false)
+  const cvInput = useRef<HTMLInputElement>(null)
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setForm((prev) => ({ ...prev, [name]: value }))
   }
 
+  const clearCv = () => {
+    setCv(null)
+    setConsentCv(false)
+    if (cvInput.current) cvInput.current.value = ''
+  }
+
+  // Validação do cliente = UX. O servidor repete tudo (nome, MIME, assinatura, tamanho).
+  const onCvChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const f = e.target.files?.[0]
+    setCvError('')
+    if (!f) return clearCv()
+    const meta = validateFileMeta(f)
+    if (!meta.ok) {
+      clearCv()
+      setCvError(meta.message)
+      return
+    }
+    const check = validateCvFile(f, new Uint8Array(await f.arrayBuffer()))
+    if (!check.ok) {
+      clearCv()
+      setCvError(check.message)
+      return
+    }
+    setCv(f)
+  }
+
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!consent) {
+    if (!consent || (cv && !consentCv)) {
+      setErrorMsg(consent ? 'Para anexar o currículo, marque a autorização específica para guardá-lo.' : '')
       setStatus('error')
       return
     }
     setBusy(true)
     setStatus('idle')
+    setErrorMsg('')
     try {
-      const res = await fetch('/api/trabalhe-conosco', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, consent: true }),
-      })
-      const result = await res.json()
+      let init: RequestInit
+      if (cv) {
+        const fd = new FormData()
+        Object.entries(form).forEach(([k, v]) => fd.append(k, v))
+        fd.append('consent', 'true')
+        fd.append('consentCv', 'true')
+        fd.append('cv', cv, cv.name)
+        init = { method: 'POST', body: fd } // o navegador define o boundary do multipart
+      } else {
+        init = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...form, consent: true }),
+        }
+      }
+      const res = await fetch('/api/trabalhe-conosco', init)
+      const result = await res.json().catch(() => ({}))
       if (res.ok && result.success) {
-        setStatus(result.dryRun ? 'dryrun' : 'success')
+        setStatus(result.cvStored ? 'stored' : result.dryRun ? 'dryrun' : 'success')
         setForm(EMPTY)
         setConsent(false)
+        clearCv()
       } else {
-        throw new Error(result.error || 'Falha no envio')
+        setErrorMsg(typeof result.error === 'string' ? result.error : '')
+        setStatus('error')
       }
     } catch {
+      setErrorMsg('')
       setStatus('error')
     } finally {
       setBusy(false)
@@ -109,6 +159,60 @@ export default function CareersForm() {
         <textarea id="careers-message" name="message" rows={5} maxLength={4000} value={form.message} onChange={onChange} disabled={busy} className={`${FIELD_CLASS} resize-none`} />
       </div>
 
+      <div>
+        <label htmlFor="careers-cv" className={LABEL_CLASS}>
+          Currículo <span className="font-normal text-gray-400">(opcional — PDF, DOC ou DOCX, até {CV_MAX_BYTES_LABEL})</span>
+        </label>
+        <input
+          ref={cvInput}
+          id="careers-cv"
+          name="cv"
+          type="file"
+          accept={CV_ACCEPT_ATTR}
+          onChange={onCvChange}
+          disabled={busy}
+          aria-invalid={cvError ? true : undefined}
+          aria-describedby={cvError ? `${CV_HELP_ID} ${CV_ERROR_ID}` : CV_HELP_ID}
+          className={`${FIELD_CLASS} file:mr-4 file:rounded-lg file:border-0 file:bg-[var(--coredb-dark)] file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white`}
+        />
+        <p id={CV_HELP_ID} className="mt-2 text-xs text-gray-500">
+          O arquivo é verificado antes do envio. Não inclua documentos de terceiros nem dados sensíveis desnecessários.
+        </p>
+        {cv && (
+          <p className="mt-2 flex items-center gap-2 text-sm text-gray-700">
+            <Paperclip className="h-4 w-4" aria-hidden="true" />
+            <span>{cv.name} ({Math.max(1, Math.round(cv.size / 1024))} KB)</span>
+            <button type="button" onClick={clearCv} disabled={busy} className="inline-flex items-center gap-1 rounded text-[var(--coredb-dark)] underline underline-offset-2">
+              <X className="h-3 w-3" aria-hidden="true" />Remover<span className="sr-only"> currículo</span>
+            </button>
+          </p>
+        )}
+        <div id={CV_ERROR_ID} role="alert" className={cvError ? 'mt-2 text-sm text-red-700' : 'sr-only'}>{cvError}</div>
+      </div>
+
+      {cv && (
+        <div className="flex items-start gap-3">
+          <input
+            id="careers-consent-cv"
+            type="checkbox"
+            required
+            aria-required="true"
+            checked={consentCv}
+            onChange={(e) => setConsentCv(e.target.checked)}
+            disabled={busy}
+            className="mt-1 h-4 w-4 shrink-0 accent-[var(--coredb-dark)]"
+          />
+          <label htmlFor="careers-consent-cv" className="text-sm leading-relaxed text-gray-600">
+            Autorizo a CoreDB a armazenar o currículo anexado, que pode conter dados pessoais, apenas para avaliar minha
+            candidatura, pelo tempo necessário ao processo seletivo, conforme a{' '}
+            <Link href={ROUTES.PRIVACY} className="font-medium text-[var(--coredb-dark)] underline underline-offset-2">
+              Política de Privacidade
+            </Link>
+            . Posso pedir a exclusão a qualquer momento.<span className="sr-only"> (obrigatório para enviar o currículo)</span>
+          </label>
+        </div>
+      )}
+
       <div className="flex items-start gap-3">
         <input
           id="careers-consent"
@@ -132,13 +236,20 @@ export default function CareersForm() {
 
       <button
         type="submit"
-        disabled={busy || !consent}
+        disabled={busy || !consent || (cv !== null && !consentCv)}
         className="flex w-full items-center justify-center gap-3 rounded-xl bg-[var(--coredb-dark)] py-4 font-semibold text-white transition-all hover:bg-[var(--coredb-cyan)] hover:text-[var(--coredb-dark)] disabled:cursor-not-allowed disabled:opacity-50"
       >
         {busy ? 'Enviando...' : 'Enviar candidatura'}
         <Send className="h-5 w-5" aria-hidden="true" />
       </button>
 
+      <p role="status" aria-live="polite" className="sr-only">{busy ? 'Enviando candidatura, aguarde.' : ''}</p>
+
+      {status === 'stored' && (
+        <div role="status" aria-live="polite" className="rounded-xl border border-green-200 bg-green-50 p-4 text-green-700">
+          Candidatura e currículo recebidos (ambiente de teste). Obrigado pelo interesse na CoreDB.
+        </div>
+      )}
       {status === 'success' && (
         <div role="status" aria-live="polite" className="rounded-xl border border-green-200 bg-green-50 p-4 text-green-700">
           Candidatura recebida! Obrigado pelo interesse na CoreDB.
@@ -146,12 +257,12 @@ export default function CareersForm() {
       )}
       {status === 'dryrun' && (
         <div role="status" aria-live="polite" className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-amber-800">
-          Modo de teste: o formulário foi validado, mas nada foi enviado nem armazenado.
+          Modo de teste: o formulário e o arquivo foram validados, mas nada foi enviado nem armazenado.
         </div>
       )}
       {status === 'error' && (
         <div role="alert" className="rounded-xl border border-red-200 bg-red-50 p-4 text-red-700">
-          Não foi possível enviar. Confirme os campos e o consentimento ou tente novamente em instantes.
+          {errorMsg || 'Não foi possível enviar. Confirme os campos e o consentimento ou tente novamente em instantes.'}
         </div>
       )}
     </form>
