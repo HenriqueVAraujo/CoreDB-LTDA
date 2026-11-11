@@ -1,23 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import { z } from 'zod'
+import { careersSmtpEnabled } from '@/lib/careers-delivery'
 import { createRateLimiter, RATE_LIMIT_WINDOW_MS } from '@/lib/rate-limit'
 
 const MAX_PAYLOAD_BYTES = 16 * 1024
 const isRateLimited = createRateLimiter(5)
-
-/**
- * Modo de envio: DRY-RUN por padrão. Nenhum e-mail é enviado e nenhum dado
- * pessoal é registrado em log. O envio real só ocorre se
- * CAREERS_SMTP_ENABLED=true E CAREERS_RECEIVER_EMAIL estiver definido
- * (mesmas variáveis SMTP_* do formulário comercial).
- */
-function isSmtpEnabled(): boolean {
-  return (
-    (process.env.CAREERS_SMTP_ENABLED || '').toLowerCase() === 'true' &&
-    Boolean(process.env.CAREERS_RECEIVER_EMAIL?.trim())
-  )
-}
 
 const schema = z
   .object({
@@ -111,7 +99,7 @@ export async function POST(req: NextRequest) {
     )
   }
 
-  if (!isSmtpEnabled()) {
+  if (!careersSmtpEnabled()) {
     return json({ success: true, dryRun: true })
   }
 

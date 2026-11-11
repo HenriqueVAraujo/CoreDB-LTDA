@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import CareersForm from '@/components/CareersForm'
+import { careersSmtpEnabled } from '@/lib/careers-delivery'
 
 const DESCRIPTION =
   'Trabalhe na CoreDB: engenharia e execução de tecnologia crítica para ambientes TOTVS e bancos de dados. Envie seu perfil para o nosso banco de talentos.'
@@ -37,6 +38,8 @@ const areas = [
 ]
 
 export default function TrabalheConoscoPage() {
+  const acceptsApplications = careersSmtpEnabled()
+
   return (
     <main id="main-content" tabIndex={-1} className="min-h-screen bg-white pt-20 outline-none">
       <section className="bg-[var(--coredb-dark)] py-20 text-white md:py-24">
@@ -47,7 +50,7 @@ export default function TrabalheConoscoPage() {
           <h1 className="mb-6 text-4xl font-bold !text-white md:text-5xl">Trabalhe Conosco</h1>
           <p className="max-w-2xl text-lg leading-relaxed text-white/80">
             A CoreDB atua com engenharia e execução de tecnologia crítica em ambientes TOTVS e bancos de dados.
-            Se você gosta de resolver problemas técnicos de verdade, envie seu perfil para o nosso banco de talentos.
+            {acceptsApplications && ' Envie seu perfil para o nosso banco de talentos.'}
           </p>
         </div>
       </section>
@@ -64,12 +67,19 @@ export default function TrabalheConoscoPage() {
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-sm text-gray-500">
-              Não há vagas abertas garantidas: seu perfil fica no banco de talentos para futuras oportunidades.
-            </p>
+            {acceptsApplications && (
+              <p className="mt-6 text-sm text-gray-500">
+                Não há vagas abertas garantidas. Seu perfil fica no banco de talentos para futuras oportunidades.
+              </p>
+            )}
           </div>
 
           <div className="lg:col-span-2">
+            {!acceptsApplications && (
+              <p className="mb-6 rounded-md border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-950">
+                Envio simulado. Use apenas dados fictícios. Este formulário ainda não recebe candidaturas.
+              </p>
+            )}
             <CareersForm />
           </div>
         </div>
