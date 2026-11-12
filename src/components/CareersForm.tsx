@@ -96,7 +96,7 @@ export default function CareersForm() {
       const res = await fetch('/api/trabalhe-conosco', init)
       const result = await res.json().catch(() => ({}))
       if (res.ok && result.success) {
-        setStatus(result.cvStored ? 'stored' : result.dryRun ? 'dryrun' : 'success')
+        setStatus(result.dryRun ? 'dryrun' : result.cvStored ? 'stored' : 'success')
         setForm(EMPTY)
         setConsent(false)
         clearCv()
@@ -204,7 +204,7 @@ export default function CareersForm() {
           />
           <label htmlFor="careers-consent-cv" className="text-sm leading-relaxed text-gray-600">
             Autorizo a CoreDB a armazenar o currículo anexado, que pode conter dados pessoais, apenas para avaliar minha
-            candidatura, pelo tempo necessário ao processo seletivo, conforme a{' '}
+            candidatura, conforme as informações de retenção na{' '}
             <Link href={ROUTES.PRIVACY} className="font-medium text-[var(--coredb-dark)] underline underline-offset-2">
               Política de Privacidade
             </Link>
@@ -247,7 +247,7 @@ export default function CareersForm() {
 
       {status === 'stored' && (
         <div role="status" aria-live="polite" className="rounded-xl border border-green-200 bg-green-50 p-4 text-green-700">
-          Candidatura e currículo recebidos (ambiente de teste). Obrigado pelo interesse na CoreDB.
+          Candidatura e currículo recebidos. Obrigado pelo interesse na CoreDB.
         </div>
       )}
       {status === 'success' && (
@@ -257,7 +257,7 @@ export default function CareersForm() {
       )}
       {status === 'dryrun' && (
         <div role="status" aria-live="polite" className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-amber-800">
-          Modo de teste: o formulário e o arquivo foram validados, mas nada foi enviado nem armazenado.
+          SIMULAÇÃO — formulário e arquivo validados. Nenhuma candidatura foi enviada e nenhum currículo foi armazenado.
         </div>
       )}
       {status === 'error' && (

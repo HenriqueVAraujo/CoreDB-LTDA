@@ -6,7 +6,6 @@ import { pdf, pdfOfSize, doc, docx, exe, MIME } from './fixtures-cv.mjs'
 
 const BASE = process.env.BASE_URL || 'http://127.0.0.1:3000'
 if (!['127.0.0.1', 'localhost', '::1', '[::1]'].includes(new URL(BASE).hostname)) throw new Error('somente loopback')
-const STORED = (process.env.EXPECT_STORED || 'false') === 'true'
 
 let n = 100
 function send({ file, fileName = 'curriculo.pdf', type = MIME.pdf, consent = 'true', consentCv = 'true', extra = {} } = {}) {
@@ -19,13 +18,13 @@ function send({ file, fileName = 'curriculo.pdf', type = MIME.pdf, consent = 'tr
   return fetch(`${BASE}/api/trabalhe-conosco`, { method: 'POST', body: fd, headers: { 'x-forwarded-for': `203.0.113.${n++}` } })
 }
 
-test('PDF valido -> 200, cvStored conforme modo', async () => {
+test('PDF valido em simulacao -> 200, sem armazenamento', async () => {
   const r = await send({ file: pdf() })
   assert.equal(r.status, 200)
   const j = await r.json()
   assert.equal(j.success, true)
   assert.equal(j.dryRun, true)
-  assert.equal(j.cvStored, STORED)
+  assert.equal(j.cvStored, false)
   assert.ok(!/careers-uploads|[\\/]/.test(JSON.stringify(j)), 'resposta nao vaza caminho')
 })
 
@@ -68,8 +67,8 @@ test('arquivo grande (6 MB) -> 413', async () => {
   assert.equal((await send({ file: big })).status, 413)
 })
 
-test('5 MB + 1 byte -> 413 (validador); 5 MB exatos -> 200', async () => {
-  const limit = 5 * 1024 * 1024
+test('4 MB + 1 byte -> 413 (validador); 4 MB exatos -> 200', async () => {
+  const limit = 4 * 1024 * 1024
   const over = Buffer.concat([pdf(), Buffer.alloc(limit + 1 - pdf().length)])
   assert.equal(over.length, limit + 1)
   assert.equal((await send({ file: over })).status, 413)

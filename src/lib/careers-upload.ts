@@ -4,8 +4,8 @@
  * (UX) e no servidor (autoridade). A validação do cliente nunca substitui a do servidor.
  */
 
-export const CV_MAX_BYTES = 5 * 1024 * 1024
-export const CV_MAX_BYTES_LABEL = '5 MB'
+export const CV_MAX_BYTES = 4 * 1024 * 1024
+export const CV_MAX_BYTES_LABEL = '4 MB'
 
 export type CvKind = 'pdf' | 'doc' | 'docx'
 

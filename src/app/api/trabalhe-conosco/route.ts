@@ -1,14 +1,15 @@
+import { randomUUID } from 'node:crypto'
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import { z } from 'zod'
-import { careersSmtpEnabled } from '@/lib/careers-delivery'
+import { careersSmtpEnabled, careersProduction } from '@/lib/careers-delivery'
 import { createRateLimiter, RATE_LIMIT_WINDOW_MS } from '@/lib/rate-limit'
 import { CV_MAX_BYTES, CV_MESSAGES, sanitizeOriginalName, validateCvFile } from '@/lib/careers-upload'
 import { StorageUnavailableError, storeCv } from '@/lib/careers-storage'
 import { inspectCvStructure } from '@/lib/careers-inspect'
 
 const MAX_PAYLOAD_BYTES = 16 * 1024
-// Arquivo (5 MB) + campos/limites do multipart.
+// Arquivo (4 MB) + campos/limites do multipart.
 const MAX_MULTIPART_BYTES = CV_MAX_BYTES + 128 * 1024
 const isRateLimited = createRateLimiter(5)
 // Teto de tempo de leitura do corpo (uploads lentos) e de requisições simultâneas (corpo fica em memória).
@@ -40,7 +41,7 @@ const areaLabels: Record<string, string> = {
   outra: 'Outra área',
 }
 
-function json(body: { success: boolean; dryRun?: boolean; cvStored?: boolean; code?: string; error?: string }, status = 200, extra?: Record<string, string>) {
+function json(body: { success: boolean; applicationId?: string; dryRun?: boolean; cvStored?: boolean; code?: string; error?: string }, status = 200, extra?: Record<string, string>) {
   return NextResponse.json(body, { status, headers: { 'Cache-Control': 'no-store', ...extra } })
 }
 
@@ -101,7 +102,7 @@ export async function POST(req: NextRequest) {
     return json({ success: false, error: 'Formato de conteúdo não suportado.' }, 415)
   }
 
-  // Concorrência limitada: o corpo é mantido em memória (até ~5 MB) por requisição.
+  // Concorrência limitada: o corpo é mantido em memória (até ~4 MB) por requisição.
   if (inFlight >= MAX_CONCURRENT) {
     return json({ success: false, error: 'Servidor ocupado. Tente novamente em instantes.' }, 503, { 'Retry-After': '5' })
   }
@@ -170,7 +171,14 @@ async function handle(req: NextRequest, isMultipart: boolean) {
     return json({ success: true })
   }
 
+  const applicationId = randomUUID()
+  const smtpEnabled = careersSmtpEnabled()
+  const production = careersProduction()
+  if (production && !smtpEnabled) {
+    return json({ success: false, code: 'DELIVERY', error: 'Recebimento de candidaturas indisponível. Tente novamente mais tarde.' }, 503)
+  }
   let cvStored = false
+  let cvReference = ''
   if (file) {
     if (consentCv !== true) {
       return json(
@@ -188,21 +196,24 @@ async function handle(req: NextRequest, isMultipart: boolean) {
     if (!inspected.ok) {
       return json({ success: false, code: inspected.code, error: CV_MESSAGES[inspected.code] }, 400)
     }
-    try {
+    if (smtpEnabled) try {
       const stored = await storeCv(bytes, {
+        applicationId,
         kind: check.kind,
         area: data.area,
         originalName: sanitizeOriginalName(file.name),
         consentCvAt: new Date().toISOString(),
       })
       cvStored = stored !== null
+      if (!stored) throw new StorageUnavailableError('Armazenamento desligado')
+      cvReference = stored.id + '.' + check.kind
     } catch (err) {
       const msg = err instanceof StorageUnavailableError ? 'O armazenamento de currículos está indisponível no momento.' : 'Não foi possível guardar o currículo.'
       return json({ success: false, code: 'STORAGE', error: msg }, 503)
     }
   }
 
-  if (!careersSmtpEnabled()) {
+  if (!smtpEnabled) {
     return json({ success: true, dryRun: true, ...(file ? { cvStored } : {}) })
   }
 
@@ -215,6 +226,8 @@ async function handle(req: NextRequest, isMultipart: boolean) {
     })
     const text = [
       'Nova candidatura (Trabalhe Conosco)',
+      `ID da candidatura: ${applicationId}`,
+      `Currículo: ${cvReference || 'Sem anexo'}`,
       '',
       `Nome: ${data.name}`,
       `E-mail: ${data.email}`,
@@ -226,14 +239,17 @@ async function handle(req: NextRequest, isMultipart: boolean) {
       data.message || 'Sem mensagem adicional.',
     ].join('\n')
 
-    await transporter.sendMail({
+    const delivery = await transporter.sendMail({
       from: process.env.SMTP_USER,
       to: process.env.CAREERS_RECEIVER_EMAIL,
       replyTo: data.email,
-      subject: `Candidatura - ${areaLabels[data.area]}`,
+      subject: `Candidatura ${applicationId} - ${areaLabels[data.area]}`,
       text,
     })
-    return json({ success: true, ...(file ? { cvStored } : {}) })
+    if (!delivery.accepted?.some((address: string | { address: string }) =>
+      (typeof address === 'string' ? address : address.address).toLowerCase() === process.env.CAREERS_RECEIVER_EMAIL!.trim().toLowerCase(),
+    )) throw new Error('Destinatário não aceito pelo SMTP')
+    return json({ success: true, applicationId, ...(file ? { cvStored } : {}) })
   } catch {
     return json({ success: false, error: 'Não foi possível enviar a candidatura.' }, 500)
   }

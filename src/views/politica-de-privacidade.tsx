@@ -28,7 +28,7 @@ export default function PrivacyPolicy() {
             Política de Privacidade
           </h1>
           <p className="text-[#1DAEFF] font-medium mb-2">CoreDB — O núcleo da continuidade.</p>
-          <p className="text-white/40 text-sm">Última atualização: 13 de setembro de 2026</p>
+          <p className="text-white/40 text-sm">Última atualização: 12 de novembro de 2026</p>
         </div>
       </header>
 
@@ -48,7 +48,7 @@ export default function PrivacyPolicy() {
               </div>
               <div>
                 <h4 className="font-bold text-[#1DAEFF] mb-2">Uso Ético</h4>
-                <p className="text-sm text-white/70">Coletamos apenas o necessário para diagnósticos técnicos e comerciais.</p>
+                <p className="text-sm text-white/70">Coletamos dados para diagnósticos técnicos, atendimento comercial e recrutamento.</p>
               </div>
               <div>
                 <h4 className="font-bold text-[#1DAEFF] mb-2">Continuidade</h4>
@@ -65,7 +65,7 @@ export default function PrivacyPolicy() {
 
             <section>
               <h2 className="text-2xl font-bold !text-white mb-4" style={{ color: 'white' }}>2. Coleta e Uso de Dados</h2>
-              <p>Coletamos nome, e-mail corporativo, empresa e telefone exclusivamente através de nossos formulários para:</p>
+              <p>Nos formulários comerciais, coletamos nome, e-mail corporativo, empresa e telefone para:</p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Diagnósticos de Banco de Dados e ERP Protheus/RM;</li>
                 <li>Envio de propostas comerciais personalizadas;</li>
@@ -79,6 +79,15 @@ export default function PrivacyPolicy() {
             <section>
               <h2 className="text-2xl font-bold !text-white mb-4" style={{ color: 'white' }}>3. Seus Direitos (LGPD)</h2>
               <p>Para exercer esses direitos, utilize o Canal de privacidade indicado abaixo.</p>
+            </section>
+            <section>
+              <h2 className="text-2xl font-bold !text-white mb-4" style={{ color: 'white' }}>4. Recrutamento e documentos anexados</h2>
+              <p>No Trabalhe Conosco, tratamos nome, e-mail, telefone opcional, área de interesse, perfil ou portfólio, mensagem e currículo opcional em PDF, DOC ou DOCX de até 4 MB. Os documentos podem conter dados pessoais. Evite dados sensíveis e informações de terceiros desnecessárias.</p>
+              <p>A finalidade é avaliar a candidatura e entrar em contato sobre o processo seletivo, conforme os consentimentos do formulário, incluindo autorização específica para guardar o anexo. Um ID de candidatura vincula o envio ao documento para identificação pela equipe responsável.</p>
+              <p>O acesso é restrito aos responsáveis autorizados pelo recrutamento e aos prestadores de infraestrutura, armazenamento e e-mail necessários ao processamento, conforme suas funções e obrigações de confidencialidade.</p>
+              <p>Duração da retenção dos dados e documentos de recrutamento — [A DEFINIR PELA DIRECAO]. O prazo permanece pendente de definição e comunicação pela direção.</p>
+              <p>O descarte deve abranger os registros da candidatura, anexos armazenados e cópias em e-mail, mediante exclusão segura quando encerrada a finalidade ou atendido pedido de exclusão, observadas as obrigações legais aplicáveis.</p>
+              <p>O candidato pode solicitar confirmação e acesso ao tratamento, correção, informações sobre compartilhamento, revogação do consentimento, anonimização, bloqueio ou exclusão de dados desnecessários ou tratados irregularmente e eliminação dos dados tratados com consentimento, observadas as hipóteses legais de conservação. Utilize o canal de privacidade abaixo e, se disponível, informe o ID da candidatura.</p>
             </section>
           </article>
 

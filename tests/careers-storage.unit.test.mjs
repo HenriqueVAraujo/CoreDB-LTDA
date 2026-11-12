@@ -2,17 +2,30 @@
 // Uso: node --experimental-strip-types --test tests/careers-storage.unit.test.mjs
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { mkdtempSync, mkdirSync, readdirSync, symlinkSync, writeFileSync, existsSync, rmSync } from 'node:fs'
-import { tmpdir } from 'node:os'
+import { mkdtempSync, mkdirSync, readdirSync, readFileSync, symlinkSync, writeFileSync, existsSync, rmSync } from 'node:fs'
 import path from 'node:path'
 import { storeCv, resolvePrivateDir, isInside, LOCAL_DIR_NAME, storedNameFor } from '../src/lib/careers-storage.ts'
 import { pdf, doc } from './fixtures-cv.mjs'
 
 const META = { kind: 'pdf', area: 'dba', originalName: 'cv.pdf', consentCvAt: '2026-11-11T00:00:00.000Z' }
+const testDirectory = path.resolve('tests')
+
+test('candidaturas distintas com mesmo currículo preservam seus metadados', () => sandbox(async (root) => {
+  const first = '11111111-1111-4111-8111-111111111111'
+  const second = '22222222-2222-4222-8222-222222222222'
+  const a = await storeCv(pdf(), { ...META, applicationId: first })
+  const b = await storeCv(pdf(), { ...META, applicationId: second })
+  assert.notEqual(a.id, b.id)
+  for (const [result, applicationId] of [[a, first], [b, second]]) {
+    const meta = JSON.parse(readFileSync(path.join(root, LOCAL_DIR_NAME, `${result.id}.json`), 'utf8'))
+    assert.equal(meta.applicationId, applicationId)
+    assert.ok(existsSync(path.join(root, LOCAL_DIR_NAME, `${result.id}.pdf`)))
+  }
+}))
 
 // Cada teste roda em um tmp proprio (removido ao final: so o que o proprio teste criou).
 async function sandbox(fn) {
-  const root = mkdtempSync(path.join(tmpdir(), 'tc-store-'))
+  const root = mkdtempSync(path.join(testDirectory, 'tc-store-'))
   const prev = { cwd: process.cwd(), mode: process.env.CAREERS_CV_STORAGE, node: process.env.NODE_ENV, vercel: process.env.VERCEL, allow: process.env.CAREERS_CV_LOCAL_ALLOW }
   process.chdir(root)
   process.env.CAREERS_CV_STORAGE = 'local'
@@ -39,7 +52,7 @@ test('achado 4: pasta fixa dentro do projeto; variavel de caminho e ignorada', (
 }))
 
 test('achado 4: symlink/junction da pasta privada apontando para fora e recusado', () => sandbox(async (root) => {
-  const outside = mkdtempSync(path.join(tmpdir(), 'tc-out-'))
+  const outside = mkdtempSync(path.join(testDirectory, 'tc-out-'))
   try {
     try { symlinkSync(outside, path.join(root, LOCAL_DIR_NAME), 'junction') } catch { return } // sem permissao de link: pula
     await assert.rejects(() => storeCv(pdf(), META), /pasta privada/)

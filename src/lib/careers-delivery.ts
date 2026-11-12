@@ -5,3 +5,7 @@ export function careersSmtpEnabled(): boolean {
     Boolean(process.env.CAREERS_RECEIVER_EMAIL?.trim())
   )
 }
+
+export function careersProduction(): boolean {
+  return process.env.VERCEL_ENV === 'production' || (!process.env.VERCEL_ENV && process.env.NODE_ENV === 'production')
+}

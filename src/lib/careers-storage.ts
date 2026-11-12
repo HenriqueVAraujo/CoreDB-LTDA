@@ -9,7 +9,8 @@ import type { CvKind } from './careers-upload'
  *    Vercel e, em NODE_ENV=production, exige CAREERS_CV_LOCAL_ALLOW=true). Sem override de caminho.
  *  - 'blob' : Vercel Blob PRIVADO (desligado por padrão; exige aprovação, dependência e token).
  * Nenhum adaptador envia e-mail nem expõe leitura pública. O nome gravado é derivado do SHA-256
- * do conteúdo (idempotente: reenviar o mesmo arquivo não cria cópia); o nome original nunca vira caminho.
+ * do conteúdo e, para novos envios, do ID da candidatura. O nome original nunca vira caminho.
+ * Reenvios com novos IDs preservam vínculos independentes. Chamadores antigos mantêm nomes por hash.
  */
 export type StorageMode = 'off' | 'local' | 'blob'
 
@@ -27,6 +28,7 @@ export function getStorageMode(): StorageMode {
 }
 
 export type CvMetadata = {
+  applicationId?: string
   kind: CvKind
   area: string
   originalName: string
@@ -34,9 +36,11 @@ export type CvMetadata = {
 }
 
 /** Nome determinístico a partir do conteúdo (idempotência). */
-export function storedNameFor(kind: CvKind, bytes: Uint8Array): { id: string; sha256: string; fileName: string } {
+export function storedNameFor(kind: CvKind, bytes: Uint8Array, applicationId?: string): { id: string; sha256: string; fileName: string } {
   const sha256 = createHash('sha256').update(bytes).digest('hex')
-  return { id: sha256, sha256, fileName: `${sha256}.${kind}` }
+  if (applicationId && !/^[a-f0-9-]{36}$/.test(applicationId)) throw new StorageUnavailableError('ID de candidatura inválido')
+  const id = applicationId ? applicationId + '-' + sha256 : sha256
+  return { id, sha256, fileName: id + '.' + kind }
 }
 
 /** Compara caminhos respeitando a caixa do sistema de arquivos (Windows/macOS: insensível). */
@@ -90,7 +94,7 @@ async function exists(p: string): Promise<boolean> {
 
 async function storeLocal(bytes: Uint8Array, meta: CvMetadata): Promise<StoredCv> {
   const dir = await resolvePrivateDir()
-  const { id, sha256, fileName } = storedNameFor(meta.kind, bytes)
+  const { id, sha256, fileName } = storedNameFor(meta.kind, bytes, meta.applicationId)
   const finalFile = path.join(dir, fileName)
   const finalMeta = path.join(dir, `${id}.json`)
   const result: StoredCv = { id, mode: 'local', size: bytes.byteLength, sha256, existed: false }
@@ -126,7 +130,7 @@ async function storeLocal(bytes: Uint8Array, meta: CvMetadata): Promise<StoredCv
     }
     await writeFile(
       tmpMeta,
-      JSON.stringify({ id, kind: meta.kind, size: bytes.byteLength, sha256, area: meta.area, originalName: meta.originalName, consentCvAt: meta.consentCvAt }),
+      JSON.stringify({ id, applicationId: meta.applicationId, kind: meta.kind, size: bytes.byteLength, sha256, area: meta.area, originalName: meta.originalName, consentCvAt: meta.consentCvAt }),
       { flag: 'wx', mode: 0o600 },
     )
     created.push(tmpMeta)
@@ -153,7 +157,7 @@ async function storeBlob(bytes: Uint8Array, meta: CvMetadata): Promise<StoredCv>
   } catch {
     throw new StorageUnavailableError('@vercel/blob não instalado')
   }
-  const { id, sha256, fileName } = storedNameFor(meta.kind, bytes)
+  const { id, sha256, fileName } = storedNameFor(meta.kind, bytes, meta.applicationId)
   let existed = false
   try {
     await blob.put(`careers/cv/${fileName}`, Buffer.from(bytes), {
