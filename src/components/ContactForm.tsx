@@ -79,7 +79,8 @@ export default function ContactForm() {
       'https://wa.me/5531991873435?text=' +
       encodeURIComponent(
         'Olá! Gostaria de falar com a CoreDB sobre nosso ambiente TOTVS e/ou bancos de dados.'
-      );
+      ) +
+      '&utm_source=site_coredb&utm_medium=cta_whatsapp&utm_campaign=formulario_contato';
     window.open(url, "_blank", "noopener,noreferrer");
   };
 

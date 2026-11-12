@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-white pt-20">
+      <main id="main-content" tabIndex={-1} className="outline-none min-h-screen bg-white pt-20">
 
         <Hero />
 

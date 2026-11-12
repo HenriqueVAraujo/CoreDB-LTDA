@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 
-import { getCtaConfig } from '@/routes';
+import { getCtaConfig, ROUTES } from '@/routes';
 import { getServiceFromPath, trackEvent } from '@/lib/analytics';
 import Logo from './Logo';
 
@@ -64,6 +64,7 @@ export default function Header() {
                 {link.label}
               </a>
             ))}
+            <Link href={ROUTES.CAREERS} className="text-[#4B5563] hover:text-[var(--coredb-dark)] hover:underline font-medium transition-colors text-sm">Trabalhe Conosco</Link>
           </div>
 
           {/* Desktop CTA */}
@@ -110,6 +111,7 @@ export default function Header() {
                 {link.label}
               </a>
             ))}
+            <Link href={ROUTES.CAREERS} onClick={() => setIsMenuOpen(false)} className="block px-4 py-2 text-[#4B5563] hover:bg-[#F5F7FA] hover:text-[var(--coredb-dark)] hover:underline rounded-lg transition-colors font-medium">Trabalhe Conosco</Link>
             <a
               href={ctaConfig.url}
               target="_blank"

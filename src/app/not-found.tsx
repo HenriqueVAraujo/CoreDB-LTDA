@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-white px-4">
+    <main id="main-content" tabIndex={-1} className="outline-none min-h-screen flex items-center justify-center bg-white px-4">
       <div className="text-center max-w-md">
         <p className="text-[var(--coredb-dark)] font-semibold tracking-widest uppercase text-xs mb-4">
           Erro 404

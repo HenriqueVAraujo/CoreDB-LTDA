@@ -104,3 +104,6 @@ temp/
 *.db
 *.sqlite
 *.sqlite3
+
+# Curriculos locais (dev/preview) - nunca versionar
+.careers-uploads/

@@ -14,10 +14,11 @@ export const ROUTES = {
   SERVICE_AMS: '/servicos/suporte-ams',
   PRIVACY: '/politica-de-privacidade',
   TERMS: '/termos-de-uso',
+  CAREERS: '/trabalhe-conosco',
 };
 
 export const getWhatsAppLink = (message: string) =>
-  `https://wa.me/5531991873435?text=${encodeURIComponent(message)}`;
+  `https://wa.me/5531991873435?text=${encodeURIComponent(message)}&utm_source=site_coredb&utm_medium=cta_whatsapp&utm_campaign=triagem_tecnica`;
 
 export type CtaConfig = {
   label: string;

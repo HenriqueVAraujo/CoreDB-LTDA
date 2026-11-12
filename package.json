@@ -7,6 +7,10 @@
     "build": "next build",
     "start": "next start",
     "check": "tsc --noEmit",
+    "test:smoke": "node --test tests/careers-smoke.test.mjs",
+    "test:unit": "node --experimental-strip-types --test tests/careers-upload.unit.test.mjs",
+    "test:attach": "node --test tests/careers-attach-smoke.test.mjs tests/careers-hardening-smoke.test.mjs",
+    "test:inspect": "node --experimental-strip-types --test tests/careers-inspect.unit.test.mjs tests/careers-storage.unit.test.mjs tests/careers-name.unit.test.mjs",
     "format": "prettier --write ."
   },
   "dependencies": {

@@ -61,6 +61,7 @@ export default function Footer() {
               <li><Link href={ROUTES.SERVICE_CUSTOM} className="text-white/60 hover:text-[#1DAEFF] transition-colors">Desenvolvimento e Customizações</Link></li>
               <li><Link href={ROUTES.SERVICE_DBA}    className="text-white/60 hover:text-[#1DAEFF] transition-colors">Administração de Banco de Dados</Link></li>
               <li><Link href={ROUTES.SERVICE_AMS}    className="text-white/60 hover:text-[#1DAEFF] transition-colors">Suporte AMS e Governança</Link></li>
+              <li><Link href={ROUTES.CAREERS} className="text-white/60 hover:text-[#1DAEFF] transition-colors">Trabalhe Conosco</Link></li>
             </ul>
           </div>
 
