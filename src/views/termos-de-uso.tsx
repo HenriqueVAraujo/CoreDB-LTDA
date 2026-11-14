@@ -23,7 +23,7 @@ export default function TermsOfUse() {
             Termos de Uso
           </h1>
           <p className="text-[#1DAEFF] font-medium mb-2 text-lg">Regras e Condições de Navegação</p>
-          <p className="text-white/40 text-sm italic">Última atualização: 13 de setembro de 2026</p>
+          <p className="text-white/40 text-sm italic">Última atualização: 14 de novembro de 2026</p>
         </div>
       </header>
 
