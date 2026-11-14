@@ -5,13 +5,13 @@ import {
   Check,
   Database,
   Layers3,
-  Mail,
   Network,
   Workflow,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { CAREERS_EMAIL, CAREERS_EMAIL_URL, ROUTES } from "@/routes";
+import CareersForm from "@/components/CareersForm";
+import { CAREERS_EMAIL } from "@/routes";
 
 const PAGE_URL = "https://www.coredb.com.br/trabalhe-conosco";
 const DESCRIPTION =
@@ -75,7 +75,7 @@ const steps = [
     number: "01",
     title: "Apresente sua experiência",
     description:
-      "Envie um resumo do seu perfil, área de interesse e currículo ou link profissional.",
+      "Envie um resumo do seu perfil, áreas de interesse e link profissional, se desejar.",
   },
   {
     number: "02",
@@ -290,82 +290,19 @@ export default function TrabalheConoscoPage() {
           className="scroll-mt-24 py-14 md:py-20"
           aria-labelledby="apply-title"
         >
-          <div className="container mx-auto grid gap-10 lg:grid-cols-2 lg:gap-16">
-            <div>
-              <h2
-                id="apply-title"
-                className="mb-5 text-3xl font-bold text-[var(--coredb-dark)]"
-              >
-                Apresente seu perfil
-              </h2>
-              <p className="mb-6 text-[var(--coredb-gray-dark)]">
-                Envie sua candidatura por e-mail. Para facilitar a avaliação,
-                inclua:
-              </p>
-              <ul className="space-y-3 text-sm text-[var(--coredb-gray-dark)]">
-                {[
-                  "Seu nome e a área de interesse.",
-                  "Um resumo da sua experiência e das tecnologias que domina.",
-                  "Cidade/UF, disponibilidade e modalidade de atuação de interesse.",
-                  "Currículo em PDF ou link do LinkedIn/portfólio, se desejar.",
-                ].map(item => (
-                  <li key={item} className="flex items-start gap-3">
-                    <Check
-                      className="mt-0.5 h-4 w-4 shrink-0 text-[var(--coredb-dark)]"
-                      aria-hidden="true"
-                    />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-6 text-sm leading-relaxed text-[var(--coredb-gray-dark)]">
-                Apresente projetos sem expor nomes, dados, credenciais ou
-                documentos confidenciais de clientes. CPF, RG, dados bancários e
-                outros documentos pessoais não são necessários nesta etapa.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-gray-200 bg-[var(--coredb-gray-light)] p-6 md:p-8">
-              <Mail
-                className="mb-5 h-7 w-7 text-[var(--coredb-dark)]"
-                aria-hidden="true"
-              />
-              <h3 className="mb-4 text-xl font-bold text-[var(--coredb-dark)]">
-                Candidatura por e-mail
-              </h3>
-              <p className="mb-5 text-sm leading-relaxed text-[var(--coredb-gray-dark)]">
-                O botão abre seu aplicativo de e-mail com uma mensagem inicial.
-                Revise o conteúdo, anexe o currículo se desejar e conclua o
-                envio no seu e-mail.
-              </p>
-              <a
-                href={CAREERS_EMAIL_URL}
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[var(--coredb-dark)] px-5 py-3 text-center font-semibold text-white transition-colors hover:bg-[var(--coredb-cyan)] hover:text-[var(--coredb-dark)]"
-              >
-                Enviar meu perfil por e-mail{" "}
-                <ArrowRight className="h-5 w-5 shrink-0" aria-hidden="true" />
-              </a>
-              <p className="mt-5 text-sm text-[var(--coredb-gray-dark)]">
-                Você também pode copiar o endereço:
-              </p>
-              <a
-                href={`mailto:${CAREERS_EMAIL}`}
-                className="mt-1 inline-block break-all font-semibold text-[var(--coredb-dark)] underline underline-offset-4"
-              >
-                {CAREERS_EMAIL}
-              </a>
-              <p className="mt-6 border-t border-gray-200 pt-5 text-sm leading-relaxed text-[var(--coredb-gray-dark)]">
-                Usamos as informações enviadas para avaliar seu perfil e
-                conversar sobre oportunidades. Você pode pedir atualização ou
-                exclusão pelo mesmo e-mail. Consulte a{" "}
-                <Link
-                  href={ROUTES.PRIVACY}
-                  className="font-medium underline underline-offset-4"
-                >
-                  Política de Privacidade
-                </Link>
-                .
-              </p>
-            </div>
+          <div className="container mx-auto max-w-5xl">
+            <h2
+              id="apply-title"
+              className="mb-5 text-3xl font-bold text-[var(--coredb-dark)]"
+            >
+              Trabalhe Conosco — Faça parte do nosso Banco de Talentos
+            </h2>
+            <p className="mb-8 max-w-3xl text-[var(--coredb-gray-dark)]">
+              Apresente sua experiência e suas áreas de interesse. Este cadastro
+              não representa uma inscrição em vaga aberta e não garante contratação.
+              Não envie documentos pessoais nem informações confidenciais de clientes.
+            </p>
+            <CareersForm />
           </div>
         </section>
 
