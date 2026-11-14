@@ -105,5 +105,5 @@ export const getCtaConfig = (pathname?: string | null): CtaConfig => {
 };
 
 // Candidatura espontânea: o envio é concluído pelo próprio candidato no e-mail.
-export const CAREERS_EMAIL = 'henrique@coredb.com.br';
+export const CAREERS_EMAIL = 'vagas@coredb.com.br';
 export const CAREERS_EMAIL_URL = `mailto:${CAREERS_EMAIL}?subject=${encodeURIComponent('Banco de talentos CoreDB — apresentação profissional')}&body=${encodeURIComponent('Olá, CoreDB!\n\nGostaria de apresentar meu perfil.\n\nNome:\nÁrea de interesse:\nExperiência e tecnologias:\nCidade/UF:\nDisponibilidade e modalidade de interesse:\nLinkedIn ou portfólio (opcional):\n\nObrigado(a).')}`;
