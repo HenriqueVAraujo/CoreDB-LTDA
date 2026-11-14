@@ -61,7 +61,7 @@ export function createCareersHandler(deps: Dependencies = {}) {
     const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || req.headers.get('x-real-ip') || 'unknown'
     const key = createHmac('sha256', secret).update(ip).digest('hex')
     const bucket = buckets.get(key)
-    if (bucket && bucket.count >= 5) return response({ ok: false, mensagem: 'Muitas solicita????es. Tente novamente mais tarde.' }, 429, {
+    if (bucket && bucket.count >= 5) return response({ ok: false, mensagem: 'Muitas solicitações. Tente novamente mais tarde.' }, 429, {
       'Retry-After': String(Math.max(1, Math.ceil((bucket.until - time) / 1000))),
     })
     if (bucket) bucket.count++
@@ -76,7 +76,7 @@ export function createCareersHandler(deps: Dependencies = {}) {
     let payload: unknown
     try { payload = JSON.parse(await readBody(req)) } catch (error) {
       const status = error instanceof Error && ['408', '413'].includes(error.message) ? Number(error.message) : 400
-      return invalid('corpo', 'Solicita????o inv??lida ou acima do limite.', status)
+      return invalid('corpo', 'Solicitação inválida ou acima do limite.', status)
     }
     const parsed = careersSchema.safeParse(payload)
     if (!parsed.success) {
@@ -90,7 +90,7 @@ export function createCareersHandler(deps: Dependencies = {}) {
     const { website: _website, ...data } = parsed.data
     const production = env.VERCEL_ENV === 'production' || (!env.VERCEL_ENV && env.NODE_ENV === 'production')
     const configured = Boolean(env.SMTP_USER?.trim() && env.SMTP_PASS && env.CAREERS_RECEIVER_EMAIL?.trim())
-    if (production && !configured) return response({ ok: false, codigo: 'sem_destino', mensagem: 'Recebimento de candidaturas indispon??vel.' }, 503)
+    if (production && !configured) return response({ ok: false, codigo: 'sem_destino', mensagem: 'Recebimento de candidaturas indisponível.' }, 503)
     const real = configured && (env.VERCEL_ENV === 'production' || env.CAREERS_FORCE_REAL === '1')
     const timestamp = new Date(time).toISOString()
     const referencia = createCareersReference(new Date(time))
@@ -113,20 +113,20 @@ export function createCareersHandler(deps: Dependencies = {}) {
         const result = await send({
           from: sender, to: receiver, replyTo: data.email,
           subject: `Candidatura CoreDB ${referencia}`,
-          text: [`Refer??ncia: ${referencia}`, `Timestamp: ${timestamp}`,
+          text: [`Referência: ${referencia}`, `Timestamp: ${timestamp}`,
             ...Object.entries(data).map(([field, value]) => `${field}: ${Array.isArray(value) ? value.join(', ') : value}`),
           ].join('\n'),
         })
         if (!result.accepted?.some(address => (typeof address === 'string' ? address : address.address).toLowerCase() === receiver.toLowerCase())) {
-          throw new Error('Destinat??rio n??o aceito')
+          throw new Error('Destinatário não aceito')
         }
-      } catch { return response({ ok: false, codigo: 'falha_entrega', mensagem: 'N??o foi poss??vel enviar a candidatura.' }, 503) }
+      } catch { return response({ ok: false, codigo: 'falha_entrega', mensagem: 'Não foi possível enviar a candidatura.' }, 503) }
     }
     if (!env.VERCEL) {
       try { await (deps.record ?? appendCareersRecord)({ referencia, timestamp, campos: data }) }
       catch {
         // An accepted SMTP message is already a receipt; do not invite duplicate retries.
-        if (!real) return response({ ok: false, codigo: 'falha_registro', mensagem: 'N??o foi poss??vel registrar a simula????o.' }, 503)
+        if (!real) return response({ ok: false, codigo: 'falha_registro', mensagem: 'Não foi possível registrar a simulação.' }, 503)
       }
     }
     return response({ ok: true, modo, recebido: real, referencia,

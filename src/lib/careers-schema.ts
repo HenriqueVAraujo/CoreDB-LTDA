@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 // Check before trimming: CR/LF must never disappear during normalization.
 const text = (max: number, min = 0) => z.string()
-  .max(max).regex(/^[^\u0000-\u001f\u007f-\u009f\u2028\u2029]*$/, 'Caracteres de controle n??o permitidos.')
+  .max(max).regex(/^[^\u0000-\u001f\u007f-\u009f\u2028\u2029]*$/, 'Caracteres de controle não permitidos.')
   .transform(value => value.trim()).pipe(z.string().min(min))
 
 export const careerAreas = [

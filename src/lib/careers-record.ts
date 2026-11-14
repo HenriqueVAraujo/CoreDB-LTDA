@@ -16,7 +16,7 @@ export function createCareersReference(now = new Date()): string {
 export type CareersRecord = { referencia: string; timestamp: string; campos: CareersData }
 
 export async function appendCareersRecord(record: CareersRecord): Promise<void> {
-  if (process.env.VERCEL) throw new Error('Registro local indispon??vel na Vercel')
+  if (process.env.VERCEL) throw new Error('Registro local indisponível na Vercel')
   const directory = path.join(process.cwd(), '.careers-data')
   await mkdir(directory, { recursive: true, mode: 0o700 })
   const file = await open(path.join(directory, 'candidaturas.jsonl'), 'a', 0o600)

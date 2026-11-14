@@ -21,9 +21,9 @@ const { careersSchema, careerAreas } = require('../src/lib/careers-schema.ts')
 const { createCareersHandler } = require('../src/lib/careers-delivery.ts')
 const { createCareersReference, appendCareersRecord } = require('../src/lib/careers-record.ts')
 const valid = () => ({ nome: 'Pessoa Teste', email: 'pessoa@example.org', telefone: '+55 (11) 99999-0000',
-  cidade: 'S??o Paulo', estado: 'SP', areas: ['dba_postgresql'], experiencia: 'pleno',
+  cidade: 'São Paulo', estado: 'SP', areas: ['dba_postgresql'], experiencia: 'pleno',
   modalidade: 'remoto', disponibilidade: 'a_combinar', perfilUrl: 'https://example.org/perfil',
-  resumo: 'Experi??ncia t??cnica em ambientes sint??ticos.', consentimentoAnalise: true,
+  resumo: 'Experiência técnica em ambientes sintéticos.', consentimentoAnalise: true,
   consentimentoBanco: false, website: '',
 })
 const request = (payload = valid(), headers = {}) => new Request('http://localhost/api/trabalhe-conosco', {
@@ -32,13 +32,13 @@ const request = (payload = valid(), headers = {}) => new Request('http://localho
 const realEnv = { VERCEL: '1', VERCEL_ENV: 'production', SMTP_USER: 'site@example.org',
   SMTP_PASS: 'synthetic-test-password', CAREERS_RECEIVER_EMAIL: 'rh@example.org' }
 
-test('schema: limites, enums, UF, ??reas, URL, consentimentos e campos desconhecidos', () => {
+test('schema: limites, enums, UF, áreas, URL, consentimentos e campos desconhecidos', () => {
   assert.equal(careersSchema.safeParse(valid()).success, true)
   for (const field of ['telefone', 'perfilUrl']) {
     const data = valid(); delete data[field]
     assert.equal(careersSchema.safeParse(data).success, true)
   }
-  const failures = { nome: ['', 'x'.repeat(121)], email: ['inv??lido', 'x'.repeat(255)],
+  const failures = { nome: ['', 'x'.repeat(121)], email: ['inválido', 'x'.repeat(255)],
     telefone: ['123abc', '1'.repeat(33)], cidade: ['', 'x'.repeat(81)], estado: ['ZZ', 'sp', 'SP '],
     areas: [[], Array(7).fill('fluig'), ['invalida']], experiencia: ['lead'], modalidade: ['flex'],
     disponibilidade: ['amanha'], perfilUrl: ['ftp://example.org', 'javascript:alert(1)', 'https://example.org/' + 'a'.repeat(300)],
@@ -55,7 +55,7 @@ test('schema: limites, enums, UF, ??reas, URL, consentimentos e campos desconhec
   }
   for (const field of ['cpf', 'rg', 'dataNascimento', 'foto', 'estadoCivil', 'dadoSensivel', 'curriculo']) {
     assert.equal(Object.hasOwn(careersSchema.shape, field), false)
-    assert.equal(careersSchema.safeParse({ ...valid(), [field]: 'n??o solicitado' }).success, false)
+    assert.equal(careersSchema.safeParse({ ...valid(), [field]: 'não solicitado' }).success, false)
   }
 })
 
@@ -69,7 +69,7 @@ test('schema: rejeita CR/LF e controles antes de normalizar todos os textos', ()
   assert.equal(careersSchema.safeParse({ ...valid(), areas: ['fluig\r\n'] }).success, false)
 })
 
-test('simulado: falso recebimento, refer??ncia e registro verific??vel; Vercel n??o grava', async () => {
+test('simulado: falso recebimento, referência e registro verificável; Vercel não grava', async () => {
   const records = []
   const handler = createCareersHandler({ env: {}, record: async item => records.push(item) })
   const response = await handler(request())
@@ -85,13 +85,13 @@ test('simulado: falso recebimento, refer??ncia e registro verific??vel; Vercel n
   assert.equal(Object.hasOwn(records[0].campos, 'website'), false)
   assert.ok(Number.isFinite(Date.parse(records[0].timestamp)))
   const vercel = createCareersHandler({ env: { ...realEnv, VERCEL_ENV: 'preview' },
-    sendMail: async () => { assert.fail('Preview n??o deve enviar') },
-    record: async () => { assert.fail('Vercel n??o deve gravar') },
+    sendMail: async () => { assert.fail('Preview não deve enviar') },
+    record: async () => { assert.fail('Vercel não deve gravar') },
   })
   assert.equal((await (await vercel(request())).json()).recebido, false)
 })
 
-test('real: transporte falso recebe texto puro, reply-to validado e assunto com refer??ncia', async () => {
+test('real: transporte falso recebe texto puro, reply-to validado e assunto com referência', async () => {
   let mail
   const handler = createCareersHandler({ env: realEnv, sendMail: async input => {
     mail = input; return { accepted: [{ address: 'RH@example.org' }] }
@@ -106,7 +106,7 @@ test('real: transporte falso recebe texto puro, reply-to validado e assunto com 
   assert.ok(mail.text.includes('<script>apenas texto</script>'))
 })
 
-test('fail-closed: aus??ncia de destino, SMTP recusado/erro e registro indispon??vel', async () => {
+test('fail-closed: ausência de destino, SMTP recusado/erro e registro indisponível', async () => {
   for (const missing of ['SMTP_USER', 'SMTP_PASS', 'CAREERS_RECEIVER_EMAIL']) {
     const env = { ...realEnv }; delete env[missing]
     const handler = createCareersHandler({ env })
@@ -122,7 +122,7 @@ test('fail-closed: aus??ncia de destino, SMTP recusado/erro e registro indispon?
   assert.equal(response.status, 503)
 })
 
-test('force real requer credenciais; configura????o e candidato com CR/LF n??o enviam', async () => {
+test('force real requer credenciais; configuração e candidato com CR/LF não enviam', async () => {
   let sent = 0
   const sendMail = async () => { sent++; return { accepted: ['rh@example.org'] } }
   const env = { ...realEnv, VERCEL_ENV: 'preview', CAREERS_FORCE_REAL: '1' }
@@ -143,7 +143,7 @@ test('honeypot retorna erros por campo e nunca entrega ou registra', async () =>
   assert.equal(typeof (await response.json()).erros.website, 'string')
 })
 
-test('rate limit: cinco por minuto, erros contam e expira????o libera (somente mem??ria)', async () => {
+test('rate limit: cinco por minuto, erros contam e expiração libera (somente memória)', async () => {
   let time = Date.UTC(2026, 10, 14)
   const handler = createCareersHandler({ env: { VERCEL: '1' }, now: () => time })
   for (let i = 0; i < 5; i++) assert.equal((await handler(request({}))).status, 400)
@@ -154,7 +154,7 @@ test('rate limit: cinco por minuto, erros contam e expira????o libera (somente m
   assert.equal((await handler(request())).status, 200)
 })
 
-test('payload: JSON inv??lido, tipo, tamanho declarado e real', async () => {
+test('payload: JSON inválido, tipo, tamanho declarado e real', async () => {
   const handler = () => createCareersHandler({ env: { VERCEL: '1' } })
   for (const [body, headers, status] of [
     ['{', { 'content-type': 'application/json' }, 400],
@@ -164,14 +164,14 @@ test('payload: JSON inv??lido, tipo, tamanho declarado e real', async () => {
   ]) assert.equal((await handler()(new Request('http://localhost', { method: 'POST', headers, body }))).status, status)
 })
 
-test('refer??ncias distintas em 10 mil gera????es no mesmo instante', () => {
+test('referências distintas em 10 mil gerações no mesmo instante', () => {
   const date = new Date('2026-11-14T12:00:00Z')
   const refs = new Set(Array.from({ length: 10000 }, () => createCareersReference(date)))
   assert.equal(refs.size, 10000)
   for (const ref of refs) assert.match(ref, /^TC-20261114-[A-Z0-9]{6}$/)
 })
 
-test('JSONL real em diret??rio tempor??rio; Vercel recusa filesystem', async () => {
+test('JSONL real em diretório temporário; Vercel recusa filesystem', async () => {
   const previousCwd = process.cwd()
   const previousVercel = process.env.VERCEL
   const temporary = await mkdtemp(path.join(os.tmpdir(), 'careers-api-'))
