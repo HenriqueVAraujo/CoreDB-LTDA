@@ -198,3 +198,36 @@ test('route exporta o handler POST em runtime nodejs', () => {
   const route = require('../src/app/api/trabalhe-conosco/route.ts')
   assert.equal(route.runtime, 'nodejs'); assert.equal(typeof route.POST, 'function')
 })
+
+test('idempotência por instância: duas candidaturas idênticas simultâneas enviam UMA vez e repetem a referência', async () => {
+  let sends = 0
+  const handler = createCareersHandler({ env: realEnv, record: async () => {}, sendMail: async mail => {
+    sends++; await new Promise(resolve => setTimeout(resolve, 30)); return { accepted: [mail.to] } } })
+  const [a, b] = await Promise.all([handler(request()), handler(request())])
+  const [ja, jb] = [await a.json(), await b.json()]
+  assert.equal(sends, 1)
+  assert.equal(ja.referencia, jb.referencia)
+  assert.equal([ja, jb].filter(item => item.duplicado === true).length, 1)
+  const again = await (await handler(request())).json()          // depois de concluída, dentro da janela
+  assert.equal(again.duplicado, true); assert.equal(sends, 1)
+  const other = valid(); other.resumo = 'Outra candidatura diferente.'
+  assert.equal((await handler(request(other))).status, 200); assert.equal(sends, 2)
+})
+
+test('idempotência: falha de entrega NÃO fica memorizada (nova tentativa é permitida)', async () => {
+  let sends = 0
+  const handler = createCareersHandler({ env: realEnv, record: async () => {}, sendMail: async mail => {
+    sends++; if (sends === 1) throw new Error('smtp fora'); return { accepted: [mail.to] } } })
+  assert.equal((await handler(request())).status, 503)
+  const retry = await handler(request())
+  assert.equal(retry.status, 200); assert.equal((await retry.json()).duplicado, undefined); assert.equal(sends, 2)
+})
+
+test('caracteres invisíveis e de direção de texto (zero-width, bidi, BOM) são recusados', () => {
+  for (const ch of ['\u200b', '\u200e', '\u202e', '\u2066', '\u2060', '\ufeff']) {
+    const data = valid(); data.nome = `Maria${ch}Teste`
+    assert.equal(careersSchema.safeParse(data).success, false, `U+${ch.codePointAt(0).toString(16)}`)
+  }
+  const accents = valid(); accents.nome = 'José Conceição Müller'; accents.cidade = 'São Paulo'
+  assert.equal(careersSchema.safeParse(accents).success, true)   // UTF-8 legítimo continua válido
+})

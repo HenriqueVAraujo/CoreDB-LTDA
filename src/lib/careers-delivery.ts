@@ -15,6 +15,7 @@ type Dependencies = {
 
 const MAX_BYTES = 16 * 1024
 const WINDOW = 60_000
+const DEDUPE_WINDOW = 15 * 60_000
 const response = (body: unknown, status = 200, headers = {}) => Response.json(body, {
   status, headers: { 'Cache-Control': 'no-store', ...headers },
 })
@@ -52,6 +53,9 @@ async function readBody(req: Request): Promise<string> {
 export function createCareersHandler(deps: Dependencies = {}) {
   const buckets = new Map<string, { count: number; until: number }>()
   const secret = randomBytes(32)
+  // Idempotencia por instancia: a MESMA candidatura (impressao digital HMAC dos campos validados) enviada de novo/em paralelo
+  // reutiliza o resultado em andamento ou ja aceito durante DEDUPE_WINDOW; falhas nao ficam gravadas (retry permitido).
+  const recent = new Map<string, { until: number; result: Promise<[Record<string, unknown>, number]> }>()
   const now = deps.now ?? Date.now
   return async (req: Request): Promise<Response> => {
     const env = deps.env ?? process.env
@@ -92,6 +96,14 @@ export function createCareersHandler(deps: Dependencies = {}) {
     const configured = Boolean(env.SMTP_USER?.trim() && env.SMTP_PASS && env.CAREERS_RECEIVER_EMAIL?.trim())
     if (production && !configured) return response({ ok: false, codigo: 'sem_destino', mensagem: 'Recebimento de candidaturas indisponível.' }, 503)
     const real = configured && (production || env.CAREERS_FORCE_REAL === '1')
+    const fingerprint = createHmac('sha256', secret).update(JSON.stringify(data)).digest('hex')
+    for (const [k, v] of recent) if (v.until <= time) recent.delete(k)
+    const previous = recent.get(fingerprint)
+    if (previous) {
+      const [body, status] = await previous.result
+      return response(status === 200 ? { ...body, duplicado: true } : body, status)
+    }
+    const deliver = async (): Promise<[Record<string, unknown>, number]> => {
     const timestamp = new Date(time).toISOString()
     const referencia = createCareersReference(new Date(time))
     const modo = real ? 'real' : 'simulado'
@@ -120,17 +132,23 @@ export function createCareersHandler(deps: Dependencies = {}) {
         if (!result.accepted?.some(address => (typeof address === 'string' ? address : address.address).toLowerCase() === receiver.toLowerCase())) {
           throw new Error('Destinatário não aceito')
         }
-      } catch { return response({ ok: false, codigo: 'falha_entrega', mensagem: 'Não foi possível enviar a candidatura.' }, 503) }
+      } catch { return [{ ok: false, codigo: 'falha_entrega', mensagem: 'Não foi possível enviar a candidatura.' }, 503] }
     }
     if (!env.VERCEL) {
       try { await (deps.record ?? appendCareersRecord)({ referencia, timestamp, campos: data }) }
       catch {
         // An accepted SMTP message is already a receipt; do not invite duplicate retries.
-        if (!real) return response({ ok: false, codigo: 'falha_registro', mensagem: 'Não foi possível registrar a simulação.' }, 503)
+        if (!real) return [{ ok: false, codigo: 'falha_registro', mensagem: 'Não foi possível registrar a simulação.' }, 503]
       }
     }
-    return response({ ok: true, modo, recebido: real, referencia,
+    return [{ ok: true, modo, recebido: real, referencia,
       mensagem: real ? 'Candidatura aceita para entrega ao RH.' : 'SIMULADO: nada foi enviado ao RH',
-    })
+    }, 200]
+    }
+    const result = deliver()
+    recent.set(fingerprint, { until: time + DEDUPE_WINDOW, result })
+    const [body, status] = await result.catch((): [Record<string, unknown>, number] => [{ ok: false, mensagem: 'Erro interno.' }, 500])
+    if (status !== 200 && recent.get(fingerprint)?.result === result) recent.delete(fingerprint)
+    return response(body, status)
   }
 }

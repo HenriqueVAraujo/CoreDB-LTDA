@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 // Check before trimming: CR/LF must never disappear during normalization.
 const text = (max: number, min = 0) => z.string()
-  .max(max, 'Texto acima do limite permitido.').regex(/^[^\u0000-\u001f\u007f-\u009f\u2028\u2029]*$/, 'Caracteres de controle não permitidos.')
+  .max(max, 'Texto acima do limite permitido.').regex(/^[^\u0000-\u001f\u007f-\u009f\u2028\u2029\u200b-\u200f\u202a-\u202e\u2060-\u2064\u2066-\u2069\ufeff]*$/, 'Caracteres de controle, invisíveis ou de direção de texto não permitidos.')
   .transform(value => value.trim()).pipe(z.string().min(min, 'Campo obrigatório.'))
 
 export const careerAreas = [
@@ -31,7 +31,7 @@ export const careersSchema = z.object({
   resumo: text(1500, 1),
   consentimentoAnalise: z.literal(true, { message: 'O consentimento para análise é obrigatório.' }),
   consentimentoBanco: z.boolean({ message: 'Valor inválido.' }),
-  website: z.string().max(0, 'Deixe este campo vazio.'),
+  website: z.string().max(0, 'Não foi possível processar a solicitação.'),
 }).strict()
 
 export type CareersData = Omit<z.infer<typeof careersSchema>, 'website'>
