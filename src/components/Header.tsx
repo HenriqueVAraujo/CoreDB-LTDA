@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 
-import { getCtaConfig } from '@/routes';
+import { CAREERS_EMAIL_URL, getCtaConfig, ROUTES } from '@/routes';
 import { getServiceFromPath, trackEvent } from '@/lib/analytics';
 import Logo from './Logo';
 
@@ -17,14 +17,18 @@ export default function Header() {
     { label: 'Serviços', href: '#services' },
     { label: 'Resultados', href: '#results' },
     { label: 'Sobre', href: '#about' },
-    { label: 'Contato', href: '#contact' }
+    { label: 'Contato', href: '#contact' },
+    { label: 'Trabalhe Conosco', href: ROUTES.CAREERS }
   ];
 
   const pathname = usePathname();
   const ctaConfig = getCtaConfig(pathname);
+  const isCareers = pathname === ROUTES.CAREERS;
+  const ctaUrl = isCareers ? CAREERS_EMAIL_URL : ctaConfig.url;
+  const ctaLabel = isCareers ? 'Apresentar perfil por e-mail à CoreDB' : ctaConfig.label;
 
   const handleNav = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (pathname !== '/') {
+    if (pathname !== '/' || !href.startsWith('#')) {
       setIsMenuOpen(false);
       return;
     }
@@ -53,37 +57,37 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-5 xl:gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={pathname === '/' ? link.href : `/${link.href}`}
+                href={link.href.startsWith('#') && pathname !== '/' ? `/${link.href}` : link.href}
                 onClick={e => handleNav(e, link.href)}
                 className="text-[#4B5563] hover:text-[var(--coredb-dark)] hover:underline font-medium transition-colors text-sm"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             <a
-              href={ctaConfig.url}
-              target="_blank"
+              href={ctaUrl}
+              target={isCareers ? undefined : "_blank"}
               rel="noopener noreferrer"
-              aria-label={ctaConfig.label}
-              onClick={() => trackEvent('cta_click', { page_path: pathname ?? '', service: getServiceFromPath(pathname), cta_location: 'header' })}
+              aria-label={ctaLabel}
+              onClick={() => trackEvent(isCareers ? 'email_click' : 'cta_click', { page_path: pathname ?? '', service: getServiceFromPath(pathname), cta_location: 'header' })}
               className="px-6 py-2 bg-[var(--coredb-dark)] text-white font-semibold rounded-lg hover:bg-[var(--coredb-cyan)] hover:text-[var(--coredb-dark)] transition-all text-sm"
             >
-              Agendar triagem técnica
+              {isCareers ? 'Apresentar meu perfil' : 'Agendar triagem técnica'}
             </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             type="button"
-            className="md:hidden p-2 text-[#0B1C2D] hover:bg-[#F5F7FA] rounded-lg transition-colors"
+            className="lg:hidden p-2 text-[#0B1C2D] hover:bg-[#F5F7FA] rounded-lg transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'}
             aria-expanded={isMenuOpen}
@@ -99,29 +103,29 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div id="mobile-navigation" className="md:hidden pb-6 space-y-3 border-t border-[#E5E7EB] pt-6">
+          <div id="mobile-navigation" className="lg:hidden pb-6 space-y-3 border-t border-[#E5E7EB] pt-6">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={pathname === '/' ? link.href : `/${link.href}`}
+                href={link.href.startsWith('#') && pathname !== '/' ? `/${link.href}` : link.href}
                 onClick={e => handleNav(e, link.href)}
                 className="block px-4 py-2 text-[#4B5563] hover:bg-[#F5F7FA] hover:text-[var(--coredb-dark)] hover:underline rounded-lg transition-colors font-medium"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <a
-              href={ctaConfig.url}
-              target="_blank"
+              href={ctaUrl}
+              target={isCareers ? undefined : "_blank"}
               rel="noopener noreferrer"
-              aria-label={ctaConfig.label}
+              aria-label={ctaLabel}
               onClick={() => {
-                trackEvent('cta_click', { page_path: pathname ?? '', service: getServiceFromPath(pathname), cta_location: 'header' })
+                trackEvent(isCareers ? 'email_click' : 'cta_click', { page_path: pathname ?? '', service: getServiceFromPath(pathname), cta_location: 'header' })
                 setIsMenuOpen(false)
               }}
               className="block w-full px-4 py-3 bg-[var(--coredb-dark)] text-white text-center font-semibold rounded-lg hover:bg-[var(--coredb-cyan)] hover:text-[var(--coredb-dark)] transition-all mt-4"
             >
-              Agendar triagem técnica
+              {isCareers ? 'Apresentar meu perfil' : 'Agendar triagem técnica'}
             </a>
           </div>
         )}

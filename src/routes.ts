@@ -1,6 +1,7 @@
 // Centralização de rotas e helpers de navegação
 export const ROUTES = {
   HOME: '/',
+  CAREERS: '/trabalhe-conosco',
   SERVICE_TOTVS: '/servicos/consultoria-totvs',
   SERVICE_PROTHEUS: '/servicos/protheus',
   SERVICE_RM: '/servicos/rm',
@@ -33,51 +34,51 @@ const createCtaConfig = (label: string, message: string): CtaConfig => ({
 
 export const CTA_CONFIGS = {
   institutional: createCtaConfig(
-    'Agendar triagem técnica com a CoreDB — 20 minutos',
+    'Agendar triagem técnica com a CoreDB — 30 minutos',
     'Olá! Gostaria de agendar uma triagem técnica e entender como a CoreDB pode apoiar nosso ambiente.'
   ),
   totvs: createCtaConfig(
-    'Agendar triagem técnica do ambiente TOTVS — 20 minutos',
+    'Agendar triagem técnica do ambiente TOTVS — 30 minutos',
     'Olá! Gostaria de agendar uma triagem técnica para nosso ambiente TOTVS.'
   ),
   protheus: createCtaConfig(
-    'Agendar triagem técnica do Protheus — 20 minutos',
+    'Agendar triagem técnica do Protheus — 30 minutos',
     'Olá! Gostaria de agendar uma triagem técnica para nosso ambiente Protheus.'
   ),
   rm: createCtaConfig(
-    'Agendar triagem técnica de risco do RM — 20 minutos',
+    'Agendar triagem técnica de risco do RM — 30 minutos',
     'Olá! Gostaria de agendar uma triagem técnica de risco para nosso ambiente TOTVS RM.'
   ),
   fluig: createCtaConfig(
-    'Agendar triagem técnica do Fluig — 20 minutos',
+    'Agendar triagem técnica do Fluig — 30 minutos',
     'Olá! Gostaria de agendar uma triagem técnica para nosso ambiente Fluig.'
   ),
   dba: createCtaConfig(
-    'Agendar triagem técnica de bancos de dados — 20 minutos',
+    'Agendar triagem técnica de bancos de dados — 30 minutos',
     'Olá! Gostaria de agendar uma triagem técnica para nosso ambiente de banco de dados.'
   ),
   sqlServer: createCtaConfig(
-    'Agendar triagem técnica de SQL Server — 20 minutos',
+    'Agendar triagem técnica de SQL Server — 30 minutos',
     'Olá! Gostaria de agendar uma triagem técnica para nosso ambiente SQL Server.'
   ),
   oracle: createCtaConfig(
-    'Agendar triagem técnica de Oracle — 20 minutos',
+    'Agendar triagem técnica de Oracle — 30 minutos',
     'Olá! Gostaria de agendar uma triagem técnica para nosso ambiente Oracle.'
   ),
   postgresql: createCtaConfig(
-    'Agendar triagem técnica de PostgreSQL — 20 minutos',
+    'Agendar triagem técnica de PostgreSQL — 30 minutos',
     'Olá! Gostaria de agendar uma triagem técnica para nosso ambiente PostgreSQL.'
   ),
   mysql: createCtaConfig(
-    'Agendar triagem técnica de MySQL — 20 minutos',
+    'Agendar triagem técnica de MySQL — 30 minutos',
     'Olá! Gostaria de agendar uma triagem técnica para nosso ambiente MySQL.'
   ),
   development: createCtaConfig(
-    'Agendar triagem de desenvolvimento e integrações — 20 minutos',
+    'Agendar triagem de desenvolvimento e integrações — 30 minutos',
     'Olá! Gostaria de conversar sobre uma customização, API ou integração para nosso ambiente.'
   ),
   ams: createCtaConfig(
-    'Agendar triagem de suporte AMS — 20 minutos',
+    'Agendar triagem de suporte AMS — 30 minutos',
     'Olá! Gostaria de agendar uma triagem sobre suporte AMS e governança operacional.'
   ),
 } as const;
@@ -102,3 +103,7 @@ export const getCtaConfig = (pathname?: string | null): CtaConfig => {
 
   return (normalizedPath && CTA_CONFIG_BY_ROUTE[normalizedPath]) || CTA_CONFIGS.institutional;
 };
+
+// Candidatura espontânea: o envio é concluído pelo próprio candidato no e-mail.
+export const CAREERS_EMAIL = 'henrique@coredb.com.br';
+export const CAREERS_EMAIL_URL = `mailto:${CAREERS_EMAIL}?subject=${encodeURIComponent('Banco de talentos CoreDB — apresentação profissional')}&body=${encodeURIComponent('Olá, CoreDB!\n\nGostaria de apresentar meu perfil.\n\nNome:\nÁrea de interesse:\nExperiência e tecnologias:\nCidade/UF:\nDisponibilidade e modalidade de interesse:\nLinkedIn ou portfólio (opcional):\n\nObrigado(a).')}`;
