@@ -91,7 +91,7 @@ export function createCareersHandler(deps: Dependencies = {}) {
     const production = env.VERCEL_ENV === 'production' || (!env.VERCEL_ENV && env.NODE_ENV === 'production')
     const configured = Boolean(env.SMTP_USER?.trim() && env.SMTP_PASS && env.CAREERS_RECEIVER_EMAIL?.trim())
     if (production && !configured) return response({ ok: false, codigo: 'sem_destino', mensagem: 'Recebimento de candidaturas indisponível.' }, 503)
-    const real = configured && (env.VERCEL_ENV === 'production' || env.CAREERS_FORCE_REAL === '1')
+    const real = configured && (production || env.CAREERS_FORCE_REAL === '1')
     const timestamp = new Date(time).toISOString()
     const referencia = createCareersReference(new Date(time))
     const modo = real ? 'real' : 'simulado'

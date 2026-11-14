@@ -206,7 +206,7 @@ export default function CareersForm() {
           {error("consentimentoBanco")}
           <p className="text-sm text-gray-700">Consulte como seus dados são tratados na <a href="/politica-de-privacidade" className="inline-flex min-h-11 items-center font-semibold text-[var(--coredb-dark)] underline underline-offset-4">Política de Privacidade</a>. Você pode solicitar atualização ou exclusão pelo e-mail vagas@coredb.com.br.</p>
         </div>
-        <button type="submit" className="min-h-12 w-full rounded-lg bg-[var(--coredb-dark)] px-5 py-3 font-semibold text-white hover:bg-[var(--coredb-cyan)] hover:text-[var(--coredb-dark)] disabled:opacity-70">{busy ? "Enviando candidatura…" : "Enviar candidatura"}</button>
+        <button type="submit" disabled={Boolean(outcome && outcome.kind !== "erro" && outcome.kind !== "simulado")} className="min-h-12 w-full rounded-lg bg-[var(--coredb-dark)] px-5 py-3 font-semibold text-white hover:bg-[var(--coredb-cyan)] hover:text-[var(--coredb-dark)] disabled:opacity-70">{busy ? "Enviando candidatura…" : "Enviar candidatura"}</button>
       </fieldset>
       <div role="status" aria-live="polite" aria-atomic="true">
         {busy && <p>Enviando candidatura, aguarde.</p>}
