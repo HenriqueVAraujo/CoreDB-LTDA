@@ -28,7 +28,7 @@ export default function PrivacyPolicy() {
             Política de Privacidade
           </h1>
           <p className="text-[#1DAEFF] font-medium mb-2">CoreDB — O núcleo da continuidade.</p>
-          <p className="text-white/40 text-sm">Última atualização: 13 de setembro de 2026</p>
+          <p className="text-white/40 text-sm">Última atualização: 14 de novembro de 2026</p>
         </div>
       </header>
 
@@ -48,7 +48,7 @@ export default function PrivacyPolicy() {
               </div>
               <div>
                 <h4 className="font-bold text-[#1DAEFF] mb-2">Uso Ético</h4>
-                <p className="text-sm text-white/70">Coletamos apenas o necessário para diagnósticos técnicos e comerciais.</p>
+                <p className="text-sm text-white/70">Tratamos as informações necessárias para atender contatos, avaliar demandas e analisar candidaturas profissionais.</p>
               </div>
               <div>
                 <h4 className="font-bold text-[#1DAEFF] mb-2">Continuidade</h4>
@@ -65,12 +65,18 @@ export default function PrivacyPolicy() {
 
             <section>
               <h2 className="text-2xl font-bold !text-white mb-4" style={{ color: 'white' }}>2. Coleta e Uso de Dados</h2>
-              <p>Coletamos nome, e-mail corporativo, empresa e telefone exclusivamente através de nossos formulários para:</p>
+              <p>Recebemos informações de contato, como nome, e-mail, empresa e telefone, por nossos formulários e canais de comunicação, conforme a finalidade do contato, para:</p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Diagnósticos de Banco de Dados e ERP Protheus/RM;</li>
                 <li>Envio de propostas comerciais personalizadas;</li>
                 <li>Comunicação técnica sobre projetos em andamento.</li>
               </ul>
+              <p>
+                Candidaturas espontâneas podem ser enviadas por e-mail pelo canal indicado na página Trabalhe Conosco. Usamos nome, contato, experiência profissional e informações de currículo ou portfólio fornecidas voluntariamente para avaliar o perfil e conversar sobre oportunidades. O envio não garante contratação.
+              </p>
+              <p>
+                Para candidaturas, não solicitamos CPF, RG, dados bancários ou documentos pessoais nesta etapa. O candidato pode solicitar atualização, retirada do banco de talentos ou exclusão das informações pelo mesmo canal de candidatura. Os dados devem ser mantidos pelo tempo necessário à finalidade e às obrigações aplicáveis.
+              </p>
               <p>
                 Quando o usuário aceita os cookies analíticos, utilizamos Google Analytics para compreender o uso do site. O serviço pode processar dados técnicos de navegação e do dispositivo conforme suas próprias políticas. Os campos pessoais informados no formulário — como nome, e-mail, telefone, empresa e mensagem — não são enviados pela instrumentação de eventos do site ao Google Analytics.
               </p>

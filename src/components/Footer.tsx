@@ -51,6 +51,7 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
+              <li><Link href={ROUTES.CAREERS} className="text-white/60 hover:text-[#1DAEFF] transition-colors">Trabalhe Conosco</Link></li>
             </ul>
           </div>
 

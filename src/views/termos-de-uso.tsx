@@ -23,7 +23,7 @@ export default function TermsOfUse() {
             Termos de Uso
           </h1>
           <p className="text-[#1DAEFF] font-medium mb-2 text-lg">Regras e Condições de Navegação</p>
-          <p className="text-white/40 text-sm italic">Última atualização: 13 de setembro de 2026</p>
+          <p className="text-white/40 text-sm italic">Última atualização: 14 de novembro de 2026</p>
         </div>
       </header>
 
@@ -105,7 +105,7 @@ export default function TermsOfUse() {
             <div className="bg-[#0B1C2D] p-10 rounded-[23px] text-center">
               <h3 className="text-2xl font-bold mb-4 !text-white" style={{ color: 'white' }}>Precisa de uma análise formal?</h3>
               <p className="text-white/60 mb-8 max-w-xl mx-auto">
-                Conheça a triagem técnica com a CoreDB em uma conversa inicial de 20 minutos.
+                Conheça a triagem técnica com a CoreDB em uma conversa inicial de 30 minutos.
               </p>
               <Link
                 href={CTA_CONFIGS.institutional.url}
