@@ -6,6 +6,7 @@ import { Mail, Phone, Send, ShieldCheck, MessageCircle } from "lucide-react";
 import { getServiceFromPath, trackEvent } from "@/lib/analytics";
 
 const REQUIRED_FIELD_DESCRIPTION_ID = "contact-required-fields";
+const CONTACT_MESSAGE_MAX = 4000;   // deve ser igual a z.string().max(4000) em src/app/api/contact/route.ts (teste de contrato)
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -23,6 +24,9 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const hasStartedRef = useRef(false);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+  const messageLength = formData.message.length;   // mesma contagem do backend (z.string().max(4000))
+  const messageTooLong = messageLength > CONTACT_MESSAGE_MAX;
   const pathname = usePathname();
   const service = getServiceFromPath(pathname);
 
@@ -44,6 +48,11 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (messageTooLong) {   // issue #14: erro especifico, conteudo preservado, sem chamada ao backend
+      setSubmitStatus("idle");
+      messageRef.current?.focus();
+      return;
+    }
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
@@ -166,14 +175,21 @@ export default function ContactForm() {
                 <textarea
                   id="contact-message"
                   name="message"
+                  ref={messageRef}
                   rows={4}
                   value={formData.message}
                   onChange={handleChange}
-                  aria-describedby="contact-message-optional"
+                  aria-invalid={messageTooLong}
+                  aria-describedby={messageTooLong ? "contact-message-optional contact-message-error" : "contact-message-optional contact-message-count"}
                   disabled={isSubmitting}
                   placeholder="Descreva brevemente o cenário, volume de usuários, módulos em uso ou qualquer detalhe relevante..."
                   className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[var(--coredb-cyan)] focus:ring-2 focus:ring-[var(--coredb-cyan)]/20 transition resize-none text-sm"
                 />
+                {messageTooLong ? (
+                  <p id="contact-message-error" role="alert" className="mt-2 text-sm text-red-700">A mensagem tem {messageLength} caracteres; o limite é {CONTACT_MESSAGE_MAX}. Reduza {messageLength - CONTACT_MESSAGE_MAX} caractere(s) para enviar. Seu texto foi preservado.</p>
+                ) : (
+                  <p id="contact-message-count" className="mt-2 text-xs text-gray-600">{messageLength}/{CONTACT_MESSAGE_MAX} caracteres</p>
+                )}
               </div>
 
               <button
