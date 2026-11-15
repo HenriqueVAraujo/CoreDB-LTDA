@@ -99,6 +99,8 @@ export function createCareersHandler(deps: Dependencies = {}) {
     const fingerprint = createHmac('sha256', secret).update(JSON.stringify(data)).digest('hex')
     for (const [k, v] of recent) if (v.until <= time) recent.delete(k)
     const previous = recent.get(fingerprint)
+    // Teto como em buckets: nao evicta entradas ativas; recusa novas candidaturas distintas em vez de crescer sem limite.
+    if (!previous && recent.size >= 500) return response({ ok: false, mensagem: 'Servidor ocupado.' }, 429, { 'Retry-After': '60' })
     if (previous) {
       const [body, status] = await previous.result
       return response(status === 200 ? { ...body, duplicado: true } : body, status)
