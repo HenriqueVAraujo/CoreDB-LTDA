@@ -22,6 +22,15 @@ O Codex não pode:
 
 Toda promoção deve ser feita por mantenedor humano por meio de Pull Request. A integração Git pode gerar Preview das branches autorizadas, mas o Codex não pode promover esse Preview.
 
+### Gate permanente de revisão do Claude
+
+- Nenhum Pull Request pode ser mergeado em `main` sem revisão explícita do Claude sobre o **diff/HEAD mais recente** do PR.
+- Se houver qualquer push/commit após a revisão do Claude, a revisão anterior fica inválida e deve ser refeita.
+- A evidência da revisão deve ficar registrada no PR (comentário, checklist ou referência inequívoca à revisão).
+- Check/build/Preview verdes não substituem a revisão do Claude.
+- Mesmo após a revisão do Claude, o merge continua exclusivamente humano.
+- Esta regra é permanente e prevalece sobre instruções históricas que tratem QA humano isolado como suficiente para promoção.
+
 ## Branches encerradas e históricas (pós-go-live)
 
 As branches abaixo foram formalmente encerradas:
